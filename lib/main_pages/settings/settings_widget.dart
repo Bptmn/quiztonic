@@ -71,10 +71,6 @@ class _SettingsWidgetState extends State<SettingsWidget> {
           );
         }
         List<UsersRecord> settingsUsersRecordList = snapshot.data!;
-        // Return an empty Container when the item does not exist.
-        if (snapshot.data!.isEmpty) {
-          return Container();
-        }
         final settingsUsersRecord = settingsUsersRecordList.isNotEmpty
             ? settingsUsersRecordList.first
             : null;
