@@ -397,14 +397,13 @@ class FFRoute {
                 )
               : builder(context, ffParams);
           final child = appStateNotifier.loading
-              ? Center(
-                  child: SizedBox(
-                    width: 50.0,
-                    height: 50.0,
-                    child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(
-                        FlutterFlowTheme.of(context).primary,
-                      ),
+              ? Container(
+                  color: FlutterFlowTheme.of(context).alternate,
+                  child: Center(
+                    child: Image.asset(
+                      'assets/images/DALLE_2025-03-09_17.40.02_-_A_modern_and_sleek_iOS_app_launcher_icon_combining_the_themes_of_learning,_artificial_intelligence,_and_pirates._The_icon_should_feature_a_minimalist_(1).png',
+                      width: MediaQuery.sizeOf(context).width * 0.5,
+                      fit: BoxFit.contain,
                     ),
                   ),
                 )
