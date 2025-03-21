@@ -1,4 +1,4 @@
-package com.mycompany.rackham
+package com.bvdev.raqam
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -13,14 +13,9 @@ const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 
 class QuizzGenerationAPICall {
   static Future<ApiCallResponse> call({
-    String? inputText = '',
+    FFUploadedFile? jsonFile,
+    FFUploadedFile? pdfFile,
   }) async {
-    final ffApiRequestBody = '''
-{
-  "text_content": "${inputText}",
-  "num_questions": 4,
-  "num_choices": 3
-}''';
     return ApiManager.instance.makeApiCall(
       callName: 'QuizzGenerationAPI',
       apiUrl: 'http://13.53.187.194:5050/generate-quiz',
@@ -28,9 +23,11 @@ class QuizzGenerationAPICall {
       headers: {
         'Content-Type': 'application/json',
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
+      params: {
+        'pdf_file': pdfFile,
+        'data': jsonFile,
+      },
+      bodyType: BodyType.MULTIPART,
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: true,
@@ -58,6 +55,9 @@ class ApiPagingParams {
 }
 
 String _toEncodable(dynamic item) {
+  if (item is DocumentReference) {
+    return item.path;
+  }
   return item;
 }
 
