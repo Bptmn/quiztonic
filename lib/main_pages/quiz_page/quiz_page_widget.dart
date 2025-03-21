@@ -25,13 +25,11 @@ class QuizPageWidget extends StatefulWidget {
   const QuizPageWidget({
     super.key,
     this.generatedQuizz,
-    required this.apiResponse,
     required this.sourceType,
     this.sourceInput,
   });
 
   final GeneratedQuizzStruct? generatedQuizz;
-  final dynamic apiResponse;
   final String? sourceType;
   final String? sourceInput;
 
@@ -391,6 +389,8 @@ class _QuizPageWidgetState extends State<QuizPageWidget> {
                                               10,
                                             ),
                                             correctAnswers: _model.userScore,
+                                            completionTime:
+                                                _model.timerMilliseconds,
                                           ),
                                           ParamType.DataStruct,
                                         ),

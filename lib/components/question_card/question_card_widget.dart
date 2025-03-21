@@ -93,17 +93,19 @@ class _QuestionCardWidgetState extends State<QuestionCardWidget> {
               Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Text(
-                    valueOrDefault<String>(
-                      widget!.questionCard?.questionText,
-                      'questionText',
+                  Flexible(
+                    child: Text(
+                      valueOrDefault<String>(
+                        widget!.questionCard?.questionText,
+                        'questionText',
+                      ),
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Roboto',
+                            fontSize: 18.0,
+                            letterSpacing: 0.0,
+                            fontWeight: FontWeight.bold,
+                          ),
                     ),
-                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Roboto',
-                          fontSize: 18.0,
-                          letterSpacing: 0.0,
-                          fontWeight: FontWeight.bold,
-                        ),
                   ),
                 ],
               ),

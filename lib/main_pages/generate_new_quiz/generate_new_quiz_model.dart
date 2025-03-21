@@ -28,10 +28,13 @@ class GenerateNewQuizModel extends FlutterFlowModel<GenerateNewQuizWidget> {
   // State field(s) for DropDownInputFormat widget.
   QuizInputFormat? dropDownInputFormatValue;
   FormFieldController<QuizInputFormat>? dropDownInputFormatValueController;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode;
-  TextEditingController? textController1;
-  String? Function(BuildContext, String?)? textController1Validator;
+  // State field(s) for TextFieldRawText widget.
+  FocusNode? textFieldRawTextFocusNode;
+  TextEditingController? textFieldRawTextTextController;
+  String? Function(BuildContext, String?)?
+      textFieldRawTextTextControllerValidator;
+  // Stores action output result for [Custom Action - pasteTextFromClipboard] action in ContainerPasteRawText widget.
+  String? pastedContentRawText;
   bool isDataUploading = false;
   FFUploadedFile uploadedLocalFile =
       FFUploadedFile(bytes: Uint8List.fromList([]));
@@ -40,6 +43,8 @@ class GenerateNewQuizModel extends FlutterFlowModel<GenerateNewQuizWidget> {
   FocusNode? textFieldUrlFocusNode;
   TextEditingController? textFieldUrlTextController;
   String? Function(BuildContext, String?)? textFieldUrlTextControllerValidator;
+  // Stores action output result for [Custom Action - pasteTextFromClipboard] action in ContainerPasteUrl widget.
+  String? pastedTextContent;
   // State field(s) for CountController widget.
   int? countControllerValue;
   // State field(s) for SwitchGenerateFlashcards widget.
@@ -62,8 +67,8 @@ class GenerateNewQuizModel extends FlutterFlowModel<GenerateNewQuizWidget> {
 
   @override
   void dispose() {
-    textFieldFocusNode?.dispose();
-    textController1?.dispose();
+    textFieldRawTextFocusNode?.dispose();
+    textFieldRawTextTextController?.dispose();
 
     textFieldUrlFocusNode?.dispose();
     textFieldUrlTextController?.dispose();

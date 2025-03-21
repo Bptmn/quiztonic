@@ -101,110 +101,120 @@ class _SettingsWidgetState extends State<SettingsWidget> {
             body: SafeArea(
               top: true,
               child: Padding(
-                padding: EdgeInsets.all(18.0),
+                padding: EdgeInsets.all(14.0),
                 child: SingleChildScrollView(
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 0.0),
-                        child: Container(
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            boxShadow: [
-                              BoxShadow(
-                                blurRadius: 3.0,
-                                color: Color(0x33000000),
-                                offset: Offset(
-                                  0.0,
-                                  1.0,
-                                ),
-                              )
-                            ],
-                            borderRadius: BorderRadius.circular(12.0),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.all(16.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Container(
-                                  width: 90.0,
-                                  height: 90.0,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context).accent2,
-                                    shape: BoxShape.circle,
-                                    border: Border.all(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondary,
-                                      width: 2.0,
-                                    ),
+                      Flexible(
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 1.0, 0.0, 0.0),
+                          child: Container(
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              boxShadow: [
+                                BoxShadow(
+                                  blurRadius: 3.0,
+                                  color: Color(0x33000000),
+                                  offset: Offset(
+                                    0.0,
+                                    1.0,
                                   ),
-                                  child: Padding(
-                                    padding: EdgeInsets.all(2.0),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(50.0),
-                                      child: CachedNetworkImage(
-                                        fadeInDuration:
-                                            Duration(milliseconds: 500),
-                                        fadeOutDuration:
-                                            Duration(milliseconds: 500),
-                                        imageUrl:
-                                            'https://images.unsplash.com/photo-1531123414780-f74242c2b052?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDV8fHByb2ZpbGV8ZW58MHx8MHx8&auto=format&fit=crop&w=900&q=60',
-                                        width: 60.0,
-                                        height: 60.0,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      16.0, 0.0, 0.0, 0.0),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      AuthUserStreamWidget(
-                                        builder: (context) => Text(
-                                          valueOrDefault<String>(
-                                            currentUserDisplayName,
-                                            'userName',
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .headlineSmall
-                                              .override(
-                                                fontFamily: 'Manrope',
-                                                letterSpacing: 0.0,
-                                              ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 4.0, 0.0, 0.0),
-                                        child: Text(
-                                          valueOrDefault<String>(
-                                            settingsUsersRecord?.email,
-                                            'userEmail',
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .labelMedium
-                                              .override(
-                                                fontFamily: 'Roboto',
-                                                letterSpacing: 0.0,
-                                              ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
+                                )
                               ],
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            child: Padding(
+                              padding: EdgeInsets.all(16.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Container(
+                                    width: 60.0,
+                                    height: 60.0,
+                                    decoration: BoxDecoration(
+                                      color:
+                                          FlutterFlowTheme.of(context).accent2,
+                                      shape: BoxShape.circle,
+                                      border: Border.all(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondary,
+                                        width: 2.0,
+                                      ),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsets.all(2.0),
+                                      child: ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(50.0),
+                                        child: CachedNetworkImage(
+                                          fadeInDuration:
+                                              Duration(milliseconds: 500),
+                                          fadeOutDuration:
+                                              Duration(milliseconds: 500),
+                                          imageUrl:
+                                              'https://images.unsplash.com/photo-1531123414780-f74242c2b052?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDV8fHByb2ZpbGV8ZW58MHx8MHx8&auto=format&fit=crop&w=900&q=60',
+                                          width: 40.0,
+                                          height: 40.0,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Flexible(
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          16.0, 0.0, 0.0, 0.0),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          AuthUserStreamWidget(
+                                            builder: (context) => Text(
+                                              valueOrDefault<String>(
+                                                currentUserDisplayName,
+                                                'userName',
+                                              ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineSmall
+                                                      .override(
+                                                        fontFamily: 'Manrope',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 4.0, 0.0, 0.0),
+                                            child: Text(
+                                              valueOrDefault<String>(
+                                                settingsUsersRecord?.email,
+                                                'userEmail',
+                                              ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily: 'Roboto',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),

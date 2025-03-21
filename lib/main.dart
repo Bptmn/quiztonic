@@ -138,7 +138,6 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     final tabs = {
       'HomePage': HomePageWidget(),
-      'GenerateNewQuiz': GenerateNewQuizWidget(),
       'Settings': SettingsWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
@@ -163,13 +162,6 @@ class _NavBarPageState extends State<NavBarPage> {
               Icons.home,
             ),
             label: 'Home',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.cached_rounded,
-            ),
-            label: 'New Quiz',
             tooltip: '',
           ),
           BottomNavigationBarItem(

@@ -104,10 +104,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               isList: false,
               structBuilder: GeneratedQuizzStruct.fromSerializableMap,
             ),
-            apiResponse: params.getParam(
-              'apiResponse',
-              ParamType.JSON,
-            ),
             sourceType: params.getParam(
               'sourceType',
               ParamType.String,
@@ -154,9 +150,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: GenerateNewQuizWidget.routeName,
           path: GenerateNewQuizWidget.routePath,
           requireAuth: true,
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'GenerateNewQuiz')
-              : GenerateNewQuizWidget(),
+          builder: (context, params) => GenerateNewQuizWidget(),
         ),
         FFRoute(
           name: SettingsWidget.routeName,

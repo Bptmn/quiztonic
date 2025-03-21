@@ -39,8 +39,8 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
     super.initState();
     _model = createModel(context, () => GenerateNewQuizModel());
 
-    _model.textController1 ??= TextEditingController();
-    _model.textFieldFocusNode ??= FocusNode();
+    _model.textFieldRawTextTextController ??= TextEditingController();
+    _model.textFieldRawTextFocusNode ??= FocusNode();
 
     _model.textFieldUrlTextController ??= TextEditingController();
     _model.textFieldUrlFocusNode ??= FocusNode();
@@ -84,7 +84,7 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
         body: SafeArea(
           top: true,
           child: Padding(
-            padding: EdgeInsets.all(18.0),
+            padding: EdgeInsets.all(16.0),
             child: SingleChildScrollView(
               primary: false,
               child: Column(
@@ -103,7 +103,7 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                         borderRadius: BorderRadius.circular(16.0),
                       ),
                       child: Padding(
-                        padding: EdgeInsets.all(16.0),
+                        padding: EdgeInsets.all(12.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
@@ -189,7 +189,7 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                               borderRadius: BorderRadius.circular(16.0),
                             ),
                             child: Padding(
-                              padding: EdgeInsets.all(16.0),
+                              padding: EdgeInsets.all(12.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
@@ -202,72 +202,140 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                           letterSpacing: 0.0,
                                         ),
                                   ),
-                                  TextFormField(
-                                    controller: _model.textController1,
-                                    focusNode: _model.textFieldFocusNode,
-                                    autofocus: false,
-                                    obscureText: false,
-                                    decoration: InputDecoration(
-                                      labelStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Roboto',
-                                            letterSpacing: 0.0,
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Expanded(
+                                        child: TextFormField(
+                                          controller: _model
+                                              .textFieldRawTextTextController,
+                                          focusNode:
+                                              _model.textFieldRawTextFocusNode,
+                                          autofocus: false,
+                                          obscureText: false,
+                                          decoration: InputDecoration(
+                                            labelStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily: 'Roboto',
+                                                      letterSpacing: 0.0,
+                                                    ),
+                                            hintText: 'Enter your text here...',
+                                            hintStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily: 'Roboto',
+                                                      letterSpacing: 0.0,
+                                                    ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(14.0),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0x00000000),
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(14.0),
+                                            ),
+                                            errorBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0x00000000),
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(14.0),
+                                            ),
+                                            focusedErrorBorder:
+                                                OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0x00000000),
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(14.0),
+                                            ),
+                                            filled: true,
+                                            fillColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .alternate,
                                           ),
-                                      hintText: 'Paste your text here...',
-                                      hintStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Roboto',
-                                            letterSpacing: 0.0,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyLarge
+                                              .override(
+                                                fontFamily: 'Roboto',
+                                                letterSpacing: 0.0,
+                                              ),
+                                          maxLines: 12,
+                                          minLines: 8,
+                                          validator: _model
+                                              .textFieldRawTextTextControllerValidator
+                                              .asValidator(context),
+                                        ),
+                                      ),
+                                      InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          _model.pastedContentRawText =
+                                              await actions
+                                                  .pasteTextFromClipboard();
+                                          safeSetState(() {
+                                            _model.textFieldRawTextTextController
+                                                    ?.text =
+                                                _model.pastedContentRawText!;
+                                          });
+
+                                          safeSetState(() {});
+                                        },
+                                        child: Container(
+                                          width: 50.0,
+                                          height: 45.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primary,
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
                                           ),
-                                      enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .alternate,
-                                          width: 1.0,
+                                          alignment:
+                                              AlignmentDirectional(0.0, 0.0),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              Icon(
+                                                Icons.content_paste_rounded,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                size: 17.0,
+                                              ),
+                                              Text(
+                                                'paste',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Roboto',
+                                                          fontSize: 11.0,
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                              ),
+                                            ].divide(SizedBox(height: 2.0)),
+                                          ),
                                         ),
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
                                       ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0x00000000),
-                                          width: 1.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                      ),
-                                      errorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0x00000000),
-                                          width: 1.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                      ),
-                                      focusedErrorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0x00000000),
-                                          width: 1.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                      ),
-                                      filled: true,
-                                      fillColor: FlutterFlowTheme.of(context)
-                                          .alternate,
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyLarge
-                                        .override(
-                                          fontFamily: 'Roboto',
-                                          letterSpacing: 0.0,
-                                        ),
-                                    maxLines: 12,
-                                    minLines: 8,
-                                    validator: _model.textController1Validator
-                                        .asValidator(context),
+                                    ].divide(SizedBox(width: 5.0)),
                                   ),
                                 ].divide(SizedBox(height: 16.0)),
                               ),
@@ -415,72 +483,137 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                           letterSpacing: 0.0,
                                         ),
                                   ),
-                                  TextFormField(
-                                    controller:
-                                        _model.textFieldUrlTextController,
-                                    focusNode: _model.textFieldUrlFocusNode,
-                                    autofocus: false,
-                                    textInputAction: TextInputAction.done,
-                                    obscureText: false,
-                                    decoration: InputDecoration(
-                                      labelStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Roboto',
-                                            letterSpacing: 0.0,
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Expanded(
+                                        child: TextFormField(
+                                          controller:
+                                              _model.textFieldUrlTextController,
+                                          focusNode:
+                                              _model.textFieldUrlFocusNode,
+                                          autofocus: false,
+                                          textInputAction: TextInputAction.done,
+                                          obscureText: false,
+                                          decoration: InputDecoration(
+                                            labelStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily: 'Roboto',
+                                                      letterSpacing: 0.0,
+                                                    ),
+                                            hintText: 'Enter an url here...',
+                                            hintStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily: 'Roboto',
+                                                      letterSpacing: 0.0,
+                                                    ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(12.0),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0x00000000),
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(12.0),
+                                            ),
+                                            errorBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0x00000000),
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(12.0),
+                                            ),
+                                            focusedErrorBorder:
+                                                OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0x00000000),
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(12.0),
+                                            ),
+                                            filled: true,
                                           ),
-                                      hintText: 'Enter an url here...',
-                                      hintStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Roboto',
-                                            letterSpacing: 0.0,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyLarge
+                                              .override(
+                                                fontFamily: 'Roboto',
+                                                letterSpacing: 0.0,
+                                              ),
+                                          maxLines: null,
+                                          validator: _model
+                                              .textFieldUrlTextControllerValidator
+                                              .asValidator(context),
+                                        ),
+                                      ),
+                                      InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          _model.pastedTextContent =
+                                              await actions
+                                                  .pasteTextFromClipboard();
+                                          safeSetState(() {
+                                            _model.textFieldUrlTextController
+                                                    ?.text =
+                                                _model.pastedTextContent!;
+                                          });
+
+                                          safeSetState(() {});
+                                        },
+                                        child: Container(
+                                          width: 50.0,
+                                          height: 45.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primary,
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
                                           ),
-                                      enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .alternate,
-                                          width: 1.0,
+                                          alignment:
+                                              AlignmentDirectional(0.0, 0.0),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              Icon(
+                                                Icons.content_paste_rounded,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                size: 17.0,
+                                              ),
+                                              Text(
+                                                'paste',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Roboto',
+                                                          fontSize: 11.0,
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                              ),
+                                            ].divide(SizedBox(height: 2.0)),
+                                          ),
                                         ),
-                                        borderRadius:
-                                            BorderRadius.circular(12.0),
                                       ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0x00000000),
-                                          width: 1.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(12.0),
-                                      ),
-                                      errorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0x00000000),
-                                          width: 1.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(12.0),
-                                      ),
-                                      focusedErrorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0x00000000),
-                                          width: 1.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(12.0),
-                                      ),
-                                      filled: true,
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyLarge
-                                        .override(
-                                          fontFamily: 'Roboto',
-                                          letterSpacing: 0.0,
-                                        ),
-                                    maxLines: null,
-                                    validator: _model
-                                        .textFieldUrlTextControllerValidator
-                                        .asValidator(context),
+                                    ].divide(SizedBox(width: 5.0)),
                                   ),
                                 ].divide(SizedBox(height: 16.0)),
                               ),
@@ -503,8 +636,7 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                         borderRadius: BorderRadius.circular(16.0),
                       ),
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            24.0, 24.0, 24.0, 24.0),
+                        padding: EdgeInsets.all(12.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -622,7 +754,7 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                       if (_model.selectedInputFormat ==
                           QuizInputFormat.rawText) {
                         _model.jsonFileText = await actions.createJsonFile(
-                          _model.textController1.text,
+                          _model.textFieldRawTextTextController.text,
                           _model.countControllerValue!,
                           4,
                           '',
@@ -642,16 +774,12 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                     (_model.apiResultFromText?.jsonBody ?? '')),
                                 ParamType.DataStruct,
                               ),
-                              'apiResponse': serializeParam(
-                                (_model.apiResultFromText?.jsonBody ?? ''),
-                                ParamType.JSON,
-                              ),
                               'sourceType': serializeParam(
                                 'rawText',
                                 ParamType.String,
                               ),
                               'sourceInput': serializeParam(
-                                _model.textController1.text,
+                                _model.textFieldRawTextTextController.text,
                                 ParamType.String,
                               ),
                             }.withoutNulls,
@@ -682,10 +810,6 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                 GeneratedQuizzStruct.maybeFromMap(
                                     (_model.apiResultFromUrl?.jsonBody ?? '')),
                                 ParamType.DataStruct,
-                              ),
-                              'apiResponse': serializeParam(
-                                (_model.apiResultFromUrl?.jsonBody ?? ''),
-                                ParamType.JSON,
                               ),
                               'sourceType': serializeParam(
                                 'url',
@@ -724,10 +848,6 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                 GeneratedQuizzStruct.maybeFromMap(
                                     (_model.apiResultFromPdf?.jsonBody ?? '')),
                                 ParamType.DataStruct,
-                              ),
-                              'apiResponse': serializeParam(
-                                (_model.apiResultFromPdf?.jsonBody ?? ''),
-                                ParamType.JSON,
                               ),
                               'sourceType': serializeParam(
                                 'pdf',
