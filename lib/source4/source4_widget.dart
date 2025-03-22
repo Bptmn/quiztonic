@@ -1,0 +1,111 @@
+import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'source4_model.dart';
+export 'source4_model.dart';
+
+class Source4Widget extends StatefulWidget {
+  const Source4Widget({
+    super.key,
+    required this.savedQuiz,
+  });
+
+  final SavedQuizRecord? savedQuiz;
+
+  static String routeName = 'source4';
+  static String routePath = '/source4';
+
+  @override
+  State<Source4Widget> createState() => _Source4WidgetState();
+}
+
+class _Source4WidgetState extends State<Source4Widget> {
+  late Source4Model _model;
+
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => Source4Model());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
+  }
+
+  @override
+  void dispose() {
+    _model.dispose();
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        appBar: AppBar(
+          backgroundColor: FlutterFlowTheme.of(context).primary,
+          automaticallyImplyLeading: false,
+          title: Text(
+            'Page Title',
+            style: FlutterFlowTheme.of(context).headlineMedium.override(
+                  fontFamily: 'Manrope',
+                  color: Colors.white,
+                  fontSize: 22.0,
+                  letterSpacing: 0.0,
+                ),
+          ),
+          actions: [],
+          centerTitle: false,
+          elevation: 2.0,
+        ),
+        body: SafeArea(
+          top: true,
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Text(
+                valueOrDefault<String>(
+                  widget!.savedQuiz?.sourceType,
+                  'sourceType',
+                ),
+                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      fontFamily: 'Roboto',
+                      letterSpacing: 0.0,
+                    ),
+              ),
+              Text(
+                valueOrDefault<String>(
+                  widget!.savedQuiz?.sourceInput,
+                  'sourceInput',
+                ),
+                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      fontFamily: 'Roboto',
+                      letterSpacing: 0.0,
+                    ),
+              ),
+              Text(
+                'Hello World',
+                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      fontFamily: 'Roboto',
+                      letterSpacing: 0.0,
+                    ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

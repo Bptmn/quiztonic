@@ -15,3 +15,4 @@ export '/other_pages/source_page/source_page_widget.dart' show SourcePageWidget;
 export '/source_page2/source_page2_widget.dart' show SourcePage2Widget;
 export '/source_page2_copy/source_page2_copy_widget.dart'
     show SourcePage2CopyWidget;
+export '/source4/source4_widget.dart' show Source4Widget;

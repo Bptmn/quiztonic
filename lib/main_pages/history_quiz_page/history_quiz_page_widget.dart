@@ -1,7 +1,6 @@
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/components/question_card/question_card_widget.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -62,20 +61,6 @@ class _HistoryQuizPageWidgetState extends State<HistoryQuizPageWidget> {
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).primary,
           automaticallyImplyLeading: false,
-          leading: FlutterFlowIconButton(
-            borderColor: Colors.transparent,
-            borderRadius: 30.0,
-            borderWidth: 1.0,
-            buttonSize: 60.0,
-            icon: Icon(
-              Icons.arrow_back_rounded,
-              color: Colors.white,
-              size: 30.0,
-            ),
-            onPressed: () async {
-              context.pop();
-            },
-          ),
           title: Text(
             valueOrDefault<String>(
               widget!.quizDocument?.quizName,
@@ -441,6 +426,39 @@ class _HistoryQuizPageWidgetState extends State<HistoryQuizPageWidget> {
                       borderRadius: BorderRadius.circular(16.0),
                     ),
                   ),
+                  FFButtonWidget(
+                    onPressed: () async {
+                      context.pushNamed(
+                        Source4Widget.routeName,
+                        queryParameters: {
+                          'savedQuiz': serializeParam(
+                            widget!.quizDocument,
+                            ParamType.Document,
+                          ),
+                        }.withoutNulls,
+                        extra: <String, dynamic>{
+                          'savedQuiz': widget!.quizDocument,
+                        },
+                      );
+                    },
+                    text: 'Quiz4',
+                    options: FFButtonOptions(
+                      height: 40.0,
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                      iconPadding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      color: FlutterFlowTheme.of(context).primary,
+                      textStyle:
+                          FlutterFlowTheme.of(context).titleSmall.override(
+                                fontFamily: 'Manrope',
+                                color: Colors.white,
+                                letterSpacing: 0.0,
+                              ),
+                      elevation: 0.0,
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                  ),
                   Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
@@ -484,6 +502,46 @@ class _HistoryQuizPageWidgetState extends State<HistoryQuizPageWidget> {
                           }).divide(SizedBox(height: 10.0)),
                         );
                       },
+                    ),
+                  ),
+                  FFButtonWidget(
+                    onPressed: () async {
+                      context.pushNamed(
+                        SourcePage2CopyWidget.routeName,
+                        queryParameters: {
+                          'savedQuiz': serializeParam(
+                            widget!.quizDocument,
+                            ParamType.Document,
+                          ),
+                        }.withoutNulls,
+                        extra: <String, dynamic>{
+                          'savedQuiz': widget!.quizDocument,
+                        },
+                      );
+                    },
+                    text: 'See the source 3',
+                    icon: Icon(
+                      Icons.arrow_circle_right,
+                      size: 25.0,
+                    ),
+                    options: FFButtonOptions(
+                      width: MediaQuery.sizeOf(context).width * 1.0,
+                      height: 50.0,
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
+                      iconAlignment: IconAlignment.end,
+                      iconPadding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      color: FlutterFlowTheme.of(context).tertiary,
+                      textStyle:
+                          FlutterFlowTheme.of(context).titleSmall.override(
+                                fontFamily: 'Manrope',
+                                color: Colors.white,
+                                fontSize: 20.0,
+                                letterSpacing: 0.0,
+                              ),
+                      elevation: 0.0,
+                      borderRadius: BorderRadius.circular(16.0),
                     ),
                   ),
                 ].divide(SizedBox(height: 15.0)),

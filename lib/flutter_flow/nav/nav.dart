@@ -234,6 +234,20 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.Document,
             ),
           ),
+        ),
+        FFRoute(
+          name: Source4Widget.routeName,
+          path: Source4Widget.routePath,
+          requireAuth: true,
+          asyncParams: {
+            'savedQuiz': getDoc(['savedQuiz'], SavedQuizRecord.fromSnapshot),
+          },
+          builder: (context, params) => Source4Widget(
+            savedQuiz: params.getParam(
+              'savedQuiz',
+              ParamType.Document,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
