@@ -12,3 +12,6 @@ export '/main_pages/history_quiz_page/history_quiz_page_widget.dart'
 export '/other_pages/flashcards_page/flashcards_page_widget.dart'
     show FlashcardsPageWidget;
 export '/other_pages/source_page/source_page_widget.dart' show SourcePageWidget;
+export '/source_page2/source_page2_widget.dart' show SourcePage2Widget;
+export '/source_page2_copy/source_page2_copy_widget.dart'
+    show SourcePage2CopyWidget;

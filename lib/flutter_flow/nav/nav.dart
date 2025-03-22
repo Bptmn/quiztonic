@@ -205,6 +205,35 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.String,
             ),
           ),
+        ),
+        FFRoute(
+          name: SourcePage2Widget.routeName,
+          path: SourcePage2Widget.routePath,
+          requireAuth: true,
+          builder: (context, params) => SourcePage2Widget(
+            sourceType: params.getParam(
+              'sourceType',
+              ParamType.String,
+            ),
+            sourceContent: params.getParam(
+              'sourceContent',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: SourcePage2CopyWidget.routeName,
+          path: SourcePage2CopyWidget.routePath,
+          requireAuth: true,
+          asyncParams: {
+            'savedQuiz': getDoc(['savedQuiz'], SavedQuizRecord.fromSnapshot),
+          },
+          builder: (context, params) => SourcePage2CopyWidget(
+            savedQuiz: params.getParam(
+              'savedQuiz',
+              ParamType.Document,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

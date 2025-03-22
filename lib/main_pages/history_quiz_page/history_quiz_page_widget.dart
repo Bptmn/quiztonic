@@ -360,6 +360,87 @@ class _HistoryQuizPageWidgetState extends State<HistoryQuizPageWidget> {
                       borderRadius: BorderRadius.circular(16.0),
                     ),
                   ),
+                  FFButtonWidget(
+                    onPressed: () async {
+                      context.pushNamed(
+                        SourcePage2Widget.routeName,
+                        queryParameters: {
+                          'sourceType': serializeParam(
+                            widget!.quizDocument?.sourceType,
+                            ParamType.String,
+                          ),
+                          'sourceContent': serializeParam(
+                            widget!.quizDocument?.sourceInput,
+                            ParamType.String,
+                          ),
+                        }.withoutNulls,
+                      );
+                    },
+                    text: 'See the source 2',
+                    icon: Icon(
+                      Icons.arrow_circle_right,
+                      size: 25.0,
+                    ),
+                    options: FFButtonOptions(
+                      width: MediaQuery.sizeOf(context).width * 1.0,
+                      height: 50.0,
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
+                      iconAlignment: IconAlignment.end,
+                      iconPadding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      color: FlutterFlowTheme.of(context).tertiary,
+                      textStyle:
+                          FlutterFlowTheme.of(context).titleSmall.override(
+                                fontFamily: 'Manrope',
+                                color: Colors.white,
+                                fontSize: 20.0,
+                                letterSpacing: 0.0,
+                              ),
+                      elevation: 0.0,
+                      borderRadius: BorderRadius.circular(16.0),
+                    ),
+                  ),
+                  FFButtonWidget(
+                    onPressed: () async {
+                      context.pushNamed(
+                        SourcePage2CopyWidget.routeName,
+                        queryParameters: {
+                          'savedQuiz': serializeParam(
+                            widget!.quizDocument,
+                            ParamType.Document,
+                          ),
+                        }.withoutNulls,
+                        extra: <String, dynamic>{
+                          'savedQuiz': widget!.quizDocument,
+                        },
+                      );
+                    },
+                    text: 'See the source 3',
+                    icon: Icon(
+                      Icons.arrow_circle_right,
+                      size: 25.0,
+                    ),
+                    options: FFButtonOptions(
+                      width: MediaQuery.sizeOf(context).width * 1.0,
+                      height: 50.0,
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
+                      iconAlignment: IconAlignment.end,
+                      iconPadding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      color: FlutterFlowTheme.of(context).tertiary,
+                      textStyle:
+                          FlutterFlowTheme.of(context).titleSmall.override(
+                                fontFamily: 'Manrope',
+                                color: Colors.white,
+                                fontSize: 20.0,
+                                letterSpacing: 0.0,
+                              ),
+                      elevation: 0.0,
+                      borderRadius: BorderRadius.circular(16.0),
+                    ),
+                  ),
                   Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
