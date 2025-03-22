@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -70,7 +71,7 @@ class _SourcePageWidgetState extends State<SourcePageWidget> {
               size: 30.0,
             ),
             onPressed: () async {
-              context.safePop();
+              context.goNamed(HomePageWidget.routeName);
             },
           ),
           title: Text(
