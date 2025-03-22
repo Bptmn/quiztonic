@@ -73,7 +73,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
             padding: EdgeInsets.all(14.0),
             child: SingleChildScrollView(
               child: Column(
-                mainAxisSize: MainAxisSize.max,
+                mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Flexible(
@@ -670,6 +670,16 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                         ),
                       ),
                     ),
+                  ),
+                  Text(
+                    valueOrDefault<String>(
+                      currentUserReference?.id,
+                      'userId',
+                    ),
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Roboto',
+                          letterSpacing: 0.0,
+                        ),
                   ),
                 ].divide(SizedBox(height: 10.0)),
               ),
