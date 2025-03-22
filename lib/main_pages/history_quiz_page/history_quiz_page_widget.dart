@@ -269,101 +269,97 @@ class _HistoryQuizPageWidgetState extends State<HistoryQuizPageWidget> {
                         borderRadius: BorderRadius.circular(16.0),
                       ),
                     ),
-                  if (widget!.quizDocument?.flashcards != null &&
-                      (widget!.quizDocument?.flashcards)!.isNotEmpty)
-                    FFButtonWidget(
-                      onPressed: () async {
-                        context.pushNamed(
-                          SourcePageWidget.routeName,
-                          queryParameters: {
-                            'sourceType': serializeParam(
-                              widget!.quizDocument?.sourceType,
-                              ParamType.String,
-                            ),
-                            'sourceContent': serializeParam(
-                              widget!.quizDocument?.sourceInput,
-                              ParamType.String,
-                            ),
-                          }.withoutNulls,
-                        );
-                      },
-                      text: 'See the source',
-                      icon: Icon(
-                        Icons.arrow_circle_right,
-                        size: 25.0,
-                      ),
-                      options: FFButtonOptions(
-                        width: MediaQuery.sizeOf(context).width * 1.0,
-                        height: 50.0,
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            10.0, 0.0, 10.0, 0.0),
-                        iconAlignment: IconAlignment.end,
-                        iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).tertiary,
-                        textStyle:
-                            FlutterFlowTheme.of(context).titleSmall.override(
-                                  fontFamily: 'Manrope',
-                                  color: Colors.white,
-                                  fontSize: 20.0,
-                                  letterSpacing: 0.0,
-                                ),
-                        elevation: 0.0,
-                        borderRadius: BorderRadius.circular(16.0),
-                      ),
+                  FFButtonWidget(
+                    onPressed: () async {
+                      context.pushNamed(
+                        SourcePageWidget.routeName,
+                        queryParameters: {
+                          'sourceType': serializeParam(
+                            widget!.quizDocument?.sourceType,
+                            ParamType.String,
+                          ),
+                          'sourceContent': serializeParam(
+                            widget!.quizDocument?.sourceInput,
+                            ParamType.String,
+                          ),
+                        }.withoutNulls,
+                      );
+                    },
+                    text: 'See the source',
+                    icon: Icon(
+                      Icons.arrow_circle_right,
+                      size: 25.0,
                     ),
-                  if (widget!.quizDocument?.flashcards != null &&
-                      (widget!.quizDocument?.flashcards)!.isNotEmpty)
-                    FFButtonWidget(
-                      onPressed: () async {
-                        context.pushNamed(
-                          QuizPageWidget.routeName,
-                          queryParameters: {
-                            'generatedQuizz': serializeParam(
-                              GeneratedQuizzStruct(
-                                quizName: widget!.quizDocument?.quizName,
-                                questionCards:
-                                    widget!.quizDocument?.questionCards,
-                                flashcards: widget!.quizDocument?.flashcards,
+                    options: FFButtonOptions(
+                      width: MediaQuery.sizeOf(context).width * 1.0,
+                      height: 50.0,
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
+                      iconAlignment: IconAlignment.end,
+                      iconPadding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      color: FlutterFlowTheme.of(context).tertiary,
+                      textStyle:
+                          FlutterFlowTheme.of(context).titleSmall.override(
+                                fontFamily: 'Manrope',
+                                color: Colors.white,
+                                fontSize: 20.0,
+                                letterSpacing: 0.0,
                               ),
-                              ParamType.DataStruct,
-                            ),
-                            'sourceType': serializeParam(
-                              widget!.quizDocument?.sourceType,
-                              ParamType.String,
-                            ),
-                            'sourceInput': serializeParam(
-                              widget!.quizDocument?.sourceInput,
-                              ParamType.String,
-                            ),
-                          }.withoutNulls,
-                        );
-                      },
-                      text: 'Retake the quiz',
-                      icon: Icon(
-                        Icons.replay_rounded,
-                        size: 25.0,
-                      ),
-                      options: FFButtonOptions(
-                        width: MediaQuery.sizeOf(context).width * 1.0,
-                        height: 50.0,
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            10.0, 0.0, 10.0, 0.0),
-                        iconAlignment: IconAlignment.end,
-                        iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).warning,
-                        textStyle:
-                            FlutterFlowTheme.of(context).titleSmall.override(
-                                  fontFamily: 'Manrope',
-                                  color: Colors.white,
-                                  fontSize: 20.0,
-                                  letterSpacing: 0.0,
-                                ),
-                        elevation: 0.0,
-                        borderRadius: BorderRadius.circular(16.0),
-                      ),
+                      elevation: 0.0,
+                      borderRadius: BorderRadius.circular(16.0),
                     ),
+                  ),
+                  FFButtonWidget(
+                    onPressed: () async {
+                      context.pushNamed(
+                        QuizPageWidget.routeName,
+                        queryParameters: {
+                          'generatedQuizz': serializeParam(
+                            GeneratedQuizzStruct(
+                              quizName: widget!.quizDocument?.quizName,
+                              questionCards:
+                                  widget!.quizDocument?.questionCards,
+                              flashcards: widget!.quizDocument?.flashcards,
+                            ),
+                            ParamType.DataStruct,
+                          ),
+                          'sourceType': serializeParam(
+                            widget!.quizDocument?.sourceType,
+                            ParamType.String,
+                          ),
+                          'sourceInput': serializeParam(
+                            widget!.quizDocument?.sourceInput,
+                            ParamType.String,
+                          ),
+                        }.withoutNulls,
+                      );
+                    },
+                    text: 'Retake the quiz',
+                    icon: Icon(
+                      Icons.replay_rounded,
+                      size: 25.0,
+                    ),
+                    options: FFButtonOptions(
+                      width: MediaQuery.sizeOf(context).width * 1.0,
+                      height: 50.0,
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
+                      iconAlignment: IconAlignment.end,
+                      iconPadding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      color: FlutterFlowTheme.of(context).warning,
+                      textStyle:
+                          FlutterFlowTheme.of(context).titleSmall.override(
+                                fontFamily: 'Manrope',
+                                color: Colors.white,
+                                fontSize: 20.0,
+                                letterSpacing: 0.0,
+                              ),
+                      elevation: 0.0,
+                      borderRadius: BorderRadius.circular(16.0),
+                    ),
+                  ),
                   Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),

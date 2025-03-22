@@ -327,6 +327,9 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                                         .bodyMedium
                                                         .override(
                                                           fontFamily: 'Roboto',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .info,
                                                           fontSize: 11.0,
                                                           letterSpacing: 0.0,
                                                         ),
@@ -605,6 +608,9 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                                         .bodyMedium
                                                         .override(
                                                           fontFamily: 'Roboto',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .info,
                                                           fontSize: 11.0,
                                                           letterSpacing: 0.0,
                                                         ),

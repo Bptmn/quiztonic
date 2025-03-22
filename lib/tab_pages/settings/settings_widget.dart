@@ -77,14 +77,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Flexible(
-                    child: StreamBuilder<List<UsersRecord>>(
-                      stream: queryUsersRecord(
-                        queryBuilder: (usersRecord) => usersRecord.where(
-                          'uid',
-                          isEqualTo: currentUserReference?.id,
-                        ),
-                        singleRecord: true,
-                      ),
+                    child: StreamBuilder<UsersRecord>(
+                      stream: UsersRecord.getDocument(currentUserReference!),
                       builder: (context, snapshot) {
                         // Customize what your widget looks like when it's loading.
                         if (!snapshot.hasData) {
@@ -100,12 +94,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                             ),
                           );
                         }
-                        List<UsersRecord> userSettingsUsersRecordList =
-                            snapshot.data!;
-                        final userSettingsUsersRecord =
-                            userSettingsUsersRecordList.isNotEmpty
-                                ? userSettingsUsersRecordList.first
-                                : null;
+
+                        final userSettingsUsersRecord = snapshot.data!;
 
                         return Container(
                           decoration: BoxDecoration(
@@ -207,7 +197,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                                   child: Text(
                                                     valueOrDefault<String>(
                                                       userSettingsUsersRecord
-                                                          ?.email,
+                                                          .email,
                                                       'userEmail',
                                                     ),
                                                     style: FlutterFlowTheme.of(
@@ -228,7 +218,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                   ),
                                 ),
                               ),
-                              if (userSettingsUsersRecord?.email ==
+                              if (userSettingsUsersRecord.email ==
                                   'baptiste.veyrard@gmail.com')
                                 Container(
                                   decoration: BoxDecoration(
