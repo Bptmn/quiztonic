@@ -4,6 +4,7 @@ import '/backend/backend.dart';
 import '/backend/schema/enums/enums.dart';
 import '/flutter_flow/flutter_flow_count_controller.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -69,6 +70,20 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).primary,
           automaticallyImplyLeading: false,
+          leading: FlutterFlowIconButton(
+            borderColor: Colors.transparent,
+            borderRadius: 30.0,
+            borderWidth: 1.0,
+            buttonSize: 60.0,
+            icon: Icon(
+              Icons.arrow_back_rounded,
+              color: Colors.white,
+              size: 30.0,
+            ),
+            onPressed: () async {
+              context.goNamed(HomePageWidget.routeName);
+            },
+          ),
           title: Text(
             'Generate Quiz',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
@@ -78,8 +93,8 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                 ),
           ),
           actions: [],
-          centerTitle: false,
-          elevation: 0.0,
+          centerTitle: true,
+          elevation: 2.0,
         ),
         body: SafeArea(
           top: true,
@@ -317,7 +332,7 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                                 Icons.content_paste_rounded,
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .primaryText,
+                                                        .info,
                                                 size: 17.0,
                                               ),
                                               Text(
@@ -598,7 +613,7 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                                 Icons.content_paste_rounded,
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .primaryText,
+                                                        .info,
                                                 size: 17.0,
                                               ),
                                               Text(
