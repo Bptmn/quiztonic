@@ -48,8 +48,8 @@ class SavedQuizRecord extends FirestoreRecord {
   bool hasTimeDuration() => _timeDuration != null;
 
   // "questionCards" field.
-  List<QuestionCardsStruct>? _questionCards;
-  List<QuestionCardsStruct> get questionCards => _questionCards ?? const [];
+  List<QuestionCardStruct>? _questionCards;
+  List<QuestionCardStruct> get questionCards => _questionCards ?? const [];
   bool hasQuestionCards() => _questionCards != null;
 
   // "difficultyLevel" field.
@@ -91,7 +91,7 @@ class SavedQuizRecord extends FirestoreRecord {
     _timeDuration = castToType<int>(snapshotData['timeDuration']);
     _questionCards = getStructList(
       snapshotData['questionCards'],
-      QuestionCardsStruct.fromMap,
+      QuestionCardStruct.fromMap,
     );
     _difficultyLevel = castToType<int>(snapshotData['difficultyLevel']);
     _sourceType = snapshotData['sourceType'] as String?;

@@ -12,6 +12,7 @@ import 'dart:ui';
 import '/index.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -79,360 +80,493 @@ class _QuizPageWidgetState extends State<QuizPageWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
+        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
         appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primary,
+          backgroundColor: FlutterFlowTheme.of(context).transparent,
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
             borderRadius: 30.0,
             borderWidth: 1.0,
-            buttonSize: 60.0,
+            buttonSize: 80.0,
             icon: Icon(
-              Icons.arrow_back_rounded,
-              color: Colors.white,
-              size: 30.0,
+              Icons.arrow_circle_left_rounded,
+              color: FlutterFlowTheme.of(context).primary,
+              size: 50.0,
             ),
             onPressed: () async {
-              context.safePop();
+              context.pop();
             },
           ),
-          title: Text(
-            'Quiz',
-            style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  fontFamily: 'Manrope',
-                  color: Colors.white,
-                  fontSize: 22.0,
-                  letterSpacing: 0.0,
+          title: RichText(
+            textScaler: MediaQuery.of(context).textScaler,
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: 'Question ',
+                  style: FlutterFlowTheme.of(context).headlineMedium.override(
+                        fontFamily: 'Manrope',
+                        color: FlutterFlowTheme.of(context).primary,
+                        fontSize: 22.0,
+                        letterSpacing: 0.0,
+                      ),
                 ),
+                TextSpan(
+                  text: ((_model.pageNavigate!) + 1).toString(),
+                  style: TextStyle(),
+                ),
+                TextSpan(
+                  text: '/',
+                  style: TextStyle(),
+                ),
+                TextSpan(
+                  text: valueOrDefault<String>(
+                    widget!.generatedQuizz?.questionCards?.length?.toString(),
+                    '10',
+                  ),
+                  style: TextStyle(),
+                )
+              ],
+              style: FlutterFlowTheme.of(context).headlineMedium.override(
+                    fontFamily: 'Manrope',
+                    color: FlutterFlowTheme.of(context).primary,
+                    fontSize: 22.0,
+                    letterSpacing: 0.0,
+                  ),
+            ),
           ),
           actions: [],
           centerTitle: true,
-          elevation: 2.0,
+          elevation: 0.0,
         ),
         body: SafeArea(
           top: true,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  RichText(
-                    textScaler: MediaQuery.of(context).textScaler,
-                    text: TextSpan(
-                      children: [
-                        TextSpan(
-                          text: ((_model.pageNavigate!) + 1).toString(),
-                          style: FlutterFlowTheme.of(context)
-                              .headlineMedium
-                              .override(
-                                fontFamily: 'Manrope',
-                                letterSpacing: 0.0,
-                              ),
-                        ),
-                        TextSpan(
-                          text: '/',
-                          style: TextStyle(),
-                        ),
-                        TextSpan(
-                          text: valueOrDefault<String>(
-                            widget!.generatedQuizz?.questionCards?.length
-                                ?.toString(),
-                            '10',
-                          ),
-                          style: TextStyle(),
-                        )
-                      ],
-                      style:
-                          FlutterFlowTheme.of(context).headlineMedium.override(
-                                fontFamily: 'Manrope',
-                                letterSpacing: 0.0,
-                              ),
-                    ),
-                  ),
-                  FlutterFlowTimer(
-                    initialTime: _model.timerInitialTimeMs,
-                    getDisplayTime: (value) => StopWatchTimer.getDisplayTime(
-                      value,
-                      hours: false,
-                      milliSecond: false,
-                    ),
-                    controller: _model.timerController,
-                    updateStateInterval: Duration(milliseconds: 1000),
-                    onChanged: (value, displayTime, shouldUpdate) {
-                      _model.timerMilliseconds = value;
-                      _model.timerValue = displayTime;
-                      if (shouldUpdate) safeSetState(() {});
-                    },
-                    textAlign: TextAlign.start,
-                    style: FlutterFlowTheme.of(context).headlineSmall.override(
-                          fontFamily: 'Manrope',
-                          letterSpacing: 0.0,
-                        ),
-                  ),
-                ],
+          child: Align(
+            alignment: AlignmentDirectional(0.0, -1.0),
+            child: Container(
+              constraints: BoxConstraints(
+                maxWidth: 600.0,
               ),
-              Flexible(
-                child: Align(
-                  alignment: AlignmentDirectional(0.0, -1.0),
-                  child: Container(
-                    width: MediaQuery.sizeOf(context).width * 1.0,
-                    height: MediaQuery.sizeOf(context).height * 1.0,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        LinearPercentIndicator(
-                          percent: valueOrDefault<double>(
-                            ((_model.pageNavigate!) + 1) /
-                                widget!.generatedQuizz!.questionCards.length,
-                            0.0,
-                          ),
-                          width: MediaQuery.sizeOf(context).width * 1.0,
-                          lineHeight: 12.0,
-                          animation: true,
-                          animateFromLastPercent: true,
-                          progressColor: FlutterFlowTheme.of(context).primary,
-                          backgroundColor: FlutterFlowTheme.of(context).accent4,
-                          padding: EdgeInsets.zero,
+              decoration: BoxDecoration(),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      FlutterFlowTimer(
+                        initialTime: _model.timerInitialTimeMs,
+                        getDisplayTime: (value) =>
+                            StopWatchTimer.getDisplayTime(
+                          value,
+                          hours: false,
+                          milliSecond: false,
                         ),
-                        Expanded(
-                          child: Builder(
-                            builder: (context) {
-                              final questionCard = widget!
-                                      .generatedQuizz?.questionCards
-                                      ?.toList() ??
-                                  [];
-
-                              return Container(
-                                width: double.infinity,
-                                height: 500.0,
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 40.0),
-                                  child: PageView.builder(
-                                    physics:
-                                        const NeverScrollableScrollPhysics(),
-                                    controller: _model.pageViewController ??=
-                                        PageController(
-                                            initialPage: max(
-                                                0,
-                                                min(0,
-                                                    questionCard.length - 1))),
-                                    scrollDirection: Axis.horizontal,
-                                    itemCount: questionCard.length,
-                                    itemBuilder: (context, questionCardIndex) {
-                                      final questionCardItem =
-                                          questionCard[questionCardIndex];
-                                      return Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 20.0, 0.0, 0.0),
-                                        child: wrapWithModel(
-                                          model: _model.questionCardModels
-                                              .getModel(
-                                            questionCardIndex.toString(),
-                                            questionCardIndex,
-                                          ),
-                                          updateCallback: () =>
-                                              safeSetState(() {}),
-                                          updateOnChange: true,
-                                          child: QuestionCardWidget(
-                                            key: Key(
-                                              'Keyo6p_${questionCardIndex.toString()}',
-                                            ),
-                                            questionCard: questionCardItem,
-                                            updateScore: (isCorrect,
-                                                userAnswerIndex) async {
-                                              _model.userScore =
-                                                  _model.userScore! +
-                                                      (isCorrect ? 1 : 0);
-                                              _model.updateGeneratedQuizzStruct(
-                                                (e) => e
-                                                  ..updateQuestionCards(
-                                                    (e) => e[questionCardIndex]
-                                                      ..userSelectionIndex =
-                                                          userAnswerIndex
-                                                      ..questionIsDone = true,
-                                                  ),
-                                              );
-                                              safeSetState(() {});
-                                            },
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                  ),
+                        controller: _model.timerController,
+                        updateStateInterval: Duration(milliseconds: 1000),
+                        onChanged: (value, displayTime, shouldUpdate) {
+                          _model.timerMilliseconds = value;
+                          _model.timerValue = displayTime;
+                          if (shouldUpdate) safeSetState(() {});
+                        },
+                        textAlign: TextAlign.start,
+                        style:
+                            FlutterFlowTheme.of(context).headlineSmall.override(
+                                  fontFamily: 'Manrope',
+                                  letterSpacing: 0.0,
                                 ),
-                              );
-                            },
-                          ),
+                      ),
+                    ],
+                  ),
+                  Flexible(
+                    child: Align(
+                      alignment: AlignmentDirectional(0.0, -1.0),
+                      child: Container(
+                        width: MediaQuery.sizeOf(context).width * 1.0,
+                        height: MediaQuery.sizeOf(context).height * 1.0,
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
                         ),
-                        Row(
+                        child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            if (_model.pageNavigate! > 0)
-                              FlutterFlowIconButton(
-                                borderRadius: 8.0,
-                                buttonSize: 50.0,
-                                fillColor: FlutterFlowTheme.of(context).primary,
-                                icon: Icon(
-                                  Icons.arrow_back_ios_outlined,
-                                  color: FlutterFlowTheme.of(context).info,
-                                  size: 24.0,
-                                ),
-                                onPressed: () async {
-                                  await _model.pageViewController?.previousPage(
-                                    duration: Duration(milliseconds: 300),
-                                    curve: Curves.ease,
-                                  );
-                                  _model.pageNavigate =
-                                      _model.pageNavigate! + -1;
-                                  safeSetState(() {});
-                                },
-                              ),
-                            if (valueOrDefault<bool>(
-                              ((_model.pageNavigate!) + 1).toString() !=
-                                  valueOrDefault<String>(
+                            LinearPercentIndicator(
+                              percent: valueOrDefault<double>(
+                                ((_model.pageNavigate!) + 1) /
                                     widget!
-                                        .generatedQuizz?.questionCards?.length
-                                        .toString(),
-                                    '10',
-                                  ),
-                              true,
-                            ))
-                              Expanded(
-                                child: FFButtonWidget(
-                                  onPressed: () async {
-                                    await _model.pageViewController?.nextPage(
-                                      duration: Duration(milliseconds: 300),
-                                      curve: Curves.ease,
-                                    );
-                                    _model.pageNavigate =
-                                        _model.pageNavigate! + 1;
-                                    safeSetState(() {});
-                                  },
-                                  text: 'Next',
-                                  options: FFButtonOptions(
-                                    height: 50.0,
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        16.0, 0.0, 16.0, 0.0),
-                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .override(
-                                          fontFamily: 'Manrope',
-                                          color: Colors.white,
-                                          fontSize: 20.0,
-                                          letterSpacing: 0.0,
-                                        ),
-                                    elevation: 0.0,
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                ),
+                                        .generatedQuizz!.questionCards.length,
+                                0.0,
                               ),
-                            if (valueOrDefault<bool>(
-                              ((_model.pageNavigate!) + 1).toString() ==
-                                  valueOrDefault<String>(
-                                    widget!
-                                        .generatedQuizz?.questionCards?.length
-                                        .toString(),
-                                    '10',
-                                  ),
-                              true,
-                            ))
-                              Expanded(
-                                child: FFButtonWidget(
-                                  onPressed: () async {
-                                    _model.timerController.onStopTimer();
+                              width: MediaQuery.sizeOf(context).width * 1.0,
+                              lineHeight: 12.0,
+                              animation: true,
+                              animateFromLastPercent: true,
+                              progressColor:
+                                  FlutterFlowTheme.of(context).primary,
+                              backgroundColor:
+                                  FlutterFlowTheme.of(context).accent4,
+                              padding: EdgeInsets.zero,
+                            ),
+                            Expanded(
+                              child: Builder(
+                                builder: (context) {
+                                  final questionCard = widget!
+                                          .generatedQuizz?.questionCards
+                                          ?.toList() ??
+                                      [];
 
-                                    await SavedQuizRecord.collection.doc().set({
-                                      ...createSavedQuizRecordData(
-                                        quizName:
-                                            widget!.generatedQuizz?.quizName,
-                                        createdAt: getCurrentTimestamp,
-                                        totalQuestions: widget!.generatedQuizz
-                                            ?.questionCards?.length,
-                                        totalCorrectAnswers: _model.userScore,
-                                        userRef: currentUserReference,
-                                        timeDuration: _model.timerMilliseconds,
-                                        sourceType: widget!.sourceType,
-                                        sourceInput: widget!.sourceInput,
-                                      ),
-                                      ...mapToFirestore(
-                                        {
-                                          'questionCards':
-                                              getQuestionCardsListFirestoreData(
-                                            _model
-                                                .generatedQuizz?.questionCards,
-                                          ),
-                                          'flashcards':
-                                              getFlashcardListFirestoreData(
-                                            widget!.generatedQuizz?.flashcards,
-                                          ),
+                                  return Container(
+                                    width: double.infinity,
+                                    height: 500.0,
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 40.0),
+                                      child: PageView.builder(
+                                        physics:
+                                            const NeverScrollableScrollPhysics(),
+                                        controller: _model
+                                                .pageViewController ??=
+                                            PageController(
+                                                initialPage: max(
+                                                    0,
+                                                    min(
+                                                        0,
+                                                        questionCard.length -
+                                                            1))),
+                                        scrollDirection: Axis.horizontal,
+                                        itemCount: questionCard.length,
+                                        itemBuilder:
+                                            (context, questionCardIndex) {
+                                          final questionCardItem =
+                                              questionCard[questionCardIndex];
+                                          return Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 20.0, 0.0, 0.0),
+                                            child: wrapWithModel(
+                                              model: _model.questionCardModels
+                                                  .getModel(
+                                                questionCardIndex.toString(),
+                                                questionCardIndex,
+                                              ),
+                                              updateCallback: () =>
+                                                  safeSetState(() {}),
+                                              updateOnChange: true,
+                                              child: QuestionCardWidget(
+                                                key: Key(
+                                                  'Keyo6p_${questionCardIndex.toString()}',
+                                                ),
+                                                questionCard: questionCardItem,
+                                                updateScore: (isCorrect,
+                                                    userAnswerIndex) async {
+                                                  _model.userScore =
+                                                      _model.userScore! +
+                                                          (isCorrect ? 1 : 0);
+                                                  _model
+                                                      .updateGeneratedQuizzStruct(
+                                                    (e) => e
+                                                      ..updateQuestionCards(
+                                                        (e) =>
+                                                            e[questionCardIndex]
+                                                              ..userSelectionIndex =
+                                                                  userAnswerIndex
+                                                              ..questionIsDone =
+                                                                  true,
+                                                      ),
+                                                  );
+                                                  safeSetState(() {});
+                                                },
+                                              ),
+                                            ),
+                                          );
                                         },
                                       ),
-                                    });
-
-                                    context.goNamed(
-                                      ScorePageWidget.routeName,
-                                      queryParameters: {
-                                        'quizResult': serializeParam(
-                                          QuizResultStruct(
-                                            totalQuestions: valueOrDefault<int>(
-                                              widget!.generatedQuizz
-                                                  ?.questionCards?.length,
-                                              10,
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+                            Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Align(
+                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      if (_model.pageNavigate! > 0)
+                                        Expanded(
+                                          child: FFButtonWidget(
+                                            onPressed: () async {
+                                              await _model.pageViewController
+                                                  ?.previousPage(
+                                                duration:
+                                                    Duration(milliseconds: 300),
+                                                curve: Curves.ease,
+                                              );
+                                              _model.pageNavigate =
+                                                  _model.pageNavigate! + -1;
+                                              safeSetState(() {});
+                                            },
+                                            text: 'Previous',
+                                            icon: Icon(
+                                              Icons.navigate_before,
+                                              size: 30.0,
                                             ),
-                                            correctAnswers: _model.userScore,
-                                            completionTime:
-                                                _model.timerMilliseconds,
+                                            options: FFButtonOptions(
+                                              width: double.infinity,
+                                              height: 50.0,
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      5.0, 0.0, 20.0, 0.0),
+                                              iconAlignment:
+                                                  IconAlignment.start,
+                                              iconPadding: EdgeInsets.all(0.0),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                              textStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .override(
+                                                        fontFamily: 'Manrope',
+                                                        color: Colors.white,
+                                                        fontSize: 20.0,
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                              elevation: 0.0,
+                                              borderRadius:
+                                                  BorderRadius.circular(24.0),
+                                            ),
                                           ),
-                                          ParamType.DataStruct,
                                         ),
-                                        'flashcards': serializeParam(
-                                          widget!.generatedQuizz?.flashcards,
-                                          ParamType.DataStruct,
-                                          isList: true,
+                                      if (valueOrDefault<bool>(
+                                        ((_model.pageNavigate!) + 1)
+                                                .toString() !=
+                                            valueOrDefault<String>(
+                                              widget!.generatedQuizz
+                                                  ?.questionCards?.length
+                                                  .toString(),
+                                              '10',
+                                            ),
+                                        true,
+                                      ))
+                                        Expanded(
+                                          child: Align(
+                                            alignment:
+                                                AlignmentDirectional(1.0, 0.0),
+                                            child: FFButtonWidget(
+                                              onPressed: () async {
+                                                await _model.pageViewController
+                                                    ?.nextPage(
+                                                  duration: Duration(
+                                                      milliseconds: 300),
+                                                  curve: Curves.ease,
+                                                );
+                                                _model.pageNavigate =
+                                                    _model.pageNavigate! + 1;
+                                                safeSetState(() {});
+                                              },
+                                              text: 'Next',
+                                              icon: Icon(
+                                                Icons.navigate_next,
+                                                size: 30.0,
+                                              ),
+                                              options: FFButtonOptions(
+                                                width: double.infinity,
+                                                height: 50.0,
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        20.0, 0.0, 5.0, 0.0),
+                                                iconAlignment:
+                                                    IconAlignment.end,
+                                                iconPadding:
+                                                    EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                            0.0, 0.0, 0.0, 0.0),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                textStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily: 'Manrope',
+                                                          color: Colors.white,
+                                                          fontSize: 20.0,
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                elevation: 0.0,
+                                                borderRadius:
+                                                    BorderRadius.circular(24.0),
+                                              ),
+                                            ),
+                                          ),
                                         ),
-                                      }.withoutNulls,
-                                    );
-                                  },
-                                  text: 'Complete',
-                                  options: FFButtonOptions(
-                                    height: 50.0,
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        16.0, 0.0, 16.0, 0.0),
-                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .override(
-                                          fontFamily: 'Manrope',
-                                          color: Colors.white,
-                                          fontSize: 20.0,
-                                          letterSpacing: 0.0,
+                                      if (valueOrDefault<bool>(
+                                        ((_model.pageNavigate!) + 1)
+                                                .toString() ==
+                                            valueOrDefault<String>(
+                                              widget!.generatedQuizz
+                                                  ?.questionCards?.length
+                                                  .toString(),
+                                              '10',
+                                            ),
+                                        true,
+                                      ))
+                                        Expanded(
+                                          child: FFButtonWidget(
+                                            onPressed: () async {
+                                              _model.timerController
+                                                  .onStopTimer();
+
+                                              await SavedQuizRecord.collection
+                                                  .doc()
+                                                  .set({
+                                                ...createSavedQuizRecordData(
+                                                  quizName: widget!
+                                                      .generatedQuizz?.quizName,
+                                                  createdAt:
+                                                      getCurrentTimestamp,
+                                                  totalQuestions: widget!
+                                                      .generatedQuizz
+                                                      ?.questionCards
+                                                      ?.length,
+                                                  totalCorrectAnswers:
+                                                      _model.userScore,
+                                                  userRef: currentUserReference,
+                                                  timeDuration:
+                                                      _model.timerMilliseconds,
+                                                  sourceType:
+                                                      widget!.sourceType,
+                                                  sourceInput:
+                                                      widget!.sourceInput,
+                                                ),
+                                                ...mapToFirestore(
+                                                  {
+                                                    'questionCards':
+                                                        getQuestionCardListFirestoreData(
+                                                      _model.generatedQuizz
+                                                          ?.questionCards,
+                                                    ),
+                                                    'flashcards':
+                                                        getFlashcardListFirestoreData(
+                                                      widget!.generatedQuizz
+                                                          ?.flashcards,
+                                                    ),
+                                                  },
+                                                ),
+                                              });
+                                              _model.userStatisticDocument =
+                                                  await queryUserStatisticsRecordOnce(
+                                                queryBuilder:
+                                                    (userStatisticsRecord) =>
+                                                        userStatisticsRecord
+                                                            .where(
+                                                  'userRef',
+                                                  isEqualTo:
+                                                      currentUserReference,
+                                                ),
+                                                singleRecord: true,
+                                              ).then((s) => s.firstOrNull);
+
+                                              await _model
+                                                  .userStatisticDocument!
+                                                  .reference
+                                                  .update({
+                                                ...mapToFirestore(
+                                                  {
+                                                    'nb_quiz_done':
+                                                        FieldValue.increment(1),
+                                                    'nb_questions_done':
+                                                        FieldValue.increment(
+                                                            widget!
+                                                                .generatedQuizz!
+                                                                .questionCards
+                                                                .length),
+                                                    'nb_correct_answers':
+                                                        FieldValue.increment(
+                                                            _model.userScore!),
+                                                  },
+                                                ),
+                                              });
+
+                                              context.goNamed(
+                                                ScorePageWidget.routeName,
+                                                queryParameters: {
+                                                  'quizResult': serializeParam(
+                                                    QuizResultStruct(
+                                                      totalQuestions:
+                                                          valueOrDefault<int>(
+                                                        widget!
+                                                            .generatedQuizz
+                                                            ?.questionCards
+                                                            ?.length,
+                                                        10,
+                                                      ),
+                                                      correctAnswers:
+                                                          _model.userScore,
+                                                      completionTime: _model
+                                                          .timerMilliseconds,
+                                                    ),
+                                                    ParamType.DataStruct,
+                                                  ),
+                                                  'flashcards': serializeParam(
+                                                    widget!.generatedQuizz
+                                                        ?.flashcards,
+                                                    ParamType.DataStruct,
+                                                    isList: true,
+                                                  ),
+                                                }.withoutNulls,
+                                              );
+
+                                              safeSetState(() {});
+                                            },
+                                            text: 'Complete',
+                                            options: FFButtonOptions(
+                                              height: 50.0,
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      16.0, 0.0, 16.0, 0.0),
+                                              iconPadding: EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondary,
+                                              textStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .override(
+                                                        fontFamily: 'Manrope',
+                                                        color: Colors.white,
+                                                        fontSize: 20.0,
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                              elevation: 0.0,
+                                              borderRadius:
+                                                  BorderRadius.circular(24.0),
+                                            ),
+                                          ),
                                         ),
-                                    elevation: 0.0,
-                                    borderRadius: BorderRadius.circular(8.0),
+                                    ]
+                                        .divide(SizedBox(width: 10.0))
+                                        .around(SizedBox(width: 10.0)),
                                   ),
                                 ),
-                              ),
-                          ]
-                              .divide(SizedBox(width: 15.0))
-                              .around(SizedBox(width: 15.0)),
+                              ],
+                            ),
+                          ],
                         ),
-                      ],
+                      ),
                     ),
                   ),
-                ),
+                ].divide(SizedBox(height: 15.0)).around(SizedBox(height: 15.0)),
               ),
-            ].divide(SizedBox(height: 15.0)).around(SizedBox(height: 15.0)),
+            ),
           ),
         ),
       ),

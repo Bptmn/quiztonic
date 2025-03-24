@@ -12,7 +12,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 class GeneratedQuizzStruct extends FFFirebaseStruct {
   GeneratedQuizzStruct({
     String? quizName,
-    List<QuestionCardsStruct>? questionCards,
+    List<QuestionCardStruct>? questionCards,
     List<FlashcardStruct>? flashcards,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _quizName = quizName,
@@ -28,11 +28,11 @@ class GeneratedQuizzStruct extends FFFirebaseStruct {
   bool hasQuizName() => _quizName != null;
 
   // "questionCards" field.
-  List<QuestionCardsStruct>? _questionCards;
-  List<QuestionCardsStruct> get questionCards => _questionCards ?? const [];
-  set questionCards(List<QuestionCardsStruct>? val) => _questionCards = val;
+  List<QuestionCardStruct>? _questionCards;
+  List<QuestionCardStruct> get questionCards => _questionCards ?? const [];
+  set questionCards(List<QuestionCardStruct>? val) => _questionCards = val;
 
-  void updateQuestionCards(Function(List<QuestionCardsStruct>) updateFn) {
+  void updateQuestionCards(Function(List<QuestionCardStruct>) updateFn) {
     updateFn(_questionCards ??= []);
   }
 
@@ -54,7 +54,7 @@ class GeneratedQuizzStruct extends FFFirebaseStruct {
         quizName: data['quizName'] as String?,
         questionCards: getStructList(
           data['questionCards'],
-          QuestionCardsStruct.fromMap,
+          QuestionCardStruct.fromMap,
         ),
         flashcards: getStructList(
           data['flashcards'],
@@ -97,11 +97,11 @@ class GeneratedQuizzStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
-        questionCards: deserializeStructParam<QuestionCardsStruct>(
+        questionCards: deserializeStructParam<QuestionCardStruct>(
           data['questionCards'],
           ParamType.DataStruct,
           true,
-          structBuilder: QuestionCardsStruct.fromSerializableMap,
+          structBuilder: QuestionCardStruct.fromSerializableMap,
         ),
         flashcards: deserializeStructParam<FlashcardStruct>(
           data['flashcards'],

@@ -9,8 +9,8 @@ import '/backend/schema/enums/enums.dart';
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
-class QuestionCardsStruct extends FFFirebaseStruct {
-  QuestionCardsStruct({
+class QuestionCardStruct extends FFFirebaseStruct {
+  QuestionCardStruct({
     String? answerExplanation,
     int? questionAnswerIndex,
     List<String>? questionChoices,
@@ -78,8 +78,8 @@ class QuestionCardsStruct extends FFFirebaseStruct {
 
   bool hasQuestionIsDone() => _questionIsDone != null;
 
-  static QuestionCardsStruct fromMap(Map<String, dynamic> data) =>
-      QuestionCardsStruct(
+  static QuestionCardStruct fromMap(Map<String, dynamic> data) =>
+      QuestionCardStruct(
         answerExplanation: data['answerExplanation'] as String?,
         questionAnswerIndex: castToType<int>(data['questionAnswerIndex']),
         questionChoices: getDataList(data['questionChoices']),
@@ -88,8 +88,8 @@ class QuestionCardsStruct extends FFFirebaseStruct {
         questionIsDone: data['questionIsDone'] as bool?,
       );
 
-  static QuestionCardsStruct? maybeFromMap(dynamic data) => data is Map
-      ? QuestionCardsStruct.fromMap(data.cast<String, dynamic>())
+  static QuestionCardStruct? maybeFromMap(dynamic data) => data is Map
+      ? QuestionCardStruct.fromMap(data.cast<String, dynamic>())
       : null;
 
   Map<String, dynamic> toMap() => {
@@ -130,8 +130,8 @@ class QuestionCardsStruct extends FFFirebaseStruct {
         ),
       }.withoutNulls;
 
-  static QuestionCardsStruct fromSerializableMap(Map<String, dynamic> data) =>
-      QuestionCardsStruct(
+  static QuestionCardStruct fromSerializableMap(Map<String, dynamic> data) =>
+      QuestionCardStruct(
         answerExplanation: deserializeParam(
           data['answerExplanation'],
           ParamType.String,
@@ -165,12 +165,12 @@ class QuestionCardsStruct extends FFFirebaseStruct {
       );
 
   @override
-  String toString() => 'QuestionCardsStruct(${toMap()})';
+  String toString() => 'QuestionCardStruct(${toMap()})';
 
   @override
   bool operator ==(Object other) {
     const listEquality = ListEquality();
-    return other is QuestionCardsStruct &&
+    return other is QuestionCardStruct &&
         answerExplanation == other.answerExplanation &&
         questionAnswerIndex == other.questionAnswerIndex &&
         listEquality.equals(questionChoices, other.questionChoices) &&
@@ -190,7 +190,7 @@ class QuestionCardsStruct extends FFFirebaseStruct {
       ]);
 }
 
-QuestionCardsStruct createQuestionCardsStruct({
+QuestionCardStruct createQuestionCardStruct({
   String? answerExplanation,
   int? questionAnswerIndex,
   String? questionText,
@@ -201,7 +201,7 @@ QuestionCardsStruct createQuestionCardsStruct({
   bool create = false,
   bool delete = false,
 }) =>
-    QuestionCardsStruct(
+    QuestionCardStruct(
       answerExplanation: answerExplanation,
       questionAnswerIndex: questionAnswerIndex,
       questionText: questionText,
@@ -215,66 +215,64 @@ QuestionCardsStruct createQuestionCardsStruct({
       ),
     );
 
-QuestionCardsStruct? updateQuestionCardsStruct(
-  QuestionCardsStruct? questionCards, {
+QuestionCardStruct? updateQuestionCardStruct(
+  QuestionCardStruct? questionCard, {
   bool clearUnsetFields = true,
   bool create = false,
 }) =>
-    questionCards
+    questionCard
       ?..firestoreUtilData = FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,
       );
 
-void addQuestionCardsStructData(
+void addQuestionCardStructData(
   Map<String, dynamic> firestoreData,
-  QuestionCardsStruct? questionCards,
+  QuestionCardStruct? questionCard,
   String fieldName, [
   bool forFieldValue = false,
 ]) {
   firestoreData.remove(fieldName);
-  if (questionCards == null) {
+  if (questionCard == null) {
     return;
   }
-  if (questionCards.firestoreUtilData.delete) {
+  if (questionCard.firestoreUtilData.delete) {
     firestoreData[fieldName] = FieldValue.delete();
     return;
   }
   final clearFields =
-      !forFieldValue && questionCards.firestoreUtilData.clearUnsetFields;
+      !forFieldValue && questionCard.firestoreUtilData.clearUnsetFields;
   if (clearFields) {
     firestoreData[fieldName] = <String, dynamic>{};
   }
-  final questionCardsData =
-      getQuestionCardsFirestoreData(questionCards, forFieldValue);
+  final questionCardData =
+      getQuestionCardFirestoreData(questionCard, forFieldValue);
   final nestedData =
-      questionCardsData.map((k, v) => MapEntry('$fieldName.$k', v));
+      questionCardData.map((k, v) => MapEntry('$fieldName.$k', v));
 
-  final mergeFields = questionCards.firestoreUtilData.create || clearFields;
+  final mergeFields = questionCard.firestoreUtilData.create || clearFields;
   firestoreData
       .addAll(mergeFields ? mergeNestedFields(nestedData) : nestedData);
 }
 
-Map<String, dynamic> getQuestionCardsFirestoreData(
-  QuestionCardsStruct? questionCards, [
+Map<String, dynamic> getQuestionCardFirestoreData(
+  QuestionCardStruct? questionCard, [
   bool forFieldValue = false,
 ]) {
-  if (questionCards == null) {
+  if (questionCard == null) {
     return {};
   }
-  final firestoreData = mapToFirestore(questionCards.toMap());
+  final firestoreData = mapToFirestore(questionCard.toMap());
 
   // Add any Firestore field values
-  questionCards.firestoreUtilData.fieldValues
+  questionCard.firestoreUtilData.fieldValues
       .forEach((k, v) => firestoreData[k] = v);
 
   return forFieldValue ? mergeNestedFields(firestoreData) : firestoreData;
 }
 
-List<Map<String, dynamic>> getQuestionCardsListFirestoreData(
-  List<QuestionCardsStruct>? questionCardss,
+List<Map<String, dynamic>> getQuestionCardListFirestoreData(
+  List<QuestionCardStruct>? questionCards,
 ) =>
-    questionCardss
-        ?.map((e) => getQuestionCardsFirestoreData(e, true))
-        .toList() ??
+    questionCards?.map((e) => getQuestionCardFirestoreData(e, true)).toList() ??
     [];

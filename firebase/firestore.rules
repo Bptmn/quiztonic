@@ -14,5 +14,12 @@ service cloud.firestore {
       allow write: if resource.data.userRef == /databases/$(database)/documents/users/$(request.auth.uid);
       allow delete: if resource.data.userRef == /databases/$(database)/documents/users/$(request.auth.uid);
     }
+
+    match /userStatistics/{document} {
+      allow create: if request.resource.data.userRef == /databases/$(database)/documents/users/$(request.auth.uid);
+      allow read: if resource.data.userRef == /databases/$(database)/documents/users/$(request.auth.uid);
+      allow write: if resource.data.userRef == /databases/$(database)/documents/users/$(request.auth.uid);
+      allow delete: if resource.data.userRef == /databases/$(database)/documents/users/$(request.auth.uid);
+    }
   }
 }

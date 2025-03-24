@@ -18,7 +18,7 @@ class QuestionCardWidget extends StatefulWidget {
     this.updateScore,
   });
 
-  final QuestionCardsStruct? questionCard;
+  final QuestionCardStruct? questionCard;
   final Future Function(bool isCorrect, int userAnswerIndex)? updateScore;
 
   @override
@@ -64,204 +64,215 @@ class _QuestionCardWidgetState extends State<QuestionCardWidget> {
   Widget build(BuildContext context) {
     return Align(
       alignment: AlignmentDirectional(0.0, -1.0),
-      child: Container(
-        width: MediaQuery.sizeOf(context).width * 0.9,
-        decoration: BoxDecoration(
-          color: FlutterFlowTheme.of(context).secondaryBackground,
+      child: Material(
+        color: Colors.transparent,
+        elevation: 1.0,
+        shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20.0),
-          border: Border.all(
-            color: valueOrDefault<Color>(
-              () {
-                if (_model.answerIsCorrect! && _model.answerDone) {
-                  return FlutterFlowTheme.of(context).secondary;
-                } else if (!_model.answerIsCorrect! && _model.answerDone) {
-                  return FlutterFlowTheme.of(context).error;
-                } else {
-                  return FlutterFlowTheme.of(context).primaryBackground;
-                }
-              }(),
-              FlutterFlowTheme.of(context).primaryBackground,
+        ),
+        child: Container(
+          width: MediaQuery.sizeOf(context).width * 0.95,
+          decoration: BoxDecoration(
+            color: FlutterFlowTheme.of(context).secondaryBackground,
+            borderRadius: BorderRadius.circular(20.0),
+            border: Border.all(
+              color: valueOrDefault<Color>(
+                () {
+                  if (_model.answerIsCorrect! && _model.answerDone) {
+                    return FlutterFlowTheme.of(context).secondary;
+                  } else if (!_model.answerIsCorrect! && _model.answerDone) {
+                    return FlutterFlowTheme.of(context).error;
+                  } else {
+                    return FlutterFlowTheme.of(context).borderColor;
+                  }
+                }(),
+                FlutterFlowTheme.of(context).borderColor,
+              ),
+              width: 1.0,
             ),
           ),
-        ),
-        child: Padding(
-          padding: EdgeInsets.all(14.0),
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Flexible(
-                      child: Text(
-                        valueOrDefault<String>(
-                          widget!.questionCard?.questionText,
-                          'questionText',
+          child: Padding(
+            padding: EdgeInsets.all(14.0),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Flexible(
+                        child: Text(
+                          valueOrDefault<String>(
+                            widget!.questionCard?.questionText,
+                            'questionText',
+                          ),
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Roboto',
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    fontSize: 18.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                         ),
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Roboto',
-                              fontSize: 18.0,
-                              letterSpacing: 0.0,
-                              fontWeight: FontWeight.bold,
-                            ),
                       ),
-                    ),
-                  ],
-                ),
-                Builder(
-                  builder: (context) {
-                    final mcq =
-                        widget!.questionCard?.questionChoices?.toList() ?? [];
+                    ],
+                  ),
+                  Builder(
+                    builder: (context) {
+                      final mcq =
+                          widget!.questionCard?.questionChoices?.toList() ?? [];
 
-                    return Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: List.generate(mcq.length, (mcqIndex) {
-                        final mcqItem = mcq[mcqIndex];
-                        return InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            if (!_model.answerDone) {
-                              _model.answerIsCorrect = mcqIndex ==
-                                  widget!.questionCard?.questionAnswerIndex;
-                              _model.answerDone = true;
-                              _model.selectedAnswer = mcqIndex;
-                              safeSetState(() {});
-                              await widget.updateScore?.call(
-                                _model.answerIsCorrect!,
-                                _model.selectedAnswer!,
-                              );
-                            }
-                          },
-                          child: wrapWithModel(
-                            model: _model.answerItemModels.getModel(
-                              mcqIndex.toString(),
-                              mcqIndex,
+                      return Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: List.generate(mcq.length, (mcqIndex) {
+                          final mcqItem = mcq[mcqIndex];
+                          return InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              if (!_model.answerDone) {
+                                _model.answerIsCorrect = mcqIndex ==
+                                    widget!.questionCard?.questionAnswerIndex;
+                                _model.answerDone = true;
+                                _model.selectedAnswer = mcqIndex;
+                                safeSetState(() {});
+                                await widget.updateScore?.call(
+                                  _model.answerIsCorrect!,
+                                  _model.selectedAnswer!,
+                                );
+                              }
+                            },
+                            child: wrapWithModel(
+                              model: _model.answerItemModels.getModel(
+                                mcqIndex.toString(),
+                                mcqIndex,
+                              ),
+                              updateCallback: () => safeSetState(() {}),
+                              updateOnChange: true,
+                              child: AnswerItemWidget(
+                                key: Key(
+                                  'Keyb87_${mcqIndex.toString()}',
+                                ),
+                                answerText: mcqItem,
+                                isSelected: mcqIndex == _model.selectedAnswer,
+                                itemIndex: mcqIndex,
+                              ),
                             ),
-                            updateCallback: () => safeSetState(() {}),
-                            updateOnChange: true,
-                            child: AnswerItemWidget(
-                              key: Key(
-                                'Keyb87_${mcqIndex.toString()}',
-                              ),
-                              answerText: mcqItem,
-                              isSelected: mcqIndex == _model.selectedAnswer,
-                              itemIndex: mcqIndex,
+                          );
+                        }).divide(SizedBox(height: 5.0)),
+                      );
+                    },
+                  ),
+                  if (_model.answerDone)
+                    Container(
+                      width: MediaQuery.sizeOf(context).width * 1.0,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                      ),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          if (_model.answerIsCorrect ?? true)
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Icon(
+                                  Icons.check_circle,
+                                  color: FlutterFlowTheme.of(context).secondary,
+                                  size: 30.0,
+                                ),
+                                Text(
+                                  'Correct answer',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyLarge
+                                      .override(
+                                        fontFamily: 'Roboto',
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                ),
+                              ]
+                                  .divide(SizedBox(width: 10.0))
+                                  .around(SizedBox(width: 10.0)),
                             ),
-                          ),
-                        );
-                      }).divide(SizedBox(height: 5.0)),
-                    );
-                  },
-                ),
-                if (_model.answerDone)
-                  Container(
-                    width: MediaQuery.sizeOf(context).width * 1.0,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        if (_model.answerIsCorrect ?? true)
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Icon(
-                                Icons.check_circle,
-                                color: FlutterFlowTheme.of(context).secondary,
-                                size: 30.0,
-                              ),
-                              Text(
-                                'Correct answer',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyLarge
-                                    .override(
-                                      fontFamily: 'Roboto',
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.w600,
+                          if (!_model.answerIsCorrect!)
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Icon(
+                                  Icons.close,
+                                  color: FlutterFlowTheme.of(context).error,
+                                  size: 30.0,
+                                ),
+                                Text(
+                                  'Wrong answer',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyLarge
+                                      .override(
+                                        fontFamily: 'Roboto',
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                ),
+                              ]
+                                  .divide(SizedBox(width: 10.0))
+                                  .around(SizedBox(width: 10.0)),
+                            ),
+                          if (valueOrDefault<bool>(
+                            _model.answerDone,
+                            false,
+                          ))
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 15.0, 0.0, 0.0),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                ),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Align(
+                                      alignment:
+                                          AlignmentDirectional(-1.0, -1.0),
+                                      child: Text(
+                                        'Explanation:',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyLarge
+                                            .override(
+                                              fontFamily: 'Roboto',
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                      ),
                                     ),
-                              ),
-                            ]
-                                .divide(SizedBox(width: 10.0))
-                                .around(SizedBox(width: 10.0)),
-                          ),
-                        if (!_model.answerIsCorrect!)
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Icon(
-                                Icons.close,
-                                color: FlutterFlowTheme.of(context).error,
-                                size: 30.0,
-                              ),
-                              Text(
-                                'Wrong answer',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyLarge
-                                    .override(
-                                      fontFamily: 'Roboto',
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                              ),
-                            ]
-                                .divide(SizedBox(width: 10.0))
-                                .around(SizedBox(width: 10.0)),
-                          ),
-                        if (valueOrDefault<bool>(
-                          _model.answerDone,
-                          false,
-                        ))
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 15.0, 0.0, 0.0),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                              ),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Align(
-                                    alignment: AlignmentDirectional(-1.0, -1.0),
-                                    child: Text(
-                                      'Explanation:',
+                                    Text(
+                                      valueOrDefault<String>(
+                                        widget!.questionCard?.answerExplanation,
+                                        'answerExplanation',
+                                      ),
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyLarge
+                                          .bodyMedium
                                           .override(
                                             fontFamily: 'Roboto',
                                             letterSpacing: 0.0,
-                                            fontWeight: FontWeight.bold,
                                           ),
                                     ),
-                                  ),
-                                  Text(
-                                    valueOrDefault<String>(
-                                      widget!.questionCard?.answerExplanation,
-                                      'answerExplanation',
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Roboto',
-                                          letterSpacing: 0.0,
-                                        ),
-                                  ),
-                                ].divide(SizedBox(height: 5.0)),
+                                  ].divide(SizedBox(height: 5.0)),
+                                ),
                               ),
                             ),
-                          ),
-                      ],
+                        ].divide(SizedBox(height: 2.0)),
+                      ),
                     ),
-                  ),
-              ].divide(SizedBox(height: 15.0)),
+                ].divide(SizedBox(height: 20.0)),
+              ),
             ),
           ),
         ),

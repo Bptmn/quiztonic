@@ -49,20 +49,24 @@ class _QuizItemWidgetState extends State<QuizItemWidget> {
   Widget build(BuildContext context) {
     return Material(
       color: Colors.transparent,
-      elevation: 2.0,
+      elevation: 1.0,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12.0),
+        borderRadius: BorderRadius.circular(18.0),
       ),
       child: Container(
         width: MediaQuery.sizeOf(context).width * 1.0,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).secondaryBackground,
-          borderRadius: BorderRadius.circular(12.0),
+          borderRadius: BorderRadius.circular(18.0),
+          border: Border.all(
+            color: FlutterFlowTheme.of(context).borderColor,
+            width: 1.0,
+          ),
         ),
         child: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+          padding: EdgeInsets.all(12.0),
           child: Column(
-            mainAxisSize: MainAxisSize.max,
+            mainAxisSize: MainAxisSize.min,
             children: [
               Row(
                 mainAxisSize: MainAxisSize.max,
@@ -76,45 +80,14 @@ class _QuizItemWidgetState extends State<QuizItemWidget> {
                         Text(
                           valueOrDefault<String>(
                             widget!.quizSaved?.quizName,
-                            'quizName',
+                            'QuizName',
                           ),
                           style:
                               FlutterFlowTheme.of(context).titleMedium.override(
                                     fontFamily: 'Manrope',
+                                    color: FlutterFlowTheme.of(context).primary,
                                     letterSpacing: 0.0,
                                   ),
-                        ),
-                        RichText(
-                          textScaler: MediaQuery.of(context).textScaler,
-                          text: TextSpan(
-                            children: [
-                              TextSpan(
-                                text: 'Category: ',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodySmall
-                                    .override(
-                                      fontFamily: 'Roboto',
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                      letterSpacing: 0.0,
-                                    ),
-                              ),
-                              TextSpan(
-                                text: valueOrDefault<String>(
-                                  widget!.quizSaved?.category,
-                                  'general knowledge',
-                                ),
-                                style: TextStyle(),
-                              )
-                            ],
-                            style:
-                                FlutterFlowTheme.of(context).bodySmall.override(
-                                      fontFamily: 'Roboto',
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                      letterSpacing: 0.0,
-                                    ),
-                          ),
                         ),
                       ],
                     ),
@@ -126,7 +99,7 @@ class _QuizItemWidgetState extends State<QuizItemWidget> {
                     ),
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(8.0, 12.0, 8.0, 12.0),
+                          EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
                       child: Text(
                         valueOrDefault<String>(
                           formatNumber(
@@ -263,7 +236,7 @@ class _QuizItemWidgetState extends State<QuizItemWidget> {
                   ),
                 ],
               ),
-            ].divide(SizedBox(height: 10.0)),
+            ].divide(SizedBox(height: 5.0)),
           ),
         ),
       ),

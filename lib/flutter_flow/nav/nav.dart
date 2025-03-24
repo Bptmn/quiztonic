@@ -85,13 +85,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? NavBarPage() : AuthPageWidget(),
+          appStateNotifier.loggedIn ? NavBarPage() : LoginPageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? NavBarPage() : AuthPageWidget(),
+              appStateNotifier.loggedIn ? NavBarPage() : LoginPageWidget(),
         ),
         FFRoute(
           name: QuizPageWidget.routeName,
@@ -142,23 +142,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               : HomePageWidget(),
         ),
         FFRoute(
-          name: AuthPageWidget.routeName,
-          path: AuthPageWidget.routePath,
-          builder: (context, params) => AuthPageWidget(),
-        ),
-        FFRoute(
           name: GenerateNewQuizWidget.routeName,
           path: GenerateNewQuizWidget.routePath,
           requireAuth: true,
           builder: (context, params) => GenerateNewQuizWidget(),
         ),
         FFRoute(
-          name: SettingsWidget.routeName,
-          path: SettingsWidget.routePath,
+          name: ProfileWidget.routeName,
+          path: ProfileWidget.routePath,
           requireAuth: true,
           builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'Settings')
-              : SettingsWidget(),
+              ? NavBarPage(initialPage: 'Profile')
+              : ProfileWidget(),
         ),
         FFRoute(
           name: HistoryQuizPageWidget.routeName,
@@ -205,6 +200,38 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.String,
             ),
           ),
+        ),
+        FFRoute(
+          name: LibraryWidget.routeName,
+          path: LibraryWidget.routePath,
+          requireAuth: true,
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'Library')
+              : LibraryWidget(),
+        ),
+        FFRoute(
+          name: EditUserProfileWidget.routeName,
+          path: EditUserProfileWidget.routePath,
+          requireAuth: true,
+          asyncParams: {
+            'currentUserDocument': getDoc(['users'], UsersRecord.fromSnapshot),
+          },
+          builder: (context, params) => EditUserProfileWidget(
+            currentUserDocument: params.getParam(
+              'currentUserDocument',
+              ParamType.Document,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: LoginPageWidget.routeName,
+          path: LoginPageWidget.routePath,
+          builder: (context, params) => LoginPageWidget(),
+        ),
+        FFRoute(
+          name: SignUpPageWidget.routeName,
+          path: SignUpPageWidget.routePath,
+          builder: (context, params) => SignUpPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -377,7 +404,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
-            return '/authPage';
+            return '/loginPage';
           }
           return null;
         },

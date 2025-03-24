@@ -60,310 +60,428 @@ class _ScorePageWidgetState extends State<ScorePageWidget> {
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: SafeArea(
           top: true,
-          child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 24.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Material(
-                  color: Colors.transparent,
-                  elevation: 3.0,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16.0),
-                  ),
-                  child: Container(
-                    width: MediaQuery.sizeOf(context).width * 1.0,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                      borderRadius: BorderRadius.circular(16.0),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
-                          24.0, 24.0, 24.0, 24.0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Quiz Complete!',
-                            style: FlutterFlowTheme.of(context)
-                                .displaySmall
-                                .override(
-                                  fontFamily: 'Manrope',
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                          ),
-                          Text(
-                            'Your Score',
-                            style: FlutterFlowTheme.of(context)
-                                .headlineMedium
-                                .override(
-                                  fontFamily: 'Manrope',
-                                  letterSpacing: 0.0,
-                                ),
-                          ),
-                          Row(
+          child: Align(
+            alignment: AlignmentDirectional(0.0, -1.0),
+            child: Container(
+              constraints: BoxConstraints(
+                maxWidth: 600.0,
+              ),
+              decoration: BoxDecoration(),
+              child: Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 24.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Material(
+                      color: Colors.transparent,
+                      elevation: 3.0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16.0),
+                      ),
+                      child: Container(
+                        width: MediaQuery.sizeOf(context).width * 1.0,
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          borderRadius: BorderRadius.circular(16.0),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.all(18.0),
+                          child: Column(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text(
-                                valueOrDefault<String>(
-                                  widget!.quizResult?.correctAnswers
-                                      ?.toString(),
-                                  '0',
-                                ),
+                                'Quiz Complete!',
                                 style: FlutterFlowTheme.of(context)
-                                    .displayLarge
+                                    .displaySmall
                                     .override(
                                       fontFamily: 'Manrope',
                                       color:
                                           FlutterFlowTheme.of(context).primary,
                                       letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w600,
                                     ),
                               ),
                               Text(
-                                '/',
+                                'Your Score',
                                 style: FlutterFlowTheme.of(context)
-                                    .displayLarge
+                                    .headlineMedium
                                     .override(
                                       fontFamily: 'Manrope',
                                       letterSpacing: 0.0,
                                     ),
                               ),
-                              Text(
-                                valueOrDefault<String>(
-                                  widget!.quizResult?.totalQuestions
-                                      ?.toString(),
-                                  '10',
-                                ),
-                                style: FlutterFlowTheme.of(context)
-                                    .displayLarge
-                                    .override(
-                                      fontFamily: 'Manrope',
-                                      letterSpacing: 0.0,
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    valueOrDefault<String>(
+                                      widget!.quizResult?.correctAnswers
+                                          ?.toString(),
+                                      '0',
                                     ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .displayLarge
+                                        .override(
+                                          fontFamily: 'Manrope',
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
+                                  Text(
+                                    '/',
+                                    style: FlutterFlowTheme.of(context)
+                                        .displayLarge
+                                        .override(
+                                          fontFamily: 'Manrope',
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
+                                  Text(
+                                    valueOrDefault<String>(
+                                      widget!.quizResult?.totalQuestions
+                                          ?.toString(),
+                                      '10',
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .displayLarge
+                                        .override(
+                                          fontFamily: 'Manrope',
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
+                                ].divide(SizedBox(width: 8.0)),
                               ),
-                            ].divide(SizedBox(width: 8.0)),
+                            ].divide(SizedBox(height: 12.0)),
                           ),
-                        ].divide(SizedBox(height: 16.0)),
+                        ),
                       ),
                     ),
-                  ),
-                ),
-                Material(
-                  color: Colors.transparent,
-                  elevation: 2.0,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16.0),
-                  ),
-                  child: Container(
-                    width: MediaQuery.sizeOf(context).width * 1.0,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                      borderRadius: BorderRadius.circular(16.0),
+                    Material(
+                      color: Colors.transparent,
+                      elevation: 2.0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16.0),
+                      ),
+                      child: Container(
+                        width: MediaQuery.sizeOf(context).width * 1.0,
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          borderRadius: BorderRadius.circular(16.0),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              24.0, 24.0, 24.0, 24.0),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Text(
+                                'Performance Breakdown',
+                                style: FlutterFlowTheme.of(context)
+                                    .headlineSmall
+                                    .override(
+                                      fontFamily: 'Manrope',
+                                      letterSpacing: 0.0,
+                                    ),
+                              ),
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    'Correct Answers',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyLarge
+                                        .override(
+                                          fontFamily: 'Roboto',
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
+                                  Text(
+                                    valueOrDefault<String>(
+                                      widget!.quizResult?.correctAnswers
+                                          ?.toString(),
+                                      '0',
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyLarge
+                                        .override(
+                                          fontFamily: 'Roboto',
+                                          color: FlutterFlowTheme.of(context)
+                                              .success,
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    'Incorrect Answers',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyLarge
+                                        .override(
+                                          fontFamily: 'Roboto',
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
+                                  Text(
+                                    valueOrDefault<String>(
+                                      (valueOrDefault<int>(
+                                                widget!
+                                                    .quizResult?.totalQuestions,
+                                                10,
+                                              ) -
+                                              valueOrDefault<int>(
+                                                widget!
+                                                    .quizResult?.correctAnswers,
+                                                0,
+                                              ))
+                                          .toString(),
+                                      '0',
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyLarge
+                                        .override(
+                                          fontFamily: 'Roboto',
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    'Completion Time',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyLarge
+                                        .override(
+                                          fontFamily: 'Roboto',
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
+                                  Text(
+                                    valueOrDefault<String>(
+                                      functions.formatDuration(
+                                          widget!.quizResult!.completionTime),
+                                      '0:00',
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyLarge
+                                        .override(
+                                          fontFamily: 'Roboto',
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
+                                ],
+                              ),
+                            ].divide(SizedBox(height: 16.0)),
+                          ),
+                        ),
+                      ),
                     ),
-                    child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
-                          24.0, 24.0, 24.0, 24.0),
+                    Container(
+                      decoration: BoxDecoration(),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Text(
-                            'Performance Breakdown',
-                            style: FlutterFlowTheme.of(context)
-                                .headlineSmall
-                                .override(
-                                  fontFamily: 'Manrope',
-                                  letterSpacing: 0.0,
-                                ),
-                          ),
                           Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(
-                                'Correct Answers',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyLarge
-                                    .override(
-                                      fontFamily: 'Roboto',
-                                      letterSpacing: 0.0,
+                              Flexible(
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    context.pushNamed(
+                                      FlashcardsPageWidget.routeName,
+                                      queryParameters: {
+                                        'generatedFlashCards': serializeParam(
+                                          widget!.flashcards,
+                                          ParamType.DataStruct,
+                                          isList: true,
+                                        ),
+                                      }.withoutNulls,
+                                    );
+                                  },
+                                  child: Material(
+                                    color: Colors.transparent,
+                                    elevation: 1.0,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20.0),
                                     ),
-                              ),
-                              Text(
-                                valueOrDefault<String>(
-                                  widget!.quizResult?.correctAnswers
-                                      ?.toString(),
-                                  '0',
+                                    child: Container(
+                                      height: 110.0,
+                                      constraints: BoxConstraints(
+                                        maxWidth: 220.0,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        borderRadius:
+                                            BorderRadius.circular(20.0),
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsets.all(8.0),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Icon(
+                                              Icons.layers_rounded,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .info,
+                                              size: 35.0,
+                                            ),
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  0.0, 0.0),
+                                              child: Text(
+                                                'Learn with the Flashcards',
+                                                textAlign: TextAlign.center,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelLarge
+                                                        .override(
+                                                          fontFamily: 'Roboto',
+                                                          fontSize: 18.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                              ),
+                                            ),
+                                          ].divide(SizedBox(height: 5.0)),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
                                 ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyLarge
-                                    .override(
-                                      fontFamily: 'Roboto',
-                                      color:
-                                          FlutterFlowTheme.of(context).success,
-                                      letterSpacing: 0.0,
-                                    ),
                               ),
-                            ],
-                          ),
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'Incorrect Answers',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyLarge
-                                    .override(
-                                      fontFamily: 'Roboto',
-                                      letterSpacing: 0.0,
+                              Flexible(
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    context.goNamed(
+                                        GenerateNewQuizWidget.routeName);
+                                  },
+                                  child: Material(
+                                    color: Colors.transparent,
+                                    elevation: 1.0,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20.0),
                                     ),
-                              ),
-                              Text(
-                                valueOrDefault<String>(
-                                  (valueOrDefault<int>(
-                                            widget!.quizResult?.totalQuestions,
-                                            10,
-                                          ) -
-                                          valueOrDefault<int>(
-                                            widget!.quizResult?.correctAnswers,
-                                            0,
-                                          ))
-                                      .toString(),
-                                  '0',
+                                    child: Container(
+                                      height: 110.0,
+                                      constraints: BoxConstraints(
+                                        maxWidth: 220.0,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondary,
+                                        borderRadius:
+                                            BorderRadius.circular(20.0),
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsets.all(8.0),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Icon(
+                                              Icons.replay_rounded,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .info,
+                                              size: 35.0,
+                                            ),
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  0.0, 0.0),
+                                              child: Text(
+                                                'Generate a new quiz',
+                                                textAlign: TextAlign.center,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelLarge
+                                                        .override(
+                                                          fontFamily: 'Roboto',
+                                                          fontSize: 18.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                              ),
+                                            ),
+                                          ].divide(SizedBox(height: 5.0)),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
                                 ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyLarge
-                                    .override(
-                                      fontFamily: 'Roboto',
-                                      color: FlutterFlowTheme.of(context).error,
-                                      letterSpacing: 0.0,
-                                    ),
                               ),
-                            ],
+                            ].divide(SizedBox(width: 15.0)),
                           ),
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'Completion Time',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyLarge
-                                    .override(
-                                      fontFamily: 'Roboto',
-                                      letterSpacing: 0.0,
-                                    ),
+                          FFButtonWidget(
+                            onPressed: () async {
+                              context.goNamed(HomePageWidget.routeName);
+                            },
+                            text: 'Back to Home',
+                            options: FFButtonOptions(
+                              width: double.infinity,
+                              height: 50.0,
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  16.0, 0.0, 16.0, 0.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: Color(0x00FFFFFF),
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .labelLarge
+                                  .override(
+                                    fontFamily: 'Roboto',
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    letterSpacing: 0.0,
+                                  ),
+                              elevation: 0.0,
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).primary,
                               ),
-                              Text(
-                                valueOrDefault<String>(
-                                  functions.formatDuration(
-                                      widget!.quizResult!.completionTime),
-                                  '0:00',
-                                ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyLarge
-                                    .override(
-                                      fontFamily: 'Roboto',
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      letterSpacing: 0.0,
-                                    ),
-                              ),
-                            ],
+                              borderRadius: BorderRadius.circular(24.0),
+                            ),
                           ),
-                        ].divide(SizedBox(height: 16.0)),
+                        ].divide(SizedBox(height: 15.0)),
                       ),
                     ),
-                  ),
+                  ].divide(SizedBox(height: 15.0)),
                 ),
-                if (widget!.flashcards != null &&
-                    (widget!.flashcards)!.isNotEmpty)
-                  FFButtonWidget(
-                    onPressed: () async {
-                      context.pushNamed(
-                        FlashcardsPageWidget.routeName,
-                        queryParameters: {
-                          'generatedFlashCards': serializeParam(
-                            widget!.flashcards,
-                            ParamType.DataStruct,
-                            isList: true,
-                          ),
-                        }.withoutNulls,
-                      );
-                    },
-                    text: 'Learn with the Flashcards',
-                    options: FFButtonOptions(
-                      width: MediaQuery.sizeOf(context).width * 1.0,
-                      height: 56.0,
-                      padding: EdgeInsets.all(8.0),
-                      iconPadding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: FlutterFlowTheme.of(context).primary,
-                      textStyle:
-                          FlutterFlowTheme.of(context).titleMedium.override(
-                                fontFamily: 'Manrope',
-                                color: FlutterFlowTheme.of(context).info,
-                                letterSpacing: 0.0,
-                              ),
-                      elevation: 0.0,
-                      borderRadius: BorderRadius.circular(28.0),
-                    ),
-                  ),
-                FFButtonWidget(
-                  onPressed: () async {
-                    context.goNamed(GenerateNewQuizWidget.routeName);
-                  },
-                  text: 'Generate a new quiz',
-                  options: FFButtonOptions(
-                    width: MediaQuery.sizeOf(context).width * 1.0,
-                    height: 56.0,
-                    padding: EdgeInsets.all(8.0),
-                    iconPadding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    color: FlutterFlowTheme.of(context).tertiary,
-                    textStyle:
-                        FlutterFlowTheme.of(context).titleMedium.override(
-                              fontFamily: 'Manrope',
-                              color: FlutterFlowTheme.of(context).info,
-                              letterSpacing: 0.0,
-                            ),
-                    elevation: 0.0,
-                    borderRadius: BorderRadius.circular(28.0),
-                  ),
-                ),
-                FFButtonWidget(
-                  onPressed: () async {
-                    context.goNamed(HomePageWidget.routeName);
-                  },
-                  text: 'Back to Home',
-                  options: FFButtonOptions(
-                    width: MediaQuery.sizeOf(context).width * 1.0,
-                    height: 56.0,
-                    padding: EdgeInsets.all(8.0),
-                    iconPadding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    color: Color(0x00FFFFFF),
-                    textStyle:
-                        FlutterFlowTheme.of(context).titleMedium.override(
-                              fontFamily: 'Manrope',
-                              color: FlutterFlowTheme.of(context).primary,
-                              letterSpacing: 0.0,
-                            ),
-                    elevation: 0.0,
-                    borderSide: BorderSide(
-                      color: FlutterFlowTheme.of(context).primary,
-                      width: 2.0,
-                    ),
-                    borderRadius: BorderRadius.circular(28.0),
-                  ),
-                ),
-              ].divide(SizedBox(height: 24.0)),
+              ),
             ),
           ),
         ),

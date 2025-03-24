@@ -57,9 +57,12 @@ class _AnswerItemWidgetState extends State<AnswerItemWidget> {
         color: FlutterFlowTheme.of(context).secondaryBackground,
         borderRadius: BorderRadius.circular(14.0),
         border: Border.all(
-          color: widget!.isSelected
-              ? FlutterFlowTheme.of(context).primary
-              : Color(0x00000000),
+          color: valueOrDefault<Color>(
+            widget!.isSelected
+                ? FlutterFlowTheme.of(context).primary
+                : FlutterFlowTheme.of(context).primaryText,
+            FlutterFlowTheme.of(context).primaryText,
+          ),
         ),
       ),
       child: Column(

@@ -138,7 +138,8 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     final tabs = {
       'HomePage': HomePageWidget(),
-      'Settings': SettingsWidget(),
+      'Library': LibraryWidget(),
+      'Profile': ProfileWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -150,7 +151,7 @@ class _NavBarPageState extends State<NavBarPage> {
           _currentPage = null;
           _currentPageName = tabs.keys.toList()[i];
         }),
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
         selectedItemColor: FlutterFlowTheme.of(context).primary,
         unselectedItemColor: FlutterFlowTheme.of(context).secondaryText,
         showSelectedLabels: true,
@@ -159,17 +160,25 @@ class _NavBarPageState extends State<NavBarPage> {
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.home,
+              Icons.dashboard,
             ),
-            label: 'Home',
+            label: 'Dashboard',
             tooltip: '',
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.account_circle,
+              Icons.library_books_rounded,
               size: 24.0,
             ),
-            label: 'Account',
+            label: 'Library',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.person_outline,
+              size: 24.0,
+            ),
+            label: 'Profile',
             tooltip: '',
           )
         ],

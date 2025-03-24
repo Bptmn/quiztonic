@@ -13,6 +13,7 @@ import '/index.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'quiz_page_widget.dart' show QuizPageWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -55,6 +56,8 @@ class QuizPageModel extends FlutterFlowModel<QuizPageWidget> {
       : 0;
   // Models for QuestionCard dynamic component.
   late FlutterFlowDynamicModels<QuestionCardModel> questionCardModels;
+  // Stores action output result for [Firestore Query - Query a collection] action in ButtonComplete widget.
+  UserStatisticsRecord? userStatisticDocument;
 
   @override
   void initState(BuildContext context) {

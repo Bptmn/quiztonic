@@ -54,6 +54,9 @@ abstract class FlutterFlowTheme {
   late Color error;
   late Color info;
 
+  late Color transparent;
+  late Color borderColor;
+
   @Deprecated('Use displaySmallFamily instead')
   String get title1Family => displaySmallFamily;
   @Deprecated('Use displaySmall instead')
@@ -141,6 +144,9 @@ class LightModeTheme extends FlutterFlowTheme {
   late Color warning = const Color(0xFFFFCC00);
   late Color error = const Color(0xFFFF3B30);
   late Color info = const Color(0xFFFFFFFF);
+
+  late Color transparent = Color(0x00FFFFFF);
+  late Color borderColor = Color(0xFFE0E3E7);
 }
 
 abstract class Typography {
@@ -247,9 +253,9 @@ class ThemeTypography extends Typography {
   String get labelLargeFamily => 'Roboto';
   TextStyle get labelLarge => GoogleFonts.getFont(
         'Roboto',
-        color: theme.secondaryText,
-        fontWeight: FontWeight.normal,
-        fontSize: 16.0,
+        color: theme.info,
+        fontWeight: FontWeight.w600,
+        fontSize: 20.0,
       );
   String get labelMediumFamily => 'Roboto';
   TextStyle get labelMedium => GoogleFonts.getFont(
@@ -312,6 +318,9 @@ class DarkModeTheme extends FlutterFlowTheme {
   late Color warning = const Color(0xFFF9CF58);
   late Color error = const Color(0xFFFF5963);
   late Color info = const Color(0xFFFFFFFF);
+
+  late Color transparent = Color(0x00FFFFFF);
+  late Color borderColor = Color(0xFFAE9EA1);
 }
 
 extension TextStyleHelper on TextStyle {
