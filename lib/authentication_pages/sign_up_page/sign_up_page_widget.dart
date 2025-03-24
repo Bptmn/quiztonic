@@ -59,7 +59,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: SafeArea(
           top: true,
           child: Column(
@@ -514,7 +514,8 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                         16.0, 0.0, 16.0, 0.0),
                                     iconPadding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
-                                    color: FlutterFlowTheme.of(context).primary,
+                                    color: FlutterFlowTheme.of(context)
+                                        .tonicColor1,
                                     textStyle: FlutterFlowTheme.of(context)
                                         .labelLarge
                                         .override(
@@ -768,7 +769,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                                 fontFamily: 'Roboto',
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .primary,
+                                                        .tonicColor1,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w600,
                                               ),

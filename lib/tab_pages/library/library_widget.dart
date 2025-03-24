@@ -54,7 +54,7 @@ class _LibraryWidgetState extends State<LibraryWidget> {
               IconThemeData(color: FlutterFlowTheme.of(context).secondary),
           automaticallyImplyLeading: false,
           title: Align(
-            alignment: AlignmentDirectional(0.0, -1.0),
+            alignment: AlignmentDirectional(-1.0, -1.0),
             child: Text(
               'My Library',
               style: FlutterFlowTheme.of(context).headlineSmall.override(

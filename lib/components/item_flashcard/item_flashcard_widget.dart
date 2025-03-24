@@ -63,7 +63,7 @@ class _ItemFlashcardWidgetState extends State<ItemFlashcardWidget> {
             ),
             child: Container(
               decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).primaryBackground,
+                color: FlutterFlowTheme.of(context).tonicColor1,
                 borderRadius: BorderRadius.circular(12.0),
                 border: Border.all(
                   color: FlutterFlowTheme.of(context).borderColor,
@@ -81,6 +81,7 @@ class _ItemFlashcardWidgetState extends State<ItemFlashcardWidget> {
                     ),
                     style: FlutterFlowTheme.of(context).titleLarge.override(
                           fontFamily: 'Manrope',
+                          color: FlutterFlowTheme.of(context).info,
                           letterSpacing: 0.0,
                         ),
                   ),
@@ -93,10 +94,10 @@ class _ItemFlashcardWidgetState extends State<ItemFlashcardWidget> {
           padding: EdgeInsets.all(12.0),
           child: Container(
             decoration: BoxDecoration(
-              color: FlutterFlowTheme.of(context).tertiary,
+              color: FlutterFlowTheme.of(context).primaryBackground,
               borderRadius: BorderRadius.circular(12.0),
               border: Border.all(
-                color: FlutterFlowTheme.of(context).primary,
+                color: FlutterFlowTheme.of(context).tonicColor1,
                 width: 4.0,
               ),
             ),
@@ -111,7 +112,7 @@ class _ItemFlashcardWidgetState extends State<ItemFlashcardWidget> {
                   ),
                   style: FlutterFlowTheme.of(context).titleMedium.override(
                         fontFamily: 'Manrope',
-                        color: FlutterFlowTheme.of(context).alternate,
+                        color: FlutterFlowTheme.of(context).primaryText,
                         letterSpacing: 0.0,
                       ),
                 ),

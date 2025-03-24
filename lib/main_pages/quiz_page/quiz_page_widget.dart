@@ -13,7 +13,6 @@ import '/index.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -80,7 +79,7 @@ class _QuizPageWidgetState extends State<QuizPageWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).transparent,
           automaticallyImplyLeading: false,
@@ -88,52 +87,23 @@ class _QuizPageWidgetState extends State<QuizPageWidget> {
             borderColor: Colors.transparent,
             borderRadius: 30.0,
             borderWidth: 1.0,
-            buttonSize: 80.0,
+            buttonSize: 65.0,
             icon: Icon(
-              Icons.arrow_circle_left_rounded,
+              Icons.chevron_left_rounded,
               color: FlutterFlowTheme.of(context).primary,
-              size: 50.0,
+              size: 35.0,
             ),
             onPressed: () async {
               context.pop();
             },
           ),
-          title: RichText(
-            textScaler: MediaQuery.of(context).textScaler,
-            text: TextSpan(
-              children: [
-                TextSpan(
-                  text: 'Question ',
-                  style: FlutterFlowTheme.of(context).headlineMedium.override(
-                        fontFamily: 'Manrope',
-                        color: FlutterFlowTheme.of(context).primary,
-                        fontSize: 22.0,
-                        letterSpacing: 0.0,
-                      ),
+          title: Text(
+            'Page Title',
+            style: FlutterFlowTheme.of(context).headlineSmall.override(
+                  fontFamily: 'Manrope',
+                  color: FlutterFlowTheme.of(context).primary,
+                  letterSpacing: 0.0,
                 ),
-                TextSpan(
-                  text: ((_model.pageNavigate!) + 1).toString(),
-                  style: TextStyle(),
-                ),
-                TextSpan(
-                  text: '/',
-                  style: TextStyle(),
-                ),
-                TextSpan(
-                  text: valueOrDefault<String>(
-                    widget!.generatedQuizz?.questionCards?.length?.toString(),
-                    '10',
-                  ),
-                  style: TextStyle(),
-                )
-              ],
-              style: FlutterFlowTheme.of(context).headlineMedium.override(
-                    fontFamily: 'Manrope',
-                    color: FlutterFlowTheme.of(context).primary,
-                    fontSize: 22.0,
-                    letterSpacing: 0.0,
-                  ),
-            ),
           ),
           actions: [],
           centerTitle: true,
@@ -185,10 +155,7 @@ class _QuizPageWidgetState extends State<QuizPageWidget> {
                       child: Container(
                         width: MediaQuery.sizeOf(context).width * 1.0,
                         height: MediaQuery.sizeOf(context).height * 1.0,
-                        decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                        ),
+                        decoration: BoxDecoration(),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -210,82 +177,87 @@ class _QuizPageWidgetState extends State<QuizPageWidget> {
                               padding: EdgeInsets.zero,
                             ),
                             Expanded(
-                              child: Builder(
-                                builder: (context) {
-                                  final questionCard = widget!
-                                          .generatedQuizz?.questionCards
-                                          ?.toList() ??
-                                      [];
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    10.0, 0.0, 10.0, 0.0),
+                                child: Builder(
+                                  builder: (context) {
+                                    final questionCard = widget!
+                                            .generatedQuizz?.questionCards
+                                            ?.toList() ??
+                                        [];
 
-                                  return Container(
-                                    width: double.infinity,
-                                    height: 500.0,
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 0.0, 40.0),
-                                      child: PageView.builder(
-                                        physics:
-                                            const NeverScrollableScrollPhysics(),
-                                        controller: _model
-                                                .pageViewController ??=
-                                            PageController(
-                                                initialPage: max(
-                                                    0,
-                                                    min(
-                                                        0,
-                                                        questionCard.length -
-                                                            1))),
-                                        scrollDirection: Axis.horizontal,
-                                        itemCount: questionCard.length,
-                                        itemBuilder:
-                                            (context, questionCardIndex) {
-                                          final questionCardItem =
-                                              questionCard[questionCardIndex];
-                                          return Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 20.0, 0.0, 0.0),
-                                            child: wrapWithModel(
-                                              model: _model.questionCardModels
-                                                  .getModel(
-                                                questionCardIndex.toString(),
-                                                questionCardIndex,
-                                              ),
-                                              updateCallback: () =>
-                                                  safeSetState(() {}),
-                                              updateOnChange: true,
-                                              child: QuestionCardWidget(
-                                                key: Key(
-                                                  'Keyo6p_${questionCardIndex.toString()}',
+                                    return Container(
+                                      width: double.infinity,
+                                      height: 500.0,
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 40.0),
+                                        child: PageView.builder(
+                                          physics:
+                                              const NeverScrollableScrollPhysics(),
+                                          controller: _model
+                                                  .pageViewController ??=
+                                              PageController(
+                                                  initialPage: max(
+                                                      0,
+                                                      min(
+                                                          0,
+                                                          questionCard.length -
+                                                              1))),
+                                          scrollDirection: Axis.horizontal,
+                                          itemCount: questionCard.length,
+                                          itemBuilder:
+                                              (context, questionCardIndex) {
+                                            final questionCardItem =
+                                                questionCard[questionCardIndex];
+                                            return Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 20.0, 0.0, 0.0),
+                                              child: wrapWithModel(
+                                                model: _model.questionCardModels
+                                                    .getModel(
+                                                  questionCardIndex.toString(),
+                                                  questionCardIndex,
                                                 ),
-                                                questionCard: questionCardItem,
-                                                updateScore: (isCorrect,
-                                                    userAnswerIndex) async {
-                                                  _model.userScore =
-                                                      _model.userScore! +
-                                                          (isCorrect ? 1 : 0);
-                                                  _model
-                                                      .updateGeneratedQuizzStruct(
-                                                    (e) => e
-                                                      ..updateQuestionCards(
-                                                        (e) =>
-                                                            e[questionCardIndex]
-                                                              ..userSelectionIndex =
-                                                                  userAnswerIndex
-                                                              ..questionIsDone =
-                                                                  true,
-                                                      ),
-                                                  );
-                                                  safeSetState(() {});
-                                                },
+                                                updateCallback: () =>
+                                                    safeSetState(() {}),
+                                                updateOnChange: true,
+                                                child: QuestionCardWidget(
+                                                  key: Key(
+                                                    'Keyo6p_${questionCardIndex.toString()}',
+                                                  ),
+                                                  questionCard:
+                                                      questionCardItem,
+                                                  updateScore: (isCorrect,
+                                                      userAnswerIndex) async {
+                                                    _model.userScore =
+                                                        _model.userScore! +
+                                                            (isCorrect ? 1 : 0);
+                                                    _model
+                                                        .updateGeneratedQuizzStruct(
+                                                      (e) => e
+                                                        ..updateQuestionCards(
+                                                          (e) => e[
+                                                              questionCardIndex]
+                                                            ..userSelectionIndex =
+                                                                userAnswerIndex
+                                                            ..questionIsDone =
+                                                                true,
+                                                        ),
+                                                    );
+                                                    safeSetState(() {});
+                                                  },
+                                                ),
                                               ),
-                                            ),
-                                          );
-                                        },
+                                            );
+                                          },
+                                        ),
                                       ),
-                                    ),
-                                  );
-                                },
+                                    );
+                                  },
+                                ),
                               ),
                             ),
                             Column(

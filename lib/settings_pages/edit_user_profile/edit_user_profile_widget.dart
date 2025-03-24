@@ -73,14 +73,14 @@ class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
             borderColor: Colors.transparent,
             borderRadius: 30.0,
             borderWidth: 1.0,
-            buttonSize: 80.0,
+            buttonSize: 65.0,
             icon: Icon(
-              Icons.arrow_circle_left_rounded,
+              Icons.chevron_left_rounded,
               color: FlutterFlowTheme.of(context).primary,
-              size: 50.0,
+              size: 35.0,
             ),
             onPressed: () async {
-              context.safePop();
+              context.pop();
             },
           ),
           title: Text(

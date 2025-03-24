@@ -68,11 +68,11 @@ class _HistoryQuizPageWidgetState extends State<HistoryQuizPageWidget> {
             borderColor: Colors.transparent,
             borderRadius: 30.0,
             borderWidth: 1.0,
-            buttonSize: 80.0,
+            buttonSize: 65.0,
             icon: Icon(
-              Icons.arrow_circle_left_rounded,
+              Icons.chevron_left_rounded,
               color: FlutterFlowTheme.of(context).primary,
-              size: 50.0,
+              size: 35.0,
             ),
             onPressed: () async {
               context.pop();
@@ -164,7 +164,7 @@ class _HistoryQuizPageWidgetState extends State<HistoryQuizPageWidget> {
                                           .override(
                                             fontFamily: 'Roboto',
                                             color: FlutterFlowTheme.of(context)
-                                                .success,
+                                                .tonicColor1,
                                             letterSpacing: 0.0,
                                           ),
                                     ),
@@ -266,6 +266,7 @@ class _HistoryQuizPageWidgetState extends State<HistoryQuizPageWidget> {
                                 text: 'See the flashcards',
                                 icon: Icon(
                                   Icons.layers,
+                                  color: FlutterFlowTheme.of(context).info,
                                   size: 22.0,
                                 ),
                                 options: FFButtonOptions(
@@ -275,56 +276,17 @@ class _HistoryQuizPageWidgetState extends State<HistoryQuizPageWidget> {
                                       16.0, 0.0, 16.0, 0.0),
                                   iconPadding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
-                                  color: FlutterFlowTheme.of(context).secondary,
+                                  color:
+                                      FlutterFlowTheme.of(context).tonicColor1,
                                   textStyle: FlutterFlowTheme.of(context)
                                       .labelLarge
                                       .override(
                                         fontFamily: 'Roboto',
                                         letterSpacing: 0.0,
                                       ),
-                                  elevation: 0.0,
                                   borderRadius: BorderRadius.circular(24.0),
                                 ),
                               ),
-                            FFButtonWidget(
-                              onPressed: () async {
-                                context.pushNamed(
-                                  SourcePageWidget.routeName,
-                                  queryParameters: {
-                                    'sourceType': serializeParam(
-                                      widget!.quizDocument?.sourceType,
-                                      ParamType.String,
-                                    ),
-                                    'sourceContent': serializeParam(
-                                      widget!.quizDocument?.sourceInput,
-                                      ParamType.String,
-                                    ),
-                                  }.withoutNulls,
-                                );
-                              },
-                              text: 'See the source',
-                              icon: Icon(
-                                Icons.source_rounded,
-                                size: 22.0,
-                              ),
-                              options: FFButtonOptions(
-                                width: double.infinity,
-                                height: 50.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    16.0, 0.0, 16.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color: FlutterFlowTheme.of(context).tertiary,
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .labelLarge
-                                    .override(
-                                      fontFamily: 'Roboto',
-                                      letterSpacing: 0.0,
-                                    ),
-                                elevation: 0.0,
-                                borderRadius: BorderRadius.circular(24.0),
-                              ),
-                            ),
                             FFButtonWidget(
                               onPressed: () async {
                                 _model.reinitializedQuestionCards = widget!
@@ -380,6 +342,7 @@ class _HistoryQuizPageWidgetState extends State<HistoryQuizPageWidget> {
                               text: 'Retake the quiz',
                               icon: Icon(
                                 Icons.replay_rounded,
+                                color: FlutterFlowTheme.of(context).info,
                                 size: 22.0,
                               ),
                               options: FFButtonOptions(
@@ -389,7 +352,7 @@ class _HistoryQuizPageWidgetState extends State<HistoryQuizPageWidget> {
                                     16.0, 0.0, 16.0, 0.0),
                                 iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
-                                color: FlutterFlowTheme.of(context).accent1,
+                                color: FlutterFlowTheme.of(context).tertiary,
                                 textStyle: FlutterFlowTheme.of(context)
                                     .labelLarge
                                     .override(

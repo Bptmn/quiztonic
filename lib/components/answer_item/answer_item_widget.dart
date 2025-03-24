@@ -60,8 +60,8 @@ class _AnswerItemWidgetState extends State<AnswerItemWidget> {
           color: valueOrDefault<Color>(
             widget!.isSelected
                 ? FlutterFlowTheme.of(context).primary
-                : FlutterFlowTheme.of(context).primaryText,
-            FlutterFlowTheme.of(context).primaryText,
+                : FlutterFlowTheme.of(context).borderColor,
+            FlutterFlowTheme.of(context).borderColor,
           ),
         ),
       ),

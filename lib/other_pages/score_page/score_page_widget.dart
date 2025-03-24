@@ -338,7 +338,7 @@ class _ScorePageWidgetState extends State<ScorePageWidget> {
                                       ),
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
-                                            .primary,
+                                            .tonicColor1,
                                         borderRadius:
                                             BorderRadius.circular(20.0),
                                       ),
@@ -391,57 +391,54 @@ class _ScorePageWidgetState extends State<ScorePageWidget> {
                                     context.goNamed(
                                         GenerateNewQuizWidget.routeName);
                                   },
-                                  child: Material(
-                                    color: Colors.transparent,
-                                    elevation: 1.0,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20.0),
+                                  child: Container(
+                                    height: 110.0,
+                                    constraints: BoxConstraints(
+                                      maxWidth: 220.0,
                                     ),
-                                    child: Container(
-                                      height: 110.0,
-                                      constraints: BoxConstraints(
-                                        maxWidth: 220.0,
-                                      ),
-                                      decoration: BoxDecoration(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20.0),
+                                      border: Border.all(
                                         color: FlutterFlowTheme.of(context)
-                                            .secondary,
-                                        borderRadius:
-                                            BorderRadius.circular(20.0),
+                                            .tonicColor1,
                                       ),
-                                      child: Padding(
-                                        padding: EdgeInsets.all(8.0),
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Icon(
-                                              Icons.replay_rounded,
-                                              color:
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsets.all(8.0),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Icon(
+                                            Icons.replay_rounded,
+                                            color: FlutterFlowTheme.of(context)
+                                                .tonicColor1,
+                                            size: 35.0,
+                                          ),
+                                          Align(
+                                            alignment:
+                                                AlignmentDirectional(0.0, 0.0),
+                                            child: Text(
+                                              'Generate a new quiz',
+                                              textAlign: TextAlign.center,
+                                              style:
                                                   FlutterFlowTheme.of(context)
-                                                      .info,
-                                              size: 35.0,
+                                                      .labelLarge
+                                                      .override(
+                                                        fontFamily: 'Roboto',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .tonicColor1,
+                                                        fontSize: 18.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                      ),
                                             ),
-                                            Align(
-                                              alignment: AlignmentDirectional(
-                                                  0.0, 0.0),
-                                              child: Text(
-                                                'Generate a new quiz',
-                                                textAlign: TextAlign.center,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelLarge
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          fontSize: 18.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.normal,
-                                                        ),
-                                              ),
-                                            ),
-                                          ].divide(SizedBox(height: 5.0)),
-                                        ),
+                                          ),
+                                        ].divide(SizedBox(height: 5.0)),
                                       ),
                                     ),
                                   ),

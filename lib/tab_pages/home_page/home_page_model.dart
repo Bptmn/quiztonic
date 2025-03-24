@@ -15,7 +15,7 @@ import 'package:provider/provider.dart';
 class HomePageModel extends FlutterFlowModel<HomePageWidget> {
   ///  State fields for stateful widgets in this page.
 
-  // Models for quizItem dynamic component.
+  // Models for QuizItem dynamic component.
   late FlutterFlowDynamicModels<QuizItemModel> quizItemModels;
 
   @override

@@ -182,17 +182,17 @@ class _QuestionCardWidgetState extends State<QuestionCardWidget> {
                               children: [
                                 Icon(
                                   Icons.check_circle,
-                                  color: FlutterFlowTheme.of(context).secondary,
+                                  color:
+                                      FlutterFlowTheme.of(context).tonicColor1,
                                   size: 30.0,
                                 ),
                                 Text(
                                   'Correct answer',
                                   style: FlutterFlowTheme.of(context)
-                                      .bodyLarge
+                                      .titleMedium
                                       .override(
-                                        fontFamily: 'Roboto',
+                                        fontFamily: 'Manrope',
                                         letterSpacing: 0.0,
-                                        fontWeight: FontWeight.w600,
                                       ),
                                 ),
                               ]
@@ -211,11 +211,10 @@ class _QuestionCardWidgetState extends State<QuestionCardWidget> {
                                 Text(
                                   'Wrong answer',
                                   style: FlutterFlowTheme.of(context)
-                                      .bodyLarge
+                                      .titleMedium
                                       .override(
-                                        fontFamily: 'Roboto',
+                                        fontFamily: 'Manrope',
                                         letterSpacing: 0.0,
-                                        fontWeight: FontWeight.w600,
                                       ),
                                 ),
                               ]
@@ -244,11 +243,11 @@ class _QuestionCardWidgetState extends State<QuestionCardWidget> {
                                       child: Text(
                                         'Explanation:',
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyLarge
+                                            .titleMedium
                                             .override(
-                                              fontFamily: 'Roboto',
+                                              fontFamily: 'Manrope',
                                               letterSpacing: 0.0,
-                                              fontWeight: FontWeight.bold,
+                                              fontWeight: FontWeight.w800,
                                             ),
                                       ),
                                     ),
@@ -258,9 +257,9 @@ class _QuestionCardWidgetState extends State<QuestionCardWidget> {
                                         'answerExplanation',
                                       ),
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
+                                          .titleSmall
                                           .override(
-                                            fontFamily: 'Roboto',
+                                            fontFamily: 'Manrope',
                                             letterSpacing: 0.0,
                                           ),
                                     ),

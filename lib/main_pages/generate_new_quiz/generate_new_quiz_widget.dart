@@ -74,11 +74,11 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
             borderColor: Colors.transparent,
             borderRadius: 30.0,
             borderWidth: 1.0,
-            buttonSize: 80.0,
+            buttonSize: 65.0,
             icon: Icon(
-              Icons.arrow_circle_left_rounded,
+              Icons.chevron_left_rounded,
               color: FlutterFlowTheme.of(context).primary,
-              size: 50.0,
+              size: 35.0,
             ),
             onPressed: () async {
               context.pop();
@@ -113,25 +113,19 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Material(
-                        color: Colors.transparent,
-                        elevation: 2.0,
-                        shape: RoundedRectangleBorder(
+                      Container(
+                        width: MediaQuery.sizeOf(context).width * 1.0,
+                        decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(16.0),
                         ),
-                        child: Container(
-                          width: MediaQuery.sizeOf(context).width * 1.0,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            borderRadius: BorderRadius.circular(16.0),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.all(12.0),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Text(
+                        child: Padding(
+                          padding: EdgeInsets.all(12.0),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Align(
+                                alignment: AlignmentDirectional(-1.0, -1.0),
+                                child: Text(
                                   'Choose Input Format',
                                   style: FlutterFlowTheme.of(context)
                                       .headlineSmall
@@ -140,58 +134,58 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                         letterSpacing: 0.0,
                                       ),
                                 ),
-                                FlutterFlowDropDown<QuizInputFormat>(
-                                  controller: _model
-                                          .dropDownInputFormatValueController ??=
-                                      FormFieldController<QuizInputFormat>(
-                                    _model.dropDownInputFormatValue ??=
-                                        QuizInputFormat.websiteUrl,
-                                  ),
-                                  options: List<QuizInputFormat>.from(
-                                      QuizInputFormat.values),
-                                  optionLabels: [
-                                    'Raw text',
-                                    'Website URL',
-                                    'PDF file'
-                                  ],
-                                  onChanged: (val) async {
-                                    safeSetState(() =>
-                                        _model.dropDownInputFormatValue = val);
-                                    _model.selectedInputFormat =
-                                        _model.dropDownInputFormatValue;
-                                    safeSetState(() {});
-                                  },
-                                  height: 50.0,
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Roboto',
-                                        fontSize: 16.0,
-                                        letterSpacing: 0.0,
-                                      ),
-                                  hintText: 'Website URL',
-                                  icon: Icon(
-                                    Icons.keyboard_arrow_down_rounded,
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryText,
-                                    size: 24.0,
-                                  ),
-                                  fillColor: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  elevation: 2.0,
-                                  borderColor:
-                                      FlutterFlowTheme.of(context).alternate,
-                                  borderWidth: 2.0,
-                                  borderRadius: 15.0,
-                                  margin: EdgeInsetsDirectional.fromSTEB(
-                                      12.0, 0.0, 12.0, 0.0),
-                                  hidesUnderline: true,
-                                  isOverButton: false,
-                                  isSearchable: false,
-                                  isMultiSelect: false,
+                              ),
+                              FlutterFlowDropDown<QuizInputFormat>(
+                                controller: _model
+                                        .dropDownInputFormatValueController ??=
+                                    FormFieldController<QuizInputFormat>(
+                                  _model.dropDownInputFormatValue ??=
+                                      QuizInputFormat.websiteUrl,
                                 ),
-                              ].divide(SizedBox(height: 16.0)),
-                            ),
+                                options: List<QuizInputFormat>.from(
+                                    QuizInputFormat.values),
+                                optionLabels: [
+                                  'Raw text',
+                                  'Website URL',
+                                  'PDF file'
+                                ],
+                                onChanged: (val) async {
+                                  safeSetState(() =>
+                                      _model.dropDownInputFormatValue = val);
+                                  _model.selectedInputFormat =
+                                      _model.dropDownInputFormatValue;
+                                  safeSetState(() {});
+                                },
+                                height: 50.0,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Roboto',
+                                      fontSize: 16.0,
+                                      letterSpacing: 0.0,
+                                    ),
+                                hintText: 'Website URL',
+                                icon: Icon(
+                                  Icons.keyboard_arrow_down_rounded,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryText,
+                                  size: 24.0,
+                                ),
+                                fillColor: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                elevation: 2.0,
+                                borderColor:
+                                    FlutterFlowTheme.of(context).alternate,
+                                borderWidth: 2.0,
+                                borderRadius: 15.0,
+                                margin: EdgeInsetsDirectional.fromSTEB(
+                                    12.0, 0.0, 12.0, 0.0),
+                                hidesUnderline: true,
+                                isOverButton: false,
+                                isSearchable: false,
+                                isMultiSelect: false,
+                              ),
+                            ].divide(SizedBox(height: 16.0)),
                           ),
                         ),
                       ),
@@ -500,25 +494,20 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                               ),
                             );
                           } else {
-                            return Material(
-                              color: Colors.transparent,
-                              elevation: 2.0,
-                              shape: RoundedRectangleBorder(
+                            return Container(
+                              width: MediaQuery.sizeOf(context).width * 1.0,
+                              decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(16.0),
                               ),
-                              child: Container(
-                                width: MediaQuery.sizeOf(context).width * 1.0,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  borderRadius: BorderRadius.circular(16.0),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsets.all(16.0),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Text(
+                              child: Padding(
+                                padding: EdgeInsets.all(12.0),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Align(
+                                      alignment:
+                                          AlignmentDirectional(-1.0, -1.0),
+                                      child: Text(
                                         'Enter a website URL',
                                         style: FlutterFlowTheme.of(context)
                                             .headlineSmall
@@ -527,178 +516,164 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                               letterSpacing: 0.0,
                                             ),
                                       ),
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Expanded(
-                                            child: TextFormField(
-                                              controller: _model
-                                                  .textFieldUrlTextController,
-                                              focusNode:
-                                                  _model.textFieldUrlFocusNode,
-                                              autofocus: false,
-                                              textInputAction:
-                                                  TextInputAction.done,
-                                              obscureText: false,
-                                              decoration: InputDecoration(
-                                                labelStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                hintText:
-                                                    'Enter an url here...',
-                                                hintStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                enabledBorder:
-                                                    OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .alternate,
-                                                    width: 1.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          12.0),
-                                                ),
-                                                focusedBorder:
-                                                    OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                    color: Color(0x00000000),
-                                                    width: 1.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          12.0),
-                                                ),
-                                                errorBorder: OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                    color: Color(0x00000000),
-                                                    width: 1.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          12.0),
-                                                ),
-                                                focusedErrorBorder:
-                                                    OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                    color: Color(0x00000000),
-                                                    width: 1.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          12.0),
-                                                ),
-                                                filled: true,
-                                              ),
-                                              style:
+                                    ),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Expanded(
+                                          child: TextFormField(
+                                            controller: _model
+                                                .textFieldUrlTextController,
+                                            focusNode:
+                                                _model.textFieldUrlFocusNode,
+                                            autofocus: false,
+                                            textInputAction:
+                                                TextInputAction.done,
+                                            obscureText: false,
+                                            decoration: InputDecoration(
+                                              labelStyle:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyLarge
+                                                      .bodyMedium
                                                       .override(
                                                         fontFamily: 'Roboto',
                                                         letterSpacing: 0.0,
                                                       ),
-                                              maxLines: null,
-                                              validator: _model
-                                                  .textFieldUrlTextControllerValidator
-                                                  .asValidator(context),
-                                            ),
-                                          ),
-                                          InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
-                                            onTap: () async {
-                                              _model.pastedTextContent =
-                                                  await actions
-                                                      .pasteTextFromClipboard();
-                                              safeSetState(() {
-                                                _model.textFieldUrlTextController
-                                                        ?.text =
-                                                    _model.pastedTextContent!;
-                                              });
-
-                                              safeSetState(() {});
-                                            },
-                                            child: Container(
-                                              width: 50.0,
-                                              height: 45.0,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
+                                              hintText: 'Enter an url here...',
+                                              hintStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Roboto',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                              enabledBorder: OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .alternate,
+                                                  width: 1.0,
+                                                ),
                                                 borderRadius:
-                                                    BorderRadius.circular(8.0),
+                                                    BorderRadius.circular(18.0),
                                               ),
-                                              alignment: AlignmentDirectional(
-                                                  0.0, 0.0),
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.min,
-                                                children: [
-                                                  Icon(
-                                                    Icons.content_paste_rounded,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .info,
-                                                    size: 17.0,
-                                                  ),
-                                                  Text(
-                                                    'paste',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .info,
-                                                          fontSize: 11.0,
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                  ),
-                                                ].divide(SizedBox(height: 2.0)),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: Color(0x00000000),
+                                                  width: 1.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(18.0),
+                                              ),
+                                              errorBorder: OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: Color(0x00000000),
+                                                  width: 1.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(18.0),
+                                              ),
+                                              focusedErrorBorder:
+                                                  OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: Color(0x00000000),
+                                                  width: 1.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(18.0),
                                               ),
                                             ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyLarge
+                                                .override(
+                                                  fontFamily: 'Roboto',
+                                                  letterSpacing: 0.0,
+                                                ),
+                                            maxLines: null,
+                                            validator: _model
+                                                .textFieldUrlTextControllerValidator
+                                                .asValidator(context),
                                           ),
-                                        ].divide(SizedBox(width: 5.0)),
-                                      ),
-                                    ].divide(SizedBox(height: 16.0)),
-                                  ),
+                                        ),
+                                        InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            _model.pastedTextContent =
+                                                await actions
+                                                    .pasteTextFromClipboard();
+                                            safeSetState(() {
+                                              _model.textFieldUrlTextController
+                                                      ?.text =
+                                                  _model.pastedTextContent!;
+                                            });
+
+                                            safeSetState(() {});
+                                          },
+                                          child: Container(
+                                            width: 50.0,
+                                            height: 45.0,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .tonicColor1,
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                            alignment:
+                                                AlignmentDirectional(0.0, 0.0),
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                Icon(
+                                                  Icons.content_paste_rounded,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .info,
+                                                  size: 17.0,
+                                                ),
+                                                Text(
+                                                  'paste',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Roboto',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .info,
+                                                        fontSize: 11.0,
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                ),
+                                              ].divide(SizedBox(height: 2.0)),
+                                            ),
+                                          ),
+                                        ),
+                                      ].divide(SizedBox(width: 5.0)),
+                                    ),
+                                  ].divide(SizedBox(height: 16.0)),
                                 ),
                               ),
                             );
                           }
                         },
                       ),
-                      Material(
-                        color: Colors.transparent,
-                        elevation: 2.0,
-                        shape: RoundedRectangleBorder(
+                      Container(
+                        width: MediaQuery.sizeOf(context).width * 1.0,
+                        decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(16.0),
                         ),
-                        child: Container(
-                          width: MediaQuery.sizeOf(context).width * 1.0,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            borderRadius: BorderRadius.circular(16.0),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.all(12.0),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Text(
+                        child: Padding(
+                          padding: EdgeInsets.all(12.0),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Align(
+                                alignment: AlignmentDirectional(-1.0, -1.0),
+                                child: Text(
                                   'Quiz Settings',
                                   style: FlutterFlowTheme.of(context)
                                       .headlineSmall
@@ -707,13 +682,78 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                         letterSpacing: 0.0,
                                       ),
                                 ),
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      'Number of Questions',
+                              ),
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    'Number of Questions',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyLarge
+                                        .override(
+                                          fontFamily: 'Roboto',
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
+                                  Container(
+                                    width: 120.0,
+                                    height: 40.0,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      borderRadius: BorderRadius.circular(8.0),
+                                      shape: BoxShape.rectangle,
+                                    ),
+                                    child: FlutterFlowCountController(
+                                      decrementIconBuilder: (enabled) => Icon(
+                                        Icons.remove_rounded,
+                                        color: enabled
+                                            ? FlutterFlowTheme.of(context)
+                                                .secondaryText
+                                            : FlutterFlowTheme.of(context)
+                                                .alternate,
+                                        size: 24.0,
+                                      ),
+                                      incrementIconBuilder: (enabled) => Icon(
+                                        Icons.add_rounded,
+                                        color: enabled
+                                            ? FlutterFlowTheme.of(context)
+                                                .primary
+                                            : FlutterFlowTheme.of(context)
+                                                .alternate,
+                                        size: 24.0,
+                                      ),
+                                      countBuilder: (count) => Text(
+                                        count.toString(),
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleLarge
+                                            .override(
+                                              fontFamily: 'Manrope',
+                                              letterSpacing: 0.0,
+                                            ),
+                                      ),
+                                      count: _model.countControllerValue ??= 10,
+                                      updateCount: (count) => safeSetState(() =>
+                                          _model.countControllerValue = count),
+                                      stepSize: 1,
+                                      minimum: 0,
+                                      contentPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              12.0, 0.0, 12.0, 0.0),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Flexible(
+                                    child: Text(
+                                      'Generate flashcards',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyLarge
                                           .override(
@@ -721,97 +761,28 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                             letterSpacing: 0.0,
                                           ),
                                     ),
-                                    Container(
-                                      width: 120.0,
-                                      height: 40.0,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
+                                  ),
+                                  Switch.adaptive(
+                                    value:
+                                        _model.switchGenerateFlashcardsValue!,
+                                    onChanged: (newValue) async {
+                                      safeSetState(() =>
+                                          _model.switchGenerateFlashcardsValue =
+                                              newValue!);
+                                    },
+                                    activeColor:
+                                        FlutterFlowTheme.of(context).primary,
+                                    activeTrackColor:
+                                        FlutterFlowTheme.of(context).primary,
+                                    inactiveTrackColor:
+                                        FlutterFlowTheme.of(context).alternate,
+                                    inactiveThumbColor:
+                                        FlutterFlowTheme.of(context)
                                             .secondaryBackground,
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                        shape: BoxShape.rectangle,
-                                      ),
-                                      child: FlutterFlowCountController(
-                                        decrementIconBuilder: (enabled) => Icon(
-                                          Icons.remove_rounded,
-                                          color: enabled
-                                              ? FlutterFlowTheme.of(context)
-                                                  .secondaryText
-                                              : FlutterFlowTheme.of(context)
-                                                  .alternate,
-                                          size: 24.0,
-                                        ),
-                                        incrementIconBuilder: (enabled) => Icon(
-                                          Icons.add_rounded,
-                                          color: enabled
-                                              ? FlutterFlowTheme.of(context)
-                                                  .primary
-                                              : FlutterFlowTheme.of(context)
-                                                  .alternate,
-                                          size: 24.0,
-                                        ),
-                                        countBuilder: (count) => Text(
-                                          count.toString(),
-                                          style: FlutterFlowTheme.of(context)
-                                              .titleLarge
-                                              .override(
-                                                fontFamily: 'Manrope',
-                                                letterSpacing: 0.0,
-                                              ),
-                                        ),
-                                        count: _model.countControllerValue ??=
-                                            10,
-                                        updateCount: (count) => safeSetState(
-                                            () => _model.countControllerValue =
-                                                count),
-                                        stepSize: 1,
-                                        minimum: 0,
-                                        contentPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
-                                                12.0, 0.0, 12.0, 0.0),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Flexible(
-                                      child: Text(
-                                        'Generate flashcards',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyLarge
-                                            .override(
-                                              fontFamily: 'Roboto',
-                                              letterSpacing: 0.0,
-                                            ),
-                                      ),
-                                    ),
-                                    Switch.adaptive(
-                                      value:
-                                          _model.switchGenerateFlashcardsValue!,
-                                      onChanged: (newValue) async {
-                                        safeSetState(() => _model
-                                                .switchGenerateFlashcardsValue =
-                                            newValue!);
-                                      },
-                                      activeColor:
-                                          FlutterFlowTheme.of(context).primary,
-                                      activeTrackColor:
-                                          FlutterFlowTheme.of(context).primary,
-                                      inactiveTrackColor:
-                                          FlutterFlowTheme.of(context)
-                                              .alternate,
-                                      inactiveThumbColor:
-                                          FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                    ),
-                                  ],
-                                ),
-                              ].divide(SizedBox(height: 16.0)),
-                            ),
+                                  ),
+                                ],
+                              ),
+                            ].divide(SizedBox(height: 16.0)),
                           ),
                         ),
                       ),
@@ -940,7 +911,7 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                               16.0, 0.0, 16.0, 0.0),
                           iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).primary,
+                          color: FlutterFlowTheme.of(context).tonicColor1,
                           textStyle:
                               FlutterFlowTheme.of(context).labelLarge.override(
                                     fontFamily: 'Roboto',

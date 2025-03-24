@@ -56,7 +56,7 @@ class _QuizItemWidgetState extends State<QuizItemWidget> {
       child: Container(
         width: MediaQuery.sizeOf(context).width * 1.0,
         decoration: BoxDecoration(
-          color: FlutterFlowTheme.of(context).secondaryBackground,
+          color: FlutterFlowTheme.of(context).primaryBackground,
           borderRadius: BorderRadius.circular(18.0),
           border: Border.all(
             color: FlutterFlowTheme.of(context).borderColor,
@@ -94,7 +94,6 @@ class _QuizItemWidgetState extends State<QuizItemWidget> {
                   ),
                   Container(
                     decoration: BoxDecoration(
-                      color: Color(0xFFE8F5E9),
                       borderRadius: BorderRadius.circular(20.0),
                     ),
                     child: Padding(
@@ -117,7 +116,7 @@ class _QuizItemWidgetState extends State<QuizItemWidget> {
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Roboto',
-                              color: FlutterFlowTheme.of(context).success,
+                              color: FlutterFlowTheme.of(context).tonicColor1,
                               letterSpacing: 0.0,
                             ),
                       ),

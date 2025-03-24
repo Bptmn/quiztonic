@@ -54,10 +54,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
-          backgroundColor: Colors.transparent,
+          backgroundColor: FlutterFlowTheme.of(context).transparent,
           automaticallyImplyLeading: false,
           title: Align(
-            alignment: AlignmentDirectional(0.0, -1.0),
+            alignment: AlignmentDirectional(-1.0, -1.0),
             child: Text(
               'Dashboard',
               style: FlutterFlowTheme.of(context).headlineMedium.override(
@@ -69,15 +69,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             ),
           ),
           actions: [],
-          flexibleSpace: FlexibleSpaceBar(
-            background: ClipRRect(
-              borderRadius: BorderRadius.circular(8.0),
-              child: Image.asset(
-                'assets/images/mwmx0_600',
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
           centerTitle: false,
           elevation: 0.0,
         ),
@@ -149,9 +140,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       width: double.infinity,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
-                                            .primary,
+                                            .secondary,
                                         borderRadius:
                                             BorderRadius.circular(14.0),
+                                        border: Border.all(
+                                          color: FlutterFlowTheme.of(context)
+                                              .borderColor,
+                                        ),
                                       ),
                                       child: Padding(
                                         padding: EdgeInsets.all(10.0),
@@ -207,6 +202,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             .tertiary,
                                         borderRadius:
                                             BorderRadius.circular(14.0),
+                                        border: Border.all(
+                                          color: FlutterFlowTheme.of(context)
+                                              .borderColor,
+                                        ),
                                       ),
                                       child: Padding(
                                         padding: EdgeInsets.all(10.0),
@@ -259,9 +258,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       width: double.infinity,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
-                                            .secondary,
+                                            .alternate,
                                         borderRadius:
                                             BorderRadius.circular(14.0),
+                                        border: Border.all(
+                                          color: FlutterFlowTheme.of(context)
+                                              .borderColor,
+                                        ),
                                       ),
                                       child: Padding(
                                         padding: EdgeInsets.all(10.0),
@@ -356,10 +359,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               16.0, 0.0, 16.0, 0.0),
                           iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).primary,
+                          color: FlutterFlowTheme.of(context).tonicColor1,
                           textStyle:
                               FlutterFlowTheme.of(context).labelLarge.override(
                                     fontFamily: 'Roboto',
+                                    color: FlutterFlowTheme.of(context).info,
                                     letterSpacing: 0.0,
                                   ),
                           borderRadius: BorderRadius.circular(24.0),

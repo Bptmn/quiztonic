@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import '/index.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -55,7 +56,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: SafeArea(
           top: true,
           child: Column(
@@ -73,24 +74,48 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 30.0),
+                          child: RichText(
+                            textScaler: MediaQuery.of(context).textScaler,
+                            text: TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: 'Quiz',
+                                  style: FlutterFlowTheme.of(context)
+                                      .displayMedium
+                                      .override(
+                                        fontFamily: 'Manrope',
+                                        letterSpacing: 0.0,
+                                      ),
+                                ),
+                                TextSpan(
+                                  text: 'Tonic',
+                                  style: FlutterFlowTheme.of(context)
+                                      .displayMedium
+                                      .override(
+                                        fontFamily: 'Manrope',
+                                        color: FlutterFlowTheme.of(context)
+                                            .tonicColor1,
+                                        letterSpacing: 0.0,
+                                      ),
+                                )
+                              ],
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Roboto',
+                                    letterSpacing: 0.0,
+                                  ),
+                            ),
+                          ),
+                        ),
                         Container(
                           decoration: BoxDecoration(),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 24.0),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  child: Image.asset(
-                                    'assets/images/DALLE_2025-03-09_17.40.02_-_A_modern_and_sleek_iOS_app_launcher_icon_combining_the_themes_of_learning,_artificial_intelligence,_and_pirates._The_icon_should_feature_a_minimalist_(1).png',
-                                    width: 55.0,
-                                    height: 55.0,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              ),
                               SelectionArea(
                                   child: Text(
                                 'Log in to your account',
@@ -426,7 +451,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                         16.0, 0.0, 16.0, 0.0),
                                     iconPadding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
-                                    color: FlutterFlowTheme.of(context).primary,
+                                    color: FlutterFlowTheme.of(context)
+                                        .tonicColor1,
                                     textStyle: FlutterFlowTheme.of(context)
                                         .labelLarge
                                         .override(
@@ -680,7 +706,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                 fontFamily: 'Roboto',
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .primary,
+                                                        .tonicColor1,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w600,
                                               ),
