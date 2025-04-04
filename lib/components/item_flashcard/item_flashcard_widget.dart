@@ -94,7 +94,7 @@ class _ItemFlashcardWidgetState extends State<ItemFlashcardWidget> {
           padding: EdgeInsets.all(12.0),
           child: Container(
             decoration: BoxDecoration(
-              color: FlutterFlowTheme.of(context).primaryBackground,
+              color: FlutterFlowTheme.of(context).accent1,
               borderRadius: BorderRadius.circular(12.0),
               border: Border.all(
                 color: FlutterFlowTheme.of(context).tonicColor1,
@@ -112,7 +112,7 @@ class _ItemFlashcardWidgetState extends State<ItemFlashcardWidget> {
                   ),
                   style: FlutterFlowTheme.of(context).titleMedium.override(
                         fontFamily: 'Manrope',
-                        color: FlutterFlowTheme.of(context).primaryText,
+                        color: FlutterFlowTheme.of(context).blackText,
                         letterSpacing: 0.0,
                       ),
                 ),

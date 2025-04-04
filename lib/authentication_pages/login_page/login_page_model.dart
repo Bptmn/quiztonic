@@ -1,10 +1,15 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
+import '/backend/schema/enums/enums.dart';
+import '/dialogs/reset_password/reset_password_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import '/index.dart';
 import 'login_page_widget.dart' show LoginPageWidget;
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -22,7 +27,9 @@ class LoginPageModel extends FlutterFlowModel<LoginPageWidget> {
   String? _emailAddressFieldTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Email is required.';
+      return FFLocalizations.of(context).getText(
+        '1qm480oz' /* Email is required. */,
+      );
     }
 
     if (!RegExp(kTextValidatorEmailRegex).hasMatch(val)) {
@@ -39,11 +46,20 @@ class LoginPageModel extends FlutterFlowModel<LoginPageWidget> {
   String? _passwordFieldTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Password is required.';
+      return FFLocalizations.of(context).getText(
+        'eth026dm' /* Password is required. */,
+      );
     }
 
     return null;
   }
+
+  // Stores action output result for [Firestore Query - Query a collection] action in LogInButton widget.
+  UserStatisticsRecord? userStatDoc;
+  // Stores action output result for [Firestore Query - Query a collection] action in SignInWithGoogleButton widget.
+  UserStatisticsRecord? userStatDocLoginGoogle;
+  // Stores action output result for [Firestore Query - Query a collection] action in SignInWithAppleButton widget.
+  UserStatisticsRecord? userStatDocLoginApple;
 
   @override
   void initState(BuildContext context) {

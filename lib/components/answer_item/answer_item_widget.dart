@@ -14,11 +14,13 @@ class AnswerItemWidget extends StatefulWidget {
     required this.answerText,
     bool? isSelected,
     required this.itemIndex,
+    required this.isCorrectAnswer,
   }) : this.isSelected = isSelected ?? false;
 
   final String? answerText;
   final bool isSelected;
   final int? itemIndex;
+  final bool? isCorrectAnswer;
 
   @override
   State<AnswerItemWidget> createState() => _AnswerItemWidgetState();
@@ -54,13 +56,18 @@ class _AnswerItemWidgetState extends State<AnswerItemWidget> {
       width: MediaQuery.sizeOf(context).width * 1.0,
       height: 60.0,
       decoration: BoxDecoration(
-        color: FlutterFlowTheme.of(context).secondaryBackground,
         borderRadius: BorderRadius.circular(14.0),
         border: Border.all(
           color: valueOrDefault<Color>(
-            widget!.isSelected
-                ? FlutterFlowTheme.of(context).primary
-                : FlutterFlowTheme.of(context).borderColor,
+            () {
+              if (widget!.isCorrectAnswer! && widget!.isSelected) {
+                return FlutterFlowTheme.of(context).success;
+              } else if (!widget!.isCorrectAnswer! && widget!.isSelected) {
+                return FlutterFlowTheme.of(context).error;
+              } else {
+                return FlutterFlowTheme.of(context).borderColor;
+              }
+            }(),
             FlutterFlowTheme.of(context).borderColor,
           ),
         ),
@@ -80,10 +87,10 @@ class _AnswerItemWidgetState extends State<AnswerItemWidget> {
                     width: 35.0,
                     height: 35.0,
                     decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                      color: FlutterFlowTheme.of(context).tonicColor1,
                       shape: BoxShape.circle,
                       border: Border.all(
-                        color: FlutterFlowTheme.of(context).secondaryText,
+                        color: FlutterFlowTheme.of(context).borderColor,
                       ),
                     ),
                     child: Align(
@@ -96,6 +103,7 @@ class _AnswerItemWidgetState extends State<AnswerItemWidget> {
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Roboto',
                               letterSpacing: 0.0,
+                              fontWeight: FontWeight.bold,
                             ),
                       ),
                     ),

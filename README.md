@@ -1,4 +1,4 @@
-# RAQAM
+# QuizTonic
 
 A new Flutter project.
 

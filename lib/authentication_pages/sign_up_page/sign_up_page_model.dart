@@ -1,11 +1,15 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/schema/enums/enums.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import '/index.dart';
 import 'sign_up_page_widget.dart' show SignUpPageWidget;
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -22,7 +26,9 @@ class SignUpPageModel extends FlutterFlowModel<SignUpPageWidget> {
   String? _emailAddressFieldTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Email is required.';
+      return FFLocalizations.of(context).getText(
+        'tzhc854h' /* Email is required. */,
+      );
     }
 
     if (!RegExp(kTextValidatorEmailRegex).hasMatch(val)) {
@@ -39,7 +45,9 @@ class SignUpPageModel extends FlutterFlowModel<SignUpPageWidget> {
   String? _passwordFieldTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Password is required.';
+      return FFLocalizations.of(context).getText(
+        'c7rxynzj' /* Password is required. */,
+      );
     }
 
     return null;
@@ -51,6 +59,10 @@ class SignUpPageModel extends FlutterFlowModel<SignUpPageWidget> {
   late bool confirmPasswordFieldVisibility;
   String? Function(BuildContext, String?)?
       confirmPasswordFieldTextControllerValidator;
+  // Stores action output result for [Firestore Query - Query a collection] action in SignInWithGoogleButton widget.
+  UserStatisticsRecord? userStatDocSignUpGoogle;
+  // Stores action output result for [Firestore Query - Query a collection] action in SignInWithAppleButton widget.
+  UserStatisticsRecord? userStatDocSignUpApple;
 
   @override
   void initState(BuildContext context) {

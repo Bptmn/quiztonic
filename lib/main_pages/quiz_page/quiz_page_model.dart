@@ -1,71 +1,56 @@
-import '';
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
-import '/components/question_card/question_card_widget.dart';
+import '/components/web_side_bar/web_side_bar_widget.dart';
+import '/dialogs/pick_up_afolder/pick_up_afolder_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/flutter_flow_timer.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/shimmer_items/folder_tag_shimmer/folder_tag_shimmer_widget.dart';
+import 'dart:async';
 import 'dart:ui';
+import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
-import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'quiz_page_widget.dart' show QuizPageWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:collection/collection.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:percent_indicator/percent_indicator.dart';
 import 'package:provider/provider.dart';
 
 class QuizPageModel extends FlutterFlowModel<QuizPageWidget> {
   ///  Local state fields for this page.
 
-  int? userScore = 0;
+  List<QuestionCardStruct> reinitializedQuestionCards = [];
+  void addToReinitializedQuestionCards(QuestionCardStruct item) =>
+      reinitializedQuestionCards.add(item);
+  void removeFromReinitializedQuestionCards(QuestionCardStruct item) =>
+      reinitializedQuestionCards.remove(item);
+  void removeAtIndexFromReinitializedQuestionCards(int index) =>
+      reinitializedQuestionCards.removeAt(index);
+  void insertAtIndexInReinitializedQuestionCards(
+          int index, QuestionCardStruct item) =>
+      reinitializedQuestionCards.insert(index, item);
+  void updateReinitializedQuestionCardsAtIndex(
+          int index, Function(QuestionCardStruct) updateFn) =>
+      reinitializedQuestionCards[index] =
+          updateFn(reinitializedQuestionCards[index]);
 
-  int? pageNavigate = 0;
-
-  GeneratedQuizzStruct? generatedQuizz;
-  void updateGeneratedQuizzStruct(Function(GeneratedQuizzStruct) updateFn) {
-    updateFn(generatedQuizz ??= GeneratedQuizzStruct());
-  }
+  int? loopIndex;
 
   ///  State fields for stateful widgets in this page.
 
-  // State field(s) for Timer widget.
-  final timerInitialTimeMs = 0;
-  int timerMilliseconds = 0;
-  String timerValue = StopWatchTimer.getDisplayTime(
-    0,
-    hours: false,
-    milliSecond: false,
-  );
-  FlutterFlowTimerController timerController =
-      FlutterFlowTimerController(StopWatchTimer(mode: StopWatchMode.countUp));
-
-  // State field(s) for PageView widget.
-  PageController? pageViewController;
-
-  int get pageViewCurrentIndex => pageViewController != null &&
-          pageViewController!.hasClients &&
-          pageViewController!.page != null
-      ? pageViewController!.page!.round()
-      : 0;
-  // Models for QuestionCard dynamic component.
-  late FlutterFlowDynamicModels<QuestionCardModel> questionCardModels;
-  // Stores action output result for [Firestore Query - Query a collection] action in ButtonComplete widget.
-  UserStatisticsRecord? userStatisticDocument;
+  // Model for WebSideBar component.
+  late WebSideBarModel webSideBarModel;
 
   @override
   void initState(BuildContext context) {
-    questionCardModels = FlutterFlowDynamicModels(() => QuestionCardModel());
+    webSideBarModel = createModel(context, () => WebSideBarModel());
   }
 
   @override
   void dispose() {
-    timerController.dispose();
-    questionCardModels.dispose();
+    webSideBarModel.dispose();
   }
 }

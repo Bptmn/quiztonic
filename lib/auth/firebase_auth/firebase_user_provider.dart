@@ -5,8 +5,8 @@ import '../base_auth_user_provider.dart';
 
 export '../base_auth_user_provider.dart';
 
-class RaqamFirebaseUser extends BaseAuthUser {
-  RaqamFirebaseUser(this.user);
+class QuizTonicFirebaseUser extends BaseAuthUser {
+  QuizTonicFirebaseUser(this.user);
   User? user;
   bool get loggedIn => user != null;
 
@@ -58,17 +58,18 @@ class RaqamFirebaseUser extends BaseAuthUser {
 
   static BaseAuthUser fromUserCredential(UserCredential userCredential) =>
       fromFirebaseUser(userCredential.user);
-  static BaseAuthUser fromFirebaseUser(User? user) => RaqamFirebaseUser(user);
+  static BaseAuthUser fromFirebaseUser(User? user) =>
+      QuizTonicFirebaseUser(user);
 }
 
-Stream<BaseAuthUser> raqamFirebaseUserStream() => FirebaseAuth.instance
+Stream<BaseAuthUser> quizTonicFirebaseUserStream() => FirebaseAuth.instance
         .authStateChanges()
         .debounce((user) => user == null && !loggedIn
             ? TimerStream(true, const Duration(seconds: 1))
             : Stream.value(user))
         .map<BaseAuthUser>(
       (user) {
-        currentUser = RaqamFirebaseUser(user);
+        currentUser = QuizTonicFirebaseUser(user);
         return currentUser!;
       },
     );

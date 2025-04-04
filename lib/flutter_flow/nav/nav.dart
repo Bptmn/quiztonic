@@ -94,10 +94,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               appStateNotifier.loggedIn ? NavBarPage() : LoginPageWidget(),
         ),
         FFRoute(
-          name: QuizPageWidget.routeName,
-          path: QuizPageWidget.routePath,
+          name: QuizExoWidget.routeName,
+          path: QuizExoWidget.routePath,
           requireAuth: true,
-          builder: (context, params) => QuizPageWidget(
+          builder: (context, params) => QuizExoWidget(
             generatedQuizz: params.getParam(
               'generatedQuizz',
               ParamType.DataStruct,
@@ -131,6 +131,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               isList: true,
               structBuilder: FlashcardStruct.fromSerializableMap,
             ),
+            quizRef: params.getParam(
+              'quizRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['savedQuiz'],
+            ),
           ),
         ),
         FFRoute(
@@ -156,13 +162,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               : ProfileWidget(),
         ),
         FFRoute(
-          name: HistoryQuizPageWidget.routeName,
-          path: HistoryQuizPageWidget.routePath,
+          name: QuizPageWidget.routeName,
+          path: QuizPageWidget.routePath,
           requireAuth: true,
           asyncParams: {
             'quizDocument': getDoc(['savedQuiz'], SavedQuizRecord.fromSnapshot),
           },
-          builder: (context, params) => HistoryQuizPageWidget(
+          builder: (context, params) => QuizPageWidget(
             quizDocument: params.getParam(
               'quizDocument',
               ParamType.Document,
@@ -182,21 +188,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             ),
             fromProcess: params.getParam(
               'fromProcess',
-              ParamType.String,
-            ),
-          ),
-        ),
-        FFRoute(
-          name: SourcePageWidget.routeName,
-          path: SourcePageWidget.routePath,
-          requireAuth: true,
-          builder: (context, params) => SourcePageWidget(
-            sourceType: params.getParam(
-              'sourceType',
-              ParamType.String,
-            ),
-            sourceContent: params.getParam(
-              'sourceContent',
               ParamType.String,
             ),
           ),
@@ -232,6 +223,56 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: SignUpPageWidget.routeName,
           path: SignUpPageWidget.routePath,
           builder: (context, params) => SignUpPageWidget(),
+        ),
+        FFRoute(
+          name: FolderPageWidget.routeName,
+          path: FolderPageWidget.routePath,
+          requireAuth: true,
+          asyncParams: {
+            'folderDocument': getDoc(['folders'], FoldersRecord.fromSnapshot),
+          },
+          builder: (context, params) => FolderPageWidget(
+            folderDocument: params.getParam(
+              'folderDocument',
+              ParamType.Document,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: TestPageWidget.routeName,
+          path: TestPageWidget.routePath,
+          requireAuth: true,
+          builder: (context, params) => TestPageWidget(),
+        ),
+        FFRoute(
+          name: QuizAnswersPageWidget.routeName,
+          path: QuizAnswersPageWidget.routePath,
+          requireAuth: true,
+          builder: (context, params) => QuizAnswersPageWidget(
+            questionCards: params.getParam<QuestionCardStruct>(
+              'questionCards',
+              ParamType.DataStruct,
+              isList: true,
+              structBuilder: QuestionCardStruct.fromSerializableMap,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: SecurityPageWidget.routeName,
+          path: SecurityPageWidget.routePath,
+          requireAuth: true,
+          builder: (context, params) => SecurityPageWidget(
+            authMethod: params.getParam<AuthMethod>(
+              'authMethod',
+              ParamType.Enum,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: LanguageSettingsWidget.routeName,
+          path: LanguageSettingsWidget.routePath,
+          requireAuth: true,
+          builder: (context, params) => LanguageSettingsWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -419,11 +460,11 @@ class FFRoute {
               : builder(context, ffParams);
           final child = appStateNotifier.loading
               ? Container(
-                  color: FlutterFlowTheme.of(context).alternate,
+                  color: FlutterFlowTheme.of(context).primaryBackground,
                   child: Center(
                     child: Image.asset(
-                      'assets/images/DALLE_2025-03-09_17.40.02_-_A_modern_and_sleek_iOS_app_launcher_icon_combining_the_themes_of_learning,_artificial_intelligence,_and_pirates._The_icon_should_feature_a_minimalist_(1).png',
-                      width: MediaQuery.sizeOf(context).width * 0.5,
+                      'assets/images/QuizTonic_text.svg',
+                      width: MediaQuery.sizeOf(context).width * 0.7,
                       fit: BoxFit.contain,
                     ),
                   ),

@@ -1,7 +1,7 @@
-import '';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/backend/schema/enums/enums.dart';
+import '/components/web_side_bar/web_side_bar_widget.dart';
 import '/flutter_flow/flutter_flow_count_controller.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -67,232 +67,847 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).transparent,
-          automaticallyImplyLeading: false,
-          leading: FlutterFlowIconButton(
-            borderColor: Colors.transparent,
-            borderRadius: 30.0,
-            borderWidth: 1.0,
-            buttonSize: 65.0,
-            icon: Icon(
-              Icons.chevron_left_rounded,
-              color: FlutterFlowTheme.of(context).primary,
-              size: 35.0,
-            ),
-            onPressed: () async {
-              context.pop();
-            },
-          ),
-          title: Text(
-            'Generate Quiz',
-            style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  fontFamily: 'Manrope',
-                  color: FlutterFlowTheme.of(context).primary,
-                  fontSize: 22.0,
-                  letterSpacing: 0.0,
+        appBar: responsiveVisibility(
+          context: context,
+          tabletLandscape: false,
+          desktop: false,
+        )
+            ? AppBar(
+                backgroundColor: FlutterFlowTheme.of(context).transparent,
+                automaticallyImplyLeading: false,
+                leading: FlutterFlowIconButton(
+                  borderColor: Colors.transparent,
+                  borderRadius: 30.0,
+                  borderWidth: 1.0,
+                  buttonSize: 65.0,
+                  icon: Icon(
+                    Icons.chevron_left_rounded,
+                    color: FlutterFlowTheme.of(context).primary,
+                    size: 35.0,
+                  ),
+                  onPressed: () async {
+                    context.safePop();
+                  },
                 ),
-          ),
-          actions: [],
-          centerTitle: true,
-          elevation: 0.0,
-        ),
+                title: Text(
+                  FFLocalizations.of(context).getText(
+                    'rsq6a7d1' /* Generate a new quiz */,
+                  ),
+                  style: FlutterFlowTheme.of(context).headlineMedium.override(
+                        fontFamily: 'Manrope',
+                        color: FlutterFlowTheme.of(context).primary,
+                        fontSize: 22.0,
+                        letterSpacing: 0.0,
+                      ),
+                ),
+                actions: [],
+                centerTitle: true,
+                elevation: 0.0,
+              )
+            : null,
         body: SafeArea(
           top: true,
-          child: Align(
-            alignment: AlignmentDirectional(0.0, -1.0),
-            child: Container(
-              constraints: BoxConstraints(
-                maxWidth: 600.0,
-              ),
-              decoration: BoxDecoration(),
-              child: Padding(
-                padding: EdgeInsets.all(16.0),
-                child: SingleChildScrollView(
-                  primary: false,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Container(
-                        width: MediaQuery.sizeOf(context).width * 1.0,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16.0),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.all(12.0),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Align(
-                                alignment: AlignmentDirectional(-1.0, -1.0),
-                                child: Text(
-                                  'Choose Input Format',
-                                  style: FlutterFlowTheme.of(context)
-                                      .headlineSmall
-                                      .override(
-                                        fontFamily: 'Manrope',
-                                        letterSpacing: 0.0,
-                                      ),
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              if (responsiveVisibility(
+                context: context,
+                phone: false,
+                tablet: false,
+              ))
+                wrapWithModel(
+                  model: _model.webSideBarModel,
+                  updateCallback: () => safeSetState(() {}),
+                  child: WebSideBarWidget(),
+                ),
+              Flexible(
+                child: Align(
+                  alignment: AlignmentDirectional(0.0, -1.0),
+                  child: Container(
+                    constraints: BoxConstraints(
+                      maxWidth: FFAppConstants.PageContentMaxWidth.toDouble(),
+                    ),
+                    decoration: BoxDecoration(),
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(
+                          18.0, 10.0, 18.0, 18.0),
+                      child: SingleChildScrollView(
+                        primary: false,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            if (responsiveVisibility(
+                              context: context,
+                              phone: false,
+                              tablet: false,
+                            ))
+                              Text(
+                                FFLocalizations.of(context).getText(
+                                  'xix5b4fe' /* Generate a new quiz */,
                                 ),
-                              ),
-                              FlutterFlowDropDown<QuizInputFormat>(
-                                controller: _model
-                                        .dropDownInputFormatValueController ??=
-                                    FormFieldController<QuizInputFormat>(
-                                  _model.dropDownInputFormatValue ??=
-                                      QuizInputFormat.websiteUrl,
-                                ),
-                                options: List<QuizInputFormat>.from(
-                                    QuizInputFormat.values),
-                                optionLabels: [
-                                  'Raw text',
-                                  'Website URL',
-                                  'PDF file'
-                                ],
-                                onChanged: (val) async {
-                                  safeSetState(() =>
-                                      _model.dropDownInputFormatValue = val);
-                                  _model.selectedInputFormat =
-                                      _model.dropDownInputFormatValue;
-                                  safeSetState(() {});
-                                },
-                                height: 50.0,
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .bodyMedium
+                                style: FlutterFlowTheme.of(context)
+                                    .headlineMedium
                                     .override(
-                                      fontFamily: 'Roboto',
-                                      fontSize: 16.0,
+                                      fontFamily: 'Manrope',
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      fontSize: 22.0,
                                       letterSpacing: 0.0,
                                     ),
-                                hintText: 'Website URL',
-                                icon: Icon(
-                                  Icons.keyboard_arrow_down_rounded,
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryText,
-                                  size: 24.0,
-                                ),
-                                fillColor: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                                elevation: 2.0,
-                                borderColor:
-                                    FlutterFlowTheme.of(context).alternate,
-                                borderWidth: 2.0,
-                                borderRadius: 15.0,
-                                margin: EdgeInsetsDirectional.fromSTEB(
-                                    12.0, 0.0, 12.0, 0.0),
-                                hidesUnderline: true,
-                                isOverButton: false,
-                                isSearchable: false,
-                                isMultiSelect: false,
                               ),
-                            ].divide(SizedBox(height: 16.0)),
-                          ),
-                        ),
-                      ),
-                      Builder(
-                        builder: (context) {
-                          if (_model.selectedInputFormat ==
-                              QuizInputFormat.rawText) {
-                            return Material(
-                              color: Colors.transparent,
-                              elevation: 2.0,
-                              shape: RoundedRectangleBorder(
+                            Container(
+                              width: MediaQuery.sizeOf(context).width * 1.0,
+                              decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(16.0),
                               ),
-                              child: Container(
-                                width: MediaQuery.sizeOf(context).width * 1.0,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  borderRadius: BorderRadius.circular(16.0),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsets.all(12.0),
-                                  child: Column(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Align(
+                                    alignment: AlignmentDirectional(-1.0, -1.0),
+                                    child: Text(
+                                      FFLocalizations.of(context).getText(
+                                        'yxq1hbmg' /* Choose Input Format */,
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .titleLarge
+                                          .override(
+                                            fontFamily: 'Manrope',
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                    ),
+                                  ),
+                                  FlutterFlowDropDown<QuizInputFormat>(
+                                    controller: _model
+                                            .dropDownInputFormatValueController ??=
+                                        FormFieldController<QuizInputFormat>(
+                                      _model.dropDownInputFormatValue ??=
+                                          QuizInputFormat.websiteUrl,
+                                    ),
+                                    options: List<QuizInputFormat>.from(
+                                        QuizInputFormat.values),
+                                    optionLabels: [
+                                      FFLocalizations.of(context).getText(
+                                        'ctdkle21' /* Raw text */,
+                                      ),
+                                      FFLocalizations.of(context).getText(
+                                        '0zqa3so0' /* Website URL */,
+                                      ),
+                                      FFLocalizations.of(context).getText(
+                                        'm4eew1el' /* PDF file */,
+                                      )
+                                    ],
+                                    onChanged: (val) async {
+                                      safeSetState(() => _model
+                                          .dropDownInputFormatValue = val);
+                                      _model.selectedInputFormat =
+                                          _model.dropDownInputFormatValue;
+                                      safeSetState(() {});
+                                    },
+                                    height: 50.0,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Roboto',
+                                          fontSize: 16.0,
+                                          letterSpacing: 0.0,
+                                        ),
+                                    hintText:
+                                        FFLocalizations.of(context).getText(
+                                      '6lpl84d7' /* Website URL */,
+                                    ),
+                                    icon: Icon(
+                                      Icons.keyboard_arrow_down_rounded,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      size: 24.0,
+                                    ),
+                                    fillColor: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
+                                    elevation: 2.0,
+                                    borderColor: FlutterFlowTheme.of(context)
+                                        .borderColor,
+                                    borderWidth: 1.0,
+                                    borderRadius: 15.0,
+                                    margin: EdgeInsetsDirectional.fromSTEB(
+                                        12.0, 0.0, 12.0, 0.0),
+                                    hidesUnderline: true,
+                                    isOverButton: false,
+                                    isSearchable: false,
+                                    isMultiSelect: false,
+                                  ),
+                                ].divide(SizedBox(height: 10.0)),
+                              ),
+                            ),
+                            Builder(
+                              builder: (context) {
+                                if (_model.selectedInputFormat ==
+                                    QuizInputFormat.rawText) {
+                                  return Container(
+                                    width:
+                                        MediaQuery.sizeOf(context).width * 1.0,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(16.0),
+                                    ),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Text(
+                                          FFLocalizations.of(context).getText(
+                                            'h9aevirc' /* Enter your text content */,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .headlineSmall
+                                              .override(
+                                                fontFamily: 'Manrope',
+                                                letterSpacing: 0.0,
+                                              ),
+                                        ),
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Expanded(
+                                              child: TextFormField(
+                                                controller: _model
+                                                    .textFieldRawTextTextController,
+                                                focusNode: _model
+                                                    .textFieldRawTextFocusNode,
+                                                autofocus: false,
+                                                obscureText: false,
+                                                decoration: InputDecoration(
+                                                  labelStyle: FlutterFlowTheme
+                                                          .of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Roboto',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                  hintText: FFLocalizations.of(
+                                                          context)
+                                                      .getText(
+                                                    '9047lxhq' /* Enter your text here... */,
+                                                  ),
+                                                  hintStyle: FlutterFlowTheme
+                                                          .of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Roboto',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                  enabledBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .alternate,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            14.0),
+                                                  ),
+                                                  focusedBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color: Color(0x00000000),
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            14.0),
+                                                  ),
+                                                  errorBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color: Color(0x00000000),
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            14.0),
+                                                  ),
+                                                  focusedErrorBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color: Color(0x00000000),
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            14.0),
+                                                  ),
+                                                  filled: true,
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primaryBackground,
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyLarge
+                                                        .override(
+                                                          fontFamily: 'Roboto',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                maxLines: 12,
+                                                minLines: 8,
+                                                validator: _model
+                                                    .textFieldRawTextTextControllerValidator
+                                                    .asValidator(context),
+                                              ),
+                                            ),
+                                            InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                _model.pastedContentRawText =
+                                                    await actions
+                                                        .pasteTextFromClipboard();
+                                                safeSetState(() {
+                                                  _model.textFieldRawTextTextController
+                                                          ?.text =
+                                                      _model
+                                                          .pastedContentRawText!;
+                                                });
+
+                                                safeSetState(() {});
+                                              },
+                                              child: Material(
+                                                color: Colors.transparent,
+                                                elevation: 1.0,
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                ),
+                                                child: Container(
+                                                  width: 50.0,
+                                                  height: 45.0,
+                                                  decoration: BoxDecoration(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .tonicColor1,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                    border: Border.all(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .borderColor,
+                                                    ),
+                                                  ),
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0.0, 0.0),
+                                                  child: Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.min,
+                                                    children: [
+                                                      Icon(
+                                                        Icons
+                                                            .content_paste_rounded,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .info,
+                                                        size: 17.0,
+                                                      ),
+                                                      Text(
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getText(
+                                                          'pe8avzqo' /* paste */,
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Roboto',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .info,
+                                                                  fontSize:
+                                                                      11.0,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                      ),
+                                                    ].divide(
+                                                        SizedBox(height: 2.0)),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ].divide(SizedBox(width: 5.0)),
+                                        ),
+                                      ].divide(SizedBox(height: 16.0)),
+                                    ),
+                                  );
+                                } else if (_model.selectedInputFormat ==
+                                    QuizInputFormat.pdfFile) {
+                                  return Visibility(
+                                    visible: _model.selectedInputFormat ==
+                                        QuizInputFormat.pdfFile,
+                                    child: Container(
+                                      width: MediaQuery.sizeOf(context).width *
+                                          1.0,
+                                      decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(16.0),
+                                      ),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Align(
+                                            alignment: AlignmentDirectional(
+                                                -1.0, -1.0),
+                                            child: Text(
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                'itbni5eg' /* Select a PDF file */,
+                                              ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineSmall
+                                                      .override(
+                                                        fontFamily: 'Manrope',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                            ),
+                                          ),
+                                          Align(
+                                            alignment:
+                                                AlignmentDirectional(-1.0, 0.0),
+                                            child: FFButtonWidget(
+                                              onPressed: () async {
+                                                final selectedFiles =
+                                                    await selectFiles(
+                                                  allowedExtensions: ['pdf'],
+                                                  multiFile: false,
+                                                );
+                                                if (selectedFiles != null) {
+                                                  safeSetState(() => _model
+                                                      .isDataUploading = true);
+                                                  var selectedUploadedFiles =
+                                                      <FFUploadedFile>[];
+
+                                                  try {
+                                                    showUploadMessage(
+                                                      context,
+                                                      'Uploading file...',
+                                                      showLoading: true,
+                                                    );
+                                                    selectedUploadedFiles =
+                                                        selectedFiles
+                                                            .map((m) =>
+                                                                FFUploadedFile(
+                                                                  name: m
+                                                                      .storagePath
+                                                                      .split(
+                                                                          '/')
+                                                                      .last,
+                                                                  bytes:
+                                                                      m.bytes,
+                                                                ))
+                                                            .toList();
+                                                  } finally {
+                                                    ScaffoldMessenger.of(
+                                                            context)
+                                                        .hideCurrentSnackBar();
+                                                    _model.isDataUploading =
+                                                        false;
+                                                  }
+                                                  if (selectedUploadedFiles
+                                                          .length ==
+                                                      selectedFiles.length) {
+                                                    safeSetState(() {
+                                                      _model.uploadedLocalFile =
+                                                          selectedUploadedFiles
+                                                              .first;
+                                                    });
+                                                    showUploadMessage(
+                                                      context,
+                                                      'Success!',
+                                                    );
+                                                  } else {
+                                                    safeSetState(() {});
+                                                    showUploadMessage(
+                                                      context,
+                                                      'Failed to upload file',
+                                                    );
+                                                    return;
+                                                  }
+                                                }
+                                              },
+                                              text: FFLocalizations.of(context)
+                                                  .getText(
+                                                'fbla3rzo' /* Click to upload */,
+                                              ),
+                                              options: FFButtonOptions(
+                                                height: 45.0,
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        16.0, 0.0, 16.0, 0.0),
+                                                iconPadding:
+                                                    EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                            0.0, 0.0, 0.0, 0.0),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .tonicColor1,
+                                                textStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelLarge
+                                                        .override(
+                                                          fontFamily: 'Roboto',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                elevation: 1.0,
+                                                borderRadius:
+                                                    BorderRadius.circular(24.0),
+                                              ),
+                                            ),
+                                          ),
+                                        ].divide(SizedBox(height: 16.0)),
+                                      ),
+                                    ),
+                                  );
+                                } else {
+                                  return Container(
+                                    width:
+                                        MediaQuery.sizeOf(context).width * 1.0,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(16.0),
+                                    ),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Align(
+                                          alignment:
+                                              AlignmentDirectional(-1.0, -1.0),
+                                          child: Text(
+                                            FFLocalizations.of(context).getText(
+                                              '3jfzozzo' /* Enter a website URL */,
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .titleLarge
+                                                .override(
+                                                  fontFamily: 'Manrope',
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                          ),
+                                        ),
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Expanded(
+                                              child: TextFormField(
+                                                controller: _model
+                                                    .textFieldUrlTextController,
+                                                focusNode: _model
+                                                    .textFieldUrlFocusNode,
+                                                autofocus: false,
+                                                textInputAction:
+                                                    TextInputAction.done,
+                                                obscureText: false,
+                                                decoration: InputDecoration(
+                                                  labelStyle: FlutterFlowTheme
+                                                          .of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Roboto',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                  hintText: FFLocalizations.of(
+                                                          context)
+                                                      .getText(
+                                                    'xcmt1jm0' /* Enter an url here... */,
+                                                  ),
+                                                  hintStyle: FlutterFlowTheme
+                                                          .of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Roboto',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                                  enabledBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .borderColor,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            18.0),
+                                                  ),
+                                                  focusedBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color: Color(0x00000000),
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            18.0),
+                                                  ),
+                                                  errorBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color: Color(0x00000000),
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            18.0),
+                                                  ),
+                                                  focusedErrorBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color: Color(0x00000000),
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            18.0),
+                                                  ),
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyLarge
+                                                        .override(
+                                                          fontFamily: 'Roboto',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                maxLines: null,
+                                                validator: _model
+                                                    .textFieldUrlTextControllerValidator
+                                                    .asValidator(context),
+                                              ),
+                                            ),
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  0.0, 0.0),
+                                              child: InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onTap: () async {
+                                                  _model.pastedTextContent =
+                                                      await actions
+                                                          .pasteTextFromClipboard();
+                                                  safeSetState(() {
+                                                    _model.textFieldUrlTextController
+                                                            ?.text =
+                                                        _model
+                                                            .pastedTextContent!;
+                                                  });
+
+                                                  safeSetState(() {});
+                                                },
+                                                child: Material(
+                                                  color: Colors.transparent,
+                                                  elevation: 1.0,
+                                                  shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  child: Container(
+                                                    width: 50.0,
+                                                    height: 45.0,
+                                                    decoration: BoxDecoration(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .tonicColor1,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                      border: Border.all(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .borderColor,
+                                                      ),
+                                                    ),
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            0.0, 0.0),
+                                                    child: Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.min,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        Icon(
+                                                          Icons
+                                                              .content_paste_rounded,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .info,
+                                                          size: 17.0,
+                                                        ),
+                                                        Text(
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'fz6erg47' /* paste */,
+                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Roboto',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .info,
+                                                                fontSize: 11.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
+                                                        ),
+                                                      ].divide(SizedBox(
+                                                          height: 2.0)),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ].divide(SizedBox(width: 5.0)),
+                                        ),
+                                      ].divide(SizedBox(height: 10.0)),
+                                    ),
+                                  );
+                                }
+                              },
+                            ),
+                            Container(
+                              width: MediaQuery.sizeOf(context).width * 1.0,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(16.0),
+                              ),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Align(
+                                    alignment: AlignmentDirectional(-1.0, -1.0),
+                                    child: Text(
+                                      FFLocalizations.of(context).getText(
+                                        'rk7887xn' /* Quiz Settings */,
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .titleLarge
+                                          .override(
+                                            fontFamily: 'Manrope',
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                    ),
+                                  ),
+                                  Column(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
-                                      Text(
-                                        'Enter your text content',
-                                        style: FlutterFlowTheme.of(context)
-                                            .headlineSmall
-                                            .override(
-                                              fontFamily: 'Manrope',
-                                              letterSpacing: 0.0,
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            FFLocalizations.of(context).getText(
+                                              'wki9wvcs' /* Number of Questions */,
                                             ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyLarge
+                                                .override(
+                                                  fontFamily: 'Roboto',
+                                                  letterSpacing: 0.0,
+                                                ),
+                                          ),
+                                          Container(
+                                            width: 120.0,
+                                            height: 40.0,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                              shape: BoxShape.rectangle,
+                                            ),
+                                            child: FlutterFlowCountController(
+                                              decrementIconBuilder: (enabled) =>
+                                                  Icon(
+                                                Icons.remove_rounded,
+                                                color: enabled
+                                                    ? FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryText
+                                                    : FlutterFlowTheme.of(
+                                                            context)
+                                                        .alternate,
+                                                size: 24.0,
+                                              ),
+                                              incrementIconBuilder: (enabled) =>
+                                                  Icon(
+                                                Icons.add_rounded,
+                                                color: enabled
+                                                    ? FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary
+                                                    : FlutterFlowTheme.of(
+                                                            context)
+                                                        .alternate,
+                                                size: 24.0,
+                                              ),
+                                              countBuilder: (count) => Text(
+                                                count.toString(),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleLarge
+                                                        .override(
+                                                          fontFamily: 'Manrope',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                              ),
+                                              count: _model
+                                                  .countControllerValue ??= 10,
+                                              updateCount: (count) =>
+                                                  safeSetState(() => _model
+                                                          .countControllerValue =
+                                                      count),
+                                              stepSize: 1,
+                                              minimum: 0,
+                                              contentPadding:
+                                                  EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          12.0, 0.0, 12.0, 0.0),
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                       Row(
                                         mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Expanded(
-                                            child: TextFormField(
-                                              controller: _model
-                                                  .textFieldRawTextTextController,
-                                              focusNode: _model
-                                                  .textFieldRawTextFocusNode,
-                                              autofocus: false,
-                                              obscureText: false,
-                                              decoration: InputDecoration(
-                                                labelStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                hintText:
-                                                    'Enter your text here...',
-                                                hintStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                enabledBorder:
-                                                    OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .alternate,
-                                                    width: 1.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          14.0),
-                                                ),
-                                                focusedBorder:
-                                                    OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                    color: Color(0x00000000),
-                                                    width: 1.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          14.0),
-                                                ),
-                                                errorBorder: OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                    color: Color(0x00000000),
-                                                    width: 1.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          14.0),
-                                                ),
-                                                focusedErrorBorder:
-                                                    OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                    color: Color(0x00000000),
-                                                    width: 1.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          14.0),
-                                                ),
-                                                filled: true,
-                                                fillColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .alternate,
+                                          Flexible(
+                                            child: Text(
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                'i8deixx7' /* Generate flashcards ? */,
                                               ),
                                               style:
                                                   FlutterFlowTheme.of(context)
@@ -301,630 +916,208 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                                         fontFamily: 'Roboto',
                                                         letterSpacing: 0.0,
                                                       ),
-                                              maxLines: 12,
-                                              minLines: 8,
-                                              validator: _model
-                                                  .textFieldRawTextTextControllerValidator
-                                                  .asValidator(context),
                                             ),
                                           ),
-                                          InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
-                                            onTap: () async {
-                                              _model.pastedContentRawText =
-                                                  await actions
-                                                      .pasteTextFromClipboard();
-                                              safeSetState(() {
-                                                _model.textFieldRawTextTextController
-                                                        ?.text =
-                                                    _model
-                                                        .pastedContentRawText!;
-                                              });
-
-                                              safeSetState(() {});
-                                            },
-                                            child: Container(
-                                              width: 50.0,
-                                              height: 45.0,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                              ),
-                                              alignment: AlignmentDirectional(
-                                                  0.0, 0.0),
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.min,
-                                                children: [
-                                                  Icon(
-                                                    Icons.content_paste_rounded,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .info,
-                                                    size: 17.0,
-                                                  ),
-                                                  Text(
-                                                    'paste',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .info,
-                                                          fontSize: 11.0,
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                  ),
-                                                ].divide(SizedBox(height: 2.0)),
-                                              ),
-                                            ),
-                                          ),
-                                        ].divide(SizedBox(width: 5.0)),
-                                      ),
-                                    ].divide(SizedBox(height: 16.0)),
-                                  ),
-                                ),
-                              ),
-                            );
-                          } else if (_model.selectedInputFormat ==
-                              QuizInputFormat.pdfFile) {
-                            return Visibility(
-                              visible: _model.selectedInputFormat ==
-                                  QuizInputFormat.pdfFile,
-                              child: Material(
-                                color: Colors.transparent,
-                                elevation: 2.0,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(16.0),
-                                ),
-                                child: Container(
-                                  width: MediaQuery.sizeOf(context).width * 1.0,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    borderRadius: BorderRadius.circular(16.0),
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        24.0, 24.0, 24.0, 24.0),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Text(
-                                          'Select a PDF file',
-                                          style: FlutterFlowTheme.of(context)
-                                              .headlineSmall
-                                              .override(
-                                                fontFamily: 'Manrope',
-                                                letterSpacing: 0.0,
-                                              ),
-                                        ),
-                                        FFButtonWidget(
-                                          onPressed: () async {
-                                            final selectedFiles =
-                                                await selectFiles(
-                                              allowedExtensions: ['pdf'],
-                                              multiFile: false,
-                                            );
-                                            if (selectedFiles != null) {
+                                          Switch.adaptive(
+                                            value: _model
+                                                .switchGenerateFlashcardsValue!,
+                                            onChanged: (newValue) async {
                                               safeSetState(() => _model
-                                                  .isDataUploading = true);
-                                              var selectedUploadedFiles =
-                                                  <FFUploadedFile>[];
-
-                                              try {
-                                                showUploadMessage(
-                                                  context,
-                                                  'Uploading file...',
-                                                  showLoading: true,
-                                                );
-                                                selectedUploadedFiles =
-                                                    selectedFiles
-                                                        .map((m) =>
-                                                            FFUploadedFile(
-                                                              name: m
-                                                                  .storagePath
-                                                                  .split('/')
-                                                                  .last,
-                                                              bytes: m.bytes,
-                                                            ))
-                                                        .toList();
-                                              } finally {
-                                                ScaffoldMessenger.of(context)
-                                                    .hideCurrentSnackBar();
-                                                _model.isDataUploading = false;
-                                              }
-                                              if (selectedUploadedFiles
-                                                      .length ==
-                                                  selectedFiles.length) {
-                                                safeSetState(() {
-                                                  _model.uploadedLocalFile =
-                                                      selectedUploadedFiles
-                                                          .first;
-                                                });
-                                                showUploadMessage(
-                                                  context,
-                                                  'Success!',
-                                                );
-                                              } else {
-                                                safeSetState(() {});
-                                                showUploadMessage(
-                                                  context,
-                                                  'Failed to upload file',
-                                                );
-                                                return;
-                                              }
-                                            }
-                                          },
-                                          text: 'Click to upload',
-                                          options: FFButtonOptions(
-                                            height: 40.0,
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    16.0, 0.0, 16.0, 0.0),
-                                            iconPadding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                            textStyle:
+                                                      .switchGenerateFlashcardsValue =
+                                                  newValue!);
+                                            },
+                                            activeColor:
                                                 FlutterFlowTheme.of(context)
-                                                    .titleSmall
-                                                    .override(
-                                                      fontFamily: 'Manrope',
-                                                      color: Colors.white,
-                                                      letterSpacing: 0.0,
-                                                    ),
-                                            elevation: 0.0,
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
+                                                    .tonicColor1,
+                                            activeTrackColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .tonicColor1,
+                                            inactiveTrackColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .alternate,
+                                            inactiveThumbColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondaryBackground,
                                           ),
-                                        ),
-                                      ].divide(SizedBox(height: 16.0)),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            );
-                          } else {
-                            return Container(
-                              width: MediaQuery.sizeOf(context).width * 1.0,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(16.0),
-                              ),
-                              child: Padding(
-                                padding: EdgeInsets.all(12.0),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Align(
-                                      alignment:
-                                          AlignmentDirectional(-1.0, -1.0),
-                                      child: Text(
-                                        'Enter a website URL',
-                                        style: FlutterFlowTheme.of(context)
-                                            .headlineSmall
-                                            .override(
-                                              fontFamily: 'Manrope',
-                                              letterSpacing: 0.0,
-                                            ),
+                                        ],
                                       ),
-                                    ),
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Expanded(
-                                          child: TextFormField(
-                                            controller: _model
-                                                .textFieldUrlTextController,
-                                            focusNode:
-                                                _model.textFieldUrlFocusNode,
-                                            autofocus: false,
-                                            textInputAction:
-                                                TextInputAction.done,
-                                            obscureText: false,
-                                            decoration: InputDecoration(
-                                              labelStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Roboto',
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                              hintText: 'Enter an url here...',
-                                              hintStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Roboto',
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                              enabledBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .alternate,
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(18.0),
-                                              ),
-                                              focusedBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: Color(0x00000000),
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(18.0),
-                                              ),
-                                              errorBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: Color(0x00000000),
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(18.0),
-                                              ),
-                                              focusedErrorBorder:
-                                                  OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: Color(0x00000000),
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(18.0),
-                                              ),
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyLarge
-                                                .override(
-                                                  fontFamily: 'Roboto',
-                                                  letterSpacing: 0.0,
-                                                ),
-                                            maxLines: null,
-                                            validator: _model
-                                                .textFieldUrlTextControllerValidator
-                                                .asValidator(context),
-                                          ),
-                                        ),
-                                        InkWell(
-                                          splashColor: Colors.transparent,
-                                          focusColor: Colors.transparent,
-                                          hoverColor: Colors.transparent,
-                                          highlightColor: Colors.transparent,
-                                          onTap: () async {
-                                            _model.pastedTextContent =
-                                                await actions
-                                                    .pasteTextFromClipboard();
-                                            safeSetState(() {
-                                              _model.textFieldUrlTextController
-                                                      ?.text =
-                                                  _model.pastedTextContent!;
-                                            });
-
-                                            safeSetState(() {});
-                                          },
-                                          child: Container(
-                                            width: 50.0,
-                                            height: 45.0,
-                                            decoration: BoxDecoration(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .tonicColor1,
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            alignment:
-                                                AlignmentDirectional(0.0, 0.0),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                Icon(
-                                                  Icons.content_paste_rounded,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .info,
-                                                  size: 17.0,
-                                                ),
-                                                Text(
-                                                  'paste',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Roboto',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .info,
-                                                        fontSize: 11.0,
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                                ),
-                                              ].divide(SizedBox(height: 2.0)),
-                                            ),
-                                          ),
-                                        ),
-                                      ].divide(SizedBox(width: 5.0)),
-                                    ),
-                                  ].divide(SizedBox(height: 16.0)),
-                                ),
+                                    ].divide(SizedBox(height: 5.0)),
+                                  ),
+                                ].divide(SizedBox(height: 10.0)),
                               ),
-                            );
-                          }
-                        },
-                      ),
-                      Container(
-                        width: MediaQuery.sizeOf(context).width * 1.0,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16.0),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.all(12.0),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Align(
-                                alignment: AlignmentDirectional(-1.0, -1.0),
-                                child: Text(
-                                  'Quiz Settings',
-                                  style: FlutterFlowTheme.of(context)
-                                      .headlineSmall
-                                      .override(
-                                        fontFamily: 'Manrope',
-                                        letterSpacing: 0.0,
-                                      ),
-                                ),
-                              ),
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    'Number of Questions',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyLarge
-                                        .override(
-                                          fontFamily: 'Roboto',
-                                          letterSpacing: 0.0,
-                                        ),
-                                  ),
-                                  Container(
-                                    width: 120.0,
-                                    height: 40.0,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      shape: BoxShape.rectangle,
-                                    ),
-                                    child: FlutterFlowCountController(
-                                      decrementIconBuilder: (enabled) => Icon(
-                                        Icons.remove_rounded,
-                                        color: enabled
-                                            ? FlutterFlowTheme.of(context)
-                                                .secondaryText
-                                            : FlutterFlowTheme.of(context)
-                                                .alternate,
-                                        size: 24.0,
-                                      ),
-                                      incrementIconBuilder: (enabled) => Icon(
-                                        Icons.add_rounded,
-                                        color: enabled
-                                            ? FlutterFlowTheme.of(context)
-                                                .primary
-                                            : FlutterFlowTheme.of(context)
-                                                .alternate,
-                                        size: 24.0,
-                                      ),
-                                      countBuilder: (count) => Text(
-                                        count.toString(),
-                                        style: FlutterFlowTheme.of(context)
-                                            .titleLarge
-                                            .override(
-                                              fontFamily: 'Manrope',
-                                              letterSpacing: 0.0,
-                                            ),
-                                      ),
-                                      count: _model.countControllerValue ??= 10,
-                                      updateCount: (count) => safeSetState(() =>
-                                          _model.countControllerValue = count),
-                                      stepSize: 1,
-                                      minimum: 0,
-                                      contentPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              12.0, 0.0, 12.0, 0.0),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Flexible(
-                                    child: Text(
-                                      'Generate flashcards',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyLarge
-                                          .override(
-                                            fontFamily: 'Roboto',
-                                            letterSpacing: 0.0,
-                                          ),
-                                    ),
-                                  ),
-                                  Switch.adaptive(
-                                    value:
-                                        _model.switchGenerateFlashcardsValue!,
-                                    onChanged: (newValue) async {
-                                      safeSetState(() =>
-                                          _model.switchGenerateFlashcardsValue =
-                                              newValue!);
-                                    },
-                                    activeColor:
-                                        FlutterFlowTheme.of(context).primary,
-                                    activeTrackColor:
-                                        FlutterFlowTheme.of(context).primary,
-                                    inactiveTrackColor:
-                                        FlutterFlowTheme.of(context).alternate,
-                                    inactiveThumbColor:
-                                        FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                  ),
-                                ],
-                              ),
-                            ].divide(SizedBox(height: 16.0)),
-                          ),
-                        ),
-                      ),
-                      FFButtonWidget(
-                        onPressed: () async {
-                          if (_model.selectedInputFormat ==
-                              QuizInputFormat.rawText) {
-                            _model.jsonFileText = await actions.createJsonFile(
-                              _model.textFieldRawTextTextController.text,
-                              _model.countControllerValue!,
-                              4,
-                              '',
-                              _model.switchGenerateFlashcardsValue!,
-                            );
-                            _model.apiResultFromText =
-                                await QuizzGenerationAPICall.call(
-                              jsonFile: _model.jsonFileText,
-                            );
-
-                            if ((_model.apiResultFromText?.succeeded ?? true)) {
-                              context.goNamed(
-                                QuizPageWidget.routeName,
-                                queryParameters: {
-                                  'generatedQuizz': serializeParam(
-                                    GeneratedQuizzStruct.maybeFromMap(
-                                        (_model.apiResultFromText?.jsonBody ??
-                                            '')),
-                                    ParamType.DataStruct,
-                                  ),
-                                  'sourceType': serializeParam(
-                                    'rawText',
-                                    ParamType.String,
-                                  ),
-                                  'sourceInput': serializeParam(
+                            ),
+                            FFButtonWidget(
+                              onPressed: () async {
+                                if (_model.selectedInputFormat ==
+                                    QuizInputFormat.rawText) {
+                                  _model.jsonFileText =
+                                      await actions.createJsonFile(
                                     _model.textFieldRawTextTextController.text,
-                                    ParamType.String,
-                                  ),
-                                }.withoutNulls,
-                              );
-                            }
-                            await actions.printApiCallResult(
-                              (_model.apiResultFromText?.jsonBody ?? ''),
-                            );
-                          } else if (_model.selectedInputFormat ==
-                              QuizInputFormat.websiteUrl) {
-                            _model.jsonFileUrl = await actions.createJsonFile(
-                              '',
-                              _model.countControllerValue!,
-                              4,
-                              _model.textFieldUrlTextController.text,
-                              _model.switchGenerateFlashcardsValue!,
-                            );
-                            _model.apiResultFromUrl =
-                                await QuizzGenerationAPICall.call(
-                              jsonFile: _model.jsonFileUrl,
-                            );
+                                    _model.countControllerValue!,
+                                    4,
+                                    '',
+                                    _model.switchGenerateFlashcardsValue!,
+                                  );
+                                  _model.apiResultFromText =
+                                      await QuizzGenerationAPICall.call(
+                                    jsonFile: _model.jsonFileText,
+                                  );
 
-                            if ((_model.apiResultFromUrl?.succeeded ?? true)) {
-                              context.goNamed(
-                                QuizPageWidget.routeName,
-                                queryParameters: {
-                                  'generatedQuizz': serializeParam(
-                                    GeneratedQuizzStruct.maybeFromMap(
-                                        (_model.apiResultFromUrl?.jsonBody ??
-                                            '')),
-                                    ParamType.DataStruct,
-                                  ),
-                                  'sourceType': serializeParam(
-                                    'url',
-                                    ParamType.String,
-                                  ),
-                                  'sourceInput': serializeParam(
+                                  if ((_model.apiResultFromText?.succeeded ??
+                                      true)) {
+                                    context.goNamed(
+                                      QuizExoWidget.routeName,
+                                      queryParameters: {
+                                        'generatedQuizz': serializeParam(
+                                          GeneratedQuizzStruct.maybeFromMap(
+                                              (_model.apiResultFromText
+                                                      ?.jsonBody ??
+                                                  '')),
+                                          ParamType.DataStruct,
+                                        ),
+                                        'sourceType': serializeParam(
+                                          'rawText',
+                                          ParamType.String,
+                                        ),
+                                        'sourceInput': serializeParam(
+                                          _model.textFieldRawTextTextController
+                                              .text,
+                                          ParamType.String,
+                                        ),
+                                      }.withoutNulls,
+                                      extra: <String, dynamic>{
+                                        kTransitionInfoKey: TransitionInfo(
+                                          hasTransition: true,
+                                          transitionType:
+                                              PageTransitionType.fade,
+                                          duration: Duration(milliseconds: 0),
+                                        ),
+                                      },
+                                    );
+                                  }
+                                } else if (_model.selectedInputFormat ==
+                                    QuizInputFormat.websiteUrl) {
+                                  _model.jsonFileUrl =
+                                      await actions.createJsonFile(
+                                    '',
+                                    _model.countControllerValue!,
+                                    4,
                                     _model.textFieldUrlTextController.text,
-                                    ParamType.String,
-                                  ),
-                                }.withoutNulls,
-                              );
-                            }
-                            await actions.printApiCallResult(
-                              (_model.apiResultFromUrl?.jsonBody ?? ''),
-                            );
-                          } else if (_model.selectedInputFormat ==
-                              QuizInputFormat.pdfFile) {
-                            _model.jsonFilePdf = await actions.createJsonFile(
-                              '',
-                              _model.countControllerValue!,
-                              4,
-                              '',
-                              _model.switchGenerateFlashcardsValue!,
-                            );
-                            _model.apiResultFromPdf =
-                                await QuizzGenerationAPICall.call(
-                              jsonFile: _model.jsonFilePdf,
-                              pdfFile: _model.uploadedLocalFile,
-                            );
+                                    _model.switchGenerateFlashcardsValue!,
+                                  );
+                                  _model.apiResultFromUrl =
+                                      await QuizzGenerationAPICall.call(
+                                    jsonFile: _model.jsonFileUrl,
+                                  );
 
-                            if ((_model.apiResultFromPdf?.succeeded ?? true)) {
-                              context.goNamed(
-                                QuizPageWidget.routeName,
-                                queryParameters: {
-                                  'generatedQuizz': serializeParam(
-                                    GeneratedQuizzStruct.maybeFromMap(
-                                        (_model.apiResultFromPdf?.jsonBody ??
-                                            '')),
-                                    ParamType.DataStruct,
-                                  ),
-                                  'sourceType': serializeParam(
-                                    'pdf',
-                                    ParamType.String,
-                                  ),
-                                }.withoutNulls,
-                              );
-                            }
-                            await actions.printApiCallResult(
-                              (_model.apiResultFromPdf?.jsonBody ?? ''),
-                            );
-                          }
+                                  if ((_model.apiResultFromUrl?.succeeded ??
+                                      true)) {
+                                    context.goNamed(
+                                      QuizExoWidget.routeName,
+                                      queryParameters: {
+                                        'generatedQuizz': serializeParam(
+                                          GeneratedQuizzStruct.maybeFromMap(
+                                              (_model.apiResultFromUrl
+                                                      ?.jsonBody ??
+                                                  '')),
+                                          ParamType.DataStruct,
+                                        ),
+                                        'sourceType': serializeParam(
+                                          'url',
+                                          ParamType.String,
+                                        ),
+                                        'sourceInput': serializeParam(
+                                          _model
+                                              .textFieldUrlTextController.text,
+                                          ParamType.String,
+                                        ),
+                                      }.withoutNulls,
+                                      extra: <String, dynamic>{
+                                        kTransitionInfoKey: TransitionInfo(
+                                          hasTransition: true,
+                                          transitionType:
+                                              PageTransitionType.fade,
+                                          duration: Duration(milliseconds: 0),
+                                        ),
+                                      },
+                                    );
+                                  }
+                                } else if (_model.selectedInputFormat ==
+                                    QuizInputFormat.pdfFile) {
+                                  _model.jsonFilePdf =
+                                      await actions.createJsonFile(
+                                    '',
+                                    _model.countControllerValue!,
+                                    4,
+                                    '',
+                                    _model.switchGenerateFlashcardsValue!,
+                                  );
+                                  _model.apiResultFromPdf =
+                                      await QuizzGenerationAPICall.call(
+                                    jsonFile: _model.jsonFilePdf,
+                                    pdfFile: _model.uploadedLocalFile,
+                                  );
 
-                          safeSetState(() {});
-                        },
-                        text: 'Generate Quiz',
-                        options: FFButtonOptions(
-                          width: double.infinity,
-                          height: 50.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              16.0, 0.0, 16.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).tonicColor1,
-                          textStyle:
-                              FlutterFlowTheme.of(context).labelLarge.override(
-                                    fontFamily: 'Roboto',
-                                    letterSpacing: 0.0,
-                                  ),
-                          borderRadius: BorderRadius.circular(24.0),
+                                  if ((_model.apiResultFromPdf?.succeeded ??
+                                      true)) {
+                                    context.goNamed(
+                                      QuizExoWidget.routeName,
+                                      queryParameters: {
+                                        'generatedQuizz': serializeParam(
+                                          GeneratedQuizzStruct.maybeFromMap(
+                                              (_model.apiResultFromPdf
+                                                      ?.jsonBody ??
+                                                  '')),
+                                          ParamType.DataStruct,
+                                        ),
+                                        'sourceType': serializeParam(
+                                          'pdf',
+                                          ParamType.String,
+                                        ),
+                                      }.withoutNulls,
+                                      extra: <String, dynamic>{
+                                        kTransitionInfoKey: TransitionInfo(
+                                          hasTransition: true,
+                                          transitionType:
+                                              PageTransitionType.fade,
+                                          duration: Duration(milliseconds: 0),
+                                        ),
+                                      },
+                                    );
+                                  }
+                                }
+
+                                safeSetState(() {});
+                              },
+                              text: FFLocalizations.of(context).getText(
+                                '1l2sr4pm' /* Generate Quiz */,
+                              ),
+                              options: FFButtonOptions(
+                                width: double.infinity,
+                                height: 45.0,
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 0.0, 16.0, 0.0),
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                color: FlutterFlowTheme.of(context).tonicColor1,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .labelLarge
+                                    .override(
+                                      fontFamily: 'Roboto',
+                                      letterSpacing: 0.0,
+                                    ),
+                                elevation: 1.0,
+                                borderRadius: BorderRadius.circular(24.0),
+                              ),
+                            ),
+                          ].divide(SizedBox(height: 20.0)),
                         ),
                       ),
-                    ].divide(SizedBox(height: 15.0)),
+                    ),
                   ),
                 ),
               ),
-            ),
+            ],
           ),
         ),
       ),

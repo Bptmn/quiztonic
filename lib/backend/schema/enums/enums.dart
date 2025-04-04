@@ -6,6 +6,12 @@ enum QuizInputFormat {
   pdfFile,
 }
 
+enum AuthMethod {
+  email,
+  google,
+  apple,
+}
+
 extension FFEnumExtensions<T extends Enum> on T {
   String serialize() => name;
 }
@@ -19,6 +25,8 @@ T? deserializeEnum<T>(String? value) {
   switch (T) {
     case (QuizInputFormat):
       return QuizInputFormat.values.deserialize(value) as T?;
+    case (AuthMethod):
+      return AuthMethod.values.deserialize(value) as T?;
     default:
       return null;
   }

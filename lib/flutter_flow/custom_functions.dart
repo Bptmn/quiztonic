@@ -39,3 +39,20 @@ String formatDuration(int durationInMilliseconds) {
 
   return "$formattedMinutes:$formattedSeconds";
 }
+
+TotalLearningTimeStruct totalLearningTimeFormat(
+  int totalTimeSpentOnQuiz,
+  int totalTimeSpentOnFlashcards,
+) {
+  final totalMs = totalTimeSpentOnQuiz + totalTimeSpentOnFlashcards;
+  final totalMinutes = totalMs ~/ 60000;
+  final days = totalMinutes ~/ (24 * 60);
+  final hours = (totalMinutes % (24 * 60)) ~/ 60;
+  final minutes = totalMinutes % 60;
+
+  return TotalLearningTimeStruct(
+    days: days,
+    hours: hours,
+    minutes: minutes,
+  );
+}

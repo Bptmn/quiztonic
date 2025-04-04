@@ -17,11 +17,6 @@ class SavedQuizRecord extends FirestoreRecord {
     _initializeFields();
   }
 
-  // "quizRef" field.
-  DocumentReference? _quizRef;
-  DocumentReference? get quizRef => _quizRef;
-  bool hasQuizRef() => _quizRef != null;
-
   // "quizName" field.
   String? _quizName;
   String get quizName => _quizName ?? '';
@@ -82,8 +77,17 @@ class SavedQuizRecord extends FirestoreRecord {
   List<FlashcardStruct> get flashcards => _flashcards ?? const [];
   bool hasFlashcards() => _flashcards != null;
 
+  // "folderRef" field.
+  DocumentReference? _folderRef;
+  DocumentReference? get folderRef => _folderRef;
+  bool hasFolderRef() => _folderRef != null;
+
+  // "quizId" field.
+  String? _quizId;
+  String get quizId => _quizId ?? '';
+  bool hasQuizId() => _quizId != null;
+
   void _initializeFields() {
-    _quizRef = snapshotData['quizRef'] as DocumentReference?;
     _quizName = snapshotData['quizName'] as String?;
     _createdAt = snapshotData['createdAt'] as DateTime?;
     _totalQuestions = castToType<int>(snapshotData['totalQuestions']);
@@ -102,6 +106,8 @@ class SavedQuizRecord extends FirestoreRecord {
       snapshotData['flashcards'],
       FlashcardStruct.fromMap,
     );
+    _folderRef = snapshotData['folderRef'] as DocumentReference?;
+    _quizId = snapshotData['quizId'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -139,7 +145,6 @@ class SavedQuizRecord extends FirestoreRecord {
 }
 
 Map<String, dynamic> createSavedQuizRecordData({
-  DocumentReference? quizRef,
   String? quizName,
   DateTime? createdAt,
   int? totalQuestions,
@@ -150,10 +155,11 @@ Map<String, dynamic> createSavedQuizRecordData({
   String? sourceInput,
   String? category,
   DocumentReference? userRef,
+  DocumentReference? folderRef,
+  String? quizId,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
-      'quizRef': quizRef,
       'quizName': quizName,
       'createdAt': createdAt,
       'totalQuestions': totalQuestions,
@@ -164,6 +170,8 @@ Map<String, dynamic> createSavedQuizRecordData({
       'sourceInput': sourceInput,
       'category': category,
       'userRef': userRef,
+      'folderRef': folderRef,
+      'quizId': quizId,
     }.withoutNulls,
   );
 
@@ -176,8 +184,7 @@ class SavedQuizRecordDocumentEquality implements Equality<SavedQuizRecord> {
   @override
   bool equals(SavedQuizRecord? e1, SavedQuizRecord? e2) {
     const listEquality = ListEquality();
-    return e1?.quizRef == e2?.quizRef &&
-        e1?.quizName == e2?.quizName &&
+    return e1?.quizName == e2?.quizName &&
         e1?.createdAt == e2?.createdAt &&
         e1?.totalQuestions == e2?.totalQuestions &&
         e1?.totalCorrectAnswers == e2?.totalCorrectAnswers &&
@@ -188,12 +195,13 @@ class SavedQuizRecordDocumentEquality implements Equality<SavedQuizRecord> {
         e1?.sourceInput == e2?.sourceInput &&
         e1?.category == e2?.category &&
         e1?.userRef == e2?.userRef &&
-        listEquality.equals(e1?.flashcards, e2?.flashcards);
+        listEquality.equals(e1?.flashcards, e2?.flashcards) &&
+        e1?.folderRef == e2?.folderRef &&
+        e1?.quizId == e2?.quizId;
   }
 
   @override
   int hash(SavedQuizRecord? e) => const ListEquality().hash([
-        e?.quizRef,
         e?.quizName,
         e?.createdAt,
         e?.totalQuestions,
@@ -205,7 +213,9 @@ class SavedQuizRecordDocumentEquality implements Equality<SavedQuizRecord> {
         e?.sourceInput,
         e?.category,
         e?.userRef,
-        e?.flashcards
+        e?.flashcards,
+        e?.folderRef,
+        e?.quizId
       ]);
 
   @override

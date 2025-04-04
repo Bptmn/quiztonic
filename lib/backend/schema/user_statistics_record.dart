@@ -37,17 +37,25 @@ class UserStatisticsRecord extends FirestoreRecord {
   int get nbCorrectAnswers => _nbCorrectAnswers ?? 0;
   bool hasNbCorrectAnswers() => _nbCorrectAnswers != null;
 
-  // "nb_false_answers" field.
-  int? _nbFalseAnswers;
-  int get nbFalseAnswers => _nbFalseAnswers ?? 0;
-  bool hasNbFalseAnswers() => _nbFalseAnswers != null;
+  // "total_time_spent_on_quiz" field.
+  int? _totalTimeSpentOnQuiz;
+  int get totalTimeSpentOnQuiz => _totalTimeSpentOnQuiz ?? 0;
+  bool hasTotalTimeSpentOnQuiz() => _totalTimeSpentOnQuiz != null;
+
+  // "total_time_spent_on_flashcards" field.
+  int? _totalTimeSpentOnFlashcards;
+  int get totalTimeSpentOnFlashcards => _totalTimeSpentOnFlashcards ?? 0;
+  bool hasTotalTimeSpentOnFlashcards() => _totalTimeSpentOnFlashcards != null;
 
   void _initializeFields() {
     _userRef = snapshotData['userRef'] as DocumentReference?;
     _nbQuizDone = castToType<int>(snapshotData['nb_quiz_done']);
     _nbQuestionsDone = castToType<int>(snapshotData['nb_questions_done']);
     _nbCorrectAnswers = castToType<int>(snapshotData['nb_correct_answers']);
-    _nbFalseAnswers = castToType<int>(snapshotData['nb_false_answers']);
+    _totalTimeSpentOnQuiz =
+        castToType<int>(snapshotData['total_time_spent_on_quiz']);
+    _totalTimeSpentOnFlashcards =
+        castToType<int>(snapshotData['total_time_spent_on_flashcards']);
   }
 
   static CollectionReference get collection =>
@@ -89,7 +97,8 @@ Map<String, dynamic> createUserStatisticsRecordData({
   int? nbQuizDone,
   int? nbQuestionsDone,
   int? nbCorrectAnswers,
-  int? nbFalseAnswers,
+  int? totalTimeSpentOnQuiz,
+  int? totalTimeSpentOnFlashcards,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -97,7 +106,8 @@ Map<String, dynamic> createUserStatisticsRecordData({
       'nb_quiz_done': nbQuizDone,
       'nb_questions_done': nbQuestionsDone,
       'nb_correct_answers': nbCorrectAnswers,
-      'nb_false_answers': nbFalseAnswers,
+      'total_time_spent_on_quiz': totalTimeSpentOnQuiz,
+      'total_time_spent_on_flashcards': totalTimeSpentOnFlashcards,
     }.withoutNulls,
   );
 
@@ -114,7 +124,8 @@ class UserStatisticsRecordDocumentEquality
         e1?.nbQuizDone == e2?.nbQuizDone &&
         e1?.nbQuestionsDone == e2?.nbQuestionsDone &&
         e1?.nbCorrectAnswers == e2?.nbCorrectAnswers &&
-        e1?.nbFalseAnswers == e2?.nbFalseAnswers;
+        e1?.totalTimeSpentOnQuiz == e2?.totalTimeSpentOnQuiz &&
+        e1?.totalTimeSpentOnFlashcards == e2?.totalTimeSpentOnFlashcards;
   }
 
   @override
@@ -123,7 +134,8 @@ class UserStatisticsRecordDocumentEquality
         e?.nbQuizDone,
         e?.nbQuestionsDone,
         e?.nbCorrectAnswers,
-        e?.nbFalseAnswers
+        e?.totalTimeSpentOnQuiz,
+        e?.totalTimeSpentOnFlashcards
       ]);
 
   @override

@@ -57,6 +57,8 @@ abstract class FlutterFlowTheme {
   late Color transparent;
   late Color borderColor;
   late Color tonicColor1;
+  late Color greyBackground;
+  late Color blackText;
 
   @Deprecated('Use displaySmallFamily instead')
   String get title1Family => displaySmallFamily;
@@ -137,8 +139,8 @@ class LightModeTheme extends FlutterFlowTheme {
   late Color secondaryText = const Color(0xFF404040);
   late Color primaryBackground = const Color(0xFFFFFFFF);
   late Color secondaryBackground = const Color(0xFFF1F4F8);
-  late Color accent1 = const Color(0xFF5E2BFF);
-  late Color accent2 = const Color(0x4D39D2C0);
+  late Color accent1 = const Color(0xFFFFF7D8);
+  late Color accent2 = const Color(0x4DFFCB37);
   late Color accent3 = const Color(0x4DEE8B60);
   late Color accent4 = const Color(0xCCFFFFFF);
   late Color success = const Color(0xFF39D2C0);
@@ -148,7 +150,9 @@ class LightModeTheme extends FlutterFlowTheme {
 
   late Color transparent = Color(0x00FFFFFF);
   late Color borderColor = Color(0xFFE0E3E7);
-  late Color tonicColor1 = Color(0xFF39D2C0);
+  late Color tonicColor1 = Color(0xFFFFCB37);
+  late Color greyBackground = Color(0xFFF6F6F6);
+  late Color blackText = Color(0xFF000000);
 }
 
 abstract class Typography {
@@ -221,8 +225,8 @@ class ThemeTypography extends Typography {
   TextStyle get headlineMedium => GoogleFonts.getFont(
         'Manrope',
         color: theme.primaryText,
-        fontWeight: FontWeight.w600,
-        fontSize: 28.0,
+        fontWeight: FontWeight.w800,
+        fontSize: 26.0,
       );
   String get headlineSmallFamily => 'Manrope';
   TextStyle get headlineSmall => GoogleFonts.getFont(
@@ -310,9 +314,9 @@ class DarkModeTheme extends FlutterFlowTheme {
   late Color alternate = const Color(0xFFBFBFBF);
   late Color primaryText = const Color(0xFFFFFFFF);
   late Color secondaryText = const Color(0xFFB0B3B8);
-  late Color primaryBackground = const Color(0xFF585757);
-  late Color secondaryBackground = const Color(0xFF1E1E1E);
-  late Color accent1 = const Color(0x4C4B39EF);
+  late Color primaryBackground = const Color(0xFF313131);
+  late Color secondaryBackground = const Color(0xFF2A2A2A);
+  late Color accent1 = const Color(0xFFFFF7D8);
   late Color accent2 = const Color(0x4D39D2C0);
   late Color accent3 = const Color(0x4DEE8B60);
   late Color accent4 = const Color(0xB2262D34);
@@ -323,7 +327,9 @@ class DarkModeTheme extends FlutterFlowTheme {
 
   late Color transparent = Color(0x00FFFFFF);
   late Color borderColor = Color(0xFFAE9EA1);
-  late Color tonicColor1 = Color(0xFF39D2C0);
+  late Color tonicColor1 = Color(0xFFFFCB37);
+  late Color greyBackground = Color(0xFFF6F6F6);
+  late Color blackText = Color(0xFF000000);
 }
 
 extension TextStyleHelper on TextStyle {

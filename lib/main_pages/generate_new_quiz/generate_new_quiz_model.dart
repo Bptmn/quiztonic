@@ -1,7 +1,7 @@
-import '';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/backend/schema/enums/enums.dart';
+import '/components/web_side_bar/web_side_bar_widget.dart';
 import '/flutter_flow/flutter_flow_count_controller.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -26,6 +26,8 @@ class GenerateNewQuizModel extends FlutterFlowModel<GenerateNewQuizWidget> {
 
   ///  State fields for stateful widgets in this page.
 
+  // Model for WebSideBar component.
+  late WebSideBarModel webSideBarModel;
   // State field(s) for DropDownInputFormat widget.
   QuizInputFormat? dropDownInputFormatValue;
   FormFieldController<QuizInputFormat>? dropDownInputFormatValueController;
@@ -64,10 +66,13 @@ class GenerateNewQuizModel extends FlutterFlowModel<GenerateNewQuizWidget> {
   ApiCallResponse? apiResultFromPdf;
 
   @override
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    webSideBarModel = createModel(context, () => WebSideBarModel());
+  }
 
   @override
   void dispose() {
+    webSideBarModel.dispose();
     textFieldRawTextFocusNode?.dispose();
     textFieldRawTextTextController?.dispose();
 

@@ -1,5 +1,8 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/schema/enums/enums.dart';
+import '/components/web_side_bar/web_side_bar_widget.dart';
+import '/dialogs/password_check/password_check_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -38,13 +41,13 @@ class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
     super.initState();
     _model = createModel(context, () => EditUserProfileModel());
 
-    _model.textController ??=
-        TextEditingController(text: widget!.currentUserDocument?.displayName);
-    _model.textFieldFocusNode1 ??= FocusNode();
+    _model.textFieldUsernameTextController ??=
+        TextEditingController(text: currentUserDisplayName);
+    _model.textFieldUsernameFocusNode ??= FocusNode();
 
-    _model.emailTextController ??=
-        TextEditingController(text: widget!.currentUserDocument?.email);
-    _model.textFieldFocusNode2 ??= FocusNode();
+    _model.textFieldEmailTextController ??=
+        TextEditingController(text: currentUserEmail);
+    _model.textFieldEmailFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -66,315 +69,517 @@ class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).transparent,
-          automaticallyImplyLeading: false,
-          leading: FlutterFlowIconButton(
-            borderColor: Colors.transparent,
-            borderRadius: 30.0,
-            borderWidth: 1.0,
-            buttonSize: 65.0,
-            icon: Icon(
-              Icons.chevron_left_rounded,
-              color: FlutterFlowTheme.of(context).primary,
-              size: 35.0,
-            ),
-            onPressed: () async {
-              context.pop();
-            },
-          ),
-          title: Text(
-            'Edit my informations',
-            style: FlutterFlowTheme.of(context).headlineSmall.override(
-                  fontFamily: 'Manrope',
-                  color: FlutterFlowTheme.of(context).primary,
-                  letterSpacing: 0.0,
+        appBar: responsiveVisibility(
+          context: context,
+          tabletLandscape: false,
+          desktop: false,
+        )
+            ? AppBar(
+                backgroundColor: FlutterFlowTheme.of(context).transparent,
+                automaticallyImplyLeading: false,
+                leading: FlutterFlowIconButton(
+                  borderColor: Colors.transparent,
+                  borderRadius: 30.0,
+                  borderWidth: 1.0,
+                  buttonSize: 65.0,
+                  icon: Icon(
+                    Icons.chevron_left_rounded,
+                    color: FlutterFlowTheme.of(context).primary,
+                    size: 35.0,
+                  ),
+                  onPressed: () async {
+                    context.pop();
+                  },
                 ),
-          ),
-          actions: [],
-          centerTitle: true,
-          elevation: 0.0,
-        ),
+                title: Text(
+                  FFLocalizations.of(context).getText(
+                    'e5le35vp' /* Edit my information */,
+                  ),
+                  style: FlutterFlowTheme.of(context).headlineSmall.override(
+                        fontFamily: 'Manrope',
+                        color: FlutterFlowTheme.of(context).primary,
+                        letterSpacing: 0.0,
+                      ),
+                ),
+                actions: [],
+                centerTitle: true,
+                elevation: 0.0,
+              )
+            : null,
         body: SafeArea(
           top: true,
-          child: Padding(
-            padding: EdgeInsets.all(12.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Align(
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              if (responsiveVisibility(
+                context: context,
+                phone: false,
+                tablet: false,
+              ))
+                wrapWithModel(
+                  model: _model.webSideBarModel,
+                  updateCallback: () => safeSetState(() {}),
+                  child: WebSideBarWidget(),
+                ),
+              Flexible(
+                child: Align(
                   alignment: AlignmentDirectional(0.0, -1.0),
                   child: Container(
-                    width: MediaQuery.sizeOf(context).width * 0.95,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                      boxShadow: [
-                        BoxShadow(
-                          blurRadius: 4.0,
-                          color: Color(0x33000000),
-                          offset: Offset(
-                            0.0,
-                            2.0,
-                          ),
-                        )
-                      ],
-                      borderRadius: BorderRadius.circular(18.0),
+                    constraints: BoxConstraints(
+                      maxWidth: FFAppConstants.PageContentMaxWidth.toDouble(),
                     ),
+                    decoration: BoxDecoration(),
                     child: Padding(
-                      padding: EdgeInsets.all(12.0),
+                      padding: EdgeInsets.all(18.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
-                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            'User name',
-                            style: FlutterFlowTheme.of(context)
-                                .titleLarge
-                                .override(
-                                  fontFamily: 'Manrope',
-                                  letterSpacing: 0.0,
-                                ),
-                          ),
-                          Container(
-                            width: 200.0,
-                            child: TextFormField(
-                              controller: _model.textController,
-                              focusNode: _model.textFieldFocusNode1,
-                              autofocus: false,
-                              obscureText: false,
-                              decoration: InputDecoration(
-                                isDense: true,
-                                labelStyle: FlutterFlowTheme.of(context)
-                                    .labelMedium
-                                    .override(
-                                      fontFamily: 'Roboto',
-                                      letterSpacing: 0.0,
-                                    ),
-                                hintText: 'TextField',
-                                hintStyle: FlutterFlowTheme.of(context)
-                                    .labelMedium
-                                    .override(
-                                      fontFamily: 'Roboto',
-                                      letterSpacing: 0.0,
-                                    ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: FlutterFlowTheme.of(context).accent4,
-                                    width: 1.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(18.0),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(18.0),
-                                ),
-                                errorBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: FlutterFlowTheme.of(context).error,
-                                    width: 1.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(18.0),
-                                ),
-                                focusedErrorBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: FlutterFlowTheme.of(context).error,
-                                    width: 1.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(18.0),
-                                ),
-                                filled: true,
-                                contentPadding: EdgeInsetsDirectional.fromSTEB(
-                                    10.0, 20.0, 10.0, 20.0),
+                          if (responsiveVisibility(
+                            context: context,
+                            phone: false,
+                            tablet: false,
+                          ))
+                            Text(
+                              FFLocalizations.of(context).getText(
+                                'eapntub4' /* Edit my information */,
                               ),
                               style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
+                                  .headlineSmall
                                   .override(
-                                    fontFamily: 'Roboto',
-                                    fontSize: 16.0,
+                                    fontFamily: 'Manrope',
+                                    color: FlutterFlowTheme.of(context).primary,
                                     letterSpacing: 0.0,
                                   ),
-                              cursorColor:
-                                  FlutterFlowTheme.of(context).primaryText,
-                              validator: _model.textControllerValidator
-                                  .asValidator(context),
+                            ),
+                          Align(
+                            alignment: AlignmentDirectional(0.0, -1.0),
+                            child: Container(
+                              width: MediaQuery.sizeOf(context).width * 0.95,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(18.0),
+                              ),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    FFLocalizations.of(context).getText(
+                                      'mkz76a8o' /* User name */,
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .titleLarge
+                                        .override(
+                                          fontFamily: 'Manrope',
+                                          letterSpacing: 0.0,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                  ),
+                                  AuthUserStreamWidget(
+                                    builder: (context) => Container(
+                                      width: double.infinity,
+                                      child: TextFormField(
+                                        controller: _model
+                                            .textFieldUsernameTextController,
+                                        focusNode:
+                                            _model.textFieldUsernameFocusNode,
+                                        autofocus: false,
+                                        obscureText: false,
+                                        decoration: InputDecoration(
+                                          isDense: true,
+                                          labelStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium
+                                                  .override(
+                                                    fontFamily: 'Roboto',
+                                                    letterSpacing: 0.0,
+                                                  ),
+                                          hintText: FFLocalizations.of(context)
+                                              .getText(
+                                            'zxmi28oh' /* Enter a username */,
+                                          ),
+                                          hintStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium
+                                                  .override(
+                                                    fontFamily: 'Roboto',
+                                                    letterSpacing: 0.0,
+                                                  ),
+                                          enabledBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .borderColor,
+                                              width: 1.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(24.0),
+                                          ),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Color(0x00000000),
+                                              width: 1.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(24.0),
+                                          ),
+                                          errorBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .error,
+                                              width: 1.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(24.0),
+                                          ),
+                                          focusedErrorBorder:
+                                              OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .error,
+                                              width: 1.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(24.0),
+                                          ),
+                                          filled: true,
+                                          fillColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .primaryBackground,
+                                          contentPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  10.0, 20.0, 10.0, 20.0),
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyLarge
+                                            .override(
+                                              fontFamily: 'Roboto',
+                                              letterSpacing: 0.0,
+                                            ),
+                                        cursorColor:
+                                            FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                        validator: _model
+                                            .textFieldUsernameTextControllerValidator
+                                            .asValidator(context),
+                                      ),
+                                    ),
+                                  ),
+                                ].divide(SizedBox(height: 10.0)),
+                              ),
                             ),
                           ),
-                        ].divide(SizedBox(height: 10.0)),
+                          if (currentUserDocument?.authMethod ==
+                              AuthMethod.email)
+                            Align(
+                              alignment: AlignmentDirectional(0.0, -1.0),
+                              child: AuthUserStreamWidget(
+                                builder: (context) => Container(
+                                  width:
+                                      MediaQuery.sizeOf(context).width * 0.95,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(18.0),
+                                  ),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        FFLocalizations.of(context).getText(
+                                          '5d3ga1gp' /* Email Address */,
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleLarge
+                                            .override(
+                                              fontFamily: 'Manrope',
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                      ),
+                                      Container(
+                                        width: double.infinity,
+                                        child: TextFormField(
+                                          controller: _model
+                                              .textFieldEmailTextController,
+                                          focusNode:
+                                              _model.textFieldEmailFocusNode,
+                                          autofocus: false,
+                                          obscureText: false,
+                                          decoration: InputDecoration(
+                                            isDense: true,
+                                            labelStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .override(
+                                                      fontFamily: 'Roboto',
+                                                      letterSpacing: 0.0,
+                                                    ),
+                                            hintText:
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                              '49j8ipxf' /* TextField */,
+                                            ),
+                                            hintStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .override(
+                                                      fontFamily: 'Roboto',
+                                                      letterSpacing: 0.0,
+                                                    ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .borderColor,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(24.0),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0x00000000),
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(24.0),
+                                            ),
+                                            errorBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .error,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(24.0),
+                                            ),
+                                            focusedErrorBorder:
+                                                OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .error,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(24.0),
+                                            ),
+                                            filled: true,
+                                            fillColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .primaryBackground,
+                                            contentPadding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    10.0, 20.0, 10.0, 20.0),
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Roboto',
+                                                fontSize: 16.0,
+                                                letterSpacing: 0.0,
+                                              ),
+                                          cursorColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .primaryText,
+                                          validator: _model
+                                              .textFieldEmailTextControllerValidator
+                                              .asValidator(context),
+                                        ),
+                                      ),
+                                      Text(
+                                        FFLocalizations.of(context).getText(
+                                          'wu3ytaso' /* If changed, a verification lin... */,
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Roboto',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .tertiary,
+                                              fontSize: 18.0,
+                                              letterSpacing: 0.0,
+                                            ),
+                                      ),
+                                    ].divide(SizedBox(height: 10.0)),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          Builder(
+                            builder: (context) => FFButtonWidget(
+                              onPressed: () async {
+                                if ((_model.textFieldEmailTextController.text !=
+                                        currentUserEmail) &&
+                                    (_model.textFieldEmailTextController.text !=
+                                            null &&
+                                        _model.textFieldEmailTextController
+                                                .text !=
+                                            '')) {
+                                  await showDialog(
+                                    context: context,
+                                    builder: (dialogContext) {
+                                      return Dialog(
+                                        elevation: 0,
+                                        insetPadding: EdgeInsets.zero,
+                                        backgroundColor: Colors.transparent,
+                                        alignment:
+                                            AlignmentDirectional(0.0, 0.0)
+                                                .resolve(
+                                                    Directionality.of(context)),
+                                        child: GestureDetector(
+                                          onTap: () {
+                                            FocusScope.of(dialogContext)
+                                                .unfocus();
+                                            FocusManager.instance.primaryFocus
+                                                ?.unfocus();
+                                          },
+                                          child: Container(
+                                            width: MediaQuery.sizeOf(context)
+                                                    .width *
+                                                0.9,
+                                            child: PasswordCheckWidget(
+                                              messageToDisplay:
+                                                  'A verification link will be sent to your new email address.',
+                                              ssoAllowed: false,
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  ).then((value) => safeSetState(
+                                      () => _model.isValidated = value));
+
+                                  if (_model.isValidated!) {
+                                    if (_model.textFieldEmailTextController.text
+                                        .isEmpty) {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                            'Email required!',
+                                          ),
+                                        ),
+                                      );
+                                      return;
+                                    }
+
+                                    await authManager.updateEmail(
+                                      email: _model
+                                          .textFieldEmailTextController.text,
+                                      context: context,
+                                    );
+                                    safeSetState(() {});
+
+                                    await authManager.sendEmailVerification();
+
+                                    await widget!.currentUserDocument!.reference
+                                        .update(createUsersRecordData(
+                                      displayName: _model
+                                          .textFieldUsernameTextController.text,
+                                      email: _model
+                                          .textFieldEmailTextController.text,
+                                    ));
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                          'Verification message sent to your new email address',
+                                          style: TextStyle(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                          ),
+                                        ),
+                                        duration: Duration(milliseconds: 4000),
+                                        backgroundColor:
+                                            FlutterFlowTheme.of(context)
+                                                .success,
+                                      ),
+                                    );
+                                  } else {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                          'Login action failed',
+                                          style: TextStyle(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                          ),
+                                        ),
+                                        duration: Duration(milliseconds: 4000),
+                                        backgroundColor:
+                                            FlutterFlowTheme.of(context)
+                                                .warning,
+                                      ),
+                                    );
+                                  }
+                                } else {
+                                  await widget!.currentUserDocument!.reference
+                                      .update(createUsersRecordData(
+                                    displayName: _model
+                                        .textFieldUsernameTextController.text,
+                                  ));
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        'Your username has been updated',
+                                        style: TextStyle(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                        ),
+                                      ),
+                                      duration: Duration(milliseconds: 4000),
+                                      backgroundColor:
+                                          FlutterFlowTheme.of(context).success,
+                                    ),
+                                  );
+                                }
+
+                                context.goNamed(
+                                  ProfileWidget.routeName,
+                                  extra: <String, dynamic>{
+                                    kTransitionInfoKey: TransitionInfo(
+                                      hasTransition: true,
+                                      transitionType:
+                                          PageTransitionType.rightToLeft,
+                                    ),
+                                  },
+                                );
+
+                                safeSetState(() {});
+                              },
+                              text: FFLocalizations.of(context).getText(
+                                '8u2p2x84' /* Save modifications */,
+                              ),
+                              options: FFButtonOptions(
+                                width: double.infinity,
+                                height: 45.0,
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 0.0, 16.0, 0.0),
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                color: FlutterFlowTheme.of(context).tonicColor1,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .labelLarge
+                                    .override(
+                                      fontFamily: 'Roboto',
+                                      letterSpacing: 0.0,
+                                    ),
+                                elevation: 1.0,
+                                borderRadius: BorderRadius.circular(24.0),
+                              ),
+                            ),
+                          ),
+                        ].divide(SizedBox(height: 15.0)),
                       ),
                     ),
                   ),
                 ),
-                Align(
-                  alignment: AlignmentDirectional(0.0, -1.0),
-                  child: Container(
-                    width: MediaQuery.sizeOf(context).width * 0.95,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                      boxShadow: [
-                        BoxShadow(
-                          blurRadius: 4.0,
-                          color: Color(0x33000000),
-                          offset: Offset(
-                            0.0,
-                            2.0,
-                          ),
-                        )
-                      ],
-                      borderRadius: BorderRadius.circular(18.0),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.all(12.0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Email Address',
-                            style: FlutterFlowTheme.of(context)
-                                .titleLarge
-                                .override(
-                                  fontFamily: 'Manrope',
-                                  letterSpacing: 0.0,
-                                ),
-                          ),
-                          Container(
-                            width: 200.0,
-                            child: TextFormField(
-                              controller: _model.emailTextController,
-                              focusNode: _model.textFieldFocusNode2,
-                              autofocus: false,
-                              obscureText: false,
-                              decoration: InputDecoration(
-                                isDense: true,
-                                labelStyle: FlutterFlowTheme.of(context)
-                                    .labelMedium
-                                    .override(
-                                      fontFamily: 'Roboto',
-                                      letterSpacing: 0.0,
-                                    ),
-                                hintText: 'TextField',
-                                hintStyle: FlutterFlowTheme.of(context)
-                                    .labelMedium
-                                    .override(
-                                      fontFamily: 'Roboto',
-                                      letterSpacing: 0.0,
-                                    ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: FlutterFlowTheme.of(context).accent4,
-                                    width: 1.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(18.0),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(18.0),
-                                ),
-                                errorBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: FlutterFlowTheme.of(context).error,
-                                    width: 1.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(18.0),
-                                ),
-                                focusedErrorBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: FlutterFlowTheme.of(context).error,
-                                    width: 1.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(18.0),
-                                ),
-                                filled: true,
-                                contentPadding: EdgeInsetsDirectional.fromSTEB(
-                                    10.0, 20.0, 10.0, 20.0),
-                              ),
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Roboto',
-                                    fontSize: 16.0,
-                                    letterSpacing: 0.0,
-                                  ),
-                              cursorColor:
-                                  FlutterFlowTheme.of(context).primaryText,
-                              validator: _model.emailTextControllerValidator
-                                  .asValidator(context),
-                            ),
-                          ),
-                          Text(
-                            'If changed, a verification link will be sent to your new email',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Roboto',
-                                  color: FlutterFlowTheme.of(context).tertiary,
-                                  fontSize: 18.0,
-                                  letterSpacing: 0.0,
-                                ),
-                          ),
-                        ].divide(SizedBox(height: 10.0)),
-                      ),
-                    ),
-                  ),
-                ),
-                FFButtonWidget(
-                  onPressed: () async {
-                    if (_model.emailTextController.text !=
-                        widget!.currentUserDocument?.email) {
-                      if (_model.emailTextController.text.isEmpty) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(
-                              'Email required!',
-                            ),
-                          ),
-                        );
-                        return;
-                      }
-
-                      await authManager.updateEmail(
-                        email: _model.emailTextController.text,
-                        context: context,
-                      );
-                      safeSetState(() {});
-
-                      await widget!.currentUserDocument!.reference
-                          .update(createUsersRecordData(
-                        displayName: _model.textController.text,
-                        email: _model.emailTextController.text,
-                      ));
-                    } else {
-                      await widget!.currentUserDocument!.reference
-                          .update(createUsersRecordData(
-                        displayName: _model.textController.text,
-                      ));
-                    }
-                  },
-                  text: 'Save modifications',
-                  options: FFButtonOptions(
-                    width: double.infinity,
-                    height: 45.0,
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                    iconPadding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    color: FlutterFlowTheme.of(context).secondary,
-                    textStyle: FlutterFlowTheme.of(context).labelLarge.override(
-                          fontFamily: 'Roboto',
-                          letterSpacing: 0.0,
-                        ),
-                    elevation: 0.0,
-                    borderRadius: BorderRadius.circular(24.0),
-                  ),
-                ),
-              ].divide(SizedBox(height: 15.0)),
-            ),
+              ),
+            ],
           ),
         ),
       ),

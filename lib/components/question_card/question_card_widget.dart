@@ -1,4 +1,3 @@
-import '';
 import '/backend/schema/structs/index.dart';
 import '/components/answer_item/answer_item_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -64,214 +63,195 @@ class _QuestionCardWidgetState extends State<QuestionCardWidget> {
   Widget build(BuildContext context) {
     return Align(
       alignment: AlignmentDirectional(0.0, -1.0),
-      child: Material(
-        color: Colors.transparent,
-        elevation: 1.0,
-        shape: RoundedRectangleBorder(
+      child: Container(
+        width: MediaQuery.sizeOf(context).width * 0.95,
+        decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20.0),
-        ),
-        child: Container(
-          width: MediaQuery.sizeOf(context).width * 0.95,
-          decoration: BoxDecoration(
-            color: FlutterFlowTheme.of(context).secondaryBackground,
-            borderRadius: BorderRadius.circular(20.0),
-            border: Border.all(
-              color: valueOrDefault<Color>(
-                () {
-                  if (_model.answerIsCorrect! && _model.answerDone) {
-                    return FlutterFlowTheme.of(context).secondary;
-                  } else if (!_model.answerIsCorrect! && _model.answerDone) {
-                    return FlutterFlowTheme.of(context).error;
-                  } else {
-                    return FlutterFlowTheme.of(context).borderColor;
-                  }
-                }(),
-                FlutterFlowTheme.of(context).borderColor,
-              ),
-              width: 1.0,
-            ),
+          border: Border.all(
+            color: FlutterFlowTheme.of(context).transparent,
           ),
-          child: Padding(
-            padding: EdgeInsets.all(14.0),
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Flexible(
-                        child: Text(
-                          valueOrDefault<String>(
-                            widget!.questionCard?.questionText,
-                            'questionText',
-                          ),
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Roboto',
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    fontSize: 18.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+        ),
+        child: Padding(
+          padding: EdgeInsets.all(14.0),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Flexible(
+                      child: Text(
+                        valueOrDefault<String>(
+                          widget!.questionCard?.questionText,
+                          'questionText',
                         ),
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Roboto',
+                              color: FlutterFlowTheme.of(context).primary,
+                              fontSize: 18.0,
+                              letterSpacing: 0.0,
+                              fontWeight: FontWeight.bold,
+                            ),
                       ),
-                    ],
-                  ),
-                  Builder(
-                    builder: (context) {
-                      final mcq =
-                          widget!.questionCard?.questionChoices?.toList() ?? [];
+                    ),
+                  ],
+                ),
+                Builder(
+                  builder: (context) {
+                    final mcq =
+                        widget!.questionCard?.questionChoices?.toList() ?? [];
 
-                      return Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: List.generate(mcq.length, (mcqIndex) {
-                          final mcqItem = mcq[mcqIndex];
-                          return InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
-                              if (!_model.answerDone) {
-                                _model.answerIsCorrect = mcqIndex ==
-                                    widget!.questionCard?.questionAnswerIndex;
-                                _model.answerDone = true;
-                                _model.selectedAnswer = mcqIndex;
-                                safeSetState(() {});
-                                await widget.updateScore?.call(
-                                  _model.answerIsCorrect!,
-                                  _model.selectedAnswer!,
-                                );
-                              }
-                            },
-                            child: wrapWithModel(
-                              model: _model.answerItemModels.getModel(
-                                mcqIndex.toString(),
-                                mcqIndex,
+                    return Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: List.generate(mcq.length, (mcqIndex) {
+                        final mcqItem = mcq[mcqIndex];
+                        return InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            if (!_model.answerDone) {
+                              _model.answerIsCorrect = mcqIndex ==
+                                  widget!.questionCard?.questionAnswerIndex;
+                              _model.answerDone = true;
+                              _model.selectedAnswer = mcqIndex;
+                              safeSetState(() {});
+                              await widget.updateScore?.call(
+                                _model.answerIsCorrect!,
+                                _model.selectedAnswer!,
+                              );
+                            }
+                          },
+                          child: wrapWithModel(
+                            model: _model.answerItemModels.getModel(
+                              mcqIndex.toString(),
+                              mcqIndex,
+                            ),
+                            updateCallback: () => safeSetState(() {}),
+                            updateOnChange: true,
+                            child: AnswerItemWidget(
+                              key: Key(
+                                'Keyb87_${mcqIndex.toString()}',
                               ),
-                              updateCallback: () => safeSetState(() {}),
-                              updateOnChange: true,
-                              child: AnswerItemWidget(
-                                key: Key(
-                                  'Keyb87_${mcqIndex.toString()}',
-                                ),
-                                answerText: mcqItem,
-                                isSelected: mcqIndex == _model.selectedAnswer,
-                                itemIndex: mcqIndex,
+                              answerText: mcqItem,
+                              isSelected: mcqIndex == _model.selectedAnswer,
+                              itemIndex: mcqIndex,
+                              isCorrectAnswer:
+                                  widget!.questionCard?.questionAnswerIndex ==
+                                      mcqIndex,
+                            ),
+                          ),
+                        );
+                      }).divide(SizedBox(height: 5.0)),
+                    );
+                  },
+                ),
+                if (_model.answerDone)
+                  Container(
+                    width: MediaQuery.sizeOf(context).width * 1.0,
+                    decoration: BoxDecoration(),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        if (_model.answerIsCorrect ?? true)
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Icon(
+                                Icons.check_circle,
+                                color: FlutterFlowTheme.of(context).success,
+                                size: 30.0,
                               ),
-                            ),
-                          );
-                        }).divide(SizedBox(height: 5.0)),
-                      );
-                    },
-                  ),
-                  if (_model.answerDone)
-                    Container(
-                      width: MediaQuery.sizeOf(context).width * 1.0,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                      ),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          if (_model.answerIsCorrect ?? true)
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Icon(
-                                  Icons.check_circle,
-                                  color:
-                                      FlutterFlowTheme.of(context).tonicColor1,
-                                  size: 30.0,
+                              Text(
+                                FFLocalizations.of(context).getText(
+                                  '4vaa3snx' /* Correct answer */,
                                 ),
-                                Text(
-                                  'Correct answer',
-                                  style: FlutterFlowTheme.of(context)
-                                      .titleMedium
-                                      .override(
-                                        fontFamily: 'Manrope',
-                                        letterSpacing: 0.0,
-                                      ),
-                                ),
-                              ]
-                                  .divide(SizedBox(width: 10.0))
-                                  .around(SizedBox(width: 10.0)),
-                            ),
-                          if (!_model.answerIsCorrect!)
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Icon(
-                                  Icons.close,
-                                  color: FlutterFlowTheme.of(context).error,
-                                  size: 30.0,
-                                ),
-                                Text(
-                                  'Wrong answer',
-                                  style: FlutterFlowTheme.of(context)
-                                      .titleMedium
-                                      .override(
-                                        fontFamily: 'Manrope',
-                                        letterSpacing: 0.0,
-                                      ),
-                                ),
-                              ]
-                                  .divide(SizedBox(width: 10.0))
-                                  .around(SizedBox(width: 10.0)),
-                            ),
-                          if (valueOrDefault<bool>(
-                            _model.answerDone,
-                            false,
-                          ))
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 15.0, 0.0, 0.0),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                ),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Align(
-                                      alignment:
-                                          AlignmentDirectional(-1.0, -1.0),
-                                      child: Text(
-                                        'Explanation:',
-                                        style: FlutterFlowTheme.of(context)
-                                            .titleMedium
-                                            .override(
-                                              fontFamily: 'Manrope',
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.w800,
-                                            ),
-                                      ),
+                                style: FlutterFlowTheme.of(context)
+                                    .titleMedium
+                                    .override(
+                                      fontFamily: 'Manrope',
+                                      letterSpacing: 0.0,
                                     ),
-                                    Text(
-                                      valueOrDefault<String>(
-                                        widget!.questionCard?.answerExplanation,
-                                        'answerExplanation',
+                              ),
+                            ]
+                                .divide(SizedBox(width: 10.0))
+                                .around(SizedBox(width: 10.0)),
+                          ),
+                        if (!_model.answerIsCorrect!)
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Icon(
+                                Icons.close,
+                                color: FlutterFlowTheme.of(context).error,
+                                size: 30.0,
+                              ),
+                              Text(
+                                FFLocalizations.of(context).getText(
+                                  'zzn46win' /* Wrong answer */,
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .titleMedium
+                                    .override(
+                                      fontFamily: 'Manrope',
+                                      letterSpacing: 0.0,
+                                    ),
+                              ),
+                            ]
+                                .divide(SizedBox(width: 10.0))
+                                .around(SizedBox(width: 10.0)),
+                          ),
+                        if (valueOrDefault<bool>(
+                          _model.answerDone,
+                          false,
+                        ))
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 15.0, 0.0, 0.0),
+                            child: Container(
+                              decoration: BoxDecoration(),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Align(
+                                    alignment: AlignmentDirectional(-1.0, -1.0),
+                                    child: Text(
+                                      FFLocalizations.of(context).getText(
+                                        'poib76jn' /* Explanation: */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
-                                          .titleSmall
+                                          .titleMedium
                                           .override(
                                             fontFamily: 'Manrope',
                                             letterSpacing: 0.0,
+                                            fontWeight: FontWeight.w800,
                                           ),
                                     ),
-                                  ].divide(SizedBox(height: 5.0)),
-                                ),
+                                  ),
+                                  Text(
+                                    valueOrDefault<String>(
+                                      widget!.questionCard?.answerExplanation,
+                                      'answerExplanation',
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          fontFamily: 'Manrope',
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
+                                ].divide(SizedBox(height: 5.0)),
                               ),
                             ),
-                        ].divide(SizedBox(height: 2.0)),
-                      ),
+                          ),
+                      ].divide(SizedBox(height: 2.0)),
                     ),
-                ].divide(SizedBox(height: 20.0)),
-              ),
+                  ),
+              ].divide(SizedBox(height: 20.0)),
             ),
           ),
         ),

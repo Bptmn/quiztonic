@@ -83,82 +83,55 @@ class _QuizItemWidgetState extends State<QuizItemWidget> {
                             'QuizName',
                           ),
                           style:
-                              FlutterFlowTheme.of(context).titleMedium.override(
+                              FlutterFlowTheme.of(context).titleSmall.override(
                                     fontFamily: 'Manrope',
-                                    color: FlutterFlowTheme.of(context).primary,
                                     letterSpacing: 0.0,
+                                    lineHeight: 1.2,
                                   ),
                         ),
                       ],
                     ),
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                    child: Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
-                      child: Text(
-                        valueOrDefault<String>(
-                          formatNumber(
-                            valueOrDefault<int>(
-                                  widget!.quizSaved?.totalCorrectAnswers,
-                                  0,
-                                ) /
-                                valueOrDefault<int>(
-                                  widget!.quizSaved?.totalQuestions,
-                                  0,
-                                ),
-                            formatType: FormatType.percent,
-                          ),
-                          '0%',
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 0.0, 0.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20.0),
+                        border: Border.all(
+                          color: FlutterFlowTheme.of(context).tonicColor1,
                         ),
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Roboto',
-                              color: FlutterFlowTheme.of(context).tonicColor1,
-                              letterSpacing: 0.0,
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.all(6.0),
+                        child: Text(
+                          valueOrDefault<String>(
+                            formatNumber(
+                              valueOrDefault<int>(
+                                    widget!.quizSaved?.totalCorrectAnswers,
+                                    0,
+                                  ) /
+                                  valueOrDefault<int>(
+                                    widget!.quizSaved?.totalQuestions,
+                                    0,
+                                  ),
+                              formatType: FormatType.percent,
                             ),
+                            '0%',
+                          ),
+                          style: FlutterFlowTheme.of(context)
+                              .bodyMedium
+                              .override(
+                                fontFamily: 'Roboto',
+                                color: FlutterFlowTheme.of(context).tonicColor1,
+                                letterSpacing: 0.0,
+                              ),
+                        ),
                       ),
                     ),
                   ),
                 ],
               ),
-              if (widget!.quizSaved?.flashcards != null &&
-                  (widget!.quizSaved?.flashcards)!.isNotEmpty)
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    RichText(
-                      textScaler: MediaQuery.of(context).textScaler,
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: 'Generated flashcards: ',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Roboto',
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                          ),
-                          TextSpan(
-                            text: valueOrDefault<String>(
-                              widget!.quizSaved?.flashcards?.length?.toString(),
-                              '0',
-                            ),
-                            style: TextStyle(),
-                          )
-                        ],
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Roboto',
-                              letterSpacing: 0.0,
-                            ),
-                      ),
-                    ),
-                  ],
-                ),
               Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -168,7 +141,9 @@ class _QuizItemWidgetState extends State<QuizItemWidget> {
                     text: TextSpan(
                       children: [
                         TextSpan(
-                          text: 'Completed on ',
+                          text: FFLocalizations.of(context).getText(
+                            '06maizap' /* Completed on  */,
+                          ),
                           style: FlutterFlowTheme.of(context)
                               .bodySmall
                               .override(
@@ -181,7 +156,10 @@ class _QuizItemWidgetState extends State<QuizItemWidget> {
                         TextSpan(
                           text: valueOrDefault<String>(
                             dateTimeFormat(
-                                "MMMEd", widget!.quizSaved?.createdAt),
+                              "MMMEd",
+                              widget!.quizSaved?.createdAt,
+                              locale: FFLocalizations.of(context).languageCode,
+                            ),
                             'Wed, Feb 19',
                           ),
                           style: TextStyle(),
@@ -211,7 +189,9 @@ class _QuizItemWidgetState extends State<QuizItemWidget> {
                                   ),
                         ),
                         TextSpan(
-                          text: '/',
+                          text: FFLocalizations.of(context).getText(
+                            'h7tgj9ha' /* / */,
+                          ),
                           style: TextStyle(),
                         ),
                         TextSpan(
@@ -222,7 +202,9 @@ class _QuizItemWidgetState extends State<QuizItemWidget> {
                           style: TextStyle(),
                         ),
                         TextSpan(
-                          text: ' correct',
+                          text: FFLocalizations.of(context).getText(
+                            '762zwbjf' /*  correct */,
+                          ),
                           style: TextStyle(),
                         )
                       ],
@@ -235,7 +217,7 @@ class _QuizItemWidgetState extends State<QuizItemWidget> {
                   ),
                 ],
               ),
-            ].divide(SizedBox(height: 5.0)),
+            ].divide(SizedBox(height: 3.0)),
           ),
         ),
       ),

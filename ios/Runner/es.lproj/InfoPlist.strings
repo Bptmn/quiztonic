@@ -1,0 +1,2 @@
+NSPhotoLibraryUsageDescription = "Esta aplicación requiere acceso a tus fotos para que puedas subirlas y usarlas. Respetamos tu privacidad y solo usaremos tus fotos según lo previsto. ¿Permites el acceso?";
+PermissionGroupNotification = "Esta aplicación te envía notificaciones para mantenerte al día con alertas y actualizaciones importantes. Puedes configurar tus preferencias en cualquier momento en la configuración. ¿Permites las notificaciones?";
