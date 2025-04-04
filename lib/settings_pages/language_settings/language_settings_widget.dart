@@ -55,23 +55,25 @@ class _LanguageSettingsWidgetState extends State<LanguageSettingsWidget> {
           desktop: false,
         )
             ? AppBar(
-                backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+                backgroundColor: FlutterFlowTheme.of(context).transparent,
                 automaticallyImplyLeading: false,
                 leading: FlutterFlowIconButton(
-                  borderRadius: 20.0,
-                  buttonSize: 40.0,
+                  borderColor: Colors.transparent,
+                  borderRadius: 30.0,
+                  borderWidth: 1.0,
+                  buttonSize: 65.0,
                   icon: Icon(
-                    Icons.arrow_back_rounded,
-                    color: FlutterFlowTheme.of(context).primaryText,
-                    size: 24.0,
+                    Icons.chevron_left_rounded,
+                    color: FlutterFlowTheme.of(context).primary,
+                    size: 35.0,
                   ),
-                  onPressed: () {
-                    print('IconButton pressed ...');
+                  onPressed: () async {
+                    context.safePop();
                   },
                 ),
                 title: Text(
                   FFLocalizations.of(context).getText(
-                    '9f7s9ytk' /* Choose Language */,
+                    'aqwscwxz' /* Choose Language */,
                   ),
                   style: FlutterFlowTheme.of(context).headlineMedium.override(
                         fontFamily: 'Manrope',

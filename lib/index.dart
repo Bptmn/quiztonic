@@ -21,5 +21,5 @@ export '/main_pages/quiz_answers_page/quiz_answers_page_widget.dart'
     show QuizAnswersPageWidget;
 export '/settings_pages/security_page/security_page_widget.dart'
     show SecurityPageWidget;
-export '/language_settings/language_settings_widget.dart'
+export '/settings_pages/language_settings/language_settings_widget.dart'
     show LanguageSettingsWidget;

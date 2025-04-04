@@ -954,11 +954,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // LanguageSettings
   {
-    '9f7s9ytk': {
-      'en': 'Choose Language',
-      'es': '',
-      'fr': '',
-    },
     'tslq4lbj': {
       'en': 'Select your preferred language for the app interface',
       'es': '',
@@ -1006,6 +1001,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '5g656st3': {
       'en': 'Français',
+      'es': '',
+      'fr': '',
+    },
+    'aqwscwxz': {
+      'en': 'Choose Language',
       'es': '',
       'fr': '',
     },
