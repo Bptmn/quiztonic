@@ -94,10 +94,23 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                     'rsq6a7d1' /* Generate a new quiz */,
                   ),
                   style: FlutterFlowTheme.of(context).headlineMedium.override(
-                        fontFamily: 'Manrope',
+                        font: GoogleFonts.manrope(
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .headlineMedium
+                              .fontWeight,
+                          fontStyle: FlutterFlowTheme.of(context)
+                              .headlineMedium
+                              .fontStyle,
+                        ),
                         color: FlutterFlowTheme.of(context).primary,
                         fontSize: 22.0,
                         letterSpacing: 0.0,
+                        fontWeight: FlutterFlowTheme.of(context)
+                            .headlineMedium
+                            .fontWeight,
+                        fontStyle: FlutterFlowTheme.of(context)
+                            .headlineMedium
+                            .fontStyle,
                       ),
                 ),
                 actions: [],
@@ -129,8 +142,7 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                     ),
                     decoration: BoxDecoration(),
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
-                          18.0, 10.0, 18.0, 18.0),
+                      padding: EdgeInsets.all(16.0),
                       child: SingleChildScrollView(
                         primary: false,
                         child: Column(
@@ -141,19 +153,75 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                               phone: false,
                               tablet: false,
                             ))
-                              Text(
-                                FFLocalizations.of(context).getText(
-                                  'xix5b4fe' /* Generate a new quiz */,
-                                ),
-                                style: FlutterFlowTheme.of(context)
-                                    .headlineMedium
-                                    .override(
-                                      fontFamily: 'Manrope',
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      fontSize: 22.0,
-                                      letterSpacing: 0.0,
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Align(
+                                    alignment: AlignmentDirectional(-1.0, 0.0),
+                                    child: FlutterFlowIconButton(
+                                      borderRadius: 8.0,
+                                      buttonSize: 40.0,
+                                      icon: Icon(
+                                        Icons.chevron_left,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        size: 24.0,
+                                      ),
+                                      onPressed: () async {
+                                        context.safePop();
+                                      },
                                     ),
+                                  ),
+                                  Flexible(
+                                    child: Align(
+                                      alignment:
+                                          AlignmentDirectional(0.0, -1.0),
+                                      child: Text(
+                                        FFLocalizations.of(context).getText(
+                                          'xix5b4fe' /* Generate a new quiz */,
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .headlineMedium
+                                            .override(
+                                              font: GoogleFonts.manrope(
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .headlineMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .headlineMedium
+                                                        .fontStyle,
+                                              ),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              fontSize: 26.0,
+                                              letterSpacing: 0.0,
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineMedium
+                                                      .fontStyle,
+                                            ),
+                                      ),
+                                    ),
+                                  ),
+                                  Opacity(
+                                    opacity: 0.0,
+                                    child: Icon(
+                                      Icons.arrow_back,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      size: 24.0,
+                                    ),
+                                  ),
+                                ],
                               ),
                             Container(
                               width: MediaQuery.sizeOf(context).width * 1.0,
@@ -172,9 +240,19 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .titleLarge
                                           .override(
-                                            fontFamily: 'Manrope',
+                                            font: GoogleFonts.manrope(
+                                              fontWeight: FontWeight.bold,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleLarge
+                                                      .fontStyle,
+                                            ),
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.bold,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleLarge
+                                                    .fontStyle,
                                           ),
                                     ),
                                   ),
@@ -209,9 +287,26 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                     textStyle: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Roboto',
+                                          font: GoogleFonts.roboto(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
+                                          ),
                                           fontSize: 16.0,
                                           letterSpacing: 0.0,
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
                                         ),
                                     hintText:
                                         FFLocalizations.of(context).getText(
@@ -260,8 +355,27 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .headlineSmall
                                               .override(
-                                                fontFamily: 'Manrope',
+                                                font: GoogleFonts.manrope(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .headlineSmall
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .headlineSmall
+                                                          .fontStyle,
+                                                ),
                                                 letterSpacing: 0.0,
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .headlineSmall
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .headlineSmall
+                                                        .fontStyle,
                                               ),
                                         ),
                                         Row(
@@ -280,8 +394,30 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                                           .of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        font:
+                                                            GoogleFonts.roboto(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
                                                         letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
                                                       ),
                                                   hintText: FFLocalizations.of(
                                                           context)
@@ -292,8 +428,30 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                                           .of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        font:
+                                                            GoogleFonts.roboto(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
                                                         letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
                                                       ),
                                                   enabledBorder:
                                                       OutlineInputBorder(
@@ -344,13 +502,34 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                                               context)
                                                           .primaryBackground,
                                                 ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyLarge
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          letterSpacing: 0.0,
-                                                        ),
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyLarge
+                                                    .override(
+                                                      font: GoogleFonts.roboto(
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyLarge
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyLarge
+                                                                .fontStyle,
+                                                      ),
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyLarge
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyLarge
+                                                              .fontStyle,
+                                                    ),
                                                 maxLines: 12,
                                                 minLines: 8,
                                                 validator: _model
@@ -429,8 +608,17 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                                                     context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Roboto',
+                                                                  font: GoogleFonts
+                                                                      .roboto(
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
+                                                                  ),
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .info,
@@ -438,6 +626,14 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                                                       11.0,
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
                                                                 ),
                                                       ),
                                                     ].divide(
@@ -478,8 +674,30 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .headlineSmall
                                                       .override(
-                                                        fontFamily: 'Manrope',
+                                                        font:
+                                                            GoogleFonts.manrope(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .headlineSmall
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .headlineSmall
+                                                                  .fontStyle,
+                                                        ),
                                                         letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .headlineSmall
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .headlineSmall
+                                                                .fontStyle,
                                                       ),
                                             ),
                                           ),
@@ -563,13 +781,34 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .tonicColor1,
-                                                textStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelLarge
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          letterSpacing: 0.0,
-                                                        ),
+                                                textStyle: FlutterFlowTheme.of(
+                                                        context)
+                                                    .labelLarge
+                                                    .override(
+                                                      font: GoogleFonts.roboto(
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelLarge
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelLarge
+                                                                .fontStyle,
+                                                      ),
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelLarge
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelLarge
+                                                              .fontStyle,
+                                                    ),
                                                 elevation: 1.0,
                                                 borderRadius:
                                                     BorderRadius.circular(24.0),
@@ -600,9 +839,21 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .titleLarge
                                                 .override(
-                                                  fontFamily: 'Manrope',
+                                                  font: GoogleFonts.manrope(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleLarge
+                                                            .fontStyle,
+                                                  ),
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.bold,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleLarge
+                                                          .fontStyle,
                                                 ),
                                           ),
                                         ),
@@ -624,8 +875,30 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                                           .of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        font:
+                                                            GoogleFonts.roboto(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
                                                         letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
                                                       ),
                                                   hintText: FFLocalizations.of(
                                                           context)
@@ -636,8 +909,30 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                                           .of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        font:
+                                                            GoogleFonts.roboto(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
                                                         letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
                                                       ),
                                                   enabledBorder:
                                                       OutlineInputBorder(
@@ -683,13 +978,34 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                                             18.0),
                                                   ),
                                                 ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyLarge
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          letterSpacing: 0.0,
-                                                        ),
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyLarge
+                                                    .override(
+                                                      font: GoogleFonts.roboto(
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyLarge
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyLarge
+                                                                .fontStyle,
+                                                      ),
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyLarge
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyLarge
+                                                              .fontStyle,
+                                                    ),
                                                 maxLines: null,
                                                 validator: _model
                                                     .textFieldUrlTextControllerValidator
@@ -772,14 +1088,32 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Roboto',
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .roboto(
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
+                                                                ),
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .info,
                                                                 fontSize: 11.0,
                                                                 letterSpacing:
                                                                     0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
                                                               ),
                                                         ),
                                                       ].divide(SizedBox(
@@ -814,9 +1148,19 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .titleLarge
                                           .override(
-                                            fontFamily: 'Manrope',
+                                            font: GoogleFonts.manrope(
+                                              fontWeight: FontWeight.bold,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleLarge
+                                                      .fontStyle,
+                                            ),
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.bold,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleLarge
+                                                    .fontStyle,
                                           ),
                                     ),
                                   ),
@@ -835,8 +1179,29 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyLarge
                                                 .override(
-                                                  fontFamily: 'Roboto',
+                                                  font: GoogleFonts.roboto(
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyLarge
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyLarge
+                                                            .fontStyle,
+                                                  ),
                                                   letterSpacing: 0.0,
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyLarge
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyLarge
+                                                          .fontStyle,
                                                 ),
                                           ),
                                           Container(
@@ -874,13 +1239,34 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                               ),
                                               countBuilder: (count) => Text(
                                                 count.toString(),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleLarge
-                                                        .override(
-                                                          fontFamily: 'Manrope',
-                                                          letterSpacing: 0.0,
-                                                        ),
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .titleLarge
+                                                    .override(
+                                                      font: GoogleFonts.manrope(
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleLarge
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleLarge
+                                                                .fontStyle,
+                                                      ),
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleLarge
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleLarge
+                                                              .fontStyle,
+                                                    ),
                                               ),
                                               count: _model
                                                   .countControllerValue ??= 10,
@@ -913,8 +1299,30 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyLarge
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        font:
+                                                            GoogleFonts.roboto(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyLarge
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyLarge
+                                                                  .fontStyle,
+                                                        ),
                                                         letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyLarge
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyLarge
+                                                                .fontStyle,
                                                       ),
                                             ),
                                           ),
@@ -950,17 +1358,14 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                               onPressed: () async {
                                 if (_model.selectedInputFormat ==
                                     QuizInputFormat.rawText) {
-                                  _model.jsonFileText =
-                                      await actions.createJsonFile(
-                                    _model.textFieldRawTextTextController.text,
-                                    _model.countControllerValue!,
-                                    4,
-                                    '',
-                                    _model.switchGenerateFlashcardsValue!,
-                                  );
                                   _model.apiResultFromText =
-                                      await QuizzGenerationAPICall.call(
-                                    jsonFile: _model.jsonFileText,
+                                      await AiContentGenerationApiCall.call(
+                                    generateFlashcard:
+                                        _model.switchGenerateFlashcardsValue,
+                                    numOfQuestions: _model.countControllerValue,
+                                    numOfChoices: 4,
+                                    textContent: _model
+                                        .textFieldRawTextTextController.text,
                                   );
 
                                   if ((_model.apiResultFromText?.succeeded ??
@@ -975,15 +1380,6 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                                   '')),
                                           ParamType.DataStruct,
                                         ),
-                                        'sourceType': serializeParam(
-                                          'rawText',
-                                          ParamType.String,
-                                        ),
-                                        'sourceInput': serializeParam(
-                                          _model.textFieldRawTextTextController
-                                              .text,
-                                          ParamType.String,
-                                        ),
                                       }.withoutNulls,
                                       extra: <String, dynamic>{
                                         kTransitionInfoKey: TransitionInfo(
@@ -997,17 +1393,13 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                   }
                                 } else if (_model.selectedInputFormat ==
                                     QuizInputFormat.websiteUrl) {
-                                  _model.jsonFileUrl =
-                                      await actions.createJsonFile(
-                                    '',
-                                    _model.countControllerValue!,
-                                    4,
-                                    _model.textFieldUrlTextController.text,
-                                    _model.switchGenerateFlashcardsValue!,
-                                  );
                                   _model.apiResultFromUrl =
-                                      await QuizzGenerationAPICall.call(
-                                    jsonFile: _model.jsonFileUrl,
+                                      await AiContentGenerationApiCall.call(
+                                    generateFlashcard:
+                                        _model.switchGenerateFlashcardsValue,
+                                    numOfQuestions: _model.countControllerValue,
+                                    numOfChoices: 4,
+                                    url: _model.textFieldUrlTextController.text,
                                   );
 
                                   if ((_model.apiResultFromUrl?.succeeded ??
@@ -1022,15 +1414,6 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                                   '')),
                                           ParamType.DataStruct,
                                         ),
-                                        'sourceType': serializeParam(
-                                          'url',
-                                          ParamType.String,
-                                        ),
-                                        'sourceInput': serializeParam(
-                                          _model
-                                              .textFieldUrlTextController.text,
-                                          ParamType.String,
-                                        ),
                                       }.withoutNulls,
                                       extra: <String, dynamic>{
                                         kTransitionInfoKey: TransitionInfo(
@@ -1043,49 +1426,7 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                     );
                                   }
                                 } else if (_model.selectedInputFormat ==
-                                    QuizInputFormat.pdfFile) {
-                                  _model.jsonFilePdf =
-                                      await actions.createJsonFile(
-                                    '',
-                                    _model.countControllerValue!,
-                                    4,
-                                    '',
-                                    _model.switchGenerateFlashcardsValue!,
-                                  );
-                                  _model.apiResultFromPdf =
-                                      await QuizzGenerationAPICall.call(
-                                    jsonFile: _model.jsonFilePdf,
-                                    pdfFile: _model.uploadedLocalFile,
-                                  );
-
-                                  if ((_model.apiResultFromPdf?.succeeded ??
-                                      true)) {
-                                    context.goNamed(
-                                      QuizExoWidget.routeName,
-                                      queryParameters: {
-                                        'generatedQuizz': serializeParam(
-                                          GeneratedQuizzStruct.maybeFromMap(
-                                              (_model.apiResultFromPdf
-                                                      ?.jsonBody ??
-                                                  '')),
-                                          ParamType.DataStruct,
-                                        ),
-                                        'sourceType': serializeParam(
-                                          'pdf',
-                                          ParamType.String,
-                                        ),
-                                      }.withoutNulls,
-                                      extra: <String, dynamic>{
-                                        kTransitionInfoKey: TransitionInfo(
-                                          hasTransition: true,
-                                          transitionType:
-                                              PageTransitionType.fade,
-                                          duration: Duration(milliseconds: 0),
-                                        ),
-                                      },
-                                    );
-                                  }
-                                }
+                                    QuizInputFormat.pdfFile) {}
 
                                 safeSetState(() {});
                               },
@@ -1103,8 +1444,21 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                 textStyle: FlutterFlowTheme.of(context)
                                     .labelLarge
                                     .override(
-                                      fontFamily: 'Roboto',
+                                      font: GoogleFonts.roboto(
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .labelLarge
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .labelLarge
+                                            .fontStyle,
+                                      ),
                                       letterSpacing: 0.0,
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .labelLarge
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelLarge
+                                          .fontStyle,
                                     ),
                                 elevation: 1.0,
                                 borderRadius: BorderRadius.circular(24.0),

@@ -12,10 +12,10 @@ export 'quiz_item_model.dart';
 class QuizItemWidget extends StatefulWidget {
   const QuizItemWidget({
     super.key,
-    required this.quizSaved,
+    required this.quiz,
   });
 
-  final SavedQuizRecord? quizSaved;
+  final MyQuizRecord? quiz;
 
   @override
   State<QuizItemWidget> createState() => _QuizItemWidgetState();
@@ -79,13 +79,26 @@ class _QuizItemWidgetState extends State<QuizItemWidget> {
                       children: [
                         Text(
                           valueOrDefault<String>(
-                            widget!.quizSaved?.quizName,
+                            widget!.quiz?.name,
                             'QuizName',
                           ),
                           style:
                               FlutterFlowTheme.of(context).titleSmall.override(
-                                    fontFamily: 'Manrope',
+                                    font: GoogleFonts.manrope(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontStyle,
+                                    ),
                                     letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
                                     lineHeight: 1.2,
                                   ),
                         ),
@@ -108,11 +121,11 @@ class _QuizItemWidgetState extends State<QuizItemWidget> {
                           valueOrDefault<String>(
                             formatNumber(
                               valueOrDefault<int>(
-                                    widget!.quizSaved?.totalCorrectAnswers,
+                                    widget!.quiz?.nbOfCorrectAnswers,
                                     0,
                                   ) /
                                   valueOrDefault<int>(
-                                    widget!.quizSaved?.totalQuestions,
+                                    widget!.quiz?.nbOfQuestions,
                                     0,
                                   ),
                               formatType: FormatType.percent,
@@ -122,9 +135,22 @@ class _QuizItemWidgetState extends State<QuizItemWidget> {
                           style: FlutterFlowTheme.of(context)
                               .bodyMedium
                               .override(
-                                fontFamily: 'Roboto',
+                                font: GoogleFonts.roboto(
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .fontStyle,
+                                ),
                                 color: FlutterFlowTheme.of(context).tonicColor1,
                                 letterSpacing: 0.0,
+                                fontWeight: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .fontStyle,
                               ),
                         ),
                       ),
@@ -147,17 +173,30 @@ class _QuizItemWidgetState extends State<QuizItemWidget> {
                           style: FlutterFlowTheme.of(context)
                               .bodySmall
                               .override(
-                                fontFamily: 'Roboto',
+                                font: GoogleFonts.roboto(
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .bodySmall
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .bodySmall
+                                      .fontStyle,
+                                ),
                                 color:
                                     FlutterFlowTheme.of(context).secondaryText,
                                 letterSpacing: 0.0,
+                                fontWeight: FlutterFlowTheme.of(context)
+                                    .bodySmall
+                                    .fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .bodySmall
+                                    .fontStyle,
                               ),
                         ),
                         TextSpan(
                           text: valueOrDefault<String>(
                             dateTimeFormat(
                               "MMMEd",
-                              widget!.quizSaved?.createdAt,
+                              widget!.quiz?.createdAt,
                               locale: FFLocalizations.of(context).languageCode,
                             ),
                             'Wed, Feb 19',
@@ -166,9 +205,22 @@ class _QuizItemWidgetState extends State<QuizItemWidget> {
                         )
                       ],
                       style: FlutterFlowTheme.of(context).bodySmall.override(
-                            fontFamily: 'Roboto',
+                            font: GoogleFonts.roboto(
+                              fontWeight: FlutterFlowTheme.of(context)
+                                  .bodySmall
+                                  .fontWeight,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodySmall
+                                  .fontStyle,
+                            ),
                             color: FlutterFlowTheme.of(context).secondaryText,
                             letterSpacing: 0.0,
+                            fontWeight: FlutterFlowTheme.of(context)
+                                .bodySmall
+                                .fontWeight,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .bodySmall
+                                .fontStyle,
                           ),
                     ),
                   ),
@@ -178,14 +230,27 @@ class _QuizItemWidgetState extends State<QuizItemWidget> {
                       children: [
                         TextSpan(
                           text: valueOrDefault<String>(
-                            widget!.quizSaved?.totalCorrectAnswers?.toString(),
+                            widget!.quiz?.nbOfCorrectAnswers?.toString(),
                             '0',
                           ),
                           style:
                               FlutterFlowTheme.of(context).bodySmall.override(
-                                    fontFamily: 'Roboto',
+                                    font: GoogleFonts.roboto(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodySmall
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodySmall
+                                          .fontStyle,
+                                    ),
                                     color: FlutterFlowTheme.of(context).primary,
                                     letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .bodySmall
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodySmall
+                                        .fontStyle,
                                   ),
                         ),
                         TextSpan(
@@ -196,7 +261,7 @@ class _QuizItemWidgetState extends State<QuizItemWidget> {
                         ),
                         TextSpan(
                           text: valueOrDefault<String>(
-                            widget!.quizSaved?.totalQuestions?.toString(),
+                            widget!.quiz?.nbOfQuestions?.toString(),
                             '10',
                           ),
                           style: TextStyle(),
@@ -209,9 +274,22 @@ class _QuizItemWidgetState extends State<QuizItemWidget> {
                         )
                       ],
                       style: FlutterFlowTheme.of(context).bodySmall.override(
-                            fontFamily: 'Roboto',
+                            font: GoogleFonts.roboto(
+                              fontWeight: FlutterFlowTheme.of(context)
+                                  .bodySmall
+                                  .fontWeight,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodySmall
+                                  .fontStyle,
+                            ),
                             color: FlutterFlowTheme.of(context).primary,
                             letterSpacing: 0.0,
+                            fontWeight: FlutterFlowTheme.of(context)
+                                .bodySmall
+                                .fontWeight,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .bodySmall
+                                .fontStyle,
                           ),
                     ),
                   ),

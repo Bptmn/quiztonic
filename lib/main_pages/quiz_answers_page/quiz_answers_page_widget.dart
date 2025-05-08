@@ -84,8 +84,21 @@ class _QuizAnswersPageWidgetState extends State<QuizAnswersPageWidget> {
                     'ez5dh7pg' /* My answers */,
                   ),
                   style: FlutterFlowTheme.of(context).headlineMedium.override(
-                        fontFamily: 'Manrope',
+                        font: GoogleFonts.manrope(
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .headlineMedium
+                              .fontWeight,
+                          fontStyle: FlutterFlowTheme.of(context)
+                              .headlineMedium
+                              .fontStyle,
+                        ),
                         letterSpacing: 0.0,
+                        fontWeight: FlutterFlowTheme.of(context)
+                            .headlineMedium
+                            .fontWeight,
+                        fontStyle: FlutterFlowTheme.of(context)
+                            .headlineMedium
+                            .fontStyle,
                       ),
                 ),
                 actions: [],
@@ -116,58 +129,116 @@ class _QuizAnswersPageWidgetState extends State<QuizAnswersPageWidget> {
                       maxWidth: FFAppConstants.PageContentMaxWidth.toDouble(),
                     ),
                     decoration: BoxDecoration(),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        if (responsiveVisibility(
-                          context: context,
-                          phone: false,
-                          tablet: false,
-                        ))
-                          Text(
-                            FFLocalizations.of(context).getText(
-                              '344koiwf' /* My answers */,
-                            ),
-                            style: FlutterFlowTheme.of(context)
-                                .headlineMedium
-                                .override(
-                                  fontFamily: 'Manrope',
-                                  letterSpacing: 0.0,
-                                ),
-                          ),
-                        Builder(
-                          builder: (context) {
-                            final questionsCard =
-                                widget!.questionCards!.toList();
-
-                            return SingleChildScrollView(
-                              child: Column(
+                    child: Padding(
+                      padding: EdgeInsets.all(18.0),
+                      child: SingleChildScrollView(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            if (responsiveVisibility(
+                              context: context,
+                              phone: false,
+                              tablet: false,
+                            ))
+                              Row(
                                 mainAxisSize: MainAxisSize.max,
-                                children: List.generate(questionsCard.length,
-                                    (questionsCardIndex) {
-                                  final questionsCardItem =
-                                      questionsCard[questionsCardIndex];
-                                  return wrapWithModel(
-                                    model: _model.questionCardModels.getModel(
-                                      questionsCardIndex.toString(),
-                                      questionsCardIndex,
-                                    ),
-                                    updateCallback: () => safeSetState(() {}),
-                                    child: QuestionCardWidget(
-                                      key: Key(
-                                        'Keyrqm_${questionsCardIndex.toString()}',
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Align(
+                                    alignment: AlignmentDirectional(-1.0, 0.0),
+                                    child: FlutterFlowIconButton(
+                                      borderRadius: 8.0,
+                                      buttonSize: 40.0,
+                                      icon: Icon(
+                                        Icons.chevron_left,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        size: 24.0,
                                       ),
-                                      questionCard: questionsCardItem,
-                                      updateScore:
-                                          (isCorrect, userAnswerIndex) async {},
+                                      onPressed: () async {
+                                        context.safePop();
+                                      },
                                     ),
-                                  );
-                                }),
+                                  ),
+                                  Align(
+                                    alignment: AlignmentDirectional(0.0, -1.0),
+                                    child: Text(
+                                      FFLocalizations.of(context).getText(
+                                        '0f68e00i' /* My answers */,
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .headlineMedium
+                                          .override(
+                                            font: GoogleFonts.manrope(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineMedium
+                                                      .fontStyle,
+                                            ),
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            fontSize: 26.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .headlineMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .headlineMedium
+                                                    .fontStyle,
+                                          ),
+                                    ),
+                                  ),
+                                  Opacity(
+                                    opacity: 0.0,
+                                    child: Icon(
+                                      Icons.arrow_back,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      size: 24.0,
+                                    ),
+                                  ),
+                                ],
                               ),
-                            );
-                          },
+                            Builder(
+                              builder: (context) {
+                                final questionsCard =
+                                    widget!.questionCards!.toList();
+
+                                return Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: List.generate(questionsCard.length,
+                                      (questionsCardIndex) {
+                                    final questionsCardItem =
+                                        questionsCard[questionsCardIndex];
+                                    return wrapWithModel(
+                                      model: _model.questionCardModels.getModel(
+                                        questionsCardIndex.toString(),
+                                        questionsCardIndex,
+                                      ),
+                                      updateCallback: () => safeSetState(() {}),
+                                      child: QuestionCardWidget(
+                                        key: Key(
+                                          'Keyrqm_${questionsCardIndex.toString()}',
+                                        ),
+                                        questionCard: questionsCardItem,
+                                        updateScore: (isCorrect,
+                                            userAnswerIndex) async {},
+                                      ),
+                                    );
+                                  }),
+                                );
+                              },
+                            ),
+                          ],
                         ),
-                      ],
+                      ),
                     ),
                   ),
                 ),

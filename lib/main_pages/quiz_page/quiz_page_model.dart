@@ -8,7 +8,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/shimmer_items/folder_tag_shimmer/folder_tag_shimmer_widget.dart';
-import 'dart:async';
 import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
@@ -36,8 +35,6 @@ class QuizPageModel extends FlutterFlowModel<QuizPageWidget> {
           int index, Function(QuestionCardStruct) updateFn) =>
       reinitializedQuestionCards[index] =
           updateFn(reinitializedQuestionCards[index]);
-
-  int? loopIndex;
 
   ///  State fields for stateful widgets in this page.
 

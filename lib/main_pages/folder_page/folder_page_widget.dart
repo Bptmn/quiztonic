@@ -8,12 +8,9 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/shimmer_items/folder_item_shimmer/folder_item_shimmer_widget.dart';
-import 'dart:async';
 import 'dart:ui';
-import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -26,7 +23,7 @@ class FolderPageWidget extends StatefulWidget {
     required this.folderDocument,
   });
 
-  final FoldersRecord? folderDocument;
+  final MyFoldersRecord? folderDocument;
 
   static String routeName = 'FolderPage';
   static String routePath = '/folderPage';
@@ -57,8 +54,6 @@ class _FolderPageWidgetState extends State<FolderPageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -95,8 +90,21 @@ class _FolderPageWidgetState extends State<FolderPageWidget> {
                     'folderName',
                   ),
                   style: FlutterFlowTheme.of(context).headlineMedium.override(
-                        fontFamily: 'Manrope',
+                        font: GoogleFonts.manrope(
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .headlineMedium
+                              .fontWeight,
+                          fontStyle: FlutterFlowTheme.of(context)
+                              .headlineMedium
+                              .fontStyle,
+                        ),
                         letterSpacing: 0.0,
+                        fontWeight: FlutterFlowTheme.of(context)
+                            .headlineMedium
+                            .fontWeight,
+                        fontStyle: FlutterFlowTheme.of(context)
+                            .headlineMedium
+                            .fontStyle,
                       ),
                 ),
                 actions: [],
@@ -141,39 +149,92 @@ class _FolderPageWidgetState extends State<FolderPageWidget> {
                                 phone: false,
                                 tablet: false,
                               ))
-                                Text(
-                                  valueOrDefault<String>(
-                                    widget!.folderDocument?.name,
-                                    'folderName',
-                                  ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .headlineMedium
-                                      .override(
-                                        fontFamily: 'Manrope',
-                                        letterSpacing: 0.0,
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Align(
+                                      alignment:
+                                          AlignmentDirectional(-1.0, 0.0),
+                                      child: FlutterFlowIconButton(
+                                        borderRadius: 8.0,
+                                        buttonSize: 40.0,
+                                        icon: Icon(
+                                          Icons.chevron_left,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          size: 24.0,
+                                        ),
+                                        onPressed: () async {
+                                          context.safePop();
+                                        },
                                       ),
+                                    ),
+                                    Align(
+                                      alignment:
+                                          AlignmentDirectional(0.0, -1.0),
+                                      child: Text(
+                                        valueOrDefault<String>(
+                                          widget!.folderDocument?.name,
+                                          'folderName',
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .headlineMedium
+                                            .override(
+                                              font: GoogleFonts.manrope(
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .headlineMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .headlineMedium
+                                                        .fontStyle,
+                                              ),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              fontSize: 26.0,
+                                              letterSpacing: 0.0,
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineMedium
+                                                      .fontStyle,
+                                            ),
+                                      ),
+                                    ),
+                                    Opacity(
+                                      opacity: 0.0,
+                                      child: Icon(
+                                        Icons.arrow_back,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        size: 24.0,
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                              StreamBuilder<List<SavedQuizRecord>>(
-                                stream: querySavedQuizRecord(
-                                  queryBuilder: (savedQuizRecord) =>
-                                      savedQuizRecord
-                                          .where(
-                                            'userRef',
-                                            isEqualTo: currentUserReference,
-                                          )
-                                          .where(
-                                            'folderRef',
-                                            isEqualTo: widget!
-                                                .folderDocument?.reference,
-                                          ),
+                              StreamBuilder<List<MyQuizRecord>>(
+                                stream: queryMyQuizRecord(
+                                  parent: currentUserReference,
+                                  queryBuilder: (myQuizRecord) =>
+                                      myQuizRecord.where(
+                                    'folder_reference',
+                                    isEqualTo:
+                                        widget!.folderDocument?.reference,
+                                  ),
                                 ),
                                 builder: (context, snapshot) {
                                   // Customize what your widget looks like when it's loading.
                                   if (!snapshot.hasData) {
                                     return FolderItemShimmerWidget();
                                   }
-                                  List<SavedQuizRecord>
-                                      listViewSavedQuizRecordList =
+                                  List<MyQuizRecord> listViewMyQuizRecordList =
                                       snapshot.data!;
 
                                   return ListView.separated(
@@ -181,13 +242,12 @@ class _FolderPageWidgetState extends State<FolderPageWidget> {
                                         EdgeInsets.symmetric(vertical: 10.0),
                                     shrinkWrap: true,
                                     scrollDirection: Axis.vertical,
-                                    itemCount:
-                                        listViewSavedQuizRecordList.length,
+                                    itemCount: listViewMyQuizRecordList.length,
                                     separatorBuilder: (_, __) =>
                                         SizedBox(height: 10.0),
                                     itemBuilder: (context, listViewIndex) {
-                                      final listViewSavedQuizRecord =
-                                          listViewSavedQuizRecordList[
+                                      final listViewMyQuizRecord =
+                                          listViewMyQuizRecordList[
                                               listViewIndex];
                                       return InkWell(
                                         splashColor: Colors.transparent,
@@ -199,20 +259,19 @@ class _FolderPageWidgetState extends State<FolderPageWidget> {
                                             QuizPageWidget.routeName,
                                             queryParameters: {
                                               'quizDocument': serializeParam(
-                                                listViewSavedQuizRecord,
+                                                listViewMyQuizRecord,
                                                 ParamType.Document,
                                               ),
                                             }.withoutNulls,
                                             extra: <String, dynamic>{
                                               'quizDocument':
-                                                  listViewSavedQuizRecord,
+                                                  listViewMyQuizRecord,
                                             },
                                           );
                                         },
                                         child: wrapWithModel(
                                           model: _model.quizItemModels.getModel(
-                                            listViewSavedQuizRecord
-                                                .reference.id,
+                                            listViewMyQuizRecord.reference.id,
                                             listViewIndex,
                                           ),
                                           updateCallback: () =>
@@ -220,9 +279,9 @@ class _FolderPageWidgetState extends State<FolderPageWidget> {
                                           updateOnChange: true,
                                           child: QuizItemWidget(
                                             key: Key(
-                                              'Key66p_${listViewSavedQuizRecord.reference.id}',
+                                              'Key66p_${listViewMyQuizRecord.reference.id}',
                                             ),
-                                            quizSaved: listViewSavedQuizRecord,
+                                            quiz: listViewMyQuizRecord,
                                           ),
                                         ),
                                       );
@@ -291,8 +350,25 @@ class _FolderPageWidgetState extends State<FolderPageWidget> {
                                       textStyle: FlutterFlowTheme.of(context)
                                           .labelLarge
                                           .override(
-                                            fontFamily: 'Roboto',
+                                            font: GoogleFonts.roboto(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelLarge
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelLarge
+                                                      .fontStyle,
+                                            ),
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelLarge
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelLarge
+                                                    .fontStyle,
                                           ),
                                       elevation: 1.0,
                                       borderRadius: BorderRadius.circular(24.0),
@@ -304,63 +380,22 @@ class _FolderPageWidgetState extends State<FolderPageWidget> {
                           ),
                           FFButtonWidget(
                             onPressed: () async {
-                              _model.quizIdList =
-                                  await actions.quizRefToStringList(
-                                widget!.folderDocument!.quizRefs.toList(),
-                              );
-                              unawaited(
-                                () async {
-                                  await actions.printText(
-                                    _model.quizIdList!.firstOrNull!,
-                                  );
-                                }(),
-                              );
-                              _model.quizRefsToUpdate =
-                                  await querySavedQuizRecordOnce(
-                                queryBuilder: (savedQuizRecord) =>
-                                    savedQuizRecord
-                                        .where(
-                                          'userRef',
-                                          isEqualTo: currentUserReference,
-                                        )
-                                        .whereIn('quizId', _model.quizIdList),
-                              );
-                              unawaited(
-                                () async {
-                                  await actions.printText(
-                                    _model.quizRefsToUpdate!.firstOrNull!
-                                        .reference.id,
-                                  );
-                                }(),
-                              );
-                              await actions.printText(
-                                _model.quizRefsToUpdate!.length.toString(),
-                              );
-                              FFAppState().loopIndex = 0;
-                              while (FFAppState().loopIndex <
-                                  _model.quizRefsToUpdate!.length) {
-                                await _model.quizRefsToUpdate!
-                                    .elementAtOrNull(FFAppState().loopIndex)!
-                                    .reference
-                                    .update({
+                              for (int loop1Index = 0;
+                                  loop1Index <
+                                      widget!.folderDocument!.quizReferences
+                                          .length;
+                                  loop1Index += 1) {
+                                final currentLoop1Item = widget!
+                                    .folderDocument!.quizReferences[loop1Index];
+
+                                await currentLoop1Item.update({
                                   ...mapToFirestore(
                                     {
-                                      'folderRef': FieldValue.delete(),
+                                      'folder_reference': FieldValue.delete(),
                                     },
                                   ),
                                 });
-                                await actions.printText(
-                                  _model.quizRefsToUpdate!
-                                      .elementAtOrNull(FFAppState().loopIndex)!
-                                      .quizName,
-                                );
-                                await actions.printText(
-                                  FFAppState().loopIndex.toString(),
-                                );
-                                FFAppState().loopIndex =
-                                    FFAppState().loopIndex + 1;
                               }
-                              FFAppState().loopIndex = 0;
                               await widget!.folderDocument!.reference.delete();
                               if (isWeb) {
                                 context.goNamed(
@@ -385,8 +420,6 @@ class _FolderPageWidgetState extends State<FolderPageWidget> {
                                   },
                                 );
                               }
-
-                              safeSetState(() {});
                             },
                             text: FFLocalizations.of(context).getText(
                               'wunzriiq' /* Delete this folder */,
@@ -407,9 +440,22 @@ class _FolderPageWidgetState extends State<FolderPageWidget> {
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
-                                    fontFamily: 'Manrope',
+                                    font: GoogleFonts.manrope(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontStyle,
+                                    ),
                                     color: FlutterFlowTheme.of(context).error,
                                     letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
                                   ),
                               elevation: 0.0,
                               borderSide: BorderSide(

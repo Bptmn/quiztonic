@@ -61,9 +61,9 @@ class QuizExoModel extends FlutterFlowModel<QuizExoWidget> {
   // Stores action output result for [Custom Action - generateFirestoreId] action in ButtonComplete widget.
   String? firestoreId;
   // Stores action output result for [Backend Call - Create Document] action in ButtonComplete widget.
-  SavedQuizRecord? quizRef;
+  MyQuizRecord? quizRef;
   // Stores action output result for [Firestore Query - Query a collection] action in ButtonComplete widget.
-  UserStatisticsRecord? userStatisticDocument;
+  MyStatisticsRecord? userStatistics;
 
   @override
   void initState(BuildContext context) {

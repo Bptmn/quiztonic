@@ -8,7 +8,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/shimmer_items/folder_tag_shimmer/folder_tag_shimmer_widget.dart';
-import 'dart:async';
 import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
@@ -26,7 +25,7 @@ class QuizPageWidget extends StatefulWidget {
     required this.quizDocument,
   });
 
-  final SavedQuizRecord? quizDocument;
+  final MyQuizRecord? quizDocument;
 
   static String routeName = 'QuizPage';
   static String routePath = '/SavedQuizPage';
@@ -92,10 +91,23 @@ class _QuizPageWidgetState extends State<QuizPageWidget> {
                     '7nh5t6ns' /* Quiz */,
                   ),
                   style: FlutterFlowTheme.of(context).headlineMedium.override(
-                        fontFamily: 'Manrope',
+                        font: GoogleFonts.manrope(
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .headlineMedium
+                              .fontWeight,
+                          fontStyle: FlutterFlowTheme.of(context)
+                              .headlineMedium
+                              .fontStyle,
+                        ),
                         color: FlutterFlowTheme.of(context).primary,
                         fontSize: 22.0,
                         letterSpacing: 0.0,
+                        fontWeight: FlutterFlowTheme.of(context)
+                            .headlineMedium
+                            .fontWeight,
+                        fontStyle: FlutterFlowTheme.of(context)
+                            .headlineMedium
+                            .fontStyle,
                       ),
                 ),
                 actions: [],
@@ -127,8 +139,7 @@ class _QuizPageWidgetState extends State<QuizPageWidget> {
                     ),
                     decoration: BoxDecoration(),
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
-                          18.0, 10.0, 18.0, 18.0),
+                      padding: EdgeInsets.all(18.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -142,19 +153,76 @@ class _QuizPageWidgetState extends State<QuizPageWidget> {
                                   phone: false,
                                   tablet: false,
                                 ))
-                                  Text(
-                                    FFLocalizations.of(context).getText(
-                                      'kbz0b7cn' /* Quiz */,
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .headlineMedium
-                                        .override(
-                                          fontFamily: 'Manrope',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          fontSize: 22.0,
-                                          letterSpacing: 0.0,
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Align(
+                                        alignment:
+                                            AlignmentDirectional(-1.0, 0.0),
+                                        child: FlutterFlowIconButton(
+                                          borderRadius: 8.0,
+                                          buttonSize: 40.0,
+                                          icon: Icon(
+                                            Icons.chevron_left,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primary,
+                                            size: 24.0,
+                                          ),
+                                          onPressed: () async {
+                                            context.safePop();
+                                          },
                                         ),
+                                      ),
+                                      Align(
+                                        alignment:
+                                            AlignmentDirectional(0.0, -1.0),
+                                        child: Text(
+                                          FFLocalizations.of(context).getText(
+                                            'jeqxbs2s' /* Quiz */,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .headlineMedium
+                                              .override(
+                                                font: GoogleFonts.manrope(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .headlineMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .headlineMedium
+                                                          .fontStyle,
+                                                ),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                fontSize: 22.0,
+                                                letterSpacing: 0.0,
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .headlineMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .headlineMedium
+                                                        .fontStyle,
+                                              ),
+                                        ),
+                                      ),
+                                      Opacity(
+                                        opacity: 0.0,
+                                        child: Icon(
+                                          Icons.arrow_back,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          size: 24.0,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 Align(
                                   alignment: AlignmentDirectional(-1.0, 0.0),
@@ -182,15 +250,27 @@ class _QuizPageWidgetState extends State<QuizPageWidget> {
                                                   .getText(
                                                 'vw0p8xak' /* Information */,
                                               ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleLarge
-                                                      .override(
-                                                        fontFamily: 'Manrope',
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                      ),
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .titleLarge
+                                                  .override(
+                                                    font: GoogleFonts.manrope(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleLarge
+                                                              .fontStyle,
+                                                    ),
+                                                    letterSpacing: 0.0,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleLarge
+                                                            .fontStyle,
+                                                  ),
                                             ),
                                           ),
                                           RichText(
@@ -202,37 +282,96 @@ class _QuizPageWidgetState extends State<QuizPageWidget> {
                                                   text: FFLocalizations.of(
                                                           context)
                                                       .getText(
-                                                    'v2ri64tl' /* Name:  */,
+                                                    'qpnz791t' /* Name:  */,
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .titleSmall
+                                                      .bodyLarge
                                                       .override(
-                                                        fontFamily: 'Manrope',
+                                                        font:
+                                                            GoogleFonts.roboto(
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyLarge
+                                                                  .fontStyle,
+                                                        ),
                                                         letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyLarge
+                                                                .fontStyle,
                                                       ),
                                                 ),
                                                 TextSpan(
                                                   text: valueOrDefault<String>(
-                                                    widget!
-                                                        .quizDocument?.quizName,
+                                                    widget!.quizDocument?.name,
                                                     'quizName',
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyLarge
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        font:
+                                                            GoogleFonts.roboto(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyLarge
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyLarge
+                                                                  .fontStyle,
+                                                        ),
                                                         letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyLarge
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyLarge
+                                                                .fontStyle,
                                                       ),
                                                 )
                                               ],
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .titleMedium
+                                                      .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Manrope',
+                                                        font:
+                                                            GoogleFonts.roboto(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
                                                         letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
                                                       ),
                                             ),
                                           ),
@@ -253,22 +392,44 @@ class _QuizPageWidgetState extends State<QuizPageWidget> {
                                                             context)
                                                         .titleSmall
                                                         .override(
-                                                          fontFamily: 'Manrope',
+                                                          font: GoogleFonts
+                                                              .manrope(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontStyle,
+                                                          ),
                                                           letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontStyle,
                                                         ),
                                                   ),
                                                   if (valueOrDefault<bool>(
                                                     widget!.quizDocument
-                                                            ?.folderRef !=
+                                                            ?.folderReference !=
                                                         null,
                                                     false,
                                                   ))
                                                     StreamBuilder<
-                                                        FoldersRecord>(
-                                                      stream: FoldersRecord
+                                                        MyFoldersRecord>(
+                                                      stream: MyFoldersRecord
                                                           .getDocument(widget!
                                                               .quizDocument!
-                                                              .folderRef!),
+                                                              .folderReference!),
                                                       builder:
                                                           (context, snapshot) {
                                                         // Customize what your widget looks like when it's loading.
@@ -276,75 +437,124 @@ class _QuizPageWidgetState extends State<QuizPageWidget> {
                                                           return FolderTagShimmerWidget();
                                                         }
 
-                                                        final containerFoldersRecord =
+                                                        final containerFolderMyFoldersRecord =
                                                             snapshot.data!;
 
-                                                        return Container(
-                                                          height: 40.0,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .accent1,
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        24.0),
-                                                            border: Border.all(
+                                                        return InkWell(
+                                                          splashColor: Colors
+                                                              .transparent,
+                                                          focusColor: Colors
+                                                              .transparent,
+                                                          hoverColor: Colors
+                                                              .transparent,
+                                                          highlightColor: Colors
+                                                              .transparent,
+                                                          onTap: () async {
+                                                            context.pushNamed(
+                                                              FolderPageWidget
+                                                                  .routeName,
+                                                              queryParameters: {
+                                                                'folderDocument':
+                                                                    serializeParam(
+                                                                  containerFolderMyFoldersRecord,
+                                                                  ParamType
+                                                                      .Document,
+                                                                ),
+                                                              }.withoutNulls,
+                                                              extra: <String,
+                                                                  dynamic>{
+                                                                'folderDocument':
+                                                                    containerFolderMyFoldersRecord,
+                                                                kTransitionInfoKey:
+                                                                    TransitionInfo(
+                                                                  hasTransition:
+                                                                      true,
+                                                                  transitionType:
+                                                                      PageTransitionType
+                                                                          .fade,
+                                                                  duration: Duration(
+                                                                      milliseconds:
+                                                                          0),
+                                                                ),
+                                                              },
+                                                            );
+                                                          },
+                                                          child: Container(
+                                                            height: 40.0,
+                                                            decoration:
+                                                                BoxDecoration(
                                                               color: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .tonicColor1,
+                                                                  .accent1,
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          24.0),
+                                                              border:
+                                                                  Border.all(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .tonicColor1,
+                                                              ),
                                                             ),
-                                                          ),
-                                                          child: Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .min,
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .center,
-                                                            children: [
-                                                              Align(
-                                                                alignment:
-                                                                    AlignmentDirectional(
-                                                                        0.0,
-                                                                        0.0),
-                                                                child: Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          12.0,
-                                                                          6.0,
-                                                                          12.0,
-                                                                          6.0),
-                                                                  child: Text(
-                                                                    valueOrDefault<
-                                                                        String>(
-                                                                      containerFoldersRecord
-                                                                          .name,
-                                                                      'folderName',
+                                                            child: Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .min,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .center,
+                                                              children: [
+                                                                Align(
+                                                                  alignment:
+                                                                      AlignmentDirectional(
+                                                                          0.0,
+                                                                          0.0),
+                                                                  child:
+                                                                      Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            12.0,
+                                                                            6.0,
+                                                                            12.0,
+                                                                            6.0),
+                                                                    child: Text(
+                                                                      valueOrDefault<
+                                                                          String>(
+                                                                        containerFolderMyFoldersRecord
+                                                                            .name,
+                                                                        'folderName',
+                                                                      ),
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleSmall
+                                                                          .override(
+                                                                            font:
+                                                                                GoogleFonts.manrope(
+                                                                              fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
+                                                                              fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                                                                            ),
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).blackText,
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                            fontWeight:
+                                                                                FlutterFlowTheme.of(context).titleSmall.fontWeight,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                                                                          ),
                                                                     ),
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .titleSmall
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Manrope',
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).blackText,
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                        ),
                                                                   ),
                                                                 ),
-                                                              ),
-                                                            ],
+                                                              ],
+                                                            ),
                                                           ),
                                                         );
                                                       },
                                                     ),
                                                   if (valueOrDefault<bool>(
                                                     widget!.quizDocument
-                                                            ?.folderRef ==
+                                                            ?.folderReference ==
                                                         null,
                                                     false,
                                                   ))
@@ -405,6 +615,9 @@ class _QuizPageWidgetState extends State<QuizPageWidget> {
                                                                             .reference,
                                                                         fromChangeProcess:
                                                                             false,
+                                                                        currentFolderRef: widget!
+                                                                            .quizDocument
+                                                                            ?.folderReference,
                                                                       ),
                                                                     ),
                                                                   ),
@@ -470,10 +683,21 @@ class _QuizPageWidgetState extends State<QuizPageWidget> {
                                                                             context)
                                                                         .titleSmall
                                                                         .override(
-                                                                          fontFamily:
-                                                                              'Manrope',
+                                                                          font:
+                                                                              GoogleFonts.manrope(
+                                                                            fontWeight:
+                                                                                FlutterFlowTheme.of(context).titleSmall.fontWeight,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                                                                          ),
                                                                           letterSpacing:
                                                                               0.0,
+                                                                          fontWeight: FlutterFlowTheme.of(context)
+                                                                              .titleSmall
+                                                                              .fontWeight,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .titleSmall
+                                                                              .fontStyle,
                                                                         ),
                                                                   ),
                                                                 ].divide(SizedBox(
@@ -489,7 +713,7 @@ class _QuizPageWidgetState extends State<QuizPageWidget> {
                                               ),
                                               if (valueOrDefault<bool>(
                                                 widget!.quizDocument
-                                                        ?.folderRef !=
+                                                        ?.folderReference !=
                                                     null,
                                                 false,
                                               ))
@@ -550,7 +774,7 @@ class _QuizPageWidgetState extends State<QuizPageWidget> {
                                                                         .reference,
                                                                     currentFolderRef: widget!
                                                                         .quizDocument
-                                                                        ?.folderRef,
+                                                                        ?.folderReference,
                                                                     fromChangeProcess:
                                                                         true,
                                                                   ),
@@ -625,9 +849,20 @@ class _QuizPageWidgetState extends State<QuizPageWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .titleLarge
                                               .override(
-                                                fontFamily: 'Manrope',
+                                                font: GoogleFonts.manrope(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleLarge
+                                                          .fontStyle,
+                                                ),
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.bold,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleLarge
+                                                        .fontStyle,
                                               ),
                                         ),
                                         Row(
@@ -644,28 +879,70 @@ class _QuizPageWidgetState extends State<QuizPageWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyLarge
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        font:
+                                                            GoogleFonts.roboto(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyLarge
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyLarge
+                                                                  .fontStyle,
+                                                        ),
                                                         letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyLarge
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyLarge
+                                                                .fontStyle,
                                                       ),
                                             ),
                                             Text(
                                               valueOrDefault<String>(
                                                 widget!.quizDocument
-                                                    ?.totalCorrectAnswers
+                                                    ?.nbOfCorrectAnswers
                                                     ?.toString(),
                                                 '0',
                                               ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyLarge
-                                                      .override(
-                                                        fontFamily: 'Roboto',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .success,
-                                                        letterSpacing: 0.0,
-                                                      ),
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyLarge
+                                                  .override(
+                                                    font: GoogleFonts.roboto(
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyLarge
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyLarge
+                                                              .fontStyle,
+                                                    ),
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .success,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyLarge
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyLarge
+                                                            .fontStyle,
+                                                  ),
                                             ),
                                           ],
                                         ),
@@ -683,30 +960,72 @@ class _QuizPageWidgetState extends State<QuizPageWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyLarge
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        font:
+                                                            GoogleFonts.roboto(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyLarge
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyLarge
+                                                                  .fontStyle,
+                                                        ),
                                                         letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyLarge
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyLarge
+                                                                .fontStyle,
                                                       ),
                                             ),
                                             Text(
                                               valueOrDefault<String>(
                                                 (widget!.quizDocument!
-                                                            .totalQuestions -
+                                                            .nbOfQuestions -
                                                         widget!.quizDocument!
-                                                            .totalCorrectAnswers)
+                                                            .nbOfCorrectAnswers)
                                                     .toString(),
                                                 '0',
                                               ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyLarge
-                                                      .override(
-                                                        fontFamily: 'Roboto',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .error,
-                                                        letterSpacing: 0.0,
-                                                      ),
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyLarge
+                                                  .override(
+                                                    font: GoogleFonts.roboto(
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyLarge
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyLarge
+                                                              .fontStyle,
+                                                    ),
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .error,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyLarge
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyLarge
+                                                            .fontStyle,
+                                                  ),
                                             ),
                                           ],
                                         ),
@@ -724,8 +1043,30 @@ class _QuizPageWidgetState extends State<QuizPageWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyLarge
                                                       .override(
-                                                        fontFamily: 'Roboto',
+                                                        font:
+                                                            GoogleFonts.roboto(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyLarge
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyLarge
+                                                                  .fontStyle,
+                                                        ),
                                                         letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyLarge
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyLarge
+                                                                .fontStyle,
                                                       ),
                                             ),
                                             Text(
@@ -735,17 +1076,37 @@ class _QuizPageWidgetState extends State<QuizPageWidget> {
                                                     .timeDuration),
                                                 '0:00',
                                               ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyLarge
-                                                      .override(
-                                                        fontFamily: 'Roboto',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
-                                                        letterSpacing: 0.0,
-                                                      ),
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyLarge
+                                                  .override(
+                                                    font: GoogleFonts.roboto(
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyLarge
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyLarge
+                                                              .fontStyle,
+                                                    ),
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyLarge
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyLarge
+                                                            .fontStyle,
+                                                  ),
                                             ),
                                           ],
                                         ),
@@ -876,8 +1237,16 @@ class _QuizPageWidgetState extends State<QuizPageWidget> {
                                                                     .of(context)
                                                                 .labelLarge
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Roboto',
+                                                                  font: GoogleFonts
+                                                                      .roboto(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .normal,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelLarge
+                                                                        .fontStyle,
+                                                                  ),
                                                                   fontSize:
                                                                       18.0,
                                                                   letterSpacing:
@@ -885,6 +1254,10 @@ class _QuizPageWidgetState extends State<QuizPageWidget> {
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .normal,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelLarge
+                                                                      .fontStyle,
                                                                   lineHeight:
                                                                       1.3,
                                                                 ),
@@ -911,20 +1284,23 @@ class _QuizPageWidgetState extends State<QuizPageWidget> {
                                                         .toList()
                                                         .cast<
                                                             QuestionCardStruct>();
-                                                _model.loopIndex = 0;
-                                                while (_model.loopIndex! <
-                                                    widget!.quizDocument!
-                                                        .questionCards.length) {
+                                                for (int loop1Index = 0;
+                                                    loop1Index <
+                                                        _model
+                                                            .reinitializedQuestionCards
+                                                            .length;
+                                                    loop1Index += 1) {
+                                                  final currentLoop1Item = _model
+                                                          .reinitializedQuestionCards[
+                                                      loop1Index];
                                                   _model
                                                       .updateReinitializedQuestionCardsAtIndex(
-                                                    _model.loopIndex!,
+                                                    loop1Index,
                                                     (e) => e
                                                       ..userSelectionIndex =
                                                           null
                                                       ..questionIsDone = false,
                                                   );
-                                                  _model.loopIndex =
-                                                      _model.loopIndex! + 1;
                                                 }
                                                 if (isWeb) {
                                                   context.goNamed(
@@ -935,7 +1311,7 @@ class _QuizPageWidgetState extends State<QuizPageWidget> {
                                                         GeneratedQuizzStruct(
                                                           quizName: widget!
                                                               .quizDocument
-                                                              ?.quizName,
+                                                              ?.name,
                                                           questionCards: _model
                                                               .reinitializedQuestionCards,
                                                           flashcards: widget!
@@ -943,18 +1319,6 @@ class _QuizPageWidgetState extends State<QuizPageWidget> {
                                                               ?.flashcards,
                                                         ),
                                                         ParamType.DataStruct,
-                                                      ),
-                                                      'sourceType':
-                                                          serializeParam(
-                                                        widget!.quizDocument
-                                                            ?.sourceType,
-                                                        ParamType.String,
-                                                      ),
-                                                      'sourceInput':
-                                                          serializeParam(
-                                                        widget!.quizDocument
-                                                            ?.sourceInput,
-                                                        ParamType.String,
                                                       ),
                                                     }.withoutNulls,
                                                     extra: <String, dynamic>{
@@ -978,7 +1342,7 @@ class _QuizPageWidgetState extends State<QuizPageWidget> {
                                                         GeneratedQuizzStruct(
                                                           quizName: widget!
                                                               .quizDocument
-                                                              ?.quizName,
+                                                              ?.name,
                                                           questionCards: _model
                                                               .reinitializedQuestionCards,
                                                           flashcards: widget!
@@ -986,18 +1350,6 @@ class _QuizPageWidgetState extends State<QuizPageWidget> {
                                                               ?.flashcards,
                                                         ),
                                                         ParamType.DataStruct,
-                                                      ),
-                                                      'sourceType':
-                                                          serializeParam(
-                                                        widget!.quizDocument
-                                                            ?.sourceType,
-                                                        ParamType.String,
-                                                      ),
-                                                      'sourceInput':
-                                                          serializeParam(
-                                                        widget!.quizDocument
-                                                            ?.sourceInput,
-                                                        ParamType.String,
                                                       ),
                                                     }.withoutNulls,
                                                   );
@@ -1055,8 +1407,17 @@ class _QuizPageWidgetState extends State<QuizPageWidget> {
                                                                   .of(context)
                                                               .labelLarge
                                                               .override(
-                                                                fontFamily:
-                                                                    'Roboto',
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .roboto(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .normal,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelLarge
+                                                                      .fontStyle,
+                                                                ),
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .secondary,
@@ -1066,6 +1427,10 @@ class _QuizPageWidgetState extends State<QuizPageWidget> {
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .normal,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelLarge
+                                                                    .fontStyle,
                                                               ),
                                                         ),
                                                       ),
@@ -1078,94 +1443,105 @@ class _QuizPageWidgetState extends State<QuizPageWidget> {
                                           ),
                                         ].divide(SizedBox(width: 15.0)),
                                       ),
-                                      if (valueOrDefault<bool>(
-                                        widget!.quizDocument?.folderRef == null,
-                                        false,
-                                      ))
-                                        FFButtonWidget(
-                                          onPressed: () async {
-                                            if (isWeb) {
-                                              context.pushNamed(
-                                                QuizAnswersPageWidget.routeName,
-                                                queryParameters: {
-                                                  'questionCards':
-                                                      serializeParam(
-                                                    widget!.quizDocument
-                                                        ?.questionCards,
-                                                    ParamType.DataStruct,
-                                                    isList: true,
-                                                  ),
-                                                }.withoutNulls,
-                                                extra: <String, dynamic>{
-                                                  kTransitionInfoKey:
-                                                      TransitionInfo(
-                                                    hasTransition: true,
-                                                    transitionType:
-                                                        PageTransitionType.fade,
-                                                    duration: Duration(
-                                                        milliseconds: 0),
-                                                  ),
-                                                },
-                                              );
-                                            } else {
-                                              context.pushNamed(
-                                                QuizAnswersPageWidget.routeName,
-                                                queryParameters: {
-                                                  'questionCards':
-                                                      serializeParam(
-                                                    widget!.quizDocument
-                                                        ?.questionCards,
-                                                    ParamType.DataStruct,
-                                                    isList: true,
-                                                  ),
-                                                }.withoutNulls,
-                                              );
-                                            }
-                                          },
-                                          text: FFLocalizations.of(context)
-                                              .getText(
-                                            '46f8m2m7' /* See my answers */,
-                                          ),
-                                          icon: Icon(
-                                            Icons.arrow_forward,
+                                      FFButtonWidget(
+                                        onPressed: () async {
+                                          if (isWeb) {
+                                            context.pushNamed(
+                                              QuizAnswersPageWidget.routeName,
+                                              queryParameters: {
+                                                'questionCards': serializeParam(
+                                                  widget!.quizDocument
+                                                      ?.questionCards,
+                                                  ParamType.DataStruct,
+                                                  isList: true,
+                                                ),
+                                              }.withoutNulls,
+                                              extra: <String, dynamic>{
+                                                kTransitionInfoKey:
+                                                    TransitionInfo(
+                                                  hasTransition: true,
+                                                  transitionType:
+                                                      PageTransitionType.fade,
+                                                  duration:
+                                                      Duration(milliseconds: 0),
+                                                ),
+                                              },
+                                            );
+                                          } else {
+                                            context.pushNamed(
+                                              QuizAnswersPageWidget.routeName,
+                                              queryParameters: {
+                                                'questionCards': serializeParam(
+                                                  widget!.quizDocument
+                                                      ?.questionCards,
+                                                  ParamType.DataStruct,
+                                                  isList: true,
+                                                ),
+                                              }.withoutNulls,
+                                            );
+                                          }
+                                        },
+                                        text:
+                                            FFLocalizations.of(context).getText(
+                                          '46f8m2m7' /* See my answers */,
+                                        ),
+                                        icon: Icon(
+                                          Icons.arrow_forward,
+                                          color: FlutterFlowTheme.of(context)
+                                              .tonicColor1,
+                                          size: 22.0,
+                                        ),
+                                        options: FFButtonOptions(
+                                          width: double.infinity,
+                                          height: 45.0,
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  16.0, 0.0, 16.0, 0.0),
+                                          iconAlignment: IconAlignment.end,
+                                          iconPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryBackground,
+                                          textStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .labelLarge
+                                              .override(
+                                                font: GoogleFonts.roboto(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelLarge
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelLarge
+                                                          .fontStyle,
+                                                ),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .tonicColor1,
+                                                letterSpacing: 0.0,
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelLarge
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelLarge
+                                                        .fontStyle,
+                                              ),
+                                          elevation: 0.0,
+                                          borderSide: BorderSide(
                                             color: FlutterFlowTheme.of(context)
                                                 .tonicColor1,
-                                            size: 22.0,
+                                            width: 1.0,
                                           ),
-                                          options: FFButtonOptions(
-                                            width: double.infinity,
-                                            height: 45.0,
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    16.0, 0.0, 16.0, 0.0),
-                                            iconAlignment: IconAlignment.end,
-                                            iconPadding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryBackground,
-                                            textStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelLarge
-                                                    .override(
-                                                      fontFamily: 'Roboto',
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .tonicColor1,
-                                                      letterSpacing: 0.0,
-                                                    ),
-                                            elevation: 0.0,
-                                            borderSide: BorderSide(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .tonicColor1,
-                                              width: 1.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(24.0),
-                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(24.0),
                                         ),
+                                      ),
                                     ].divide(SizedBox(height: 15.0)),
                                   ),
                                 ),
@@ -1174,19 +1550,18 @@ class _QuizPageWidgetState extends State<QuizPageWidget> {
                           ),
                           FFButtonWidget(
                             onPressed: () async {
-                              unawaited(
-                                () async {
-                                  await widget!.quizDocument!.folderRef!
-                                      .update({
-                                    ...mapToFirestore(
-                                      {
-                                        'QuizRefs': FieldValue.arrayRemove(
-                                            [widget!.quizDocument?.reference]),
-                                      },
-                                    ),
-                                  });
-                                }(),
-                              );
+                              if (widget!.quizDocument?.folderReference !=
+                                  null) {
+                                await widget!.quizDocument!.folderReference!
+                                    .update({
+                                  ...mapToFirestore(
+                                    {
+                                      'quiz_references': FieldValue.arrayRemove(
+                                          [widget!.quizDocument?.reference]),
+                                    },
+                                  ),
+                                });
+                              }
                               await widget!.quizDocument!.reference.delete();
                               if (isWeb) {
                                 context.goNamed(
@@ -1231,9 +1606,22 @@ class _QuizPageWidgetState extends State<QuizPageWidget> {
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
-                                    fontFamily: 'Manrope',
+                                    font: GoogleFonts.manrope(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontStyle,
+                                    ),
                                     color: FlutterFlowTheme.of(context).error,
                                     letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
                                   ),
                               elevation: 0.0,
                               borderSide: BorderSide(

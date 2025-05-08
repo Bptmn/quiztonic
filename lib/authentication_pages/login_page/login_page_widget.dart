@@ -72,7 +72,10 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                   width: double.infinity,
                   height: double.infinity,
                   constraints: BoxConstraints(
-                    maxWidth: FFAppConstants.PageContentMaxWidth.toDouble(),
+                    maxWidth: valueOrDefault<double>(
+                      FFAppConstants.PageContentMaxWidth.toDouble(),
+                      600.0,
+                    ),
                   ),
                   decoration: BoxDecoration(),
                 ),
@@ -87,7 +90,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                       alignment: AlignmentDirectional(0.0, 0.0),
                       child: Container(
                         constraints: BoxConstraints(
-                          maxWidth: 400.0,
+                          maxWidth:
+                              FFAppConstants.PageContentMaxWidth.toDouble(),
                         ),
                         decoration: BoxDecoration(),
                         child: Align(
@@ -116,8 +120,27 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .displayMedium
                                               .override(
-                                                fontFamily: 'Manrope',
+                                                font: GoogleFonts.manrope(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .displayMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .displayMedium
+                                                          .fontStyle,
+                                                ),
                                                 letterSpacing: 0.0,
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .displayMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .displayMedium
+                                                        .fontStyle,
                                               ),
                                         ),
                                         TextSpan(
@@ -128,19 +151,55 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .displayMedium
                                               .override(
-                                                fontFamily: 'Manrope',
+                                                font: GoogleFonts.manrope(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .displayMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .displayMedium
+                                                          .fontStyle,
+                                                ),
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .tonicColor1,
                                                 letterSpacing: 0.0,
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .displayMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .displayMedium
+                                                        .fontStyle,
                                               ),
                                         )
                                       ],
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Roboto',
+                                            font: GoogleFonts.roboto(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
                                           ),
                                     ),
                                   ),
@@ -172,12 +231,22 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .headlineSmall
                                           .override(
-                                            fontFamily: 'Manrope',
+                                            font: GoogleFonts.manrope(
+                                              fontWeight: FontWeight.w600,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineSmall
+                                                      .fontStyle,
+                                            ),
                                             color: FlutterFlowTheme.of(context)
                                                 .primary,
                                             fontSize: 30.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w600,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .headlineSmall
+                                                    .fontStyle,
                                             lineHeight: 1.2,
                                           ),
                                     )),
@@ -192,9 +261,26 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodySmall
                                             .override(
-                                              fontFamily: 'Roboto',
+                                              font: GoogleFonts.roboto(
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodySmall
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodySmall
+                                                        .fontStyle,
+                                              ),
                                               fontSize: 14.0,
                                               letterSpacing: 0.0,
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmall
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmall
+                                                      .fontStyle,
                                               lineHeight: 1.5,
                                             ),
                                       )),
@@ -226,35 +312,79 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                               autofocus: false,
                                               obscureText: false,
                                               decoration: InputDecoration(
-                                                labelStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                labelStyle: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      font: GoogleFonts.roboto(
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .primaryText,
-                                                          fontSize: 16.0,
-                                                          letterSpacing: 0.0,
-                                                          lineHeight: 1.5,
-                                                        ),
+                                                      fontSize: 16.0,
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                      lineHeight: 1.5,
+                                                    ),
                                                 hintText:
                                                     FFLocalizations.of(context)
                                                         .getText(
                                                   '7ebq4ti3' /* Email */,
                                                 ),
-                                                hintStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                hintStyle: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      font: GoogleFonts.roboto(
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .secondaryText,
-                                                          fontSize: 16.0,
-                                                          letterSpacing: 0.0,
-                                                          lineHeight: 1.5,
-                                                        ),
+                                                      fontSize: 16.0,
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                      lineHeight: 1.5,
+                                                    ),
                                                 enabledBorder:
                                                     OutlineInputBorder(
                                                   borderSide: BorderSide(
@@ -303,19 +433,39 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                         .fromSTEB(14.0, 10.0,
                                                             14.0, 10.0),
                                               ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Roboto',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        fontSize: 16.0,
-                                                        letterSpacing: 0.0,
-                                                        lineHeight: 1.5,
-                                                      ),
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    font: GoogleFonts.roboto(
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                    ),
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
+                                                    fontSize: 16.0,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
+                                                    lineHeight: 1.5,
+                                                  ),
                                               keyboardType:
                                                   TextInputType.emailAddress,
                                               validator: _model
@@ -338,35 +488,79 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                               obscureText: !_model
                                                   .passwordFieldVisibility,
                                               decoration: InputDecoration(
-                                                labelStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                labelStyle: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      font: GoogleFonts.roboto(
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .primaryText,
-                                                          fontSize: 16.0,
-                                                          letterSpacing: 0.0,
-                                                          lineHeight: 1.5,
-                                                        ),
+                                                      fontSize: 16.0,
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                      lineHeight: 1.5,
+                                                    ),
                                                 hintText:
                                                     FFLocalizations.of(context)
                                                         .getText(
                                                   'fn986xbg' /* Password */,
                                                 ),
-                                                hintStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                hintStyle: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      font: GoogleFonts.roboto(
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .secondaryText,
-                                                          fontSize: 16.0,
-                                                          letterSpacing: 0.0,
-                                                          lineHeight: 1.5,
-                                                        ),
+                                                      fontSize: 16.0,
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                      lineHeight: 1.5,
+                                                    ),
                                                 enabledBorder:
                                                     OutlineInputBorder(
                                                   borderSide: BorderSide(
@@ -436,19 +630,39 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                   ),
                                                 ),
                                               ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Roboto',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        fontSize: 16.0,
-                                                        letterSpacing: 0.0,
-                                                        lineHeight: 1.5,
-                                                      ),
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    font: GoogleFonts.roboto(
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                    ),
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
+                                                    fontSize: 16.0,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
+                                                    lineHeight: 1.5,
+                                                  ),
                                               validator: _model
                                                   .passwordFieldTextControllerValidator
                                                   .asValidator(context),
@@ -509,12 +723,25 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                       context)
                                                   .bodyMedium
                                                   .override(
-                                                    fontFamily: 'Roboto',
+                                                    font: GoogleFonts.roboto(
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                    ),
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .primary,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w600,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
                                                   ),
                                             ),
                                           ),
@@ -556,43 +783,25 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                             return;
                                           }
 
-                                          await currentUserReference!
-                                              .update(createUsersRecordData(
-                                            authMethod: AuthMethod.email,
-                                          ));
-                                          _model.userStatDoc =
-                                              await queryUserStatisticsRecordOnce(
-                                            queryBuilder:
-                                                (userStatisticsRecord) =>
-                                                    userStatisticsRecord.where(
-                                              'userRef',
-                                              isEqualTo: currentUserReference,
-                                            ),
-                                            singleRecord: true,
-                                          ).then((s) => s.firstOrNull);
-                                          if (_model.userStatDocLoginGoogle
-                                                      ?.reference.id ==
-                                                  null ||
-                                              _model.userStatDocLoginGoogle
-                                                      ?.reference.id ==
-                                                  '') {
-                                            await UserStatisticsRecord
-                                                .collection
-                                                .doc()
-                                                .set(
-                                                    createUserStatisticsRecordData(
-                                                  userRef: currentUserReference,
-                                                  nbQuizDone: 0,
-                                                  nbQuestionsDone: 0,
-                                                  nbCorrectAnswers: 0,
-                                                ));
-                                          }
+                                          await MyStatisticsRecord.createDoc(
+                                                  currentUserReference!)
+                                              .set(
+                                                  createMyStatisticsRecordData());
 
                                           context.goNamedAuth(
-                                              HomePageWidget.routeName,
-                                              context.mounted);
-
-                                          safeSetState(() {});
+                                            HomePageWidget.routeName,
+                                            context.mounted,
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType.fade,
+                                                duration:
+                                                    Duration(milliseconds: 0),
+                                              ),
+                                            },
+                                          );
                                         },
                                         text:
                                             FFLocalizations.of(context).getText(
@@ -609,13 +818,32 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                   0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
                                               .tonicColor1,
-                                          textStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelLarge
-                                                  .override(
-                                                    fontFamily: 'Roboto',
-                                                    letterSpacing: 0.0,
-                                                  ),
+                                          textStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .labelLarge
+                                              .override(
+                                                font: GoogleFonts.roboto(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelLarge
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelLarge
+                                                          .fontStyle,
+                                                ),
+                                                letterSpacing: 0.0,
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelLarge
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelLarge
+                                                        .fontStyle,
+                                              ),
                                           elevation: 1.0,
                                           borderRadius:
                                               BorderRadius.circular(24.0),
@@ -629,12 +857,22 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Roboto',
+                                              font: GoogleFonts.roboto(
+                                                fontWeight: FontWeight.w600,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
+                                              ),
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primary,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w600,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
                                             ),
                                       )),
                                       Container(
@@ -661,16 +899,10 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                   if (user == null) {
                                                     return;
                                                   }
-                                                  _model.userStatDocLoginGoogle =
-                                                      await queryUserStatisticsRecordOnce(
-                                                    queryBuilder:
-                                                        (userStatisticsRecord) =>
-                                                            userStatisticsRecord
-                                                                .where(
-                                                      'userRef',
-                                                      isEqualTo:
-                                                          currentUserReference,
-                                                    ),
+                                                  _model.userStatDocSignInGoogle =
+                                                      await queryMyStatisticsRecordOnce(
+                                                    parent:
+                                                        currentUserReference,
                                                     singleRecord: true,
                                                   ).then((s) => s.firstOrNull);
 
@@ -680,23 +912,20 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                     authMethod:
                                                         AuthMethod.google,
                                                   ));
-                                                  if (_model.userStatDocLoginGoogle
-                                                              ?.reference.id ==
-                                                          null ||
-                                                      _model.userStatDocLoginGoogle
-                                                              ?.reference.id ==
-                                                          '') {
-                                                    await UserStatisticsRecord
-                                                        .collection
-                                                        .doc()
+                                                  if (_model
+                                                          .userStatDocSignInGoogle
+                                                          ?.reference ==
+                                                      null) {
+                                                    await MyStatisticsRecord
+                                                            .createDoc(
+                                                                currentUserReference!)
                                                         .set(
-                                                            createUserStatisticsRecordData(
-                                                          userRef:
-                                                              currentUserReference,
-                                                          nbQuizDone: 0,
-                                                          nbQuestionsDone: 0,
-                                                          nbCorrectAnswers: 0,
-                                                        ));
+                                                            createMyStatisticsRecordData(
+                                                      nbQuizDone: 0,
+                                                      nbQuestionsDone: 0,
+                                                      nbCorrectAnswers: 0,
+                                                      totalTimeSpentOnQuiz: 0,
+                                                    ));
                                                   }
 
                                                   context.goNamedAuth(
@@ -771,8 +1000,14 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                         context)
                                                                     .bodyMedium
                                                                     .override(
-                                                                      fontFamily:
-                                                                          'Roboto',
+                                                                      font: GoogleFonts
+                                                                          .roboto(
+                                                                        fontWeight:
+                                                                            FontWeight.w600,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
+                                                                      ),
                                                                       fontSize:
                                                                           16.0,
                                                                       letterSpacing:
@@ -780,6 +1015,10 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w600,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
                                                                     ),
                                                               )),
                                                             ),
@@ -810,16 +1049,10 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                     if (user == null) {
                                                       return;
                                                     }
-                                                    _model.userStatDocLoginApple =
-                                                        await queryUserStatisticsRecordOnce(
-                                                      queryBuilder:
-                                                          (userStatisticsRecord) =>
-                                                              userStatisticsRecord
-                                                                  .where(
-                                                        'userRef',
-                                                        isEqualTo:
-                                                            currentUserReference,
-                                                      ),
+                                                    _model.userStatDocSignInApple =
+                                                        await queryMyStatisticsRecordOnce(
+                                                      parent:
+                                                          currentUserReference,
                                                       singleRecord: true,
                                                     ).then((s) =>
                                                             s.firstOrNull);
@@ -828,25 +1061,22 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                         .update(
                                                             createUsersRecordData(
                                                       authMethod:
-                                                          AuthMethod.apple,
+                                                          AuthMethod.google,
                                                     ));
-                                                    if (_model.userStatDocLoginGoogle
-                                                                ?.reference.id ==
-                                                            null ||
-                                                        _model.userStatDocLoginGoogle
-                                                                ?.reference.id ==
-                                                            '') {
-                                                      await UserStatisticsRecord
-                                                          .collection
-                                                          .doc()
+                                                    if (_model
+                                                            .userStatDocSignInApple
+                                                            ?.reference ==
+                                                        null) {
+                                                      await MyStatisticsRecord
+                                                              .createDoc(
+                                                                  currentUserReference!)
                                                           .set(
-                                                              createUserStatisticsRecordData(
-                                                            userRef:
-                                                                currentUserReference,
-                                                            nbQuizDone: 0,
-                                                            nbQuestionsDone: 0,
-                                                            nbCorrectAnswers: 0,
-                                                          ));
+                                                              createMyStatisticsRecordData(
+                                                        nbQuizDone: 0,
+                                                        nbQuestionsDone: 0,
+                                                        nbCorrectAnswers: 0,
+                                                        totalTimeSpentOnQuiz: 0,
+                                                      ));
                                                     }
 
                                                     context.goNamedAuth(
@@ -925,14 +1155,23 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                           context)
                                                                       .bodyMedium
                                                                       .override(
-                                                                        fontFamily:
-                                                                            'Roboto',
+                                                                        font: GoogleFonts
+                                                                            .roboto(
+                                                                          fontWeight:
+                                                                              FontWeight.w600,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
+                                                                        ),
                                                                         fontSize:
                                                                             16.0,
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight:
                                                                             FontWeight.w600,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
                                                                       ),
                                                                 )),
                                                               ),
@@ -981,34 +1220,70 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                     .getText(
                                                   'abg4x4qp' /* Don't have an account?  */,
                                                 ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      font: GoogleFonts.roboto(
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .secondaryText,
-                                                          letterSpacing: 0.0,
-                                                        ),
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                    ),
                                               )),
                                               Text(
                                                 FFLocalizations.of(context)
                                                     .getText(
                                                   '91zhy50v' /* Sign up */,
                                                 ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      font: GoogleFonts.roboto(
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
                                                               .tonicColor1,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                        ),
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                    ),
                                               ),
                                             ],
                                           ),

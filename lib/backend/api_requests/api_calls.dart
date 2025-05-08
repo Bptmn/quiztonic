@@ -11,26 +11,38 @@ export 'api_manager.dart' show ApiCallResponse;
 
 const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 
-class QuizzGenerationAPICall {
+class AiContentGenerationApiCall {
   static Future<ApiCallResponse> call({
-    FFUploadedFile? jsonFile,
-    FFUploadedFile? pdfFile,
+    bool? generateFlashcard = true,
+    int? numOfQuestions = 10,
+    int? numOfChoices = 4,
+    String? url = '',
+    String? textContent = '',
   }) async {
+    final ffApiRequestBody = '''
+{
+  "data": {
+    "generate_flashcards": ${generateFlashcard},
+    "num_questions": ${numOfQuestions},
+    "num_choices": ${numOfChoices},
+    "url": "${url}",
+    "text_content": "${textContent}"
+  }
+}''';
     return ApiManager.instance.makeApiCall(
-      callName: 'QuizzGenerationAPI',
-      apiUrl: 'http://13.53.187.194:5050/generate-quiz',
+      callName: 'AiContentGenerationApi',
+      apiUrl:
+          'https://2mmjiwjyo27dfsa227qdc67jue0drajz.lambda-url.eu-west-1.on.aws/',
       callType: ApiCallType.POST,
       headers: {
         'Content-Type': 'application/json',
       },
-      params: {
-        'pdf_file': pdfFile,
-        'data': jsonFile,
-      },
-      bodyType: BodyType.MULTIPART,
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.TEXT,
       returnBody: true,
       encodeBodyUtf8: false,
-      decodeUtf8: true,
+      decodeUtf8: false,
       cache: false,
       isStreamingApi: false,
       alwaysAllowBody: false,

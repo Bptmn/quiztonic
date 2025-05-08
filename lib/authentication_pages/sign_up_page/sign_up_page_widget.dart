@@ -106,8 +106,27 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .displayMedium
                                               .override(
-                                                fontFamily: 'Manrope',
+                                                font: GoogleFonts.manrope(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .displayMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .displayMedium
+                                                          .fontStyle,
+                                                ),
                                                 letterSpacing: 0.0,
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .displayMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .displayMedium
+                                                        .fontStyle,
                                               ),
                                         ),
                                         TextSpan(
@@ -118,19 +137,55 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .displayMedium
                                               .override(
-                                                fontFamily: 'Manrope',
+                                                font: GoogleFonts.manrope(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .displayMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .displayMedium
+                                                          .fontStyle,
+                                                ),
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .tonicColor1,
                                                 letterSpacing: 0.0,
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .displayMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .displayMedium
+                                                        .fontStyle,
                                               ),
                                         )
                                       ],
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Roboto',
+                                            font: GoogleFonts.roboto(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
                                           ),
                                     ),
                                   ),
@@ -143,12 +198,21 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .headlineSmall
                                       .override(
-                                        fontFamily: 'Manrope',
+                                        font: GoogleFonts.manrope(
+                                          fontWeight: FontWeight.w600,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineSmall
+                                                  .fontStyle,
+                                        ),
                                         color: FlutterFlowTheme.of(context)
                                             .primary,
                                         fontSize: 30.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .headlineSmall
+                                            .fontStyle,
                                         lineHeight: 1.2,
                                       ),
                                 )),
@@ -163,9 +227,26 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodySmall
                                         .override(
-                                          fontFamily: 'Roboto',
+                                          font: GoogleFonts.roboto(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodySmall
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodySmall
+                                                    .fontStyle,
+                                          ),
                                           fontSize: 14.0,
                                           letterSpacing: 0.0,
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodySmall
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodySmall
+                                                  .fontStyle,
                                           lineHeight: 1.5,
                                         ),
                                   )),
@@ -201,13 +282,34 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .bodyMedium
                                                     .override(
-                                                      fontFamily: 'Roboto',
+                                                      font: GoogleFonts.roboto(
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .primaryText,
                                                       fontSize: 16.0,
                                                       letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
                                                       lineHeight: 1.5,
                                                     ),
                                             hintText:
@@ -219,13 +321,34 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .bodyMedium
                                                     .override(
-                                                      fontFamily: 'Roboto',
+                                                      font: GoogleFonts.roboto(
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .secondaryText,
                                                       fontSize: 16.0,
                                                       letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
                                                       lineHeight: 1.5,
                                                     ),
                                             enabledBorder: OutlineInputBorder(
@@ -268,12 +391,31 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
-                                                fontFamily: 'Roboto',
+                                                font: GoogleFonts.roboto(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
+                                                ),
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryText,
                                                 fontSize: 16.0,
                                                 letterSpacing: 0.0,
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
                                                 lineHeight: 1.5,
                                               ),
                                           keyboardType:
@@ -302,13 +444,34 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .bodyMedium
                                                     .override(
-                                                      fontFamily: 'Roboto',
+                                                      font: GoogleFonts.roboto(
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .primaryText,
                                                       fontSize: 16.0,
                                                       letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
                                                       lineHeight: 1.5,
                                                     ),
                                             hintText:
@@ -320,18 +483,41 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .bodyMedium
                                                     .override(
-                                                      fontFamily: 'Roboto',
+                                                      font: GoogleFonts.roboto(
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .secondaryText,
                                                       fontSize: 16.0,
                                                       letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
                                                       lineHeight: 1.5,
                                                     ),
                                             enabledBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
-                                                color: Color(0xFFD0D5DD),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .borderColor,
                                                 width: 1.0,
                                               ),
                                               borderRadius:
@@ -339,7 +525,9 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                             ),
                                             focusedBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
-                                                color: Color(0x00000000),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .borderColor,
                                                 width: 1.0,
                                               ),
                                               borderRadius:
@@ -389,12 +577,31 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
-                                                fontFamily: 'Roboto',
+                                                font: GoogleFonts.roboto(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
+                                                ),
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryText,
                                                 fontSize: 16.0,
                                                 letterSpacing: 0.0,
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
                                                 lineHeight: 1.5,
                                               ),
                                           validator: _model
@@ -415,12 +622,29 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Roboto',
+                                              font: GoogleFonts.roboto(
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
+                                              ),
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryText,
                                               fontSize: 16.0,
                                               letterSpacing: 0.0,
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
                                               lineHeight: 1.5,
                                             ),
                                         hintText:
@@ -430,12 +654,29 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Roboto',
+                                              font: GoogleFonts.roboto(
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
+                                              ),
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryText,
                                               fontSize: 16.0,
                                               letterSpacing: 0.0,
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
                                               lineHeight: 1.5,
                                             ),
                                         enabledBorder: OutlineInputBorder(
@@ -495,11 +736,28 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Roboto',
+                                            font: GoogleFonts.roboto(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryText,
                                             fontSize: 16.0,
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
                                             lineHeight: 1.5,
                                           ),
                                       validator: _model
@@ -554,23 +812,37 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                         return;
                                       }
 
-                                      await currentUserReference!
+                                      await UsersRecord.collection
+                                          .doc(user.uid)
                                           .update(createUsersRecordData(
-                                        authMethod: AuthMethod.email,
-                                      ));
-
-                                      await UserStatisticsRecord.collection
-                                          .doc()
-                                          .set(createUserStatisticsRecordData(
-                                            userRef: currentUserReference,
-                                            nbQuizDone: 0,
-                                            nbQuestionsDone: 0,
-                                            nbCorrectAnswers: 0,
+                                            email: _model
+                                                .emailAddressFieldTextController
+                                                .text,
+                                            createdTime: getCurrentTimestamp,
+                                            uid: '',
+                                            authMethod: AuthMethod.email,
                                           ));
+
+                                      _model.statistics =
+                                          await queryMyStatisticsRecordOnce(
+                                        parent: currentUserReference,
+                                        singleRecord: true,
+                                      ).then((s) => s.firstOrNull);
+
+                                      await MyStatisticsRecord.createDoc(
+                                              currentUserReference!)
+                                          .set(createMyStatisticsRecordData(
+                                        nbQuizDone: 0,
+                                        nbQuestionsDone: 0,
+                                        nbCorrectAnswers: 0,
+                                        totalTimeSpentOnQuiz: 0,
+                                      ));
 
                                       context.goNamedAuth(
                                           HomePageWidget.routeName,
                                           context.mounted);
+
+                                      safeSetState(() {});
                                     },
                                     text: FFLocalizations.of(context).getText(
                                       '7m6675vn' /* Sign up */,
@@ -588,8 +860,25 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                       textStyle: FlutterFlowTheme.of(context)
                                           .labelLarge
                                           .override(
-                                            fontFamily: 'Roboto',
+                                            font: GoogleFonts.roboto(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelLarge
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelLarge
+                                                      .fontStyle,
+                                            ),
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelLarge
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelLarge
+                                                    .fontStyle,
                                           ),
                                       elevation: 1.0,
                                       borderRadius: BorderRadius.circular(24.0),
@@ -603,11 +892,21 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Roboto',
+                                          font: GoogleFonts.roboto(
+                                            fontWeight: FontWeight.w600,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
+                                          ),
                                           color: FlutterFlowTheme.of(context)
                                               .primary,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w600,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
                                         ),
                                   )),
                                   Container(
@@ -632,15 +931,8 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                                 return;
                                               }
                                               _model.userStatDocSignUpGoogle =
-                                                  await queryUserStatisticsRecordOnce(
-                                                queryBuilder:
-                                                    (userStatisticsRecord) =>
-                                                        userStatisticsRecord
-                                                            .where(
-                                                  'userRef',
-                                                  isEqualTo:
-                                                      currentUserReference,
-                                                ),
+                                                  await queryMyStatisticsRecordOnce(
+                                                parent: currentUserReference,
                                                 singleRecord: true,
                                               ).then((s) => s.firstOrNull);
 
@@ -651,17 +943,16 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                               if (_model.userStatDocSignUpGoogle
                                                       ?.reference ==
                                                   null) {
-                                                await UserStatisticsRecord
-                                                    .collection
-                                                    .doc()
+                                                await MyStatisticsRecord
+                                                        .createDoc(
+                                                            currentUserReference!)
                                                     .set(
-                                                        createUserStatisticsRecordData(
-                                                      userRef:
-                                                          currentUserReference,
-                                                      nbQuizDone: 0,
-                                                      nbQuestionsDone: 0,
-                                                      nbCorrectAnswers: 0,
-                                                    ));
+                                                        createMyStatisticsRecordData(
+                                                  nbQuizDone: 0,
+                                                  nbQuestionsDone: 0,
+                                                  nbCorrectAnswers: 0,
+                                                  totalTimeSpentOnQuiz: 0,
+                                                ));
                                               }
 
                                               context.goNamedAuth(
@@ -729,8 +1020,16 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Roboto',
+                                                                  font: GoogleFonts
+                                                                      .roboto(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
+                                                                  ),
                                                                   fontSize:
                                                                       16.0,
                                                                   letterSpacing:
@@ -738,6 +1037,10 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w600,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
                                                                 ),
                                                           )),
                                                         ),
@@ -764,15 +1067,8 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                                   return;
                                                 }
                                                 _model.userStatDocSignUpApple =
-                                                    await queryUserStatisticsRecordOnce(
-                                                  queryBuilder:
-                                                      (userStatisticsRecord) =>
-                                                          userStatisticsRecord
-                                                              .where(
-                                                    'userRef',
-                                                    isEqualTo:
-                                                        currentUserReference,
-                                                  ),
+                                                    await queryMyStatisticsRecordOnce(
+                                                  parent: currentUserReference,
                                                   singleRecord: true,
                                                 ).then((s) => s.firstOrNull);
 
@@ -785,17 +1081,16 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                                         .userStatDocSignUpApple
                                                         ?.reference ==
                                                     null) {
-                                                  await UserStatisticsRecord
-                                                      .collection
-                                                      .doc()
+                                                  await MyStatisticsRecord
+                                                          .createDoc(
+                                                              currentUserReference!)
                                                       .set(
-                                                          createUserStatisticsRecordData(
-                                                        userRef:
-                                                            currentUserReference,
-                                                        nbQuizDone: 0,
-                                                        nbQuestionsDone: 0,
-                                                        nbCorrectAnswers: 0,
-                                                      ));
+                                                          createMyStatisticsRecordData(
+                                                    nbQuizDone: 0,
+                                                    nbQuestionsDone: 0,
+                                                    nbCorrectAnswers: 0,
+                                                    totalTimeSpentOnQuiz: 0,
+                                                  ));
                                                 }
 
                                                 context.goNamedAuth(
@@ -868,8 +1163,16 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                                                       .of(context)
                                                                   .bodyMedium
                                                                   .override(
-                                                                    fontFamily:
-                                                                        'Roboto',
+                                                                    font: GoogleFonts
+                                                                        .roboto(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
+                                                                    ),
                                                                     fontSize:
                                                                         16.0,
                                                                     letterSpacing:
@@ -877,6 +1180,10 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w600,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
                                                                   ),
                                                             )),
                                                           ),
@@ -926,11 +1233,32 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Roboto',
+                                                  font: GoogleFonts.roboto(
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
+                                                  ),
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .secondaryText,
                                                   letterSpacing: 0.0,
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
                                                 ),
                                           )),
                                           Text(
@@ -940,12 +1268,24 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Roboto',
+                                                  font: GoogleFonts.roboto(
+                                                    fontWeight: FontWeight.w600,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
+                                                  ),
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .tonicColor1,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w600,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
                                                 ),
                                           ),
                                         ],

@@ -164,56 +164,56 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '2v5zgmc1': {
       'en': 'Quizz',
-      'es': '',
-      'fr': '',
+      'es': 'Cuestionario',
+      'fr': 'Quiz',
     },
   },
   // ScorePage
   {
     '949xtdyk': {
       'en': 'Quiz Complete!',
-      'es': '',
-      'fr': '',
+      'es': '¡Cuestionario completado!',
+      'fr': 'Quiz terminé !',
     },
     'czchw84o': {
       'en': 'Your Score',
-      'es': '',
-      'fr': '',
+      'es': 'Tu puntuación',
+      'fr': 'Votre score',
     },
     'jlff7osh': {
       'en': '/',
-      'es': '',
-      'fr': '',
+      'es': '/',
+      'fr': '/',
     },
     'rhb37opn': {
       'en': 'Performance Breakdown',
-      'es': '',
-      'fr': '',
+      'es': 'Desglose del rendimiento',
+      'fr': 'Répartition des performances',
     },
     'oudpgjpc': {
       'en': 'Correct Answers',
-      'es': '',
-      'fr': '',
+      'es': 'Respuestas correctas',
+      'fr': 'Réponses correctes',
     },
     '04i8wpdn': {
       'en': 'Incorrect Answers',
-      'es': '',
-      'fr': '',
+      'es': 'Respuestas incorrectas',
+      'fr': 'Réponses incorrectes',
     },
     'xfakpfd5': {
       'en': 'Completion Time',
-      'es': '',
-      'fr': '',
+      'es': 'Tiempo de finalización',
+      'fr': 'Délai d\'exécution',
     },
     'nlu62c7y': {
       'en': 'Learn with the Flashcards',
-      'es': '',
-      'fr': '',
+      'es': 'Aprende con las Flashcards',
+      'fr': 'Apprenez avec les Flashcards',
     },
     'a9gi5di2': {
       'en': 'Add to a folder',
-      'es': '',
-      'fr': '',
+      'es': 'Agregar a una carpeta',
+      'fr': 'Ajouter à un dossier',
     },
     'rt6irlgd': {
       'en': 'Back to Home',
@@ -230,33 +230,33 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '3qx562ah': {
       'en': 'Tonic',
-      'es': '',
-      'fr': '',
+      'es': 'Tónico',
+      'fr': 'Tonique',
     },
     'tfykgh14': {
       'en': 'Dashboard',
-      'es': '',
-      'fr': '',
+      'es': 'Panel',
+      'fr': 'Tableau de bord',
     },
     '71sf38af': {
       'en': 'Dashboard',
-      'es': '',
-      'fr': '',
+      'es': 'Panel',
+      'fr': 'Tableau de bord',
     },
     '8yc2zp01': {
       'en': 'Quiz',
-      'es': '',
-      'fr': '',
+      'es': 'Prueba',
+      'fr': 'Questionnaire',
     },
     'u8qvrshd': {
       'en': 'Questions',
-      'es': '',
-      'fr': '',
+      'es': 'Preguntas',
+      'fr': 'Questions',
     },
     'w9d6epg8': {
       'en': 'Correct',
-      'es': '',
-      'fr': '',
+      'es': 'Correcto',
+      'fr': 'Correct',
     },
     'rm6vgq87': {
       'en': 'Generate a new Quiz',
@@ -265,81 +265,81 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '0n1qgekd': {
       'en': 'Recent Quizzes',
-      'es': '',
-      'fr': '',
+      'es': 'Cuestionarios recientes',
+      'fr': 'Quiz récents',
     },
     '28cdmgv3': {
       'en': 'Dashboard',
-      'es': '',
-      'fr': '',
+      'es': 'Panel',
+      'fr': 'Tableau de bord',
     },
   },
   // GenerateNewQuiz
   {
     'rsq6a7d1': {
       'en': 'Generate a new quiz',
-      'es': '',
-      'fr': '',
+      'es': 'Generar un nuevo cuestionario',
+      'fr': 'Générer un nouveau quiz',
     },
     'xix5b4fe': {
       'en': 'Generate a new quiz',
-      'es': '',
-      'fr': '',
+      'es': 'Generar un nuevo cuestionario',
+      'fr': 'Générer un nouveau quiz',
     },
     'yxq1hbmg': {
       'en': 'Choose Input Format',
-      'es': '',
-      'fr': '',
+      'es': 'Elija el formato de entrada',
+      'fr': 'Choisir le format d\'entrée',
     },
     't9rzubam': {
       'en': 'Website URL',
-      'es': '',
-      'fr': '',
+      'es': 'URL del sitio web',
+      'fr': 'URL du site Web',
     },
     '6lpl84d7': {
       'en': 'Website URL',
-      'es': '',
-      'fr': '',
+      'es': 'URL del sitio web',
+      'fr': 'URL du site Web',
     },
     'yijk6sqe': {
       'en': 'Search...',
-      'es': '',
-      'fr': '',
+      'es': 'Buscar...',
+      'fr': 'Recherche...',
     },
     'ctdkle21': {
       'en': 'Raw text',
-      'es': '',
-      'fr': '',
+      'es': 'Texto sin formato',
+      'fr': 'Texte brut',
     },
     '0zqa3so0': {
       'en': 'Website URL',
-      'es': '',
-      'fr': '',
+      'es': 'URL del sitio web',
+      'fr': 'URL du site Web',
     },
     'm4eew1el': {
       'en': 'PDF file',
-      'es': '',
-      'fr': '',
+      'es': 'Archivo PDF',
+      'fr': 'Fichier PDF',
     },
     'h9aevirc': {
       'en': 'Enter your text content',
-      'es': '',
-      'fr': '',
+      'es': 'Ingrese su contenido de texto',
+      'fr': 'Entrez votre contenu de texte',
     },
     '9047lxhq': {
       'en': 'Enter your text here...',
-      'es': '',
-      'fr': '',
+      'es': 'Introduzca su texto aquí...',
+      'fr': 'Entrez votre texte ici...',
     },
     'pe8avzqo': {
       'en': 'paste',
-      'es': '',
-      'fr': '',
+      'es': 'pasta',
+      'fr': 'coller',
     },
     'itbni5eg': {
       'en': 'Select a PDF file',
-      'es': '',
-      'fr': '',
+      'es': 'Seleccione un archivo PDF',
+      'fr': 'Sélectionnez un fichier PDF',
     },
     'fbla3rzo': {
       'en': 'Click to upload',
@@ -348,33 +348,33 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '3jfzozzo': {
       'en': 'Enter a website URL',
-      'es': '',
-      'fr': '',
+      'es': 'Introduzca la URL de un sitio web',
+      'fr': 'Entrez l\'URL d\'un site Web',
     },
     'xcmt1jm0': {
       'en': 'Enter an url here...',
-      'es': '',
-      'fr': '',
+      'es': 'Introduzca una URL aquí...',
+      'fr': 'Entrez une URL ici...',
     },
     'fz6erg47': {
       'en': 'paste',
-      'es': '',
-      'fr': '',
+      'es': 'pasta',
+      'fr': 'coller',
     },
     'rk7887xn': {
       'en': 'Quiz Settings',
-      'es': '',
-      'fr': '',
+      'es': 'Configuración del cuestionario',
+      'fr': 'Paramètres du quiz',
     },
     'wki9wvcs': {
       'en': 'Number of Questions',
-      'es': '',
-      'fr': '',
+      'es': 'Número de preguntas',
+      'fr': 'Nombre de questions',
     },
     'i8deixx7': {
       'en': 'Generate flashcards ?',
-      'es': '',
-      'fr': '',
+      'es': '¿Generar flashcards?',
+      'fr': 'Générer des flashcards ?',
     },
     '1l2sr4pm': {
       'en': 'Generate Quiz',
@@ -383,76 +383,76 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'cf9352nf': {
       'en': 'New Quiz',
-      'es': '',
-      'fr': '',
+      'es': 'Nuevo cuestionario',
+      'fr': 'Nouveau quiz',
     },
   },
   // Profile
   {
     'i9xsjequ': {
       'en': 'Profile',
-      'es': '',
-      'fr': '',
+      'es': 'Perfil',
+      'fr': 'Profil',
     },
     'qnvaftvt': {
       'en': 'Profile',
-      'es': '',
-      'fr': '',
+      'es': 'Perfil',
+      'fr': 'Profil',
     },
     'm9qy7hib': {
       'en': 'Light Mode',
-      'es': '',
-      'fr': '',
+      'es': 'Modo claro',
+      'fr': 'Mode lumière',
     },
     'o3ysbj2r': {
       'en': 'Dark Mode',
-      'es': '',
-      'fr': '',
+      'es': 'Modo oscuro',
+      'fr': 'Mode sombre',
     },
     'gy3dzsfz': {
       'en': 'Edit Profile',
-      'es': '',
-      'fr': '',
+      'es': 'Editar perfil',
+      'fr': 'Modifier le profil',
     },
     'n9570amw': {
       'en': 'Payment Options',
-      'es': '',
-      'fr': '',
+      'es': 'Opciones de pago',
+      'fr': 'Options de paiement',
     },
     'zqf451b8': {
       'en': 'Notification Settings',
-      'es': '',
-      'fr': '',
+      'es': 'Configuración de notificaciones',
+      'fr': 'Paramètres de notification',
     },
     'm5qsh3gn': {
       'en': 'Security',
-      'es': '',
-      'fr': '',
+      'es': 'Seguridad',
+      'fr': 'Sécurité',
     },
     'd2lu5q4t': {
       'en': 'Support',
-      'es': '',
-      'fr': '',
+      'es': 'Apoyo',
+      'fr': 'Soutien',
     },
     'y2k1ncq8': {
       'en': 'Terms of Service',
-      'es': '',
-      'fr': '',
+      'es': 'Condiciones de servicio',
+      'fr': 'Conditions d\'utilisation',
     },
     'open2vlo': {
       'en': 'Invite Friends',
-      'es': '',
-      'fr': '',
+      'es': 'Invitar amigos',
+      'fr': 'Inviter des amis',
     },
     'gjy1eew2': {
       'en': 'Test Page',
-      'es': '',
-      'fr': '',
+      'es': 'Página de prueba',
+      'fr': 'Page de test',
     },
     'zentdpfj': {
       'en': 'Languages',
-      'es': '',
-      'fr': '',
+      'es': 'Idiomas',
+      'fr': 'Langues',
     },
     'a009pzt9': {
       'en': 'Logout',
@@ -461,46 +461,46 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '9ly4ieu3': {
       'en': 'Profile',
-      'es': '',
-      'fr': '',
+      'es': 'Perfil',
+      'fr': 'Profil',
     },
   },
   // QuizPage
   {
     '7nh5t6ns': {
       'en': 'Quiz',
-      'es': '',
-      'fr': '',
+      'es': 'Prueba',
+      'fr': 'Questionnaire',
     },
-    'kbz0b7cn': {
+    'jeqxbs2s': {
       'en': 'Quiz',
-      'es': '',
-      'fr': '',
+      'es': 'Mis respuestas',
+      'fr': 'Mes réponses',
     },
     'vw0p8xak': {
       'en': 'Information',
+      'es': 'Información',
+      'fr': 'Information',
+    },
+    'qpnz791t': {
+      'en': 'Name: ',
       'es': '',
       'fr': '',
-    },
-    'v2ri64tl': {
-      'en': 'Name: ',
-      'es': 'Nombre:',
-      'fr': 'Nom:',
     },
     'mwyduust': {
       'en': 'Folder: ',
-      'es': '',
-      'fr': '',
+      'es': 'Carpeta:',
+      'fr': 'Dossier:',
     },
     'v7i066zx': {
       'en': 'Add to a folder',
-      'es': '',
-      'fr': '',
+      'es': 'Agregar a una carpeta',
+      'fr': 'Ajouter à un dossier',
     },
     'gdakmdmi': {
       'en': 'Performance Breakdown',
-      'es': '',
-      'fr': '',
+      'es': 'Desglose del rendimiento',
+      'fr': 'Répartition des performances',
     },
     'ahfcj7mp': {
       'en': 'Correct Answers',
@@ -524,8 +524,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '0ed41fsg': {
       'en': 'Restart the quiz',
-      'es': '',
-      'fr': '',
+      'es': 'Reiniciar el cuestionario',
+      'fr': 'Redémarrer le quiz',
     },
     '46f8m2m7': {
       'en': 'See my answers',
@@ -539,21 +539,21 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'zd3w48v4': {
       'en': 'Home',
-      'es': '',
-      'fr': '',
+      'es': 'Hogar',
+      'fr': 'Maison',
     },
   },
   // FlashcardsPage
   {
     '45gycve4': {
       'en': 'Flashcards',
-      'es': '',
-      'fr': '',
+      'es': 'Tarjetas didácticas',
+      'fr': 'Cartes mémoire',
     },
-    '6fg14x5s': {
+    '0ou5hl44': {
       'en': 'Flashcards',
-      'es': '',
-      'fr': '',
+      'es': 'Tarjetas didácticas',
+      'fr': 'Cartes mémoire',
     },
     '9ejsuro2': {
       'en': '/',
@@ -562,8 +562,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'ddclafab': {
       'en': 'Quiz',
-      'es': '',
-      'fr': '',
+      'es': 'Prueba',
+      'fr': 'Questionnaire',
     },
     'e8m6back': {
       'en': 'Previous',
@@ -582,26 +582,26 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'iqyaev74': {
       'en': 'Quizz',
-      'es': '',
-      'fr': '',
+      'es': 'Cuestionario',
+      'fr': 'Quiz',
     },
   },
   // Library
   {
     '2opxeg5r': {
       'en': 'Library',
-      'es': '',
-      'fr': '',
+      'es': 'Biblioteca',
+      'fr': 'Bibliothèque',
     },
     'db6agf1s': {
       'en': 'Library',
-      'es': '',
-      'fr': '',
+      'es': 'Biblioteca',
+      'fr': 'Bibliothèque',
     },
     'bo87n0ll': {
       'en': 'Search a folder...',
-      'es': '',
-      'fr': '',
+      'es': 'Buscar una carpeta...',
+      'fr': 'Rechercher un dossier...',
     },
     'lbiiojbo': {
       'en': 'Create a new folder',
@@ -610,26 +610,26 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'b48ajiz0': {
       'en': 'Library',
-      'es': '',
-      'fr': '',
+      'es': 'Biblioteca',
+      'fr': 'Bibliothèque',
     },
   },
   // EditUserProfile
   {
     'e5le35vp': {
       'en': 'Edit my information',
-      'es': '',
-      'fr': '',
+      'es': 'Editar mi información',
+      'fr': 'Modifier mes informations',
     },
-    'eapntub4': {
+    'f4vj7f92': {
       'en': 'Edit my information',
-      'es': '',
-      'fr': '',
+      'es': 'Editar mi información',
+      'fr': 'Modifier mes informations',
     },
     'mkz76a8o': {
       'en': 'User name',
-      'es': '',
-      'fr': '',
+      'es': 'Nombre de usuario',
+      'fr': 'Nom d\'utilisateur',
     },
     'zxmi28oh': {
       'en': 'Enter a username',
@@ -638,8 +638,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '5d3ga1gp': {
       'en': 'Email Address',
-      'es': '',
-      'fr': '',
+      'es': 'Dirección de correo electrónico',
+      'fr': 'Adresse email',
     },
     '49j8ipxf': {
       'en': 'TextField',
@@ -649,8 +649,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'wu3ytaso': {
       'en':
           'If changed, a verification link will be sent to your new email address.',
-      'es': '',
-      'fr': '',
+      'es':
+          'Si se cambia, se enviará un enlace de verificación a su nueva dirección de correo electrónico.',
+      'fr':
+          'En cas de modification, un lien de vérification sera envoyé à votre nouvelle adresse e-mail.',
     },
     '8u2p2x84': {
       'en': 'Save modifications',
@@ -677,48 +679,48 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'yms8ffq3': {
       'en': 'Log in to your account',
-      'es': '',
-      'fr': '',
+      'es': 'Inicia sesión en tu cuenta',
+      'fr': 'Connectez-vous à votre compte',
     },
     'c02mn4wz': {
       'en': 'Welcome back! Please enter your details.',
-      'es': '',
-      'fr': '',
+      'es': '¡Bienvenido de nuevo! Introduce tus datos.',
+      'fr': 'Bienvenue ! Veuillez saisir vos coordonnées.',
     },
     '7ebq4ti3': {
       'en': 'Email',
-      'es': '',
-      'fr': '',
+      'es': 'Correo electrónico',
+      'fr': 'E-mail',
     },
     'fn986xbg': {
       'en': 'Password',
-      'es': '',
-      'fr': '',
+      'es': 'Contraseña',
+      'fr': 'Mot de passe',
     },
     '0fr060zw': {
       'en': 'Forget password?',
-      'es': '',
-      'fr': '',
+      'es': '¿Olvidaste tu contraseña?',
+      'fr': 'Mot de passe oublié?',
     },
     '1qm480oz': {
       'en': 'Email is required.',
-      'es': '',
-      'fr': '',
+      'es': 'Se requiere correo electrónico.',
+      'fr': 'L\'e-mail est obligatoire.',
     },
     'z3ehe0az': {
       'en': 'Please choose an option from the dropdown',
-      'es': '',
-      'fr': '',
+      'es': 'Por favor, elija una opción del menú desplegable.',
+      'fr': 'Veuillez choisir une option dans la liste déroulante',
     },
     'eth026dm': {
       'en': 'Password is required.',
-      'es': '',
-      'fr': '',
+      'es': 'Se requiere contraseña.',
+      'fr': 'Le mot de passe est requis.',
     },
     '9oo0jgbd': {
       'en': 'Please choose an option from the dropdown',
-      'es': '',
-      'fr': '',
+      'es': 'Por favor, elija una opción del menú desplegable.',
+      'fr': 'Veuillez choisir une option dans la liste déroulante',
     },
     's1witho8': {
       'en': 'Log in',
@@ -727,28 +729,28 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'm81k9krp': {
       'en': 'Or continue with ',
-      'es': '',
-      'fr': '',
+      'es': 'O continuar con',
+      'fr': 'Ou continuez avec',
     },
     'a7ipk6yz': {
       'en': 'Sign in with Google',
-      'es': '',
-      'fr': '',
+      'es': 'Iniciar sesión con Google',
+      'fr': 'Connectez-vous avec Google',
     },
     'f9dyvhpt': {
       'en': 'Sign in with Apple',
-      'es': '',
-      'fr': '',
+      'es': 'Iniciar sesión con Apple',
+      'fr': 'Connectez-vous avec Apple',
     },
     'abg4x4qp': {
       'en': 'Don\'t have an account? ',
-      'es': '',
-      'fr': '',
+      'es': '¿No tienes una cuenta?',
+      'fr': 'Vous n\'avez pas de compte ?',
     },
     '91zhy50v': {
       'en': 'Sign up',
-      'es': '',
-      'fr': '',
+      'es': 'Inscribirse',
+      'fr': 'S\'inscrire',
     },
     'y4c1hpdi': {
       'en': 'Home',
@@ -770,13 +772,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'jq4ztgm8': {
       'en': 'Create an account',
-      'es': '',
-      'fr': '',
+      'es': 'Crear una cuenta',
+      'fr': 'Créer un compte',
     },
     'm1f85p0a': {
       'en': 'Welcome! Please enter your details.',
-      'es': '',
-      'fr': '',
+      'es': '¡Bienvenido! Introduce tus datos.',
+      'fr': 'Bienvenue ! Veuillez saisir vos coordonnées.',
     },
     '5eyih4g1': {
       'en': 'Email',
@@ -790,8 +792,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'k9zgamgt': {
       'en': 'Confirm password',
-      'es': '',
-      'fr': '',
+      'es': 'Confirmar Contraseña',
+      'fr': 'Confirmez le mot de passe',
     },
     'tzhc854h': {
       'en': 'Email is required.',
@@ -825,23 +827,23 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'wt7wwq3r': {
       'en': 'Sign up with Google',
-      'es': '',
-      'fr': '',
+      'es': 'Regístrate con Google',
+      'fr': 'Inscrivez-vous avec Google',
     },
     'd2qzg44r': {
       'en': 'Sign up with Apple',
-      'es': '',
-      'fr': '',
+      'es': 'Regístrate con Apple',
+      'fr': 'Inscrivez-vous avec Apple',
     },
     '4yb4baap': {
       'en': 'You already have an account? ',
-      'es': '',
-      'fr': '',
+      'es': '¿Ya tienes una cuenta?',
+      'fr': 'Vous avez déjà un compte ?',
     },
     '0wdggadc': {
       'en': 'Login',
-      'es': '',
-      'fr': '',
+      'es': 'Acceso',
+      'fr': 'Se connecter',
     },
     '3ohqv64e': {
       'en': 'Home',
@@ -870,9 +872,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // TestPage
   {
     'u2u7puf1': {
-      'en': 'Create user statistic table',
-      'es': '',
-      'fr': '',
+      'en': 'New API call test',
+      'es': 'Nueva prueba de llamada a la API',
+      'fr': 'Nouveau test d\'appel d\'API',
     },
     'oyst20iq': {
       'en': 'Test Page',
@@ -889,13 +891,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'ez5dh7pg': {
       'en': 'My answers',
-      'es': '',
-      'fr': '',
+      'es': 'Mis respuestas',
+      'fr': 'Mes réponses',
     },
-    '344koiwf': {
+    '0f68e00i': {
       'en': 'My answers',
-      'es': '',
-      'fr': '',
+      'es': 'Mis respuestas',
+      'fr': 'Mes réponses',
     },
     'uxw78qn2': {
       'en': 'Home',
@@ -910,15 +912,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Seguridad',
       'fr': 'Sécurité',
     },
-    'amxoxtf5': {
+    'js5bspv2': {
       'en': 'Security',
-      'es': '',
-      'fr': '',
+      'es': 'Seguridad',
+      'fr': 'Sécurité',
     },
     'odr06vdw': {
       'en': 'Change my password',
-      'es': '',
-      'fr': '',
+      'es': 'Cambiar mi contraseña',
+      'fr': 'Changer mon mot de passe',
     },
     'qjm7czzu': {
       'en': 'Enter a new password',
@@ -943,8 +945,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'b42k2quz': {
       'en':
           'This action is permanent and cannot be undone.\nAll your data, including saved quizzes, flashcards, history, and folders, will be permanently deleted and cannot be recovered.',
-      'es': '',
-      'fr': '',
+      'es':
+          'Esta acción es permanente e irreversible.\nTodos tus datos, incluyendo los cuestionarios guardados, las tarjetas, el historial y las carpetas, se eliminarán permanentemente y no se podrán recuperar.',
+      'fr':
+          'Cette action est définitive et irréversible.\nToutes vos données, y compris les quiz enregistrés, les fiches, l\'historique et les dossiers, seront définitivement supprimées et irrécupérables.',
     },
     '4pn2kva5': {
       'en': 'Home',
@@ -954,78 +958,84 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // LanguageSettings
   {
+    'aqwscwxz': {
+      'en': 'Choose Language',
+      'es': 'Elija el idioma',
+      'fr': 'Choisir la langue',
+    },
+    'rhh89hgz': {
+      'en': 'Choose Language',
+      'es': 'Elija el idioma',
+      'fr': 'Choisir la langue',
+    },
     'tslq4lbj': {
       'en': 'Select your preferred language for the app interface',
-      'es': '',
-      'fr': '',
+      'es': 'Seleccione su idioma preferido para la interfaz de la aplicación',
+      'fr':
+          'Sélectionnez votre langue préférée pour l\'interface de l\'application',
     },
     '3i0m0gwz': {
       'en': '🇺🇸',
-      'es': '',
-      'fr': '',
+      'es': '🇺🇸',
+      'fr': '🇺🇸',
     },
     '6oun1k2n': {
       'en': 'English',
-      'es': '',
-      'fr': '',
+      'es': 'Inglés',
+      'fr': 'Anglais',
     },
     'r66f5zh5': {
       'en': 'English',
-      'es': '',
-      'fr': '',
+      'es': 'Inglés',
+      'fr': 'Anglais',
     },
     '5m38gwt8': {
       'en': '🇪🇸',
-      'es': '',
-      'fr': '',
+      'es': '🇪🇸',
+      'fr': '🇪🇸',
     },
     'ygfpclo9': {
       'en': 'Spanish',
-      'es': '',
-      'fr': '',
+      'es': 'Español',
+      'fr': 'Espagnol',
     },
     'y82i1f7b': {
       'en': 'Español',
-      'es': '',
-      'fr': '',
+      'es': 'Español',
+      'fr': 'Espagnol',
     },
     'usqjwgqn': {
       'en': '🇫🇷',
-      'es': '',
-      'fr': '',
+      'es': '🇫🇷',
+      'fr': '🇫🇷',
     },
     'vb6dqgpv': {
       'en': 'French',
-      'es': '',
-      'fr': '',
+      'es': 'Francés',
+      'fr': 'Français',
     },
     '5g656st3': {
       'en': 'Français',
-      'es': '',
-      'fr': '',
-    },
-    'aqwscwxz': {
-      'en': 'Choose Language',
-      'es': '',
-      'fr': '',
+      'es': 'Francés',
+      'fr': 'Français',
     },
   },
   // QuestionCard
   {
     '4vaa3snx': {
       'en': 'Correct answer',
-      'es': '',
-      'fr': '',
+      'es': 'Respuesta correcta',
+      'fr': 'Réponse correcte',
     },
     'zzn46win': {
       'en': 'Wrong answer',
-      'es': '',
-      'fr': '',
+      'es': 'Respuesta incorrecta',
+      'fr': 'Mauvaise réponse',
     },
     'poib76jn': {
       'en': 'Explanation:',
-      'es': '',
-      'fr': '',
+      'es': 'Explicación:',
+      'fr': 'Explication:',
     },
   },
   // QuizItem
@@ -1037,8 +1047,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'sn785xqx': {
       'en': 'Completed on June 15, 2023',
-      'es': '',
-      'fr': '',
+      'es': 'Completado el 15 de junio de 2023',
+      'fr': 'Terminé le 15 juin 2023',
     },
     'h7tgj9ha': {
       'en': '/',
@@ -1047,39 +1057,39 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '762zwbjf': {
       'en': ' correct',
-      'es': '',
-      'fr': '',
+      'es': 'correcto',
+      'fr': 'correct',
     },
     'xl78d0r1': {
       'en': '9/10 correct',
-      'es': '',
-      'fr': '',
+      'es': '9/10 correcto',
+      'fr': '9/10 correct',
     },
   },
   // FolderItem
   {
     '3h2fvj5h': {
       'en': 'Number of quiz: ',
-      'es': '',
-      'fr': '',
+      'es': 'Número de cuestionario:',
+      'fr': 'Nombre de quiz :',
     },
   },
   // createNewFolder
   {
     '3l6mbaft': {
       'en': 'Create New Folder',
-      'es': '',
-      'fr': '',
+      'es': 'Crear nueva carpeta',
+      'fr': 'Créer un nouveau dossier',
     },
     'uyvnilbj': {
       'en': 'Folder Name',
-      'es': '',
-      'fr': '',
+      'es': 'Nombre de la carpeta',
+      'fr': 'Nom du dossier',
     },
     '7ojapcmc': {
       'en': 'ex: Geography',
-      'es': '',
-      'fr': '',
+      'es': 'ej: Geografía',
+      'fr': 'ex : Géographie',
     },
     'ev33i570': {
       'en': 'Create Folder',
@@ -1091,8 +1101,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'gkkvujn5': {
       'en': 'Choose a Folder',
-      'es': '',
-      'fr': '',
+      'es': 'Elija una carpeta',
+      'fr': 'Choisissez un dossier',
     },
     'csq5q7bv': {
       'en': 'Create a new folder',
@@ -1104,18 +1114,18 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     '8di9op1g': {
       'en': 'Edit Folder',
-      'es': '',
-      'fr': '',
+      'es': 'Editar carpeta',
+      'fr': 'Modifier le dossier',
     },
     'gkwre7fj': {
       'en': 'Change folder Name',
-      'es': '',
-      'fr': '',
+      'es': 'Cambiar el nombre de la carpeta',
+      'fr': 'Changer le nom du dossier',
     },
     'ngwqevte': {
       'en': 'Enter a new folder name...',
-      'es': '',
-      'fr': '',
+      'es': 'Introduzca un nuevo nombre de carpeta...',
+      'fr': 'Entrez un nouveau nom de dossier...',
     },
     'q432rg5g': {
       'en': 'Validate',
@@ -1127,13 +1137,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'rozt21r8': {
       'en': 'Security: this action require your password',
-      'es': '',
-      'fr': '',
+      'es': 'Seguridad: esta acción requiere tu contraseña',
+      'fr': 'Sécurité : cette action nécessite votre mot de passe',
     },
     'my2eu77e': {
       'en': 'Enter your password',
-      'es': '',
-      'fr': '',
+      'es': 'Ingrese su contraseña',
+      'fr': 'Entrez votre mot de passe',
     },
     'ut1np4g8': {
       'en': 'Validate',
@@ -1160,18 +1170,19 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'nhuvy1w3': {
       'en': 'Reset my Password',
-      'es': '',
-      'fr': '',
+      'es': 'Restablecer mi contraseña',
+      'fr': 'Réinitialiser mon mot de passe',
     },
     'y6lo1ccl': {
       'en': 'A reset link will be sent to your email address',
-      'es': '',
-      'fr': '',
+      'es':
+          'Se enviará un enlace de restablecimiento a su dirección de correo electrónico.',
+      'fr': 'Un lien de réinitialisation sera envoyé à votre adresse e-mail',
     },
     'o74227q3': {
       'en': 'Enter your email address',
-      'es': '',
-      'fr': '',
+      'es': 'Introduzca su dirección de correo electrónico',
+      'fr': 'Entrez votre adresse e-mail',
     },
     '7ezvvjcs': {
       'en': 'Send reset link',

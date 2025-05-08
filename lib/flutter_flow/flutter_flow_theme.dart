@@ -6,11 +6,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 const kThemeModeKey = '__theme_mode__';
+
 SharedPreferences? _prefs;
 
 abstract class FlutterFlowTheme {
   static Future initialize() async =>
       _prefs = await SharedPreferences.getInstance();
+
   static ThemeMode get themeMode {
     final darkMode = _prefs?.getBool(kThemeModeKey);
     return darkMode == null
@@ -194,106 +196,91 @@ class ThemeTypography extends Typography {
   final FlutterFlowTheme theme;
 
   String get displayLargeFamily => 'Manrope';
-  TextStyle get displayLarge => GoogleFonts.getFont(
-        'Manrope',
+  TextStyle get displayLarge => GoogleFonts.manrope(
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 64.0,
       );
   String get displayMediumFamily => 'Manrope';
-  TextStyle get displayMedium => GoogleFonts.getFont(
-        'Manrope',
+  TextStyle get displayMedium => GoogleFonts.manrope(
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 44.0,
       );
   String get displaySmallFamily => 'Manrope';
-  TextStyle get displaySmall => GoogleFonts.getFont(
-        'Manrope',
+  TextStyle get displaySmall => GoogleFonts.manrope(
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 36.0,
       );
   String get headlineLargeFamily => 'Manrope';
-  TextStyle get headlineLarge => GoogleFonts.getFont(
-        'Manrope',
+  TextStyle get headlineLarge => GoogleFonts.manrope(
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 32.0,
       );
   String get headlineMediumFamily => 'Manrope';
-  TextStyle get headlineMedium => GoogleFonts.getFont(
-        'Manrope',
+  TextStyle get headlineMedium => GoogleFonts.manrope(
         color: theme.primaryText,
         fontWeight: FontWeight.w800,
         fontSize: 26.0,
       );
   String get headlineSmallFamily => 'Manrope';
-  TextStyle get headlineSmall => GoogleFonts.getFont(
-        'Manrope',
+  TextStyle get headlineSmall => GoogleFonts.manrope(
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 24.0,
       );
   String get titleLargeFamily => 'Manrope';
-  TextStyle get titleLarge => GoogleFonts.getFont(
-        'Manrope',
+  TextStyle get titleLarge => GoogleFonts.manrope(
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 20.0,
       );
   String get titleMediumFamily => 'Manrope';
-  TextStyle get titleMedium => GoogleFonts.getFont(
-        'Manrope',
+  TextStyle get titleMedium => GoogleFonts.manrope(
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 18.0,
       );
   String get titleSmallFamily => 'Manrope';
-  TextStyle get titleSmall => GoogleFonts.getFont(
-        'Manrope',
+  TextStyle get titleSmall => GoogleFonts.manrope(
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 16.0,
       );
   String get labelLargeFamily => 'Roboto';
-  TextStyle get labelLarge => GoogleFonts.getFont(
-        'Roboto',
+  TextStyle get labelLarge => GoogleFonts.roboto(
         color: theme.info,
         fontWeight: FontWeight.w600,
         fontSize: 20.0,
       );
   String get labelMediumFamily => 'Roboto';
-  TextStyle get labelMedium => GoogleFonts.getFont(
-        'Roboto',
+  TextStyle get labelMedium => GoogleFonts.roboto(
         color: theme.secondaryText,
         fontWeight: FontWeight.normal,
         fontSize: 14.0,
       );
   String get labelSmallFamily => 'Roboto';
-  TextStyle get labelSmall => GoogleFonts.getFont(
-        'Roboto',
+  TextStyle get labelSmall => GoogleFonts.roboto(
         color: theme.secondaryText,
         fontWeight: FontWeight.normal,
         fontSize: 12.0,
       );
   String get bodyLargeFamily => 'Roboto';
-  TextStyle get bodyLarge => GoogleFonts.getFont(
-        'Roboto',
+  TextStyle get bodyLarge => GoogleFonts.roboto(
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 16.0,
       );
   String get bodyMediumFamily => 'Roboto';
-  TextStyle get bodyMedium => GoogleFonts.getFont(
-        'Roboto',
+  TextStyle get bodyMedium => GoogleFonts.roboto(
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 14.0,
       );
   String get bodySmallFamily => 'Roboto';
-  TextStyle get bodySmall => GoogleFonts.getFont(
-        'Roboto',
+  TextStyle get bodySmall => GoogleFonts.roboto(
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 12.0,
@@ -334,38 +321,47 @@ class DarkModeTheme extends FlutterFlowTheme {
 
 extension TextStyleHelper on TextStyle {
   TextStyle override({
+    TextStyle? font,
     String? fontFamily,
     Color? color,
     double? fontSize,
     FontWeight? fontWeight,
     double? letterSpacing,
     FontStyle? fontStyle,
-    bool useGoogleFonts = true,
+    bool useGoogleFonts = false,
     TextDecoration? decoration,
     double? lineHeight,
     List<Shadow>? shadows,
-  }) =>
-      useGoogleFonts
-          ? GoogleFonts.getFont(
-              fontFamily!,
-              color: color ?? this.color,
-              fontSize: fontSize ?? this.fontSize,
-              letterSpacing: letterSpacing ?? this.letterSpacing,
-              fontWeight: fontWeight ?? this.fontWeight,
-              fontStyle: fontStyle ?? this.fontStyle,
-              decoration: decoration,
-              height: lineHeight,
-              shadows: shadows,
-            )
-          : copyWith(
-              fontFamily: fontFamily,
-              color: color,
-              fontSize: fontSize,
-              letterSpacing: letterSpacing,
-              fontWeight: fontWeight,
-              fontStyle: fontStyle,
-              decoration: decoration,
-              height: lineHeight,
-              shadows: shadows,
-            );
+    String? package,
+  }) {
+    if (useGoogleFonts && fontFamily != null) {
+      font = GoogleFonts.getFont(fontFamily,
+          fontWeight: fontWeight ?? this.fontWeight,
+          fontStyle: fontStyle ?? this.fontStyle);
+    }
+
+    return font != null
+        ? font.copyWith(
+            color: color ?? this.color,
+            fontSize: fontSize ?? this.fontSize,
+            letterSpacing: letterSpacing ?? this.letterSpacing,
+            fontWeight: fontWeight ?? this.fontWeight,
+            fontStyle: fontStyle ?? this.fontStyle,
+            decoration: decoration,
+            height: lineHeight,
+            shadows: shadows,
+          )
+        : copyWith(
+            fontFamily: fontFamily,
+            package: package,
+            color: color,
+            fontSize: fontSize,
+            letterSpacing: letterSpacing,
+            fontWeight: fontWeight,
+            fontStyle: fontStyle,
+            decoration: decoration,
+            height: lineHeight,
+            shadows: shadows,
+          );
+  }
 }

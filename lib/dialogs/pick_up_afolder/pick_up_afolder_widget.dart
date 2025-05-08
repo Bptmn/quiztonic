@@ -68,12 +68,9 @@ class _PickUpAfolderWidgetState extends State<PickUpAfolderWidget> {
         ),
         child: Align(
           alignment: AlignmentDirectional(0.0, 0.0),
-          child: StreamBuilder<List<FoldersRecord>>(
-            stream: queryFoldersRecord(
-              queryBuilder: (foldersRecord) => foldersRecord.where(
-                'userRef',
-                isEqualTo: currentUserReference,
-              ),
+          child: StreamBuilder<List<MyFoldersRecord>>(
+            stream: queryMyFoldersRecord(
+              parent: currentUserReference,
             ),
             builder: (context, snapshot) {
               // Customize what your widget looks like when it's loading.
@@ -90,7 +87,8 @@ class _PickUpAfolderWidgetState extends State<PickUpAfolderWidget> {
                   ),
                 );
               }
-              List<FoldersRecord> containerFoldersRecordList = snapshot.data!;
+              List<MyFoldersRecord> containerMyFoldersRecordList =
+                  snapshot.data!;
 
               return Container(
                 width: double.infinity,
@@ -126,8 +124,21 @@ class _PickUpAfolderWidgetState extends State<PickUpAfolderWidget> {
                             style: FlutterFlowTheme.of(context)
                                 .headlineSmall
                                 .override(
-                                  fontFamily: 'Manrope',
+                                  font: GoogleFonts.manrope(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .headlineSmall
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .headlineSmall
+                                        .fontStyle,
+                                  ),
                                   letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .headlineSmall
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .headlineSmall
+                                      .fontStyle,
                                 ),
                           ),
                           FlutterFlowIconButton(
@@ -152,7 +163,7 @@ class _PickUpAfolderWidgetState extends State<PickUpAfolderWidget> {
                         child: Builder(
                           builder: (context) {
                             final folderItem =
-                                containerFoldersRecordList.toList();
+                                containerMyFoldersRecordList.toList();
 
                             return ListView.separated(
                               padding: EdgeInsets.zero,
@@ -170,36 +181,20 @@ class _PickUpAfolderWidgetState extends State<PickUpAfolderWidget> {
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    if (widget!.fromChangeProcess) {
-                                      await widget!.currentFolderRef!.update({
-                                        ...createFoldersRecordData(
-                                          updatedAt: getCurrentTimestamp,
-                                        ),
-                                        ...mapToFirestore(
-                                          {
-                                            'QuizRefs': FieldValue.arrayRemove(
-                                                [widget!.quizRef]),
-                                          },
-                                        ),
-                                      });
-                                    }
-
-                                    await widget!.quizRef!
-                                        .update(createSavedQuizRecordData(
-                                      folderRef: folderItemItem.reference,
-                                    ));
-
                                     await folderItemItem.reference.update({
-                                      ...createFoldersRecordData(
-                                        updatedAt: getCurrentTimestamp,
-                                      ),
                                       ...mapToFirestore(
                                         {
-                                          'QuizRefs': FieldValue.arrayUnion(
-                                              [widget!.quizRef]),
+                                          'quiz_references':
+                                              FieldValue.arrayUnion(
+                                                  [widget!.quizRef]),
                                         },
                                       ),
                                     });
+
+                                    await widget!.quizRef!
+                                        .update(createMyQuizRecordData(
+                                      folderReference: folderItemItem.reference,
+                                    ));
 
                                     context.goNamed(
                                       FolderPageWidget.routeName,
@@ -275,8 +270,21 @@ class _PickUpAfolderWidgetState extends State<PickUpAfolderWidget> {
                                 textStyle: FlutterFlowTheme.of(context)
                                     .labelLarge
                                     .override(
-                                      fontFamily: 'Roboto',
+                                      font: GoogleFonts.roboto(
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .labelLarge
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .labelLarge
+                                            .fontStyle,
+                                      ),
                                       letterSpacing: 0.0,
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .labelLarge
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelLarge
+                                          .fontStyle,
                                     ),
                                 elevation: 1.0,
                                 borderRadius: BorderRadius.circular(24.0),

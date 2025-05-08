@@ -15,12 +15,15 @@ class AnswerItemWidget extends StatefulWidget {
     bool? isSelected,
     required this.itemIndex,
     required this.isCorrectAnswer,
-  }) : this.isSelected = isSelected ?? false;
+    bool? answerDone,
+  })  : this.isSelected = isSelected ?? false,
+        this.answerDone = answerDone ?? false;
 
   final String? answerText;
   final bool isSelected;
   final int? itemIndex;
   final bool? isCorrectAnswer;
+  final bool answerDone;
 
   @override
   State<AnswerItemWidget> createState() => _AnswerItemWidgetState();
@@ -60,16 +63,18 @@ class _AnswerItemWidgetState extends State<AnswerItemWidget> {
         border: Border.all(
           color: valueOrDefault<Color>(
             () {
-              if (widget!.isCorrectAnswer! && widget!.isSelected) {
+              if ((widget!.isCorrectAnswer! && widget!.isSelected) ||
+                  (widget!.isCorrectAnswer! && widget!.answerDone)) {
                 return FlutterFlowTheme.of(context).success;
               } else if (!widget!.isCorrectAnswer! && widget!.isSelected) {
-                return FlutterFlowTheme.of(context).error;
+                return Color(0xFFFF3B30);
               } else {
                 return FlutterFlowTheme.of(context).borderColor;
               }
             }(),
             FlutterFlowTheme.of(context).borderColor,
           ),
+          width: widget!.isSelected ? 1.0 : 0.0,
         ),
       ),
       child: Column(
@@ -101,9 +106,17 @@ class _AnswerItemWidgetState extends State<AnswerItemWidget> {
                           'A',
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Roboto',
+                              font: GoogleFonts.roboto(
+                                fontWeight: FontWeight.bold,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .fontStyle,
+                              ),
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.bold,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontStyle,
                             ),
                       ),
                     ),
@@ -116,8 +129,20 @@ class _AnswerItemWidgetState extends State<AnswerItemWidget> {
                       'answerX',
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Roboto',
+                          font: GoogleFonts.roboto(
+                            fontWeight: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontWeight,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontStyle,
+                          ),
                           letterSpacing: 0.0,
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .bodyMedium
+                              .fontWeight,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                         ),
                   ),
                 ),

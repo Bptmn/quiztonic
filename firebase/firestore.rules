@@ -8,25 +8,25 @@ service cloud.firestore {
       allow delete: if false;
     }
 
-    match /savedQuiz/{document} {
-      allow create: if request.resource.data.userRef == /databases/$(database)/documents/users/$(request.auth.uid);
-      allow read: if resource.data.userRef == /databases/$(database)/documents/users/$(request.auth.uid);
-      allow write: if resource.data.userRef == /databases/$(database)/documents/users/$(request.auth.uid);
-      allow delete: if resource.data.userRef == /databases/$(database)/documents/users/$(request.auth.uid);
+    match /users/{parent}/my_folders/{document} {
+      allow create: if request.auth.uid == parent;
+      allow read: if request.auth.uid == parent;
+      allow write: if request.auth.uid == parent;
+      allow delete: if request.auth.uid == parent;
     }
 
-    match /userStatistics/{document} {
-      allow create: if request.resource.data.userRef == /databases/$(database)/documents/users/$(request.auth.uid);
-      allow read: if resource.data.userRef == /databases/$(database)/documents/users/$(request.auth.uid);
-      allow write: if resource.data.userRef == /databases/$(database)/documents/users/$(request.auth.uid);
-      allow delete: if resource.data.userRef == /databases/$(database)/documents/users/$(request.auth.uid);
+    match /users/{parent}/my_statistics/{document} {
+      allow create: if request.auth.uid == parent;
+      allow read: if request.auth.uid == parent;
+      allow write: if request.auth.uid == parent;
+      allow delete: if request.auth.uid == parent;
     }
 
-    match /folders/{document} {
-      allow create: if request.resource.data.userRef == /databases/$(database)/documents/users/$(request.auth.uid);
-      allow read: if resource.data.userRef == /databases/$(database)/documents/users/$(request.auth.uid);
-      allow write: if resource.data.userRef == /databases/$(database)/documents/users/$(request.auth.uid);
-      allow delete: if resource.data.userRef == /databases/$(database)/documents/users/$(request.auth.uid);
+    match /users/{parent}/my_quiz/{document} {
+      allow create: if request.auth.uid == parent;
+      allow read: if request.auth.uid == parent;
+      allow write: if request.auth.uid == parent;
+      allow delete: if request.auth.uid == parent;
     }
   }
 }

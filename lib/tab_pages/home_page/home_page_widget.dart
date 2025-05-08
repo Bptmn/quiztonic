@@ -77,8 +77,21 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           style: FlutterFlowTheme.of(context)
                               .headlineLarge
                               .override(
-                                fontFamily: 'Manrope',
+                                font: GoogleFonts.manrope(
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .headlineLarge
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .headlineLarge
+                                      .fontStyle,
+                                ),
                                 letterSpacing: 0.0,
+                                fontWeight: FlutterFlowTheme.of(context)
+                                    .headlineLarge
+                                    .fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .headlineLarge
+                                    .fontStyle,
                               ),
                         ),
                         TextSpan(
@@ -88,18 +101,44 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           style: FlutterFlowTheme.of(context)
                               .headlineLarge
                               .override(
-                                fontFamily: 'Manrope',
+                                font: GoogleFonts.manrope(
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .headlineLarge
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .headlineLarge
+                                      .fontStyle,
+                                ),
                                 color: FlutterFlowTheme.of(context).tonicColor1,
                                 letterSpacing: 0.0,
+                                fontWeight: FlutterFlowTheme.of(context)
+                                    .headlineLarge
+                                    .fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .headlineLarge
+                                    .fontStyle,
                               ),
                         )
                       ],
                       style:
                           FlutterFlowTheme.of(context).headlineMedium.override(
-                                fontFamily: 'Manrope',
+                                font: GoogleFonts.manrope(
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .headlineMedium
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .headlineMedium
+                                      .fontStyle,
+                                ),
                                 color: FlutterFlowTheme.of(context).primary,
                                 fontSize: 24.0,
                                 letterSpacing: 0.0,
+                                fontWeight: FlutterFlowTheme.of(context)
+                                    .headlineMedium
+                                    .fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .headlineMedium
+                                    .fontStyle,
                               ),
                     ),
                   ),
@@ -133,7 +172,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         padding: EdgeInsetsDirectional.fromSTEB(
                             18.0, 18.0, 18.0, 18.0),
                         child: SingleChildScrollView(
-                          primary: false,
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
@@ -146,21 +184,32 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .headlineMedium
                                       .override(
-                                        fontFamily: 'Manrope',
+                                        font: GoogleFonts.manrope(
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineMedium
+                                                  .fontStyle,
+                                        ),
                                         color: FlutterFlowTheme.of(context)
                                             .primary,
                                         fontSize: 24.0,
                                         letterSpacing: 0.0,
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .headlineMedium
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .headlineMedium
+                                            .fontStyle,
                                       ),
                                 ),
                               ),
-                              StreamBuilder<List<UserStatisticsRecord>>(
-                                stream: queryUserStatisticsRecord(
-                                  queryBuilder: (userStatisticsRecord) =>
-                                      userStatisticsRecord.where(
-                                    'userRef',
-                                    isEqualTo: currentUserReference,
-                                  ),
+                              StreamBuilder<List<MyStatisticsRecord>>(
+                                stream: queryMyStatisticsRecord(
+                                  parent: currentUserReference,
                                   singleRecord: true,
                                 ),
                                 builder: (context, snapshot) {
@@ -168,17 +217,17 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   if (!snapshot.hasData) {
                                     return StatisticsShimmerWidget();
                                   }
-                                  List<UserStatisticsRecord>
-                                      containerStatisticsUserStatisticsRecordList =
+                                  List<MyStatisticsRecord>
+                                      containerStatisticsMyStatisticsRecordList =
                                       snapshot.data!;
                                   // Return an empty Container when the item does not exist.
                                   if (snapshot.data!.isEmpty) {
                                     return Container();
                                   }
-                                  final containerStatisticsUserStatisticsRecord =
-                                      containerStatisticsUserStatisticsRecordList
+                                  final containerStatisticsMyStatisticsRecord =
+                                      containerStatisticsMyStatisticsRecordList
                                               .isNotEmpty
-                                          ? containerStatisticsUserStatisticsRecordList
+                                          ? containerStatisticsMyStatisticsRecordList
                                               .first
                                           : null;
 
@@ -216,7 +265,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                     children: [
                                                       Text(
                                                         valueOrDefault<String>(
-                                                          containerStatisticsUserStatisticsRecord
+                                                          containerStatisticsMyStatisticsRecord
                                                               ?.nbQuizDone
                                                               ?.toString(),
                                                           '0',
@@ -226,13 +275,30 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                     context)
                                                                 .headlineSmall
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Manrope',
+                                                                  font: GoogleFonts
+                                                                      .manrope(
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .headlineSmall
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .headlineSmall
+                                                                        .fontStyle,
+                                                                  ),
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .tonicColor1,
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .headlineSmall
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .headlineSmall
+                                                                      .fontStyle,
                                                                 ),
                                                       ),
                                                       Text(
@@ -246,8 +312,16 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                     context)
                                                                 .labelMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Roboto',
+                                                                  font: GoogleFonts
+                                                                      .roboto(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontStyle,
+                                                                  ),
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .secondaryText,
@@ -258,6 +332,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w600,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
                                                                 ),
                                                       ),
                                                     ],
@@ -289,7 +367,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                     children: [
                                                       Text(
                                                         valueOrDefault<String>(
-                                                          containerStatisticsUserStatisticsRecord
+                                                          containerStatisticsMyStatisticsRecord
                                                               ?.nbQuestionsDone
                                                               ?.toString(),
                                                           '0',
@@ -299,13 +377,30 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                     context)
                                                                 .headlineSmall
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Manrope',
+                                                                  font: GoogleFonts
+                                                                      .manrope(
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .headlineSmall
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .headlineSmall
+                                                                        .fontStyle,
+                                                                  ),
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .tonicColor1,
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .headlineSmall
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .headlineSmall
+                                                                      .fontStyle,
                                                                 ),
                                                       ),
                                                       Text(
@@ -319,8 +414,16 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                     context)
                                                                 .labelMedium
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Roboto',
+                                                                  font: GoogleFonts
+                                                                      .roboto(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontStyle,
+                                                                  ),
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .secondaryText,
@@ -331,6 +434,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w600,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
                                                                 ),
                                                       ),
                                                     ],
@@ -338,7 +445,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                 ),
                                               ),
                                             ),
-                                            if (containerStatisticsUserStatisticsRecord
+                                            if (containerStatisticsMyStatisticsRecord
                                                     ?.nbCorrectAnswers !=
                                                 0)
                                               Expanded(
@@ -371,14 +478,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                             formatNumber(
                                                               (valueOrDefault<
                                                                       double>(
-                                                                    containerStatisticsUserStatisticsRecord
+                                                                    containerStatisticsMyStatisticsRecord
                                                                         ?.nbCorrectAnswers
                                                                         ?.toDouble(),
                                                                     0.0,
                                                                   ) /
                                                                   valueOrDefault<
                                                                       double>(
-                                                                    containerStatisticsUserStatisticsRecord
+                                                                    containerStatisticsMyStatisticsRecord
                                                                         ?.nbQuestionsDone
                                                                         ?.toDouble(),
                                                                     0.0,
@@ -395,13 +502,30 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                   .of(context)
                                                               .headlineSmall
                                                               .override(
-                                                                fontFamily:
-                                                                    'Manrope',
+                                                                font: GoogleFonts
+                                                                    .manrope(
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .headlineSmall
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .headlineSmall
+                                                                      .fontStyle,
+                                                                ),
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .tonicColor1,
                                                                 letterSpacing:
                                                                     0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .headlineSmall
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .headlineSmall
+                                                                    .fontStyle,
                                                               ),
                                                         ),
                                                         Text(
@@ -414,8 +538,17 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                   .of(context)
                                                               .labelMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Roboto',
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .roboto(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
+                                                                ),
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .secondaryText,
@@ -425,6 +558,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w600,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontStyle,
                                                               ),
                                                         ),
                                                       ],
@@ -467,10 +604,25 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   textStyle: FlutterFlowTheme.of(context)
                                       .labelLarge
                                       .override(
-                                        fontFamily: 'Roboto',
+                                        font: GoogleFonts.roboto(
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelLarge
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelLarge
+                                                  .fontStyle,
+                                        ),
                                         color:
                                             FlutterFlowTheme.of(context).info,
                                         letterSpacing: 0.0,
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .labelLarge
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .labelLarge
+                                            .fontStyle,
                                       ),
                                   elevation: 1.0,
                                   borderRadius: BorderRadius.circular(24.0),
@@ -485,29 +637,38 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .headlineSmall
                                       .override(
-                                        fontFamily: 'Manrope',
+                                        font: GoogleFonts.manrope(
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineSmall
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineSmall
+                                                  .fontStyle,
+                                        ),
                                         letterSpacing: 0.0,
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .headlineSmall
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .headlineSmall
+                                            .fontStyle,
                                       ),
                                 ),
                               ),
-                              StreamBuilder<List<SavedQuizRecord>>(
-                                stream: querySavedQuizRecord(
-                                  queryBuilder: (savedQuizRecord) =>
-                                      savedQuizRecord
-                                          .where(
-                                            'userRef',
-                                            isEqualTo: currentUserReference,
-                                          )
-                                          .orderBy('createdAt',
-                                              descending: true),
+                              StreamBuilder<List<MyQuizRecord>>(
+                                stream: queryMyQuizRecord(
+                                  parent: currentUserReference,
+                                  queryBuilder: (myQuizRecord) => myQuizRecord
+                                      .orderBy('created_at', descending: true),
                                 ),
                                 builder: (context, snapshot) {
                                   // Customize what your widget looks like when it's loading.
                                   if (!snapshot.hasData) {
                                     return QuizItemShimmerWidget();
                                   }
-                                  List<SavedQuizRecord>
-                                      listViewSavedQuizRecordList =
+                                  List<MyQuizRecord> listViewMyQuizRecordList =
                                       snapshot.data!;
 
                                   return ListView.separated(
@@ -515,13 +676,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     primary: false,
                                     shrinkWrap: true,
                                     scrollDirection: Axis.vertical,
-                                    itemCount:
-                                        listViewSavedQuizRecordList.length,
+                                    itemCount: listViewMyQuizRecordList.length,
                                     separatorBuilder: (_, __) =>
                                         SizedBox(height: 15.0),
                                     itemBuilder: (context, listViewIndex) {
-                                      final listViewSavedQuizRecord =
-                                          listViewSavedQuizRecordList[
+                                      final listViewMyQuizRecord =
+                                          listViewMyQuizRecordList[
                                               listViewIndex];
                                       return InkWell(
                                         splashColor: Colors.transparent,
@@ -533,29 +693,28 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             QuizPageWidget.routeName,
                                             queryParameters: {
                                               'quizDocument': serializeParam(
-                                                listViewSavedQuizRecord,
+                                                listViewMyQuizRecord,
                                                 ParamType.Document,
                                               ),
                                             }.withoutNulls,
                                             extra: <String, dynamic>{
                                               'quizDocument':
-                                                  listViewSavedQuizRecord,
+                                                  listViewMyQuizRecord,
                                             },
                                           );
                                         },
                                         child: wrapWithModel(
                                           model: _model.quizItemModels.getModel(
-                                            listViewSavedQuizRecord
-                                                .reference.id,
+                                            listViewMyQuizRecord.reference.id,
                                             listViewIndex,
                                           ),
                                           updateCallback: () =>
                                               safeSetState(() {}),
                                           child: QuizItemWidget(
                                             key: Key(
-                                              'Keyb6h_${listViewSavedQuizRecord.reference.id}',
+                                              'Keyb6h_${listViewMyQuizRecord.reference.id}',
                                             ),
-                                            quizSaved: listViewSavedQuizRecord,
+                                            quiz: listViewMyQuizRecord,
                                           ),
                                         ),
                                       );

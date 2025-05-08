@@ -52,18 +52,10 @@ class GenerateNewQuizModel extends FlutterFlowModel<GenerateNewQuizWidget> {
   int? countControllerValue;
   // State field(s) for SwitchGenerateFlashcards widget.
   bool? switchGenerateFlashcardsValue;
-  // Stores action output result for [Custom Action - createJsonFile] action in Button widget.
-  FFUploadedFile? jsonFileText;
-  // Stores action output result for [Backend Call - API (QuizzGenerationAPI)] action in Button widget.
+  // Stores action output result for [Backend Call - API (AiContentGenerationApi)] action in Button widget.
   ApiCallResponse? apiResultFromText;
-  // Stores action output result for [Custom Action - createJsonFile] action in Button widget.
-  FFUploadedFile? jsonFileUrl;
-  // Stores action output result for [Backend Call - API (QuizzGenerationAPI)] action in Button widget.
+  // Stores action output result for [Backend Call - API (AiContentGenerationApi)] action in Button widget.
   ApiCallResponse? apiResultFromUrl;
-  // Stores action output result for [Custom Action - createJsonFile] action in Button widget.
-  FFUploadedFile? jsonFilePdf;
-  // Stores action output result for [Backend Call - API (QuizzGenerationAPI)] action in Button widget.
-  ApiCallResponse? apiResultFromPdf;
 
   @override
   void initState(BuildContext context) {

@@ -80,9 +80,21 @@ class _ItemFlashcardWidgetState extends State<ItemFlashcardWidget> {
                       'frontContent',
                     ),
                     style: FlutterFlowTheme.of(context).titleLarge.override(
-                          fontFamily: 'Manrope',
+                          font: GoogleFonts.manrope(
+                            fontWeight: FlutterFlowTheme.of(context)
+                                .titleLarge
+                                .fontWeight,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .titleLarge
+                                .fontStyle,
+                          ),
                           color: FlutterFlowTheme.of(context).info,
                           letterSpacing: 0.0,
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .titleLarge
+                              .fontWeight,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).titleLarge.fontStyle,
                         ),
                   ),
                 ),
@@ -111,9 +123,20 @@ class _ItemFlashcardWidgetState extends State<ItemFlashcardWidget> {
                     'backContent',
                   ),
                   style: FlutterFlowTheme.of(context).titleMedium.override(
-                        fontFamily: 'Manrope',
+                        font: GoogleFonts.manrope(
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .titleMedium
+                              .fontWeight,
+                          fontStyle: FlutterFlowTheme.of(context)
+                              .titleMedium
+                              .fontStyle,
+                        ),
                         color: FlutterFlowTheme.of(context).blackText,
                         letterSpacing: 0.0,
+                        fontWeight:
+                            FlutterFlowTheme.of(context).titleMedium.fontWeight,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).titleMedium.fontStyle,
                       ),
                 ),
               ),

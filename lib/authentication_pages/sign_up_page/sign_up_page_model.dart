@@ -59,10 +59,12 @@ class SignUpPageModel extends FlutterFlowModel<SignUpPageWidget> {
   late bool confirmPasswordFieldVisibility;
   String? Function(BuildContext, String?)?
       confirmPasswordFieldTextControllerValidator;
+  // Stores action output result for [Firestore Query - Query a collection] action in LogInButton widget.
+  MyStatisticsRecord? statistics;
   // Stores action output result for [Firestore Query - Query a collection] action in SignInWithGoogleButton widget.
-  UserStatisticsRecord? userStatDocSignUpGoogle;
+  MyStatisticsRecord? userStatDocSignUpGoogle;
   // Stores action output result for [Firestore Query - Query a collection] action in SignInWithAppleButton widget.
-  UserStatisticsRecord? userStatDocSignUpApple;
+  MyStatisticsRecord? userStatDocSignUpApple;
 
   @override
   void initState(BuildContext context) {

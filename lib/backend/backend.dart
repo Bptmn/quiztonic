@@ -6,9 +6,9 @@ import '../flutter_flow/flutter_flow_util.dart';
 import 'schema/util/firestore_util.dart';
 
 import 'schema/users_record.dart';
-import 'schema/saved_quiz_record.dart';
-import 'schema/user_statistics_record.dart';
-import 'schema/folders_record.dart';
+import 'schema/my_folders_record.dart';
+import 'schema/my_statistics_record.dart';
+import 'schema/my_quiz_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart' hide Order;
@@ -18,9 +18,9 @@ export 'schema/util/firestore_util.dart';
 export 'schema/util/schema_util.dart';
 
 export 'schema/users_record.dart';
-export 'schema/saved_quiz_record.dart';
-export 'schema/user_statistics_record.dart';
-export 'schema/folders_record.dart';
+export 'schema/my_folders_record.dart';
+export 'schema/my_statistics_record.dart';
+export 'schema/my_quiz_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Future<int> queryUsersRecordCount({
@@ -59,112 +59,121 @@ Future<List<UsersRecord>> queryUsersRecordOnce({
       singleRecord: singleRecord,
     );
 
-/// Functions to query SavedQuizRecords (as a Stream and as a Future).
-Future<int> querySavedQuizRecordCount({
+/// Functions to query MyFoldersRecords (as a Stream and as a Future).
+Future<int> queryMyFoldersRecordCount({
+  DocumentReference? parent,
   Query Function(Query)? queryBuilder,
   int limit = -1,
 }) =>
     queryCollectionCount(
-      SavedQuizRecord.collection,
+      MyFoldersRecord.collection(parent),
       queryBuilder: queryBuilder,
       limit: limit,
     );
 
-Stream<List<SavedQuizRecord>> querySavedQuizRecord({
+Stream<List<MyFoldersRecord>> queryMyFoldersRecord({
+  DocumentReference? parent,
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollection(
-      SavedQuizRecord.collection,
-      SavedQuizRecord.fromSnapshot,
+      MyFoldersRecord.collection(parent),
+      MyFoldersRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
     );
 
-Future<List<SavedQuizRecord>> querySavedQuizRecordOnce({
+Future<List<MyFoldersRecord>> queryMyFoldersRecordOnce({
+  DocumentReference? parent,
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollectionOnce(
-      SavedQuizRecord.collection,
-      SavedQuizRecord.fromSnapshot,
+      MyFoldersRecord.collection(parent),
+      MyFoldersRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
     );
 
-/// Functions to query UserStatisticsRecords (as a Stream and as a Future).
-Future<int> queryUserStatisticsRecordCount({
+/// Functions to query MyStatisticsRecords (as a Stream and as a Future).
+Future<int> queryMyStatisticsRecordCount({
+  DocumentReference? parent,
   Query Function(Query)? queryBuilder,
   int limit = -1,
 }) =>
     queryCollectionCount(
-      UserStatisticsRecord.collection,
+      MyStatisticsRecord.collection(parent),
       queryBuilder: queryBuilder,
       limit: limit,
     );
 
-Stream<List<UserStatisticsRecord>> queryUserStatisticsRecord({
+Stream<List<MyStatisticsRecord>> queryMyStatisticsRecord({
+  DocumentReference? parent,
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollection(
-      UserStatisticsRecord.collection,
-      UserStatisticsRecord.fromSnapshot,
+      MyStatisticsRecord.collection(parent),
+      MyStatisticsRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
     );
 
-Future<List<UserStatisticsRecord>> queryUserStatisticsRecordOnce({
+Future<List<MyStatisticsRecord>> queryMyStatisticsRecordOnce({
+  DocumentReference? parent,
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollectionOnce(
-      UserStatisticsRecord.collection,
-      UserStatisticsRecord.fromSnapshot,
+      MyStatisticsRecord.collection(parent),
+      MyStatisticsRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
     );
 
-/// Functions to query FoldersRecords (as a Stream and as a Future).
-Future<int> queryFoldersRecordCount({
+/// Functions to query MyQuizRecords (as a Stream and as a Future).
+Future<int> queryMyQuizRecordCount({
+  DocumentReference? parent,
   Query Function(Query)? queryBuilder,
   int limit = -1,
 }) =>
     queryCollectionCount(
-      FoldersRecord.collection,
+      MyQuizRecord.collection(parent),
       queryBuilder: queryBuilder,
       limit: limit,
     );
 
-Stream<List<FoldersRecord>> queryFoldersRecord({
+Stream<List<MyQuizRecord>> queryMyQuizRecord({
+  DocumentReference? parent,
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollection(
-      FoldersRecord.collection,
-      FoldersRecord.fromSnapshot,
+      MyQuizRecord.collection(parent),
+      MyQuizRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
     );
 
-Future<List<FoldersRecord>> queryFoldersRecordOnce({
+Future<List<MyQuizRecord>> queryMyQuizRecordOnce({
+  DocumentReference? parent,
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollectionOnce(
-      FoldersRecord.collection,
-      FoldersRecord.fromSnapshot,
+      MyQuizRecord.collection(parent),
+      MyQuizRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

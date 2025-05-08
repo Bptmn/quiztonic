@@ -104,14 +104,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               isList: false,
               structBuilder: GeneratedQuizzStruct.fromSerializableMap,
             ),
-            sourceType: params.getParam(
-              'sourceType',
-              ParamType.String,
-            ),
-            sourceInput: params.getParam(
-              'sourceInput',
-              ParamType.String,
-            ),
           ),
         ),
         FFRoute(
@@ -135,7 +127,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               'quizRef',
               ParamType.DocumentReference,
               isList: false,
-              collectionNamePath: ['savedQuiz'],
+              collectionNamePath: ['users', 'my_quiz'],
             ),
           ),
         ),
@@ -166,7 +158,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: QuizPageWidget.routePath,
           requireAuth: true,
           asyncParams: {
-            'quizDocument': getDoc(['savedQuiz'], SavedQuizRecord.fromSnapshot),
+            'quizDocument':
+                getDoc(['users', 'my_quiz'], MyQuizRecord.fromSnapshot),
           },
           builder: (context, params) => QuizPageWidget(
             quizDocument: params.getParam(
@@ -229,7 +222,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: FolderPageWidget.routePath,
           requireAuth: true,
           asyncParams: {
-            'folderDocument': getDoc(['folders'], FoldersRecord.fromSnapshot),
+            'folderDocument':
+                getDoc(['users', 'my_folders'], MyFoldersRecord.fromSnapshot),
           },
           builder: (context, params) => FolderPageWidget(
             folderDocument: params.getParam(
@@ -511,7 +505,11 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => TransitionInfo(
+        hasTransition: true,
+        transitionType: PageTransitionType.fade,
+        duration: Duration(milliseconds: 0),
+      );
 }
 
 class RootPageContext {
