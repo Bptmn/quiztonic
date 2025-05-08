@@ -164,7 +164,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '2v5zgmc1': {
       'en': 'Quizz',
-      'es': 'Cuestionario',
+      'es': 'Quiz',
       'fr': 'Quiz',
     },
   },
@@ -225,13 +225,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'j4hce7ml': {
       'en': 'Quiz',
-      'es': 'Prueba',
-      'fr': 'Questionnaire',
+      'es': 'Quiz',
+      'fr': 'Quiz',
     },
     '3qx562ah': {
       'en': 'Tonic',
-      'es': 'Tónico',
-      'fr': 'Tonique',
+      'es': 'Tonic',
+      'fr': 'Tonic',
     },
     'tfykgh14': {
       'en': 'Dashboard',
@@ -245,8 +245,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '8yc2zp01': {
       'en': 'Quiz',
-      'es': 'Prueba',
-      'fr': 'Questionnaire',
+      'es': 'Quiz',
+      'fr': 'Quiz',
     },
     'u8qvrshd': {
       'en': 'Questions',
@@ -469,13 +469,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     '7nh5t6ns': {
       'en': 'Quiz',
-      'es': 'Prueba',
-      'fr': 'Questionnaire',
+      'es': 'Quiz',
+      'fr': 'Quiz',
     },
     'jeqxbs2s': {
       'en': 'Quiz',
-      'es': 'Mis respuestas',
-      'fr': 'Mes réponses',
+      'es': 'Prueba',
+      'fr': 'Questionnaire',
     },
     'vw0p8xak': {
       'en': 'Information',
@@ -484,8 +484,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'qpnz791t': {
       'en': 'Name: ',
-      'es': '',
-      'fr': '',
+      'es': 'Nombre:',
+      'fr': 'Nom:',
     },
     'mwyduust': {
       'en': 'Folder: ',
@@ -547,13 +547,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     '45gycve4': {
       'en': 'Flashcards',
-      'es': 'Tarjetas didácticas',
-      'fr': 'Cartes mémoire',
+      'es': 'Flashcards',
+      'fr': 'Flashcards',
     },
     '0ou5hl44': {
       'en': 'Flashcards',
-      'es': 'Tarjetas didácticas',
-      'fr': 'Cartes mémoire',
+      'es': 'Flashcards',
+      'fr': 'Flashcards',
     },
     '9ejsuro2': {
       'en': '/',
@@ -562,8 +562,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'ddclafab': {
       'en': 'Quiz',
-      'es': 'Prueba',
-      'fr': 'Questionnaire',
+      'es': 'Quiz',
+      'fr': 'Quiz',
     },
     'e8m6back': {
       'en': 'Previous',
@@ -580,9 +580,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Completo',
       'fr': 'Complet',
     },
-    'iqyaev74': {
-      'en': 'Quizz',
-      'es': 'Cuestionario',
+    'sj67w1bt': {
+      'en': 'Quiz',
+      'es': 'Quiz',
       'fr': 'Quiz',
     },
   },
@@ -752,13 +752,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'o169pg4g': {
       'en': 'Quiz',
-      'es': 'Prueba',
-      'fr': 'Questionnaire',
+      'es': 'Quiz',
+      'fr': 'Quiz',
     },
     'ngvqhgg0': {
       'en': 'Tonic',
-      'es': 'Tónico',
-      'fr': 'Tonique',
+      'es': 'Tonic',
+      'fr': 'Tonic',
     },
     'jq4ztgm8': {
       'en': 'Create an account',
@@ -892,7 +892,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'uxw78qn2': {
       'en': 'Home',
       'es': 'Hogar',
-      'fr': 'Maison',
+      'fr': 'Accueil',
     },
   },
   // SecurityPage
@@ -943,7 +943,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '4pn2kva5': {
       'en': 'Home',
       'es': 'Hogar',
-      'fr': 'Maison',
+      'fr': 'Accueil',
     },
   },
   // LanguageSettings
@@ -1172,7 +1172,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'o74227q3': {
       'en': 'Enter your email address',
       'es': 'Introduzca su dirección de correo electrónico',
-      'fr': 'Entrez votre adresse e-mail',
+      'fr': 'Entrez votre adresse email',
     },
     '7ezvvjcs': {
       'en': 'Send reset link',

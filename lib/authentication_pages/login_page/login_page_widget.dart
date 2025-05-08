@@ -112,7 +112,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                     child: SvgPicture.asset(
                                       'assets/images/QuizTonic_text.svg',
                                       width: MediaQuery.sizeOf(context).width *
-                                          0.8,
+                                          0.75,
                                       height: 50.0,
                                       fit: BoxFit.contain,
                                     ),
@@ -142,6 +142,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                       FFLocalizations.of(context).getText(
                                         'yms8ffq3' /* Log in to your account */,
                                       ),
+                                      textAlign: TextAlign.center,
                                       style: FlutterFlowTheme.of(context)
                                           .headlineSmall
                                           .override(

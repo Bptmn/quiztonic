@@ -128,7 +128,7 @@ class _LibraryWidgetState extends State<LibraryWidget> {
                           18.0, 10.0, 18.0, 18.0),
                       child: SingleChildScrollView(
                         child: Column(
-                          mainAxisSize: MainAxisSize.max,
+                          mainAxisSize: MainAxisSize.min,
                           children: [
                             if (responsiveVisibility(
                               context: context,
@@ -470,55 +470,51 @@ class _LibraryWidgetState extends State<LibraryWidget> {
                                                   desc: false)
                                               .toList();
 
-                                      return SingleChildScrollView(
-                                        primary: false,
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children:
-                                              List.generate(folderItem.length,
-                                                  (folderItemIndex) {
-                                            final folderItemItem =
-                                                folderItem[folderItemIndex];
-                                            return InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                context.pushNamed(
-                                                  FolderPageWidget.routeName,
-                                                  queryParameters: {
-                                                    'folderDocument':
-                                                        serializeParam(
-                                                      folderItemItem,
-                                                      ParamType.Document,
-                                                    ),
-                                                  }.withoutNulls,
-                                                  extra: <String, dynamic>{
-                                                    'folderDocument':
-                                                        folderItemItem,
-                                                  },
-                                                );
-                                              },
-                                              child: wrapWithModel(
-                                                model: _model.folderItemModels
-                                                    .getModel(
-                                                  folderItemIndex.toString(),
-                                                  folderItemIndex,
-                                                ),
-                                                updateCallback: () =>
-                                                    safeSetState(() {}),
-                                                child: FolderItemWidget(
-                                                  key: Key(
-                                                    'Keywhy_${folderItemIndex.toString()}',
+                                      return Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children:
+                                            List.generate(folderItem.length,
+                                                (folderItemIndex) {
+                                          final folderItemItem =
+                                              folderItem[folderItemIndex];
+                                          return InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              context.pushNamed(
+                                                FolderPageWidget.routeName,
+                                                queryParameters: {
+                                                  'folderDocument':
+                                                      serializeParam(
+                                                    folderItemItem,
+                                                    ParamType.Document,
                                                   ),
-                                                  folderItem: folderItemItem,
-                                                ),
+                                                }.withoutNulls,
+                                                extra: <String, dynamic>{
+                                                  'folderDocument':
+                                                      folderItemItem,
+                                                },
+                                              );
+                                            },
+                                            child: wrapWithModel(
+                                              model: _model.folderItemModels
+                                                  .getModel(
+                                                folderItemIndex.toString(),
+                                                folderItemIndex,
                                               ),
-                                            );
-                                          }).divide(SizedBox(height: 10.0)),
-                                        ),
+                                              updateCallback: () =>
+                                                  safeSetState(() {}),
+                                              child: FolderItemWidget(
+                                                key: Key(
+                                                  'Keywhy_${folderItemIndex.toString()}',
+                                                ),
+                                                folderItem: folderItemItem,
+                                              ),
+                                            ),
+                                          );
+                                        }).divide(SizedBox(height: 10.0)),
                                       );
                                     },
                                   ),
