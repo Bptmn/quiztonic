@@ -667,16 +667,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // LoginPage
   {
-    'lqbpr1tf': {
-      'en': 'Quiz',
-      'es': 'Prueba',
-      'fr': 'Questionnaire',
-    },
-    'kmw759p3': {
-      'en': 'Tonic',
-      'es': 'Tónico',
-      'fr': 'Tonique',
-    },
     'yms8ffq3': {
       'en': 'Log in to your account',
       'es': 'Inicia sesión en tu cuenta',
