@@ -1,4 +1,4 @@
-package com.bvdev.raqam
+package com.bvdev.quiztonic
 
 import io.flutter.embedding.android.FlutterActivity
 

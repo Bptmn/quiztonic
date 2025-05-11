@@ -7,17 +7,17 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:241821836264:android:750c262c7d7ac0f0b63a5d",
+        "mobilesdk_app_id": "1:241821836264:android:2a8bd2fedd6ba1d4b63a5d",
         "android_client_info": {
-          "package_name": "com.bvdev.raqam"
+          "package_name": "com.bvdev.quiztonic"
         }
       },
       "oauth_client": [
         {
-          "client_id": "241821836264-jnnb8gtm2u80opcqss5e3sfm4dncm942.apps.googleusercontent.com",
+          "client_id": "241821836264-vlm3vvknlqckrr07r13q1bl1h5nlcbkd.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.bvdev.raqam",
+            "package_name": "com.bvdev.quiztonic",
             "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
           }
         },

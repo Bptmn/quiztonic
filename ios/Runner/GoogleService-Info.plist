@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>241821836264-23j6o8va70siiucv53admtjkcf3e812i.apps.googleusercontent.com</string>
+	<string>241821836264-g67mdff36d1m4qnombc8nni3rf4ue0f0.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.241821836264-23j6o8va70siiucv53admtjkcf3e812i</string>
+	<string>com.googleusercontent.apps.241821836264-g67mdff36d1m4qnombc8nni3rf4ue0f0</string>
 	<key>ANDROID_CLIENT_ID</key>
 	<string>241821836264-jnnb8gtm2u80opcqss5e3sfm4dncm942.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
@@ -15,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.bvdev.raqam</string>
+	<string>com.bvdev.quiztonic</string>
 	<key>PROJECT_ID</key>
 	<string>rackham-gsuufd</string>
 	<key>STORAGE_BUCKET</key>
@@ -31,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:241821836264:ios:63e80782e355e7d0b63a5d</string>
+	<string>1:241821836264:ios:ccc699df39340fabb63a5d</string>
 </dict>
 </plist>
