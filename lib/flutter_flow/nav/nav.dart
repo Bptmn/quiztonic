@@ -466,12 +466,12 @@ class FFRoute {
               : builder(context, ffParams);
           final child = appStateNotifier.loading
               ? Container(
-                  color: FlutterFlowTheme.of(context).primaryBackground,
+                  color: FlutterFlowTheme.of(context).info,
                   child: Center(
                     child: Image.asset(
-                      'assets/images/QuizTonic_text.svg',
-                      width: MediaQuery.sizeOf(context).width * 0.7,
-                      fit: BoxFit.fitWidth,
+                      'assets/images/QuizTonic_logo_light_mode.png',
+                      width: MediaQuery.sizeOf(context).width * 0.75,
+                      fit: BoxFit.contain,
                     ),
                   ),
                 )
