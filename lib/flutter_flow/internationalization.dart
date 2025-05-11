@@ -436,8 +436,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'y2k1ncq8': {
       'en': 'Legal & Policies',
-      'es': 'Condiciones de servicio',
-      'fr': 'Conditions d\'utilisation',
+      'es': 'Legal y políticas',
+      'fr': 'Mentions légales et politiques',
     },
     'open2vlo': {
       'en': 'Invite Friends',
@@ -750,16 +750,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // SignUpPage
   {
-    'o169pg4g': {
-      'en': 'Quiz',
-      'es': 'Quiz',
-      'fr': 'Quiz',
-    },
-    'ngvqhgg0': {
-      'en': 'Tonic',
-      'es': 'Tonic',
-      'fr': 'Tonic',
-    },
     'jq4ztgm8': {
       'en': 'Create an account',
       'es': 'Crear una cuenta',
@@ -1014,18 +1004,18 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'nzs6fzir': {
       'en': 'Legal & Policies',
-      'es': 'Elija el idioma',
-      'fr': 'Choisir la langue',
+      'es': 'Legal y políticas',
+      'fr': 'Mentions légales et politiques',
     },
     'oc1qxeid': {
       'en': 'Legal & Policies',
-      'es': 'Elija el idioma',
-      'fr': 'Choisir la langue',
+      'es': 'Legal y políticas',
+      'fr': 'Mentions légales et politiques',
     },
     'btw60fij': {
       'en': 'Privacy Policy',
-      'es': 'Condiciones de servicio',
-      'fr': 'Conditions d\'utilisation',
+      'es': 'política de privacidad',
+      'fr': 'politique de confidentialité',
     },
     '1u6jx7p5': {
       'en': 'Terms of Service',
@@ -1037,18 +1027,18 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'd7bj2ylh': {
       'en': 'Support',
-      'es': 'Elija el idioma',
-      'fr': 'Choisir la langue',
+      'es': 'Apoyo',
+      'fr': 'Soutien',
     },
     'rw6ayf5s': {
       'en': 'Support',
-      'es': 'Elija el idioma',
-      'fr': 'Choisir la langue',
+      'es': 'Apoyo',
+      'fr': 'Soutien',
     },
     'gze1a01g': {
       'en': 'Write to the support',
-      'es': 'Condiciones de servicio',
-      'fr': 'Conditions d\'utilisation',
+      'es': 'Escribe al soporte',
+      'fr': 'Écrire au support',
     },
   },
   // QuestionCard
@@ -1213,7 +1203,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'o74227q3': {
       'en': 'Enter your email address',
       'es': 'Introduzca su dirección de correo electrónico',
-      'fr': 'Entrez votre adresse email',
+      'fr': 'Entrez votre adresse e-mail',
     },
     '7ezvvjcs': {
       'en': 'Send reset link',

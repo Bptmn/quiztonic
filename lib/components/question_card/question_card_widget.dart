@@ -75,7 +75,7 @@ class _QuestionCardWidgetState extends State<QuestionCardWidget> {
           padding: EdgeInsets.all(14.0),
           child: SingleChildScrollView(
             child: Column(
-              mainAxisSize: MainAxisSize.max,
+              mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(

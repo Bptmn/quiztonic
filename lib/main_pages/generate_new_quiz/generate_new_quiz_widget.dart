@@ -1390,6 +1390,22 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                         ),
                                       },
                                     );
+                                  } else {
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return AlertDialog(
+                                          title: Text('An error occured'),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext),
+                                              child: Text('Ok'),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
                                   }
                                 } else if (_model.selectedInputFormat ==
                                     QuizInputFormat.websiteUrl) {

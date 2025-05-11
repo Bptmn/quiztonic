@@ -82,21 +82,21 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
               ),
               Padding(
                 padding: EdgeInsets.all(18.0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
-                      child: Container(
-                        constraints: BoxConstraints(
-                          maxWidth:
-                              FFAppConstants.PageContentMaxWidth.toDouble(),
-                        ),
-                        decoration: BoxDecoration(),
-                        child: Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
-                          child: SingleChildScrollView(
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Align(
+                        alignment: AlignmentDirectional(0.0, 0.0),
+                        child: Container(
+                          constraints: BoxConstraints(
+                            maxWidth:
+                                FFAppConstants.PageContentMaxWidth.toDouble(),
+                          ),
+                          decoration: BoxDecoration(),
+                          child: Align(
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -115,7 +115,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                         width:
                                             MediaQuery.sizeOf(context).width *
                                                 0.75,
-                                        height: 50.0,
+                                        height: 40.0,
                                         fit: BoxFit.contain,
                                       ),
                                     ),
@@ -1246,8 +1246,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ],

@@ -428,6 +428,7 @@ class _LibraryWidgetState extends State<LibraryWidget> {
                                     elevation: 1.0,
                                     borderRadius: BorderRadius.circular(24.0),
                                   ),
+                                  showLoadingIndicator: false,
                                 ),
                               ),
                             ),
