@@ -56,6 +56,10 @@ class GenerateNewQuizModel extends FlutterFlowModel<GenerateNewQuizWidget> {
   ApiCallResponse? apiResultFromText;
   // Stores action output result for [Backend Call - API (AiContentGenerationApi)] action in Button widget.
   ApiCallResponse? apiResultFromUrl;
+  // Stores action output result for [Custom Action - pdfToBinary] action in Button widget.
+  String? pdfBinaryText;
+  // Stores action output result for [Backend Call - API (AiContentGenerationApi)] action in Button widget.
+  ApiCallResponse? apiResultFromPdf;
 
   @override
   void initState(BuildContext context) {

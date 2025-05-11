@@ -23,3 +23,7 @@ export '/settings_pages/security_page/security_page_widget.dart'
     show SecurityPageWidget;
 export '/settings_pages/language_settings/language_settings_widget.dart'
     show LanguageSettingsWidget;
+export '/settings_pages/legal_and_policies/legal_and_policies_widget.dart'
+    show LegalAndPoliciesWidget;
+export '/settings_pages/support_contact_page/support_contact_page_widget.dart'
+    show SupportContactPageWidget;

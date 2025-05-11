@@ -1550,41 +1550,71 @@ class _QuizPageWidgetState extends State<QuizPageWidget> {
                           ),
                           FFButtonWidget(
                             onPressed: () async {
-                              if (widget!.quizDocument?.folderReference !=
-                                  null) {
-                                await widget!.quizDocument!.folderReference!
-                                    .update({
-                                  ...mapToFirestore(
-                                    {
-                                      'quiz_references': FieldValue.arrayRemove(
-                                          [widget!.quizDocument?.reference]),
+                              var confirmDialogResponse =
+                                  await showDialog<bool>(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            title: Text('Delete confirmation'),
+                                            content: Text(
+                                                'Are you sure you want to delete this quiz?'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext, false),
+                                                child: Text('Cancel'),
+                                              ),
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext, true),
+                                                child: Text('Confirm'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      ) ??
+                                      false;
+                              if (confirmDialogResponse) {
+                                if (widget!.quizDocument?.folderReference !=
+                                    null) {
+                                  await widget!.quizDocument!.folderReference!
+                                      .update({
+                                    ...mapToFirestore(
+                                      {
+                                        'quiz_references':
+                                            FieldValue.arrayRemove([
+                                          widget!.quizDocument?.reference
+                                        ]),
+                                      },
+                                    ),
+                                  });
+                                }
+                                await widget!.quizDocument!.reference.delete();
+                                if (isWeb) {
+                                  context.goNamed(
+                                    HomePageWidget.routeName,
+                                    extra: <String, dynamic>{
+                                      kTransitionInfoKey: TransitionInfo(
+                                        hasTransition: true,
+                                        transitionType: PageTransitionType.fade,
+                                        duration: Duration(milliseconds: 0),
+                                      ),
                                     },
-                                  ),
-                                });
-                              }
-                              await widget!.quizDocument!.reference.delete();
-                              if (isWeb) {
-                                context.goNamed(
-                                  HomePageWidget.routeName,
-                                  extra: <String, dynamic>{
-                                    kTransitionInfoKey: TransitionInfo(
-                                      hasTransition: true,
-                                      transitionType: PageTransitionType.fade,
-                                      duration: Duration(milliseconds: 0),
-                                    ),
-                                  },
-                                );
+                                  );
+                                } else {
+                                  context.goNamed(
+                                    HomePageWidget.routeName,
+                                    extra: <String, dynamic>{
+                                      kTransitionInfoKey: TransitionInfo(
+                                        hasTransition: true,
+                                        transitionType:
+                                            PageTransitionType.leftToRight,
+                                      ),
+                                    },
+                                  );
+                                }
                               } else {
-                                context.goNamed(
-                                  HomePageWidget.routeName,
-                                  extra: <String, dynamic>{
-                                    kTransitionInfoKey: TransitionInfo(
-                                      hasTransition: true,
-                                      transitionType:
-                                          PageTransitionType.leftToRight,
-                                    ),
-                                  },
-                                );
+                                Navigator.pop(context);
                               }
                             },
                             text: FFLocalizations.of(context).getText(

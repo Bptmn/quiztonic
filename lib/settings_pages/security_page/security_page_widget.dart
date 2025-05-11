@@ -147,34 +147,49 @@ class _SecurityPageWidgetState extends State<SecurityPageWidget> {
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      context.safePop();
-                                    },
-                                    child: Icon(
-                                      Icons.chevron_left_rounded,
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      size: 24.0,
+                              if (responsiveVisibility(
+                                context: context,
+                                phone: false,
+                                tablet: false,
+                              ))
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        context.safePop();
+                                      },
+                                      child: Icon(
+                                        Icons.chevron_left_rounded,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        size: 24.0,
+                                      ),
                                     ),
-                                  ),
-                                  Text(
-                                    FFLocalizations.of(context).getText(
-                                      'js5bspv2' /* Security */,
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .headlineMedium
-                                        .override(
-                                          font: GoogleFonts.manrope(
+                                    Text(
+                                      FFLocalizations.of(context).getText(
+                                        'js5bspv2' /* Security */,
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .headlineMedium
+                                          .override(
+                                            font: GoogleFonts.manrope(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineMedium
+                                                      .fontStyle,
+                                            ),
+                                            letterSpacing: 0.0,
                                             fontWeight:
                                                 FlutterFlowTheme.of(context)
                                                     .headlineMedium
@@ -184,28 +199,18 @@ class _SecurityPageWidgetState extends State<SecurityPageWidget> {
                                                     .headlineMedium
                                                     .fontStyle,
                                           ),
-                                          letterSpacing: 0.0,
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .headlineMedium
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .headlineMedium
-                                                  .fontStyle,
-                                        ),
-                                  ),
-                                  Opacity(
-                                    opacity: 0.0,
-                                    child: Icon(
-                                      Icons.arrow_back,
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      size: 24.0,
                                     ),
-                                  ),
-                                ],
-                              ),
+                                    Opacity(
+                                      opacity: 0.0,
+                                      child: Icon(
+                                        Icons.arrow_back,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        size: 24.0,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               if (widget!.authMethod == AuthMethod.email)
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(

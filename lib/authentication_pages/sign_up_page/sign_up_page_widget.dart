@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
+import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
@@ -819,15 +820,8 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                                 .emailAddressFieldTextController
                                                 .text,
                                             createdTime: getCurrentTimestamp,
-                                            uid: '',
                                             authMethod: AuthMethod.email,
                                           ));
-
-                                      _model.statistics =
-                                          await queryMyStatisticsRecordOnce(
-                                        parent: currentUserReference,
-                                        singleRecord: true,
-                                      ).then((s) => s.firstOrNull);
 
                                       await MyStatisticsRecord.createDoc(
                                               currentUserReference!)
@@ -837,12 +831,13 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                         nbCorrectAnswers: 0,
                                         totalTimeSpentOnQuiz: 0,
                                       ));
+                                      await actions.printText(
+                                        currentUserReference!.id,
+                                      );
 
                                       context.goNamedAuth(
                                           HomePageWidget.routeName,
                                           context.mounted);
-
-                                      safeSetState(() {});
                                     },
                                     text: FFLocalizations.of(context).getText(
                                       '7m6675vn' /* Sign up */,

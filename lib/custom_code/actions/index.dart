@@ -4,3 +4,4 @@ export 'paste_text_from_clipboard.dart' show pasteTextFromClipboard;
 export 'print_text.dart' show printText;
 export 'generate_firestore_id.dart' show generateFirestoreId;
 export 'quiz_ref_to_string_list.dart' show quizRefToStringList;
+export 'pdf_to_binary.dart' show pdfToBinary;

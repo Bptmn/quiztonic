@@ -435,7 +435,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Soutien',
     },
     'y2k1ncq8': {
-      'en': 'Terms of Service',
+      'en': 'Legal & Policies',
       'es': 'Condiciones de servicio',
       'fr': 'Conditions d\'utilisation',
     },
@@ -1008,6 +1008,47 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Français',
       'es': 'Francés',
       'fr': 'Français',
+    },
+  },
+  // legalAndPolicies
+  {
+    'nzs6fzir': {
+      'en': 'Legal & Policies',
+      'es': 'Elija el idioma',
+      'fr': 'Choisir la langue',
+    },
+    'oc1qxeid': {
+      'en': 'Legal & Policies',
+      'es': 'Elija el idioma',
+      'fr': 'Choisir la langue',
+    },
+    'btw60fij': {
+      'en': 'Privacy Policy',
+      'es': 'Condiciones de servicio',
+      'fr': 'Conditions d\'utilisation',
+    },
+    '1u6jx7p5': {
+      'en': 'Terms of Service',
+      'es': 'Condiciones de servicio',
+      'fr': 'Conditions d\'utilisation',
+    },
+  },
+  // SupportContactPage
+  {
+    'd7bj2ylh': {
+      'en': 'Support',
+      'es': 'Elija el idioma',
+      'fr': 'Choisir la langue',
+    },
+    'rw6ayf5s': {
+      'en': 'Support',
+      'es': 'Elija el idioma',
+      'fr': 'Choisir la langue',
+    },
+    'gze1a01g': {
+      'en': 'Write to the support',
+      'es': 'Condiciones de servicio',
+      'fr': 'Conditions d\'utilisation',
     },
   },
   // QuestionCard

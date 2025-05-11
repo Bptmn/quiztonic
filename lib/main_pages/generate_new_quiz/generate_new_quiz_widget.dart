@@ -1426,7 +1426,47 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                     );
                                   }
                                 } else if (_model.selectedInputFormat ==
-                                    QuizInputFormat.pdfFile) {}
+                                    QuizInputFormat.pdfFile) {
+                                  _model.pdfBinaryText =
+                                      await actions.pdfToBinary(
+                                    _model.uploadedLocalFile,
+                                  );
+                                  await actions.printText(
+                                    _model.pdfBinaryText!,
+                                  );
+                                  _model.apiResultFromPdf =
+                                      await AiContentGenerationApiCall.call(
+                                    generateFlashcard:
+                                        _model.switchGenerateFlashcardsValue,
+                                    numOfQuestions: _model.countControllerValue,
+                                    numOfChoices: 4,
+                                    pdfBinary: _model.pdfBinaryText,
+                                  );
+
+                                  if ((_model.apiResultFromPdf?.succeeded ??
+                                      true)) {
+                                    context.goNamed(
+                                      QuizExoWidget.routeName,
+                                      queryParameters: {
+                                        'generatedQuizz': serializeParam(
+                                          GeneratedQuizzStruct.maybeFromMap(
+                                              (_model.apiResultFromPdf
+                                                      ?.jsonBody ??
+                                                  '')),
+                                          ParamType.DataStruct,
+                                        ),
+                                      }.withoutNulls,
+                                      extra: <String, dynamic>{
+                                        kTransitionInfoKey: TransitionInfo(
+                                          hasTransition: true,
+                                          transitionType:
+                                              PageTransitionType.fade,
+                                          duration: Duration(milliseconds: 0),
+                                        ),
+                                      },
+                                    );
+                                  }
+                                }
 
                                 safeSetState(() {});
                               },

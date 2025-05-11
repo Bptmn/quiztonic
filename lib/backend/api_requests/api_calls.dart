@@ -18,6 +18,7 @@ class AiContentGenerationApiCall {
     int? numOfChoices = 4,
     String? url = '',
     String? textContent = '',
+    String? pdfBinary = '',
   }) async {
     final ffApiRequestBody = '''
 {
@@ -26,7 +27,8 @@ class AiContentGenerationApiCall {
     "num_questions": ${numOfQuestions},
     "num_choices": ${numOfChoices},
     "url": "${url}",
-    "text_content": "${textContent}"
+    "text_content": "${textContent}",
+"pdf_file": "${pdfBinary}"
   }
 }''';
     return ApiManager.instance.makeApiCall(
@@ -40,6 +42,38 @@ class AiContentGenerationApiCall {
       params: {},
       body: ffApiRequestBody,
       bodyType: BodyType.TEXT,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class AiContentGenerationApiCopyCall {
+  static Future<ApiCallResponse> call({
+    bool? generateFlashcard = true,
+    int? numOfQuestions = 10,
+    int? numOfChoices = 4,
+    String? url = '',
+    String? textContent = '',
+    String? pdfBinary = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'AiContentGenerationApi Copy',
+      apiUrl:
+          'https://2mmjiwjyo27dfsa227qdc67jue0drajz.lambda-url.eu-west-1.on.aws/',
+      callType: ApiCallType.POST,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      params: {
+        'data': generateFlashcard,
+        'pdf_file': numOfQuestions,
+      },
+      bodyType: BodyType.MULTIPART,
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,

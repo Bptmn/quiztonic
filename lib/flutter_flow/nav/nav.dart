@@ -267,6 +267,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: LanguageSettingsWidget.routePath,
           requireAuth: true,
           builder: (context, params) => LanguageSettingsWidget(),
+        ),
+        FFRoute(
+          name: LegalAndPoliciesWidget.routeName,
+          path: LegalAndPoliciesWidget.routePath,
+          requireAuth: true,
+          builder: (context, params) => LegalAndPoliciesWidget(),
+        ),
+        FFRoute(
+          name: SupportContactPageWidget.routeName,
+          path: SupportContactPageWidget.routePath,
+          requireAuth: true,
+          builder: (context, params) => SupportContactPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -459,7 +471,7 @@ class FFRoute {
                     child: Image.asset(
                       'assets/images/QuizTonic_text.svg',
                       width: MediaQuery.sizeOf(context).width * 0.7,
-                      fit: BoxFit.contain,
+                      fit: BoxFit.fitWidth,
                     ),
                   ),
                 )

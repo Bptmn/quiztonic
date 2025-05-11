@@ -577,8 +577,7 @@ class _ScorePageWidgetState extends State<ScorePageWidget> {
                               children: [
                                 Row(
                                   mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     if (widget!.flashcards != null &&
                                         (widget!.flashcards)!.isNotEmpty)
@@ -746,7 +745,7 @@ class _ScorePageWidgetState extends State<ScorePageWidget> {
                                           child: Container(
                                             height: 100.0,
                                             constraints: BoxConstraints(
-                                              maxWidth: 220.0,
+                                              maxWidth: 200.0,
                                             ),
                                             decoration: BoxDecoration(
                                               color:

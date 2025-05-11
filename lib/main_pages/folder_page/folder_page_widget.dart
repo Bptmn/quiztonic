@@ -380,45 +380,75 @@ class _FolderPageWidgetState extends State<FolderPageWidget> {
                           ),
                           FFButtonWidget(
                             onPressed: () async {
-                              for (int loop1Index = 0;
-                                  loop1Index <
-                                      widget!.folderDocument!.quizReferences
-                                          .length;
-                                  loop1Index += 1) {
-                                final currentLoop1Item = widget!
-                                    .folderDocument!.quizReferences[loop1Index];
+                              var confirmDialogResponse =
+                                  await showDialog<bool>(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            title: Text('Delete confirmation'),
+                                            content: Text(
+                                                'Are you sure you want to delete this folder? All associated quiz will remain on your quiz history'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext, false),
+                                                child: Text('Cancel'),
+                                              ),
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext, true),
+                                                child: Text('Confirm'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      ) ??
+                                      false;
+                              if (confirmDialogResponse) {
+                                for (int loop1Index = 0;
+                                    loop1Index <
+                                        widget!.folderDocument!.quizReferences
+                                            .length;
+                                    loop1Index += 1) {
+                                  final currentLoop1Item = widget!
+                                      .folderDocument!
+                                      .quizReferences[loop1Index];
 
-                                await currentLoop1Item.update({
-                                  ...mapToFirestore(
-                                    {
-                                      'folder_reference': FieldValue.delete(),
+                                  await currentLoop1Item.update({
+                                    ...mapToFirestore(
+                                      {
+                                        'folder_reference': FieldValue.delete(),
+                                      },
+                                    ),
+                                  });
+                                }
+                                await widget!.folderDocument!.reference
+                                    .delete();
+                                if (isWeb) {
+                                  context.goNamed(
+                                    LibraryWidget.routeName,
+                                    extra: <String, dynamic>{
+                                      kTransitionInfoKey: TransitionInfo(
+                                        hasTransition: true,
+                                        transitionType: PageTransitionType.fade,
+                                        duration: Duration(milliseconds: 0),
+                                      ),
                                     },
-                                  ),
-                                });
-                              }
-                              await widget!.folderDocument!.reference.delete();
-                              if (isWeb) {
-                                context.goNamed(
-                                  LibraryWidget.routeName,
-                                  extra: <String, dynamic>{
-                                    kTransitionInfoKey: TransitionInfo(
-                                      hasTransition: true,
-                                      transitionType: PageTransitionType.fade,
-                                      duration: Duration(milliseconds: 0),
-                                    ),
-                                  },
-                                );
+                                  );
+                                } else {
+                                  context.goNamed(
+                                    LibraryWidget.routeName,
+                                    extra: <String, dynamic>{
+                                      kTransitionInfoKey: TransitionInfo(
+                                        hasTransition: true,
+                                        transitionType:
+                                            PageTransitionType.leftToRight,
+                                      ),
+                                    },
+                                  );
+                                }
                               } else {
-                                context.goNamed(
-                                  LibraryWidget.routeName,
-                                  extra: <String, dynamic>{
-                                    kTransitionInfoKey: TransitionInfo(
-                                      hasTransition: true,
-                                      transitionType:
-                                          PageTransitionType.leftToRight,
-                                    ),
-                                  },
-                                );
+                                Navigator.pop(context);
                               }
                             },
                             text: FFLocalizations.of(context).getText(

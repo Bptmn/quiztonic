@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
+import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
 import 'sign_up_page_widget.dart' show SignUpPageWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -59,8 +60,6 @@ class SignUpPageModel extends FlutterFlowModel<SignUpPageWidget> {
   late bool confirmPasswordFieldVisibility;
   String? Function(BuildContext, String?)?
       confirmPasswordFieldTextControllerValidator;
-  // Stores action output result for [Firestore Query - Query a collection] action in LogInButton widget.
-  MyStatisticsRecord? statistics;
   // Stores action output result for [Firestore Query - Query a collection] action in SignInWithGoogleButton widget.
   MyStatisticsRecord? userStatDocSignUpGoogle;
   // Stores action output result for [Firestore Query - Query a collection] action in SignInWithAppleButton widget.
