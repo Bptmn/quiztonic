@@ -1,4 +1,3 @@
-import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/backend/schema/enums/enums.dart';
 import '/components/web_side_bar/web_side_bar_widget.dart';
@@ -11,7 +10,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
 import 'dart:ui';
-import '/backend/schema/structs/index.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
 import 'package:flutter/material.dart';
@@ -1356,135 +1354,47 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                             ),
                             FFButtonWidget(
                               onPressed: () async {
-                                if (_model.selectedInputFormat ==
-                                    QuizInputFormat.rawText) {
-                                  _model.apiResultFromText =
-                                      await AiContentGenerationApiCall.call(
-                                    generateFlashcard:
-                                        _model.switchGenerateFlashcardsValue,
-                                    numOfQuestions: _model.countControllerValue,
-                                    numOfChoices: 4,
-                                    textContent: _model
-                                        .textFieldRawTextTextController.text,
-                                  );
-
-                                  if ((_model.apiResultFromText?.succeeded ??
-                                      true)) {
-                                    context.goNamed(
-                                      QuizExoWidget.routeName,
-                                      queryParameters: {
-                                        'generatedQuizz': serializeParam(
-                                          GeneratedQuizzStruct.maybeFromMap(
-                                              (_model.apiResultFromText
-                                                      ?.jsonBody ??
-                                                  '')),
-                                          ParamType.DataStruct,
-                                        ),
-                                      }.withoutNulls,
-                                      extra: <String, dynamic>{
-                                        kTransitionInfoKey: TransitionInfo(
-                                          hasTransition: true,
-                                          transitionType:
-                                              PageTransitionType.fade,
-                                          duration: Duration(milliseconds: 0),
-                                        ),
-                                      },
-                                    );
-                                  } else {
-                                    await showDialog(
-                                      context: context,
-                                      builder: (alertDialogContext) {
-                                        return AlertDialog(
-                                          title: Text('An error occured'),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () => Navigator.pop(
-                                                  alertDialogContext),
-                                              child: Text('Ok'),
-                                            ),
-                                          ],
-                                        );
-                                      },
-                                    );
-                                  }
-                                } else if (_model.selectedInputFormat ==
-                                    QuizInputFormat.websiteUrl) {
-                                  _model.apiResultFromUrl =
-                                      await AiContentGenerationApiCall.call(
-                                    generateFlashcard:
-                                        _model.switchGenerateFlashcardsValue,
-                                    numOfQuestions: _model.countControllerValue,
-                                    numOfChoices: 4,
-                                    url: _model.textFieldUrlTextController.text,
-                                  );
-
-                                  if ((_model.apiResultFromUrl?.succeeded ??
-                                      true)) {
-                                    context.goNamed(
-                                      QuizExoWidget.routeName,
-                                      queryParameters: {
-                                        'generatedQuizz': serializeParam(
-                                          GeneratedQuizzStruct.maybeFromMap(
-                                              (_model.apiResultFromUrl
-                                                      ?.jsonBody ??
-                                                  '')),
-                                          ParamType.DataStruct,
-                                        ),
-                                      }.withoutNulls,
-                                      extra: <String, dynamic>{
-                                        kTransitionInfoKey: TransitionInfo(
-                                          hasTransition: true,
-                                          transitionType:
-                                              PageTransitionType.fade,
-                                          duration: Duration(milliseconds: 0),
-                                        ),
-                                      },
-                                    );
-                                  }
-                                } else if (_model.selectedInputFormat ==
-                                    QuizInputFormat.pdfFile) {
-                                  _model.pdfBinaryText =
-                                      await actions.pdfToBinary(
-                                    _model.uploadedLocalFile,
-                                  );
-                                  await actions.printText(
-                                    _model.pdfBinaryText!,
-                                  );
-                                  _model.apiResultFromPdf =
-                                      await AiContentGenerationApiCall.call(
-                                    generateFlashcard:
-                                        _model.switchGenerateFlashcardsValue,
-                                    numOfQuestions: _model.countControllerValue,
-                                    numOfChoices: 4,
-                                    pdfBinary: _model.pdfBinaryText,
-                                  );
-
-                                  if ((_model.apiResultFromPdf?.succeeded ??
-                                      true)) {
-                                    context.goNamed(
-                                      QuizExoWidget.routeName,
-                                      queryParameters: {
-                                        'generatedQuizz': serializeParam(
-                                          GeneratedQuizzStruct.maybeFromMap(
-                                              (_model.apiResultFromPdf
-                                                      ?.jsonBody ??
-                                                  '')),
-                                          ParamType.DataStruct,
-                                        ),
-                                      }.withoutNulls,
-                                      extra: <String, dynamic>{
-                                        kTransitionInfoKey: TransitionInfo(
-                                          hasTransition: true,
-                                          transitionType:
-                                              PageTransitionType.fade,
-                                          duration: Duration(milliseconds: 0),
-                                        ),
-                                      },
-                                    );
-                                  }
-                                }
-
-                                safeSetState(() {});
+                                context.goNamed(
+                                  LoadingQuizPageWidget.routeName,
+                                  queryParameters: {
+                                    'numOfQuestions': serializeParam(
+                                      _model.countControllerValue,
+                                      ParamType.int,
+                                    ),
+                                    'numOfChoices': serializeParam(
+                                      4,
+                                      ParamType.int,
+                                    ),
+                                    'generateFlashcards': serializeParam(
+                                      _model.switchGenerateFlashcardsValue,
+                                      ParamType.bool,
+                                    ),
+                                    'textContent': serializeParam(
+                                      _model
+                                          .textFieldRawTextTextController.text,
+                                      ParamType.String,
+                                    ),
+                                    'url': serializeParam(
+                                      _model.textFieldUrlTextController.text,
+                                      ParamType.String,
+                                    ),
+                                    'pdfFile': serializeParam(
+                                      _model.uploadedLocalFile,
+                                      ParamType.FFUploadedFile,
+                                    ),
+                                    'selectedInputFormat': serializeParam(
+                                      _model.dropDownInputFormatValue,
+                                      ParamType.Enum,
+                                    ),
+                                  }.withoutNulls,
+                                  extra: <String, dynamic>{
+                                    kTransitionInfoKey: TransitionInfo(
+                                      hasTransition: true,
+                                      transitionType: PageTransitionType.fade,
+                                      duration: Duration(milliseconds: 0),
+                                    ),
+                                  },
+                                );
                               },
                               text: FFLocalizations.of(context).getText(
                                 '1l2sr4pm' /* Generate Quiz */,

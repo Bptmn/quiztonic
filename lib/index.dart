@@ -27,3 +27,8 @@ export '/settings_pages/legal_and_policies/legal_and_policies_widget.dart'
     show LegalAndPoliciesWidget;
 export '/settings_pages/support_contact_page/support_contact_page_widget.dart'
     show SupportContactPageWidget;
+export '/main_pages/loading_quiz_page/loading_quiz_page_widget.dart'
+    show LoadingQuizPageWidget;
+export '/landing_page/landing_page_widget.dart' show LandingPageWidget;
+export '/settings_pages/feedback_page/feedback_page_widget.dart'
+    show FeedbackPageWidget;

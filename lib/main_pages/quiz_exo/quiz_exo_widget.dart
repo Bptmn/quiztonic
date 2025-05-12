@@ -148,7 +148,7 @@ class _QuizExoWidgetState extends State<QuizExoWidget> {
                   alignment: AlignmentDirectional(0.0, -1.0),
                   child: Container(
                     constraints: BoxConstraints(
-                      maxWidth: FFAppConstants.PageContentMaxWidth.toDouble(),
+                      maxWidth: 800.0,
                     ),
                     decoration: BoxDecoration(),
                     child: Padding(
@@ -273,7 +273,6 @@ class _QuizExoWidgetState extends State<QuizExoWidget> {
                             child: Align(
                               alignment: AlignmentDirectional(0.0, -1.0),
                               child: Container(
-                                width: MediaQuery.sizeOf(context).width * 1.0,
                                 height: MediaQuery.sizeOf(context).height * 1.0,
                                 decoration: BoxDecoration(),
                                 child: Padding(

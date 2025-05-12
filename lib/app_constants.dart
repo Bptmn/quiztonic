@@ -2,5 +2,5 @@ import 'package:flutter/material.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 
 abstract class FFAppConstants {
-  static const int PageContentMaxWidth = 500;
+  static const int PageContentMaxWidth = 600;
 }

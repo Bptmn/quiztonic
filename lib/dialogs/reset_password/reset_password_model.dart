@@ -14,13 +14,31 @@ import 'package:provider/provider.dart';
 class ResetPasswordModel extends FlutterFlowModel<ResetPasswordWidget> {
   ///  State fields for stateful widgets in this component.
 
+  final formKey = GlobalKey<FormState>();
   // State field(s) for EmailAddress widget.
   FocusNode? emailAddressFocusNode;
   TextEditingController? emailAddressTextController;
   String? Function(BuildContext, String?)? emailAddressTextControllerValidator;
+  String? _emailAddressTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'ju62h8np' /* Enter your email address is re... */,
+      );
+    }
+
+    if (!RegExp(kTextValidatorEmailRegex).hasMatch(val)) {
+      return FFLocalizations.of(context).getText(
+        '285cm1t2' /* Enter a valid email address */,
+      );
+    }
+    return null;
+  }
 
   @override
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    emailAddressTextControllerValidator = _emailAddressTextControllerValidator;
+  }
 
   @override
   void dispose() {

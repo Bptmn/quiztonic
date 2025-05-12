@@ -1661,64 +1661,127 @@ class _ProfileWidgetState extends State<ProfileWidget>
                               },
                             ),
                           ),
-                          Align(
-                            alignment: AlignmentDirectional(0.0, 1.0),
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 15.0, 0.0, 0.0),
-                              child: FFButtonWidget(
+                          Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              FFButtonWidget(
                                 onPressed: () async {
-                                  GoRouter.of(context).prepareAuthEvent();
-                                  await authManager.signOut();
-                                  GoRouter.of(context).clearRedirectLocation();
-
-                                  context.goNamedAuth(LoginPageWidget.routeName,
-                                      context.mounted);
+                                  context.pushNamed(
+                                    FeedbackPageWidget.routeName,
+                                    extra: <String, dynamic>{
+                                      kTransitionInfoKey: TransitionInfo(
+                                        hasTransition: true,
+                                        transitionType: PageTransitionType.fade,
+                                        duration: Duration(milliseconds: 0),
+                                      ),
+                                    },
+                                  );
                                 },
                                 text: FFLocalizations.of(context).getText(
-                                  'a009pzt9' /* Logout */,
+                                  'hdhwrd1k' /* Share a feedback with us */,
                                 ),
                                 options: FFButtonOptions(
-                                  width: 200.0,
-                                  height: 40.0,
+                                  height: 45.0,
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      16.0, 0.0, 16.0, 0.0),
+                                      30.0, 0.0, 30.0, 0.0),
+                                  iconAlignment: IconAlignment.end,
                                   iconPadding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
                                   color:
-                                      FlutterFlowTheme.of(context).transparent,
+                                      FlutterFlowTheme.of(context).tonicColor1,
                                   textStyle: FlutterFlowTheme.of(context)
-                                      .labelLarge
+                                      .titleLarge
                                       .override(
-                                        font: GoogleFonts.roboto(
+                                        font: GoogleFonts.manrope(
                                           fontWeight:
                                               FlutterFlowTheme.of(context)
-                                                  .labelLarge
+                                                  .titleLarge
                                                   .fontWeight,
                                           fontStyle:
                                               FlutterFlowTheme.of(context)
-                                                  .labelLarge
+                                                  .titleLarge
                                                   .fontStyle,
                                         ),
                                         color:
-                                            FlutterFlowTheme.of(context).error,
+                                            FlutterFlowTheme.of(context).info,
                                         letterSpacing: 0.0,
                                         fontWeight: FlutterFlowTheme.of(context)
-                                            .labelLarge
+                                            .titleLarge
                                             .fontWeight,
                                         fontStyle: FlutterFlowTheme.of(context)
-                                            .labelLarge
+                                            .titleLarge
                                             .fontStyle,
                                       ),
                                   elevation: 0.0,
-                                  borderSide: BorderSide(
-                                    color: FlutterFlowTheme.of(context).error,
-                                    width: 1.0,
-                                  ),
                                   borderRadius: BorderRadius.circular(24.0),
                                 ),
                               ),
-                            ),
+                              Align(
+                                alignment: AlignmentDirectional(0.0, 1.0),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 15.0, 0.0, 0.0),
+                                  child: FFButtonWidget(
+                                    onPressed: () async {
+                                      GoRouter.of(context).prepareAuthEvent();
+                                      await authManager.signOut();
+                                      GoRouter.of(context)
+                                          .clearRedirectLocation();
+
+                                      context.goNamedAuth(
+                                          LoginPageWidget.routeName,
+                                          context.mounted);
+                                    },
+                                    text: FFLocalizations.of(context).getText(
+                                      'a009pzt9' /* Logout */,
+                                    ),
+                                    options: FFButtonOptions(
+                                      width: 200.0,
+                                      height: 40.0,
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          16.0, 0.0, 16.0, 0.0),
+                                      iconPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 0.0, 0.0, 0.0),
+                                      color: FlutterFlowTheme.of(context)
+                                          .transparent,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .labelLarge
+                                          .override(
+                                            font: GoogleFonts.roboto(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelLarge
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelLarge
+                                                      .fontStyle,
+                                            ),
+                                            color: FlutterFlowTheme.of(context)
+                                                .error,
+                                            letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelLarge
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelLarge
+                                                    .fontStyle,
+                                          ),
+                                      elevation: 0.0,
+                                      borderSide: BorderSide(
+                                        color:
+                                            FlutterFlowTheme.of(context).error,
+                                        width: 1.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(24.0),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),

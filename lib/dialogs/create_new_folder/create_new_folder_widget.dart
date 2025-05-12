@@ -161,7 +161,7 @@ class _CreateNewFolderWidgetState extends State<CreateNewFolderWidget> {
                           controller: _model.textController,
                           focusNode: _model.textFieldFocusNode,
                           autofocus: false,
-                          textCapitalization: TextCapitalization.words,
+                          textCapitalization: TextCapitalization.none,
                           textInputAction: TextInputAction.next,
                           obscureText: false,
                           decoration: InputDecoration(
@@ -247,7 +247,7 @@ class _CreateNewFolderWidgetState extends State<CreateNewFolderWidget> {
                                 return TextEditingValue(
                                   selection: newValue.selection,
                                   text: newValue.text.toCapitalization(
-                                      TextCapitalization.words),
+                                      TextCapitalization.none),
                                 );
                               }),
                           ],

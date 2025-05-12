@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
+import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -40,7 +41,7 @@ class _PasswordCheckWidgetState extends State<PasswordCheckWidget> {
     super.initState();
     _model = createModel(context, () => PasswordCheckModel());
 
-    _model.passwordTextController ??= TextEditingController();
+    _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
@@ -166,10 +167,10 @@ class _PasswordCheckWidgetState extends State<PasswordCheckWidget> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         TextFormField(
-                          controller: _model.passwordTextController,
+                          controller: _model.textController,
                           focusNode: _model.textFieldFocusNode,
                           autofocus: false,
-                          textCapitalization: TextCapitalization.words,
+                          textCapitalization: TextCapitalization.none,
                           textInputAction: TextInputAction.next,
                           obscureText: !_model.passwordVisibility,
                           decoration: InputDecoration(
@@ -260,7 +261,7 @@ class _PasswordCheckWidgetState extends State<PasswordCheckWidget> {
                                         .bodyMedium
                                         .fontStyle,
                                   ),
-                          validator: _model.passwordTextControllerValidator
+                          validator: _model.textControllerValidator
                               .asValidator(context),
                           inputFormatters: [
                             if (!isAndroid && !isiOS)
@@ -269,7 +270,7 @@ class _PasswordCheckWidgetState extends State<PasswordCheckWidget> {
                                 return TextEditingValue(
                                   selection: newValue.selection,
                                   text: newValue.text.toCapitalization(
-                                      TextCapitalization.words),
+                                      TextCapitalization.none),
                                 );
                               }),
                           ],
@@ -278,18 +279,35 @@ class _PasswordCheckWidgetState extends State<PasswordCheckWidget> {
                     ),
                     FFButtonWidget(
                       onPressed: () async {
-                        GoRouter.of(context).prepareAuthEvent();
-
-                        final user = await authManager.signInWithEmail(
-                          context,
+                        _model.reAuthenticationSuccess =
+                            await actions.reAuthenticateUser(
                           currentUserEmail,
-                          _model.passwordTextController.text,
+                          _model.textController.text,
                         );
-                        if (user == null) {
-                          return;
+                        if (_model.reAuthenticationSuccess!) {
+                          Navigator.pop(context, true);
+                        } else {
+                          await showDialog(
+                            context: context,
+                            builder: (alertDialogContext) {
+                              return AlertDialog(
+                                title: Text('An error occured'),
+                                content: Text(
+                                    'Oops! Something went wrong while generating your quiz. You can try again in a few moments, change your input, or contact us if the problem persists: support@quiztonic.app'),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () =>
+                                        Navigator.pop(alertDialogContext),
+                                    child: Text('Ok'),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                          Navigator.pop(context, true);
                         }
 
-                        Navigator.pop(context, true);
+                        safeSetState(() {});
                       },
                       text: FFLocalizations.of(context).getText(
                         'ut1np4g8' /* Validate */,

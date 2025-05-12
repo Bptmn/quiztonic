@@ -1,4 +1,3 @@
-import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/backend/schema/enums/enums.dart';
 import '/components/web_side_bar/web_side_bar_widget.dart';
@@ -11,7 +10,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
 import 'dart:ui';
-import '/backend/schema/structs/index.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
 import 'generate_new_quiz_widget.dart' show GenerateNewQuizWidget;
@@ -52,14 +50,6 @@ class GenerateNewQuizModel extends FlutterFlowModel<GenerateNewQuizWidget> {
   int? countControllerValue;
   // State field(s) for SwitchGenerateFlashcards widget.
   bool? switchGenerateFlashcardsValue;
-  // Stores action output result for [Backend Call - API (AiContentGenerationApi)] action in Button widget.
-  ApiCallResponse? apiResultFromText;
-  // Stores action output result for [Backend Call - API (AiContentGenerationApi)] action in Button widget.
-  ApiCallResponse? apiResultFromUrl;
-  // Stores action output result for [Custom Action - pdfToBinary] action in Button widget.
-  String? pdfBinaryText;
-  // Stores action output result for [Backend Call - API (AiContentGenerationApi)] action in Button widget.
-  ApiCallResponse? apiResultFromPdf;
 
   @override
   void initState(BuildContext context) {

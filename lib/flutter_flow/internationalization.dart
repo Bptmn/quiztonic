@@ -454,6 +454,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Idiomas',
       'fr': 'Langues',
     },
+    'hdhwrd1k': {
+      'en': 'Share a feedback with us',
+      'es': '',
+      'fr': '',
+    },
     'a009pzt9': {
       'en': 'Logout',
       'es': 'Cerrar sesión',
@@ -897,25 +902,55 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Seguridad',
       'fr': 'Sécurité',
     },
-    'odr06vdw': {
+    'pn73g0br': {
       'en': 'Change my password',
       'es': 'Cambiar mi contraseña',
       'fr': 'Changer mon mot de passe',
     },
-    'qjm7czzu': {
+    'kqiv8i1a': {
       'en': 'Enter a new password',
       'es': 'Introduzca una nueva contraseña',
       'fr': 'Entrez un nouveau mot de passe',
     },
-    'r8ha1jsv': {
+    'f09ia01e': {
       'en': 'Confirm new password',
       'es': 'Confirmar nueva contraseña',
       'fr': 'Confirmer le nouveau mot de passe',
     },
-    'q1ul3ifg': {
+    'ttff8x8i': {
       'en': 'Validate',
       'es': 'Validar',
       'fr': 'Valider',
+    },
+    'jef7d0xy': {
+      'en': 'Enter a new password is required',
+      'es': 'Se requiere ingresar una nueva contraseña',
+      'fr': 'La saisie d\'un nouveau mot de passe est requise',
+    },
+    '2mrq3tg0': {
+      'en': '6 characters minimum',
+      'es': 'Mínimo 6 caracteres',
+      'fr': '6 caractères minimum',
+    },
+    'xd2oh31c': {
+      'en': 'Please choose an option from the dropdown',
+      'es': 'Por favor, elija una opción del menú desplegable.',
+      'fr': 'Veuillez choisir une option dans la liste déroulante',
+    },
+    'wwgry3wl': {
+      'en': 'Confirm new password is required',
+      'es': 'Se requiere confirmar nueva contraseña',
+      'fr': 'Confirmer qu\'un nouveau mot de passe est requis',
+    },
+    'z0bo131o': {
+      'en': '6 characters minimum',
+      'es': 'Mínimo 6 caracteres',
+      'fr': '6 caractères minimum',
+    },
+    '57im4axy': {
+      'en': 'Please choose an option from the dropdown',
+      'es': 'Por favor, elija una opción del menú desplegable.',
+      'fr': 'Veuillez choisir une option dans la liste déroulante',
     },
     'uze5ukfc': {
       'en': 'Delete my account',
@@ -1036,9 +1071,288 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Soutien',
     },
     'gze1a01g': {
-      'en': 'Write to the support',
+      'en': 'Contact the support',
       'es': 'Escribe al soporte',
       'fr': 'Écrire au support',
+    },
+  },
+  // LoadingQuizPage
+  {
+    '7ee50lu4': {
+      'en':
+          'Content generation could take up to 30 seconds depending on the input and complexity.',
+      'es':
+          'La generación de contenido podría tardar hasta 30 segundos dependiendo de la entrada y la complejidad.',
+      'fr':
+          'La génération de contenu peut prendre jusqu\'à 30 secondes selon l\'entrée et la complexité.',
+    },
+    'pxe6s6tf': {
+      'en': 'Button',
+      'es': 'Botón',
+      'fr': 'Bouton',
+    },
+    'y2b989ln': {
+      'en': 'Home',
+      'es': 'Hogar',
+      'fr': 'Maison',
+    },
+  },
+  // LandingPage
+  {
+    '48ozycpm': {
+      'en': 'QuizTonic',
+      'es': 'QuizTonic',
+      'fr': 'QuizTonic',
+    },
+    'qqz3obcd': {
+      'en': 'Features',
+      'es': 'Características',
+      'fr': 'Caractéristiques',
+    },
+    '3ghm5h17': {
+      'en': 'Pricing',
+      'es': 'Precios',
+      'fr': 'Tarification',
+    },
+    'd7qc9dfz': {
+      'en': 'Download',
+      'es': 'Descargar',
+      'fr': 'Télécharger',
+    },
+    'm3zgm2wk': {
+      'en': 'Turn Any Content Into Interactive Quizzes',
+      'es': 'Convierte cualquier contenido en cuestionarios interactivos',
+      'fr': 'Transformez n\'importe quel contenu en quiz interactifs',
+    },
+    'sj6r3l9a': {
+      'en':
+          'AI-powered learning assistant that transforms PDFs, websites, and documents into quizzes and flashcards in seconds.',
+      'es':
+          'Asistente de aprendizaje impulsado por inteligencia artificial que transforma archivos PDF, sitios web y documentos en cuestionarios y tarjetas didácticas en segundos.',
+      'fr':
+          'Assistant d\'apprentissage basé sur l\'IA qui transforme les PDF, les sites Web et les documents en quiz et en flashcards en quelques secondes.',
+    },
+    '03m3wny5': {
+      'en': 'Download for iOS',
+      'es': 'Descargar para iOS',
+      'fr': 'Télécharger pour iOS',
+    },
+    '07niz1cm': {
+      'en': 'Android Coming Soon',
+      'es': 'Android próximamente',
+      'fr': 'Android bientôt disponible',
+    },
+    '7grwxxr8': {
+      'en': 'Why Students & Teachers Love QuizTonic',
+      'es': 'Por qué a los estudiantes y profesores les encanta QuizTonic',
+      'fr': 'Pourquoi les étudiants et les enseignants aiment QuizTonic',
+    },
+    '39a6qkil': {
+      'en': 'Designed for smarter, faster learning with powerful AI technology',
+      'es':
+          'Diseñado para un aprendizaje más inteligente y rápido con potente tecnología de IA',
+      'fr':
+          'Conçu pour un apprentissage plus intelligent et plus rapide grâce à une puissante technologie d\'IA',
+    },
+    '881svlkw': {
+      'en': 'Instant Quiz Generation',
+      'es': 'Generación instantánea de cuestionarios',
+      'fr': 'Génération instantanée de quiz',
+    },
+    '81de41b1': {
+      'en': 'Upload any content and get interactive quizzes in seconds',
+      'es':
+          'Sube cualquier contenido y obtén cuestionarios interactivos en segundos',
+      'fr':
+          'Téléchargez n\'importe quel contenu et obtenez des quiz interactifs en quelques secondes',
+    },
+    '6f6r6zyt': {
+      'en': 'Multiple Learning Modes',
+      'es': 'Múltiples modos de aprendizaje',
+      'fr': 'Plusieurs modes d\'apprentissage',
+    },
+    'bo6aj8ps': {
+      'en': 'Practice with flashcards or multiple choice questions',
+      'es': 'Practica con flashcards o preguntas de opción múltiple',
+      'fr':
+          'Entraînez-vous avec des flashcards ou des questions à choix multiples',
+    },
+    'ttheu077': {
+      'en': 'Smart Organization',
+      'es': 'Organización inteligente',
+      'fr': 'Organisation intelligente',
+    },
+    'n7w3q88r': {
+      'en': 'Organize your study materials by subject with smart folders',
+      'es':
+          'Organiza tus materiales de estudio por tema con carpetas inteligentes',
+      'fr':
+          'Organisez vos supports d\'étude par sujet avec des dossiers intelligents',
+    },
+    'zufcqi3c': {
+      'en': 'AI-Powered Q&A',
+      'es': 'Preguntas y respuestas impulsadas por IA',
+      'fr': 'Questions-réponses alimentées par l\'IA',
+    },
+    'yd5gxlgv': {
+      'en': 'Ask questions to your documents and get instant answers',
+      'es': 'Haz preguntas a tus documentos y obtén respuestas instantáneas',
+      'fr':
+          'Posez des questions sur vos documents et obtenez des réponses instantanées',
+    },
+    '8ybexjex': {
+      'en': 'How QuizTonic Works',
+      'es': 'Cómo funciona QuizTonic',
+      'fr': 'Comment fonctionne QuizTonic',
+    },
+    '7aag7day': {
+      'en': 'Three simple steps to supercharge your learning',
+      'es': 'Tres sencillos pasos para potenciar tu aprendizaje',
+      'fr': 'Trois étapes simples pour dynamiser votre apprentissage',
+    },
+    'nodecgy1': {
+      'en': '1',
+      'es': '1',
+      'fr': '1',
+    },
+    '6gpi7avn': {
+      'en': 'Upload Content',
+      'es': 'Subir contenido',
+      'fr': 'Télécharger du contenu',
+    },
+    'pk792zlk': {
+      'en': 'Import PDFs, websites, or documents',
+      'es': 'Importar archivos PDF, sitios web o documentos',
+      'fr': 'Importer des PDF, des sites Web ou des documents',
+    },
+    'f6lqpinv': {
+      'en': '2',
+      'es': '2',
+      'fr': '2',
+    },
+    '2bd7yw35': {
+      'en': 'Generate Quiz',
+      'es': 'Generar cuestionario',
+      'fr': 'Générer un quiz',
+    },
+    '5hylfy4l': {
+      'en': 'AI creates questions from your content',
+      'es': 'La IA crea preguntas a partir de tu contenido',
+      'fr': 'L\'IA crée des questions à partir de votre contenu',
+    },
+    'jlb8ppcy': {
+      'en': '3',
+      'es': '3',
+      'fr': '3',
+    },
+    '0m5xkefm': {
+      'en': 'Learn & Master',
+      'es': 'Aprende y domina',
+      'fr': 'Apprendre et maîtriser',
+    },
+    'q2blms4m': {
+      'en': 'Practice with flashcards or MCQs',
+      'es': 'Practica con flashcards o preguntas de opción múltiple',
+      'fr': 'Entraînez-vous avec des flashcards ou des QCM',
+    },
+    'lh51yvom': {
+      'en': 'See QuizTonic in Action',
+      'es': 'Vea QuizTonic en acción',
+      'fr': 'Découvrez QuizTonic en action',
+    },
+    'cdhguiun': {
+      'en': 'Powerful features designed for modern learning',
+      'es': 'Potentes funciones diseñadas para el aprendizaje moderno',
+      'fr':
+          'Des fonctionnalités puissantes conçues pour l\'apprentissage moderne',
+    },
+    'gj007ei0': {
+      'en': 'Interactive Quizzes',
+      'es': 'Cuestionarios interactivos',
+      'fr': 'Quiz interactifs',
+    },
+    'nec5a03m': {
+      'en':
+          'Test your knowledge with multiple choice questions generated from your content. QuizTonic creates challenging questions that help reinforce your learning.',
+      'es':
+          'Pon a prueba tus conocimientos con preguntas de opción múltiple generadas a partir de tu contenido. QuizTonic crea preguntas desafiantes que te ayudan a reforzar tu aprendizaje.',
+      'fr':
+          'Testez vos connaissances avec des questions à choix multiples générées à partir de votre contenu. QuizTonic crée des questions stimulantes qui contribuent à renforcer votre apprentissage.',
+    },
+    'a5rmmpz3': {
+      'en': 'Instant feedback',
+      'es': 'Retroalimentación instantánea',
+      'fr': 'Rétroaction instantanée',
+    },
+    '8ipeqvk1': {
+      'en': 'Progress tracking',
+      'es': 'Seguimiento del progreso',
+      'fr': 'Suivi des progrès',
+    },
+    'nyyrqazl': {
+      'en': 'Difficulty adjustment',
+      'es': 'Ajuste de dificultad',
+      'fr': 'Ajustement de la difficulté',
+    },
+  },
+  // FeedbackPage
+  {
+    'z2044cgw': {
+      'en': 'Share your feedback!',
+      'es': 'Editar mi información',
+      'fr': 'Modifier mes informations',
+    },
+    'honewby0': {
+      'en': 'We’d love your feedback!',
+      'es': '',
+      'fr': '',
+    },
+    'yropba2h': {
+      'en':
+          'Help us improve your experience by sharing your thoughts, suggestions, or issues',
+      'es': '',
+      'fr': '',
+    },
+    'ct8pf7jo': {
+      'en': 'Feedback title',
+      'es': 'Nombre de usuario',
+      'fr': 'Nom d\'utilisateur',
+    },
+    'lqkjm1vt': {
+      'en': 'Enter a title',
+      'es': 'Introduzca un nombre de usuario',
+      'fr': 'Entrez un nom d\'utilisateur',
+    },
+    'eya2fl7t': {
+      'en': 'For example, you can give feedback on:',
+      'es': '',
+      'fr': '',
+    },
+    'jjcuk9lb': {
+      'en':
+          '• Authentication & login\n• Quiz generation time\n• Relevance of generated content\n• Ideas for features or improvements',
+      'es': '',
+      'fr': '',
+    },
+    't5jv96o3': {
+      'en': 'Share your thoughts',
+      'es': 'Nombre de usuario',
+      'fr': 'Nom d\'utilisateur',
+    },
+    'xbvwc7f1': {
+      'en': 'Share feedback with us',
+      'es': '',
+      'fr': '',
+    },
+    '71jpjsdl': {
+      'en': 'Share your feedback!',
+      'es': '',
+      'fr': '',
+    },
+    'zuesfbb7': {
+      'en': 'Home',
+      'es': 'Hogar',
+      'fr': 'Maison',
     },
   },
   // QuestionCard
@@ -1203,12 +1517,27 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'o74227q3': {
       'en': 'Enter your email address',
       'es': 'Introduzca su dirección de correo electrónico',
-      'fr': 'Entrez votre adresse e-mail',
+      'fr': 'Entrez votre adresse email',
     },
     '7ezvvjcs': {
       'en': 'Send reset link',
       'es': 'Enviar enlace de restablecimiento',
       'fr': 'Envoyer le lien de réinitialisation',
+    },
+    'ju62h8np': {
+      'en': 'Enter your email address is required',
+      'es': '',
+      'fr': '',
+    },
+    '285cm1t2': {
+      'en': 'Enter a valid email address',
+      'es': 'Introduzca una dirección de correo electrónico válida',
+      'fr': 'Entrez une adresse e-mail valide',
+    },
+    'yvii6a5l': {
+      'en': 'Please choose an option from the dropdown',
+      'es': 'Por favor, elija una opción del menú desplegable.',
+      'fr': 'Veuillez choisir une option dans la liste déroulante',
     },
   },
   // WebSideBar
@@ -1242,6 +1571,33 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Logout',
       'es': 'Cerrar sesión',
       'fr': 'Déconnexion',
+    },
+  },
+  // loadingComponent
+  {
+    'r9xqxosp': {
+      'en': 'Analyzing the collective consciousness...',
+      'es': 'Analizando la conciencia colectiva...',
+      'fr': 'Analyser la conscience collective...',
+    },
+    'wkt2hpv7': {
+      'en':
+          'Content generation could take up to 30 seconds depending on the size and complexity.',
+      'es':
+          'La generación de contenido podría tardar hasta 30 segundos dependiendo del tamaño y la complejidad.',
+      'fr':
+          'La génération de contenu peut prendre jusqu\'à 30 secondes selon la taille et la complexité.',
+    },
+  },
+  // NoQuizYet
+  {
+    '87tnr3uq': {
+      'en':
+          'You haven\'t taken any quizzes yet. Start a quiz to see your results here!',
+      'es':
+          'Aún no has hecho ningún test. ¡Empieza uno para ver tus resultados aquí!',
+      'fr':
+          'Vous n\'avez pas encore participé à un quiz. Commencez-en un pour voir vos résultats ici !',
     },
   },
   // Miscellaneous

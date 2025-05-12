@@ -165,7 +165,7 @@ class _EditFolderWidgetState extends State<EditFolderWidget> {
                           controller: _model.textController,
                           focusNode: _model.textFieldFocusNode,
                           autofocus: false,
-                          textCapitalization: TextCapitalization.words,
+                          textCapitalization: TextCapitalization.none,
                           textInputAction: TextInputAction.next,
                           obscureText: false,
                           decoration: InputDecoration(
@@ -251,7 +251,7 @@ class _EditFolderWidgetState extends State<EditFolderWidget> {
                                 return TextEditingValue(
                                   selection: newValue.selection,
                                   text: newValue.text.toCapitalization(
-                                      TextCapitalization.words),
+                                      TextCapitalization.none),
                                 );
                               }),
                           ],

@@ -229,7 +229,7 @@ class _SupportContactPageWidgetState extends State<SupportContactPageWidget> {
                                             child: Text(
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                'gze1a01g' /* Write to the support */,
+                                                'gze1a01g' /* Contact the support */,
                                               ),
                                               style:
                                                   FlutterFlowTheme.of(context)

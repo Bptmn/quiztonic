@@ -279,6 +279,53 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: SupportContactPageWidget.routePath,
           requireAuth: true,
           builder: (context, params) => SupportContactPageWidget(),
+        ),
+        FFRoute(
+          name: LoadingQuizPageWidget.routeName,
+          path: LoadingQuizPageWidget.routePath,
+          requireAuth: true,
+          builder: (context, params) => LoadingQuizPageWidget(
+            numOfQuestions: params.getParam(
+              'numOfQuestions',
+              ParamType.int,
+            ),
+            numOfChoices: params.getParam(
+              'numOfChoices',
+              ParamType.int,
+            ),
+            generateFlashcards: params.getParam(
+              'generateFlashcards',
+              ParamType.bool,
+            ),
+            textContent: params.getParam(
+              'textContent',
+              ParamType.String,
+            ),
+            url: params.getParam(
+              'url',
+              ParamType.String,
+            ),
+            pdfFile: params.getParam(
+              'pdfFile',
+              ParamType.FFUploadedFile,
+            ),
+            selectedInputFormat: params.getParam<QuizInputFormat>(
+              'selectedInputFormat',
+              ParamType.Enum,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: LandingPageWidget.routeName,
+          path: LandingPageWidget.routePath,
+          requireAuth: true,
+          builder: (context, params) => LandingPageWidget(),
+        ),
+        FFRoute(
+          name: FeedbackPageWidget.routeName,
+          path: FeedbackPageWidget.routePath,
+          requireAuth: true,
+          builder: (context, params) => FeedbackPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -465,16 +512,18 @@ class FFRoute {
                 )
               : builder(context, ffParams);
           final child = appStateNotifier.loading
-              ? Container(
-                  color: FlutterFlowTheme.of(context).info,
-                  child: Center(
-                    child: Image.asset(
-                      'assets/images/QuizTonic_logo_light_mode.png',
-                      width: MediaQuery.sizeOf(context).width * 0.75,
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                )
+              ? isWeb
+                  ? Container()
+                  : Container(
+                      color: FlutterFlowTheme.of(context).info,
+                      child: Center(
+                        child: Image.asset(
+                          'assets/images/QuizTonic_logo_light_mode.png',
+                          width: MediaQuery.sizeOf(context).width * 0.75,
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                    )
               : page;
 
           final transitionInfo = state.transitionInfo;
