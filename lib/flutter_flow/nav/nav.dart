@@ -512,18 +512,17 @@ class FFRoute {
                 )
               : builder(context, ffParams);
           final child = appStateNotifier.loading
-              ? isWeb
-                  ? Container()
-                  : Container(
-                      color: FlutterFlowTheme.of(context).info,
-                      child: Center(
-                        child: Image.asset(
-                          'assets/images/QuizTonic_logo_light_mode.png',
-                          width: MediaQuery.sizeOf(context).width * 0.75,
-                          fit: BoxFit.contain,
-                        ),
+              ? Center(
+                  child: SizedBox(
+                    width: 50.0,
+                    height: 50.0,
+                    child: CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(
+                        FlutterFlowTheme.of(context).primary,
                       ),
-                    )
+                    ),
+                  ),
+                )
               : page;
 
           final transitionInfo = state.transitionInfo;
