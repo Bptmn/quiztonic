@@ -29,7 +29,9 @@ class LoadingQuizPageModel extends FlutterFlowModel<LoadingQuizPageWidget> {
     'Creating smart questions... 🧠',
     'Summoning the quiz gods... 🔱',
     'Adding some Tonic to the quiz... ⚡',
-    'Getting your quiz ready... 🫡'
+    'Sharpening digital pencils... ✏️',
+    'Just a sec — the quiz genius is still putting on its glasses.. 🧞‍♂️',
+    'Hello Getting your quiz ready... 🫡'
   ];
   void addToLoadingTexts(String item) => loadingTexts.add(item);
   void removeFromLoadingTexts(String item) => loadingTexts.remove(item);

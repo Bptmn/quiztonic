@@ -566,6 +566,7 @@ class _FeedbackPageWidgetState extends State<FeedbackPageWidget> {
                                         focusNode:
                                             _model.textFieldUsernameFocusNode2,
                                         autofocus: false,
+                                        textInputAction: TextInputAction.done,
                                         obscureText: false,
                                         decoration: InputDecoration(
                                           isDense: true,

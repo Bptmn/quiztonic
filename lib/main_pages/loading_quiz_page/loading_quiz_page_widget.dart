@@ -264,7 +264,7 @@ class _LoadingQuizPageWidgetState extends State<LoadingQuizPageWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 1000.0.ms,
-            begin: 0.75,
+            begin: 0.6,
             end: 1.0,
           ),
         ],
