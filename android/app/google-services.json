@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "241821836264-ovmqs89a1pv96uhjldeo6ubmc7fdaj7j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bvdev.quiztonic",
+            "certificate_hash": "d5b989f0ae3b34691ae88d2784bc632f7f430428"
+          }
+        },
+        {
           "client_id": "241821836264-vlm3vvknlqckrr07r13q1bl1h5nlcbkd.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

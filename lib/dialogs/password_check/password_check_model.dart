@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
+import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
 import 'password_check_widget.dart' show PasswordCheckWidget;
 import 'package:flutter/material.dart';
@@ -16,9 +17,11 @@ class PasswordCheckModel extends FlutterFlowModel<PasswordCheckWidget> {
 
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
-  TextEditingController? passwordTextController;
+  TextEditingController? textController;
   late bool passwordVisibility;
-  String? Function(BuildContext, String?)? passwordTextControllerValidator;
+  String? Function(BuildContext, String?)? textControllerValidator;
+  // Stores action output result for [Custom Action - reAuthenticateUser] action in Button widget.
+  bool? reAuthenticationSuccess;
 
   @override
   void initState(BuildContext context) {
@@ -28,6 +31,6 @@ class PasswordCheckModel extends FlutterFlowModel<PasswordCheckWidget> {
   @override
   void dispose() {
     textFieldFocusNode?.dispose();
-    passwordTextController?.dispose();
+    textController?.dispose();
   }
 }

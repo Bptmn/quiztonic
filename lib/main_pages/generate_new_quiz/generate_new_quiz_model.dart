@@ -1,4 +1,3 @@
-import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/backend/schema/enums/enums.dart';
 import '/components/web_side_bar/web_side_bar_widget.dart';
@@ -11,7 +10,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
 import 'dart:ui';
-import '/backend/schema/structs/index.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
 import 'generate_new_quiz_widget.dart' show GenerateNewQuizWidget;
@@ -24,8 +22,12 @@ class GenerateNewQuizModel extends FlutterFlowModel<GenerateNewQuizWidget> {
 
   QuizInputFormat? selectedInputFormat = QuizInputFormat.websiteUrl;
 
+  bool pdrErrorToDisplay = false;
+
   ///  State fields for stateful widgets in this page.
 
+  final formKey1 = GlobalKey<FormState>();
+  final formKey2 = GlobalKey<FormState>();
   // Model for WebSideBar component.
   late WebSideBarModel webSideBarModel;
   // State field(s) for DropDownInputFormat widget.
@@ -36,6 +38,17 @@ class GenerateNewQuizModel extends FlutterFlowModel<GenerateNewQuizWidget> {
   TextEditingController? textFieldRawTextTextController;
   String? Function(BuildContext, String?)?
       textFieldRawTextTextControllerValidator;
+  String? _textFieldRawTextTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'dmoxzgs4' /* The field is empty */,
+      );
+    }
+
+    return null;
+  }
+
   // Stores action output result for [Custom Action - pasteTextFromClipboard] action in ContainerPasteRawText widget.
   String? pastedContentRawText;
   bool isDataUploading = false;
@@ -46,24 +59,30 @@ class GenerateNewQuizModel extends FlutterFlowModel<GenerateNewQuizWidget> {
   FocusNode? textFieldUrlFocusNode;
   TextEditingController? textFieldUrlTextController;
   String? Function(BuildContext, String?)? textFieldUrlTextControllerValidator;
+  String? _textFieldUrlTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'pki3pjgi' /* The field is empty */,
+      );
+    }
+
+    return null;
+  }
+
   // Stores action output result for [Custom Action - pasteTextFromClipboard] action in ContainerPasteUrl widget.
   String? pastedTextContent;
   // State field(s) for CountController widget.
   int? countControllerValue;
   // State field(s) for SwitchGenerateFlashcards widget.
   bool? switchGenerateFlashcardsValue;
-  // Stores action output result for [Backend Call - API (AiContentGenerationApi)] action in Button widget.
-  ApiCallResponse? apiResultFromText;
-  // Stores action output result for [Backend Call - API (AiContentGenerationApi)] action in Button widget.
-  ApiCallResponse? apiResultFromUrl;
-  // Stores action output result for [Custom Action - pdfToBinary] action in Button widget.
-  String? pdfBinaryText;
-  // Stores action output result for [Backend Call - API (AiContentGenerationApi)] action in Button widget.
-  ApiCallResponse? apiResultFromPdf;
 
   @override
   void initState(BuildContext context) {
     webSideBarModel = createModel(context, () => WebSideBarModel());
+    textFieldRawTextTextControllerValidator =
+        _textFieldRawTextTextControllerValidator;
+    textFieldUrlTextControllerValidator = _textFieldUrlTextControllerValidator;
   }
 
   @override

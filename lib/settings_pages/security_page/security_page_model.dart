@@ -16,6 +16,7 @@ import 'package:provider/provider.dart';
 class SecurityPageModel extends FlutterFlowModel<SecurityPageWidget> {
   ///  State fields for stateful widgets in this page.
 
+  final formKey = GlobalKey<FormState>();
   // Model for WebSideBar component.
   late WebSideBarModel webSideBarModel;
   // State field(s) for NewPassword widget.
@@ -23,12 +24,46 @@ class SecurityPageModel extends FlutterFlowModel<SecurityPageWidget> {
   TextEditingController? newPasswordTextController;
   late bool newPasswordVisibility;
   String? Function(BuildContext, String?)? newPasswordTextControllerValidator;
+  String? _newPasswordTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'jef7d0xy' /* Enter a new password is requir... */,
+      );
+    }
+
+    if (val.length < 6) {
+      return FFLocalizations.of(context).getText(
+        '2mrq3tg0' /* 6 characters minimum */,
+      );
+    }
+
+    return null;
+  }
+
   // State field(s) for ConfirmNewPassword widget.
   FocusNode? confirmNewPasswordFocusNode;
   TextEditingController? confirmNewPasswordTextController;
   late bool confirmNewPasswordVisibility;
   String? Function(BuildContext, String?)?
       confirmNewPasswordTextControllerValidator;
+  String? _confirmNewPasswordTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'wwgry3wl' /* Confirm new password is requir... */,
+      );
+    }
+
+    if (val.length < 6) {
+      return FFLocalizations.of(context).getText(
+        'z0bo131o' /* 6 characters minimum */,
+      );
+    }
+
+    return null;
+  }
+
   // Stores action output result for [Alert Dialog - Custom Dialog] action in Button widget.
   bool? isPasswordValidated;
   // Stores action output result for [Alert Dialog - Custom Dialog] action in Button widget.
@@ -38,7 +73,10 @@ class SecurityPageModel extends FlutterFlowModel<SecurityPageWidget> {
   void initState(BuildContext context) {
     webSideBarModel = createModel(context, () => WebSideBarModel());
     newPasswordVisibility = false;
+    newPasswordTextControllerValidator = _newPasswordTextControllerValidator;
     confirmNewPasswordVisibility = false;
+    confirmNewPasswordTextControllerValidator =
+        _confirmNewPasswordTextControllerValidator;
   }
 
   @override

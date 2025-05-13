@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/components/no_quiz_yet_widget.dart';
 import '/components/quiz_item/quiz_item_widget.dart';
 import '/components/web_side_bar/web_side_bar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -670,6 +671,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   }
                                   List<MyQuizRecord> listViewMyQuizRecordList =
                                       snapshot.data!;
+                                  if (listViewMyQuizRecordList.isEmpty) {
+                                    return NoQuizYetWidget();
+                                  }
 
                                   return ListView.separated(
                                     padding: EdgeInsets.zero,
