@@ -331,6 +331,16 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Introduzca su texto aquí...',
       'fr': 'Entrez votre texte ici...',
     },
+    'dmoxzgs4': {
+      'en': 'The field is empty',
+      'es': '',
+      'fr': '',
+    },
+    'z3ehe0az': {
+      'en': 'Please choose an option from the dropdown',
+      'es': 'Por favor, elija una opción del menú desplegable.',
+      'fr': 'Veuillez choisir une option dans la liste déroulante',
+    },
     'pe8avzqo': {
       'en': 'paste',
       'es': 'pasta',
@@ -342,9 +352,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Sélectionnez un fichier PDF',
     },
     'fbla3rzo': {
-      'en': 'Click to upload',
+      'en': 'Choose a file',
       'es': 'Haga clic para cargar',
       'fr': 'Cliquez pour télécharger',
+    },
+    '117bg6mq': {
+      'en': 'No pdf file has been uploaded',
+      'es': '',
+      'fr': '',
     },
     '3jfzozzo': {
       'en': 'Enter a website URL',
@@ -355,6 +370,16 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Enter an url here...',
       'es': 'Introduzca una URL aquí...',
       'fr': 'Entrez une URL ici...',
+    },
+    'pki3pjgi': {
+      'en': 'The field is empty',
+      'es': '',
+      'fr': '',
+    },
+    'xd2oh31c': {
+      'en': 'Please choose an option from the dropdown',
+      'es': 'Por favor, elija una opción del menú desplegable.',
+      'fr': 'Veuillez choisir une option dans la liste déroulante',
     },
     'fz6erg47': {
       'en': 'paste',
@@ -702,7 +727,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Se requiere correo electrónico.',
       'fr': 'L\'e-mail est obligatoire.',
     },
-    'z3ehe0az': {
+    '57im4axy': {
       'en': 'Please choose an option from the dropdown',
       'es': 'Por favor, elija una opción del menú desplegable.',
       'fr': 'Veuillez choisir une option dans la liste déroulante',
@@ -932,7 +957,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Mínimo 6 caracteres',
       'fr': '6 caractères minimum',
     },
-    'xd2oh31c': {
+    'yvqvk7dl': {
       'en': 'Please choose an option from the dropdown',
       'es': 'Por favor, elija una opción del menú desplegable.',
       'fr': 'Veuillez choisir une option dans la liste déroulante',
@@ -947,7 +972,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Mínimo 6 caracteres',
       'fr': '6 caractères minimum',
     },
-    '57im4axy': {
+    'x2d0m8pu': {
       'en': 'Please choose an option from the dropdown',
       'es': 'Por favor, elija una opción del menú desplegable.',
       'fr': 'Veuillez choisir une option dans la liste déroulante',

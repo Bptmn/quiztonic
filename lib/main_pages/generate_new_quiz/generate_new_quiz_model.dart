@@ -22,8 +22,12 @@ class GenerateNewQuizModel extends FlutterFlowModel<GenerateNewQuizWidget> {
 
   QuizInputFormat? selectedInputFormat = QuizInputFormat.websiteUrl;
 
+  bool pdrErrorToDisplay = false;
+
   ///  State fields for stateful widgets in this page.
 
+  final formKey1 = GlobalKey<FormState>();
+  final formKey2 = GlobalKey<FormState>();
   // Model for WebSideBar component.
   late WebSideBarModel webSideBarModel;
   // State field(s) for DropDownInputFormat widget.
@@ -34,6 +38,17 @@ class GenerateNewQuizModel extends FlutterFlowModel<GenerateNewQuizWidget> {
   TextEditingController? textFieldRawTextTextController;
   String? Function(BuildContext, String?)?
       textFieldRawTextTextControllerValidator;
+  String? _textFieldRawTextTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'dmoxzgs4' /* The field is empty */,
+      );
+    }
+
+    return null;
+  }
+
   // Stores action output result for [Custom Action - pasteTextFromClipboard] action in ContainerPasteRawText widget.
   String? pastedContentRawText;
   bool isDataUploading = false;
@@ -44,6 +59,17 @@ class GenerateNewQuizModel extends FlutterFlowModel<GenerateNewQuizWidget> {
   FocusNode? textFieldUrlFocusNode;
   TextEditingController? textFieldUrlTextController;
   String? Function(BuildContext, String?)? textFieldUrlTextControllerValidator;
+  String? _textFieldUrlTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'pki3pjgi' /* The field is empty */,
+      );
+    }
+
+    return null;
+  }
+
   // Stores action output result for [Custom Action - pasteTextFromClipboard] action in ContainerPasteUrl widget.
   String? pastedTextContent;
   // State field(s) for CountController widget.
@@ -54,6 +80,9 @@ class GenerateNewQuizModel extends FlutterFlowModel<GenerateNewQuizWidget> {
   @override
   void initState(BuildContext context) {
     webSideBarModel = createModel(context, () => WebSideBarModel());
+    textFieldRawTextTextControllerValidator =
+        _textFieldRawTextTextControllerValidator;
+    textFieldUrlTextControllerValidator = _textFieldUrlTextControllerValidator;
   }
 
   @override
