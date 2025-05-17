@@ -459,6 +459,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Seguridad',
       'fr': 'Sécurité',
     },
+    '92kircgh': {
+      'en': 'My subscription',
+      'es': 'Editar perfil',
+      'fr': 'Modifier le profil',
+    },
     'd2lu5q4t': {
       'en': 'Support',
       'es': 'Apoyo',
