@@ -21,7 +21,7 @@ export 'subscription_page_model.dart';
 class SubscriptionPageWidget extends StatefulWidget {
   const SubscriptionPageWidget({
     super.key,
-    required this.activeEntitlementd,
+    this.activeEntitlementd,
   });
 
   final List<String>? activeEntitlementd;
@@ -127,8 +127,12 @@ class _SubscriptionPageWidgetState extends State<SubscriptionPageWidget> {
             visible: _model.subInfoFetched,
             child: Builder(
               builder: (context) {
-                if (!revenue_cat.activeEntitlementIds
-                    .contains(SubscriptionEntitlements.premium_access.name)) {
+                if (valueOrDefault<bool>(
+                  !revenue_cat.activeEntitlementIds.contains(
+                          SubscriptionEntitlements.premium_access.name) ||
+                      !(revenue_cat.activeEntitlementIds.isNotEmpty),
+                  true,
+                )) {
                   return Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(18.0, 10.0, 18.0, 10.0),
