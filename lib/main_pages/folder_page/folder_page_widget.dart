@@ -409,7 +409,7 @@ class _FolderPageWidgetState extends State<FolderPageWidget> {
                                     loop1Index <
                                         widget!.folderDocument!.quizReferences
                                             .length;
-                                    loop1Index += 1) {
+                                    loop1Index++) {
                                   final currentLoop1Item = widget!
                                       .folderDocument!
                                       .quizReferences[loop1Index];

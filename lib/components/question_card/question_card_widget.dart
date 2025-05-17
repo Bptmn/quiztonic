@@ -15,10 +15,12 @@ class QuestionCardWidget extends StatefulWidget {
     super.key,
     required this.questionCard,
     this.updateScore,
-  });
+    int? questionCardIndex,
+  }) : this.questionCardIndex = questionCardIndex ?? 0;
 
   final QuestionCardStruct? questionCard;
   final Future Function(bool isCorrect, int userAnswerIndex)? updateScore;
+  final int questionCardIndex;
 
   @override
   State<QuestionCardWidget> createState() => _QuestionCardWidgetState();
@@ -80,7 +82,46 @@ class _QuestionCardWidgetState extends State<QuestionCardWidget> {
               children: [
                 Row(
                   mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Container(
+                      width: 30.0,
+                      height: 30.0,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: FlutterFlowTheme.of(context).primary,
+                        ),
+                      ),
+                      alignment: AlignmentDirectional(0.0, 0.0),
+                      child: Align(
+                        alignment: AlignmentDirectional(0.0, 0.0),
+                        child: Text(
+                          (widget!.questionCardIndex + 1).toString(),
+                          textAlign: TextAlign.center,
+                          style:
+                              FlutterFlowTheme.of(context).labelLarge.override(
+                                    font: GoogleFonts.roboto(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .labelLarge
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelLarge
+                                          .fontStyle,
+                                    ),
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    fontSize: 18.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .labelLarge
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelLarge
+                                        .fontStyle,
+                                  ),
+                        ),
+                      ),
+                    ),
                     Flexible(
                       child: Text(
                         valueOrDefault<String>(
@@ -104,59 +145,62 @@ class _QuestionCardWidgetState extends State<QuestionCardWidget> {
                             ),
                       ),
                     ),
-                  ],
+                  ].divide(SizedBox(width: 10.0)),
                 ),
-                Builder(
-                  builder: (context) {
-                    final mcq =
-                        widget!.questionCard?.questionChoices?.toList() ?? [];
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(3.0, 0.0, 3.0, 0.0),
+                  child: Builder(
+                    builder: (context) {
+                      final mcq =
+                          widget!.questionCard?.questionChoices?.toList() ?? [];
 
-                    return Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: List.generate(mcq.length, (mcqIndex) {
-                        final mcqItem = mcq[mcqIndex];
-                        return InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            if (!_model.answerDone) {
-                              _model.answerIsCorrect = mcqIndex ==
-                                  widget!.questionCard?.questionAnswerIndex;
-                              _model.answerDone = true;
-                              _model.selectedAnswer = mcqIndex;
-                              safeSetState(() {});
-                              await widget.updateScore?.call(
-                                _model.answerIsCorrect!,
-                                _model.selectedAnswer!,
-                              );
-                            }
-                          },
-                          child: wrapWithModel(
-                            model: _model.answerItemModels.getModel(
-                              mcqIndex.toString(),
-                              mcqIndex,
-                            ),
-                            updateCallback: () => safeSetState(() {}),
-                            updateOnChange: true,
-                            child: AnswerItemWidget(
-                              key: Key(
-                                'Keyb87_${mcqIndex.toString()}',
+                      return Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: List.generate(mcq.length, (mcqIndex) {
+                          final mcqItem = mcq[mcqIndex];
+                          return InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              if (!_model.answerDone) {
+                                _model.answerIsCorrect = mcqIndex ==
+                                    widget!.questionCard?.questionAnswerIndex;
+                                _model.answerDone = true;
+                                _model.selectedAnswer = mcqIndex;
+                                safeSetState(() {});
+                                await widget.updateScore?.call(
+                                  _model.answerIsCorrect!,
+                                  _model.selectedAnswer!,
+                                );
+                              }
+                            },
+                            child: wrapWithModel(
+                              model: _model.answerItemModels.getModel(
+                                mcqIndex.toString(),
+                                mcqIndex,
                               ),
-                              answerText: mcqItem,
-                              isSelected: mcqIndex == _model.selectedAnswer,
-                              itemIndex: mcqIndex,
-                              isCorrectAnswer:
-                                  widget!.questionCard?.questionAnswerIndex ==
-                                      mcqIndex,
-                              answerDone: _model.answerDone,
+                              updateCallback: () => safeSetState(() {}),
+                              updateOnChange: true,
+                              child: AnswerItemWidget(
+                                key: Key(
+                                  'Keyb87_${mcqIndex.toString()}',
+                                ),
+                                answerText: mcqItem,
+                                isSelected: mcqIndex == _model.selectedAnswer,
+                                itemIndex: mcqIndex,
+                                isCorrectAnswer:
+                                    widget!.questionCard?.questionAnswerIndex ==
+                                        mcqIndex,
+                                answerDone: _model.answerDone,
+                              ),
                             ),
-                          ),
-                        );
-                      }).divide(SizedBox(height: 5.0)),
-                    );
-                  },
+                          );
+                        }).divide(SizedBox(height: 5.0)),
+                      );
+                    },
+                  ),
                 ),
                 if (_model.answerDone)
                   Container(

@@ -10,6 +10,7 @@ import '/index.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'login_page_model.dart';
@@ -65,20 +66,6 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
           top: true,
           child: Stack(
             children: [
-              Align(
-                alignment: AlignmentDirectional(0.0, -1.0),
-                child: Container(
-                  width: double.infinity,
-                  height: double.infinity,
-                  constraints: BoxConstraints(
-                    maxWidth: valueOrDefault<double>(
-                      FFAppConstants.PageContentMaxWidth.toDouble(),
-                      600.0,
-                    ),
-                  ),
-                  decoration: BoxDecoration(),
-                ),
-              ),
               Align(
                 alignment: AlignmentDirectional(0.0, 0.0),
                 child: Padding(
@@ -876,16 +863,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
-                                                  InkWell(
-                                                    splashColor:
-                                                        Colors.transparent,
-                                                    focusColor:
-                                                        Colors.transparent,
-                                                    hoverColor:
-                                                        Colors.transparent,
-                                                    highlightColor:
-                                                        Colors.transparent,
-                                                    onTap: () async {
+                                                  FFButtonWidget(
+                                                    onPressed: () async {
                                                       GoRouter.of(context)
                                                           .prepareAuthEvent();
                                                       final user =
@@ -895,7 +874,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                       if (user == null) {
                                                         return;
                                                       }
-                                                      _model.userStatDocSignInGoogle =
+                                                      _model.userStatDocSignUpGoogle =
                                                           await queryMyStatisticsRecordOnce(
                                                         parent:
                                                             currentUserReference,
@@ -910,7 +889,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                             AuthMethod.google,
                                                       ));
                                                       if (_model
-                                                              .userStatDocSignInGoogle
+                                                              .userStatDocSignUpGoogle
                                                               ?.reference ==
                                                           null) {
                                                         await MyStatisticsRecord
@@ -933,255 +912,216 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
 
                                                       safeSetState(() {});
                                                     },
-                                                    child: Material(
-                                                      color: Colors.transparent,
+                                                    text: FFLocalizations.of(
+                                                            context)
+                                                        .getText(
+                                                      'b2rocz7s' /* Sign in with Google */,
+                                                    ),
+                                                    icon: FaIcon(
+                                                      FontAwesomeIcons.google,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                      size: 20.0,
+                                                    ),
+                                                    options: FFButtonOptions(
+                                                      width: double.infinity,
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  30.0,
+                                                                  20.0,
+                                                                  30.0,
+                                                                  20.0),
+                                                      iconAlignment:
+                                                          IconAlignment.start,
+                                                      iconPadding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  5.0,
+                                                                  0.0),
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .transparent,
+                                                      textStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmall
+                                                              .override(
+                                                                font: GoogleFonts
+                                                                    .manrope(
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmall
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmall
+                                                                      .fontStyle,
+                                                                ),
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primary,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontStyle,
+                                                              ),
                                                       elevation: 0.0,
-                                                      shape:
-                                                          RoundedRectangleBorder(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(20.0),
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            Color(0xFFD0D5DD),
                                                       ),
-                                                      child: Container(
-                                                        width: double.infinity,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      20.0),
-                                                          border: Border.all(
-                                                            color: Color(
-                                                                0xFFD0D5DD),
-                                                            width: 1.0,
-                                                          ),
-                                                        ),
-                                                        child: Align(
-                                                          alignment:
-                                                              AlignmentDirectional(
-                                                                  0.0, 0.0),
-                                                          child: Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0.0,
-                                                                        10.0,
-                                                                        0.0,
-                                                                        10.0),
-                                                            child: Row(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .min,
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .center,
-                                                              children: [
-                                                                Image.asset(
-                                                                  'assets/images/pngtree-google-internet-icon-vector-png-image_9183287.png',
-                                                                  width: 24.0,
-                                                                  height: 24.0,
-                                                                  fit: BoxFit
-                                                                      .cover,
-                                                                ),
-                                                                Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          12.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                                  child:
-                                                                      SelectionArea(
-                                                                          child:
-                                                                              Text(
-                                                                    FFLocalizations.of(
-                                                                            context)
-                                                                        .getText(
-                                                                      'a7ipk6yz' /* Sign in with Google */,
-                                                                    ),
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          font:
-                                                                              GoogleFonts.roboto(
-                                                                            fontWeight:
-                                                                                FontWeight.w600,
-                                                                            fontStyle:
-                                                                                FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                          ),
-                                                                          fontSize:
-                                                                              16.0,
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                          fontWeight:
-                                                                              FontWeight.w600,
-                                                                          fontStyle: FlutterFlowTheme.of(context)
-                                                                              .bodyMedium
-                                                                              .fontStyle,
-                                                                        ),
-                                                                  )),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              22.0),
                                                     ),
                                                   ),
                                                   if (isiOS)
-                                                    InkWell(
-                                                      splashColor:
-                                                          Colors.transparent,
-                                                      focusColor:
-                                                          Colors.transparent,
-                                                      hoverColor:
-                                                          Colors.transparent,
-                                                      highlightColor:
-                                                          Colors.transparent,
-                                                      onTap: () async {
-                                                        GoRouter.of(context)
-                                                            .prepareAuthEvent();
-                                                        final user =
-                                                            await authManager
-                                                                .signInWithApple(
-                                                                    context);
-                                                        if (user == null) {
-                                                          return;
-                                                        }
-                                                        _model.userStatDocSignInApple =
-                                                            await queryMyStatisticsRecordOnce(
-                                                          parent:
-                                                              currentUserReference,
-                                                          singleRecord: true,
-                                                        ).then((s) =>
-                                                                s.firstOrNull);
+                                                    isAndroid
+                                                        ? Container()
+                                                        : FFButtonWidget(
+                                                            onPressed:
+                                                                () async {
+                                                              GoRouter.of(
+                                                                      context)
+                                                                  .prepareAuthEvent();
+                                                              final user =
+                                                                  await authManager
+                                                                      .signInWithApple(
+                                                                          context);
+                                                              if (user ==
+                                                                  null) {
+                                                                return;
+                                                              }
+                                                              _model.userStatDocSignUpApple =
+                                                                  await queryMyStatisticsRecordOnce(
+                                                                parent:
+                                                                    currentUserReference,
+                                                                singleRecord:
+                                                                    true,
+                                                              ).then((s) => s
+                                                                      .firstOrNull);
 
-                                                        await currentUserReference!
-                                                            .update(
-                                                                createUsersRecordData(
-                                                          authMethod:
-                                                              AuthMethod.google,
-                                                        ));
-                                                        if (_model
-                                                                .userStatDocSignInApple
-                                                                ?.reference ==
-                                                            null) {
-                                                          await MyStatisticsRecord
-                                                                  .createDoc(
-                                                                      currentUserReference!)
-                                                              .set(
-                                                                  createMyStatisticsRecordData(
-                                                            nbQuizDone: 0,
-                                                            nbQuestionsDone: 0,
-                                                            nbCorrectAnswers: 0,
-                                                            totalTimeSpentOnQuiz:
-                                                                0,
-                                                          ));
-                                                        }
+                                                              await currentUserReference!
+                                                                  .update(
+                                                                      createUsersRecordData(
+                                                                authMethod:
+                                                                    AuthMethod
+                                                                        .apple,
+                                                              ));
+                                                              if (_model
+                                                                      .userStatDocSignUpApple
+                                                                      ?.reference ==
+                                                                  null) {
+                                                                await MyStatisticsRecord
+                                                                        .createDoc(
+                                                                            currentUserReference!)
+                                                                    .set(
+                                                                        createMyStatisticsRecordData(
+                                                                  nbQuizDone: 0,
+                                                                  nbQuestionsDone:
+                                                                      0,
+                                                                  nbCorrectAnswers:
+                                                                      0,
+                                                                  totalTimeSpentOnQuiz:
+                                                                      0,
+                                                                ));
+                                                              }
 
-                                                        context.goNamedAuth(
-                                                            HomePageWidget
-                                                                .routeName,
-                                                            context.mounted);
+                                                              context.goNamedAuth(
+                                                                  HomePageWidget
+                                                                      .routeName,
+                                                                  context
+                                                                      .mounted);
 
-                                                        safeSetState(() {});
-                                                      },
-                                                      child: Material(
-                                                        color:
-                                                            Colors.transparent,
-                                                        elevation: 0.0,
-                                                        shape:
-                                                            RoundedRectangleBorder(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      20.0),
-                                                        ),
-                                                        child: Container(
-                                                          width:
-                                                              double.infinity,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        20.0),
-                                                            border: Border.all(
-                                                              color: Color(
-                                                                  0xFFD0D5DD),
-                                                              width: 1.0,
+                                                              safeSetState(
+                                                                  () {});
+                                                            },
+                                                            text: FFLocalizations
+                                                                    .of(context)
+                                                                .getText(
+                                                              'kficlvjk' /* Sign in with Apple */,
                                                             ),
-                                                          ),
-                                                          child: Align(
-                                                            alignment:
-                                                                AlignmentDirectional(
-                                                                    0.0, 0.0),
-                                                            child: Padding(
+                                                            icon: FaIcon(
+                                                              FontAwesomeIcons
+                                                                  .apple,
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .primary,
+                                                              size: 22.0,
+                                                            ),
+                                                            options:
+                                                                FFButtonOptions(
+                                                              width: double
+                                                                  .infinity,
                                                               padding:
                                                                   EdgeInsetsDirectional
                                                                       .fromSTEB(
+                                                                          30.0,
+                                                                          20.0,
+                                                                          30.0,
+                                                                          20.0),
+                                                              iconAlignment:
+                                                                  IconAlignment
+                                                                      .start,
+                                                              iconPadding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
                                                                           0.0,
-                                                                          10.0,
                                                                           0.0,
-                                                                          10.0),
-                                                              child: Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .min,
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .center,
-                                                                children: [
-                                                                  Image.asset(
-                                                                    'assets/images/747.png',
-                                                                    width: 24.0,
-                                                                    height:
-                                                                        24.0,
-                                                                    fit: BoxFit
-                                                                        .cover,
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            12.0,
+                                                                          5.0,
+                                                                          0.0),
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .transparent,
+                                                              textStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmall
+                                                                      .override(
+                                                                        font: GoogleFonts
+                                                                            .manrope(
+                                                                          fontWeight: FlutterFlowTheme.of(context)
+                                                                              .titleSmall
+                                                                              .fontWeight,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .titleSmall
+                                                                              .fontStyle,
+                                                                        ),
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .primary,
+                                                                        letterSpacing:
                                                                             0.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                    child: SelectionArea(
-                                                                        child: Text(
-                                                                      FFLocalizations.of(
-                                                                              context)
-                                                                          .getText(
-                                                                        'f9dyvhpt' /* Sign in with Apple */,
+                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                            .titleSmall
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .titleSmall
+                                                                            .fontStyle,
                                                                       ),
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .override(
-                                                                            font:
-                                                                                GoogleFonts.roboto(
-                                                                              fontWeight: FontWeight.w600,
-                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                            ),
-                                                                            fontSize:
-                                                                                16.0,
-                                                                            letterSpacing:
-                                                                                0.0,
-                                                                            fontWeight:
-                                                                                FontWeight.w600,
-                                                                            fontStyle:
-                                                                                FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                          ),
-                                                                    )),
-                                                                  ),
-                                                                ],
+                                                              elevation: 0.0,
+                                                              borderSide:
+                                                                  BorderSide(
+                                                                color: Color(
+                                                                    0xFFD0D5DD),
                                                               ),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          22.0),
                                                             ),
                                                           ),
-                                                        ),
-                                                      ),
-                                                    ),
                                                 ].divide(
                                                     SizedBox(height: 10.0)),
                                               ),

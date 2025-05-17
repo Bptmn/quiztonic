@@ -270,7 +270,9 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget> {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content: Text(
-                                      'Email required!',
+                                      FFLocalizations.of(context).getText(
+                                        'dykmtnmb' /* Email required! */,
+                                      ),
                                     ),
                                   ),
                                 );

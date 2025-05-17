@@ -56,3 +56,13 @@ TotalLearningTimeStruct totalLearningTimeFormat(
     minutes: minutes,
   );
 }
+
+DateTime dateInOneMonth(DateTime initialDate) {
+  // return the date one month after the initial date
+  return DateTime(initialDate.year, initialDate.month + 1, initialDate.day);
+}
+
+DateTime dateInOneYear(DateTime initialDate) {
+  // return the date one year after the initial date
+  return initialDate.add(Duration(days: 365));
+}

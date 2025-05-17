@@ -195,8 +195,10 @@ class _PickUpAfolderWidgetState extends State<PickUpAfolderWidget> {
                                         .update(createMyQuizRecordData(
                                       folderReference: folderItemItem.reference,
                                     ));
-
-                                    context.goNamed(
+                                    if (Navigator.of(context).canPop()) {
+                                      context.pop();
+                                    }
+                                    context.pushNamed(
                                       FolderPageWidget.routeName,
                                       queryParameters: {
                                         'folderDocument': serializeParam(
