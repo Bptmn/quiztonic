@@ -1,7 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/schema/enums/enums.dart';
-import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -12,7 +11,6 @@ import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import '/index.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'subscription_page_model.dart';
@@ -42,13 +40,6 @@ class _SubscriptionPageWidgetState extends State<SubscriptionPageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => SubscriptionPageModel());
-
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.currentSub = await actions.revenueCatCurrentUserSubscription();
-      _model.subInfoFetched = true;
-      safeSetState(() {});
-    });
 
     _model.switchYearlyValue = true;
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
@@ -128,9 +119,9 @@ class _SubscriptionPageWidgetState extends State<SubscriptionPageWidget> {
             child: Builder(
               builder: (context) {
                 if (valueOrDefault<bool>(
-                  !revenue_cat.activeEntitlementIds.contains(
-                          SubscriptionEntitlements.premium_access.name) ||
-                      !(revenue_cat.activeEntitlementIds.isNotEmpty),
+                  !(revenue_cat.activeEntitlementIds.isNotEmpty) ||
+                      !revenue_cat.activeEntitlementIds.contains(
+                          SubscriptionEntitlements.premium_access.name),
                   true,
                 )) {
                   return Padding(
