@@ -317,7 +317,7 @@ class _SubscriptionPageWidgetState extends State<SubscriptionPageWidget> {
                                                   subtitle: Text(
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                      'qspv03pt' /* Free */,
+                                                      'qspv03pt' /* Free start */,
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -387,7 +387,7 @@ class _SubscriptionPageWidgetState extends State<SubscriptionPageWidget> {
                                                   Text(
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                      'uz1mx625' /* 15 initial credits */,
+                                                      'uz1mx625' /* Credit-based use */,
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -439,7 +439,7 @@ class _SubscriptionPageWidgetState extends State<SubscriptionPageWidget> {
                                                   Text(
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                      'wtzwximt' /* Advertisting */,
+                                                      '1lgasmhf' /* 15 free credits */,
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -899,57 +899,6 @@ class _SubscriptionPageWidgetState extends State<SubscriptionPageWidget> {
                                             ].divide(SizedBox(width: 10.0)),
                                           ),
                                         ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 0.0, 10.0, 0.0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Icon(
-                                                Icons.circle_rounded,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                                size: 10.0,
-                                              ),
-                                              Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  's1aayhx4' /* Ad-free experience */,
-                                                ),
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodyMedium
-                                                    .override(
-                                                      font: GoogleFonts.roboto(
-                                                        fontWeight:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontWeight,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontStyle,
-                                                      ),
-                                                      letterSpacing: 0.0,
-                                                      fontWeight:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .fontWeight,
-                                                      fontStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .fontStyle,
-                                                    ),
-                                              ),
-                                            ].divide(SizedBox(width: 10.0)),
-                                          ),
-                                        ),
                                         if (_model.switchYearlyValue ?? true)
                                           Padding(
                                             padding:
@@ -968,7 +917,7 @@ class _SubscriptionPageWidgetState extends State<SubscriptionPageWidget> {
                                                 Text(
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                    'x3unp6qz' /* 20% discount */,
+                                                    'x3unp6qz' /* 20% discount on yearly plan */,
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)

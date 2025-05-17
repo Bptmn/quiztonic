@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
-import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
@@ -829,9 +828,14 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                             nbCorrectAnswers: 0,
                                             totalTimeSpentOnQuiz: 0,
                                           ));
-                                          await actions.printText(
-                                            currentUserReference!.id,
-                                          );
+
+                                          await MySubscriptionRecord.createDoc(
+                                                  currentUserReference!)
+                                              .set(
+                                                  createMySubscriptionRecordData(
+                                            creditCount: FFAppConstants
+                                                .InitialUserCredit,
+                                          ));
 
                                           context.goNamedAuth(
                                               HomePageWidget.routeName,
@@ -934,6 +938,12 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                                         currentUserReference,
                                                     singleRecord: true,
                                                   ).then((s) => s.firstOrNull);
+                                                  _model.userSubDocSignUpGoogle =
+                                                      await queryMySubscriptionRecordOnce(
+                                                    parent:
+                                                        currentUserReference,
+                                                    singleRecord: true,
+                                                  ).then((s) => s.firstOrNull);
 
                                                   await currentUserReference!
                                                       .update(
@@ -954,6 +964,19 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                                       nbQuestionsDone: 0,
                                                       nbCorrectAnswers: 0,
                                                       totalTimeSpentOnQuiz: 0,
+                                                    ));
+                                                  }
+                                                  if (_model
+                                                          .userSubDocSignUpGoogle
+                                                          ?.reference ==
+                                                      null) {
+                                                    await MySubscriptionRecord
+                                                            .createDoc(
+                                                                currentUserReference!)
+                                                        .set(
+                                                            createMySubscriptionRecordData(
+                                                      creditCount: FFAppConstants
+                                                          .InitialUserCredit,
                                                     ));
                                                   }
 
@@ -1052,13 +1075,20 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                                             singleRecord: true,
                                                           ).then((s) => s
                                                                   .firstOrNull);
+                                                          _model.userSubDocSignUpApple =
+                                                              await queryMySubscriptionRecordOnce(
+                                                            parent:
+                                                                currentUserReference,
+                                                            singleRecord: true,
+                                                          ).then((s) => s
+                                                                  .firstOrNull);
 
                                                           await currentUserReference!
                                                               .update(
                                                                   createUsersRecordData(
                                                             authMethod:
                                                                 AuthMethod
-                                                                    .apple,
+                                                                    .google,
                                                           ));
                                                           if (_model
                                                                   .userStatDocSignUpApple
@@ -1076,6 +1106,20 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                                                   0,
                                                               totalTimeSpentOnQuiz:
                                                                   0,
+                                                            ));
+                                                          }
+                                                          if (_model
+                                                                  .userSubDocSignUpApple
+                                                                  ?.reference ==
+                                                              null) {
+                                                            await MySubscriptionRecord
+                                                                    .createDoc(
+                                                                        currentUserReference!)
+                                                                .set(
+                                                                    createMySubscriptionRecordData(
+                                                              creditCount:
+                                                                  FFAppConstants
+                                                                      .InitialUserCredit,
                                                             ));
                                                           }
 

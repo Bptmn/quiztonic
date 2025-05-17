@@ -1214,17 +1214,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '',
     },
     'qspv03pt': {
-      'en': 'Free',
+      'en': 'Free start',
       'es': '',
       'fr': '',
     },
     'uz1mx625': {
-      'en': '15 initial credits',
+      'en': 'Credit-based use',
       'es': '',
       'fr': '',
     },
-    'wtzwximt': {
-      'en': 'Advertisting',
+    '1lgasmhf': {
+      'en': '15 free credits',
       'es': '',
       'fr': '',
     },
@@ -1253,13 +1253,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': '',
       'fr': '',
     },
-    's1aayhx4': {
-      'en': 'Ad-free experience',
-      'es': '',
-      'fr': '',
-    },
     'x3unp6qz': {
-      'en': '20% discount',
+      'en': '20% discount on yearly plan',
       'es': '',
       'fr': '',
     },

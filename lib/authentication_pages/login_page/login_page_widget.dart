@@ -756,12 +756,6 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                 return;
                                               }
 
-                                              await MyStatisticsRecord
-                                                      .createDoc(
-                                                          currentUserReference!)
-                                                  .set(
-                                                      createMyStatisticsRecordData());
-
                                               context.goNamedAuth(
                                                 HomePageWidget.routeName,
                                                 context.mounted,
@@ -874,8 +868,15 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                       if (user == null) {
                                                         return;
                                                       }
-                                                      _model.userStatDocSignUpGoogle =
+                                                      _model.userStatDocSignInGoogle =
                                                           await queryMyStatisticsRecordOnce(
+                                                        parent:
+                                                            currentUserReference,
+                                                        singleRecord: true,
+                                                      ).then((s) =>
+                                                              s.firstOrNull);
+                                                      _model.userSubDocSignInGoogle =
+                                                          await queryMySubscriptionRecordOnce(
                                                         parent:
                                                             currentUserReference,
                                                         singleRecord: true,
@@ -889,7 +890,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                             AuthMethod.google,
                                                       ));
                                                       if (_model
-                                                              .userStatDocSignUpGoogle
+                                                              .userStatDocSignInGoogle
                                                               ?.reference ==
                                                           null) {
                                                         await MyStatisticsRecord
@@ -902,6 +903,20 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                           nbCorrectAnswers: 0,
                                                           totalTimeSpentOnQuiz:
                                                               0,
+                                                        ));
+                                                      }
+                                                      if (_model
+                                                              .userSubDocSignInGoogle
+                                                              ?.reference ==
+                                                          null) {
+                                                        await MySubscriptionRecord
+                                                                .createDoc(
+                                                                    currentUserReference!)
+                                                            .set(
+                                                                createMySubscriptionRecordData(
+                                                          creditCount:
+                                                              FFAppConstants
+                                                                  .InitialUserCredit,
                                                         ));
                                                       }
 
@@ -1004,8 +1019,16 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                   null) {
                                                                 return;
                                                               }
-                                                              _model.userStatDocSignUpApple =
+                                                              _model.userStatDocSignInApple =
                                                                   await queryMyStatisticsRecordOnce(
+                                                                parent:
+                                                                    currentUserReference,
+                                                                singleRecord:
+                                                                    true,
+                                                              ).then((s) => s
+                                                                      .firstOrNull);
+                                                              _model.userSubDocSignInApple =
+                                                                  await queryMySubscriptionRecordOnce(
                                                                 parent:
                                                                     currentUserReference,
                                                                 singleRecord:
@@ -1018,10 +1041,10 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                       createUsersRecordData(
                                                                 authMethod:
                                                                     AuthMethod
-                                                                        .apple,
+                                                                        .google,
                                                               ));
                                                               if (_model
-                                                                      .userStatDocSignUpApple
+                                                                      .userStatDocSignInApple
                                                                       ?.reference ==
                                                                   null) {
                                                                 await MyStatisticsRecord
@@ -1036,6 +1059,20 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                                       0,
                                                                   totalTimeSpentOnQuiz:
                                                                       0,
+                                                                ));
+                                                              }
+                                                              if (_model
+                                                                      .userSubDocSignInApple
+                                                                      ?.reference ==
+                                                                  null) {
+                                                                await MySubscriptionRecord
+                                                                        .createDoc(
+                                                                            currentUserReference!)
+                                                                    .set(
+                                                                        createMySubscriptionRecordData(
+                                                                  creditCount:
+                                                                      FFAppConstants
+                                                                          .InitialUserCredit,
                                                                 ));
                                                               }
 

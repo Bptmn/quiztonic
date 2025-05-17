@@ -55,9 +55,13 @@ class LoginPageModel extends FlutterFlowModel<LoginPageWidget> {
   }
 
   // Stores action output result for [Firestore Query - Query a collection] action in ButtonSignWithGoogle widget.
-  MyStatisticsRecord? userStatDocSignUpGoogle;
+  MyStatisticsRecord? userStatDocSignInGoogle;
+  // Stores action output result for [Firestore Query - Query a collection] action in ButtonSignWithGoogle widget.
+  MySubscriptionRecord? userSubDocSignInGoogle;
   // Stores action output result for [Firestore Query - Query a collection] action in ButtonSignWithApple widget.
-  MyStatisticsRecord? userStatDocSignUpApple;
+  MyStatisticsRecord? userStatDocSignInApple;
+  // Stores action output result for [Firestore Query - Query a collection] action in ButtonSignWithApple widget.
+  MySubscriptionRecord? userSubDocSignInApple;
 
   @override
   void initState(BuildContext context) {
