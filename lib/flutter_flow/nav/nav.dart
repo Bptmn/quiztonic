@@ -325,7 +325,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: SubscriptionPageWidget.routeName,
           path: SubscriptionPageWidget.routePath,
           requireAuth: true,
-          builder: (context, params) => SubscriptionPageWidget(),
+          builder: (context, params) => SubscriptionPageWidget(
+            activeEntitlementd: params.getParam<String>(
+              'activeEntitlementd',
+              ParamType.String,
+              isList: true,
+            ),
+          ),
         ),
         FFRoute(
           name: PostSubPageWidget.routeName,

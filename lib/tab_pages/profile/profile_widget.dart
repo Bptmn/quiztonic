@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:math';
 import 'dart:ui';
+import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import '/index.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -1144,6 +1145,15 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                                     context.pushNamed(
                                                       SubscriptionPageWidget
                                                           .routeName,
+                                                      queryParameters: {
+                                                        'activeEntitlementd':
+                                                            serializeParam(
+                                                          revenue_cat
+                                                              .activeEntitlementIds,
+                                                          ParamType.String,
+                                                          isList: true,
+                                                        ),
+                                                      }.withoutNulls,
                                                       extra: <String, dynamic>{
                                                         kTransitionInfoKey:
                                                             TransitionInfo(
