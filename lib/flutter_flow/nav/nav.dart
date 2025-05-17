@@ -316,16 +316,22 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: LandingPageWidget.routeName,
-          path: LandingPageWidget.routePath,
-          requireAuth: true,
-          builder: (context, params) => LandingPageWidget(),
-        ),
-        FFRoute(
           name: FeedbackPageWidget.routeName,
           path: FeedbackPageWidget.routePath,
           requireAuth: true,
           builder: (context, params) => FeedbackPageWidget(),
+        ),
+        FFRoute(
+          name: SubscriptionPageWidget.routeName,
+          path: SubscriptionPageWidget.routePath,
+          requireAuth: true,
+          builder: (context, params) => SubscriptionPageWidget(),
+        ),
+        FFRoute(
+          name: PostSubPageWidget.routeName,
+          path: PostSubPageWidget.routePath,
+          requireAuth: true,
+          builder: (context, params) => PostSubPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -515,7 +521,7 @@ class FFRoute {
               ? isWeb
                   ? Container()
                   : Container(
-                      color: Colors.transparent,
+                      color: FlutterFlowTheme.of(context).info,
                       child: Center(
                         child: Image.asset(
                           'assets/images/QuizTonic_logo_light_mode.png',

@@ -23,7 +23,7 @@ class ResetPasswordModel extends FlutterFlowModel<ResetPasswordWidget> {
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
-        'ju62h8np' /* Enter your email address is re... */,
+        'ju62h8np' /* Email address is required */,
       );
     }
 

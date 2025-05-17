@@ -35,5 +35,12 @@ service cloud.firestore {
       allow write: if resource.data.sender == /databases/$(database)/documents/users/$(request.auth.uid);
       allow delete: if false;
     }
+
+    match /users/{parent}/my_subscription/{document} {
+      allow create: if request.auth.uid == parent;
+      allow read: if request.auth.uid == parent;
+      allow write: if request.auth.uid == parent;
+      allow delete: if request.auth.uid == parent;
+    }
   }
 }

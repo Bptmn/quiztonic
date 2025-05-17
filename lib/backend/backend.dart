@@ -10,6 +10,7 @@ import 'schema/my_folders_record.dart';
 import 'schema/my_statistics_record.dart';
 import 'schema/my_quiz_record.dart';
 import 'schema/feedbacks_record.dart';
+import 'schema/my_subscription_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart' hide Order;
@@ -23,6 +24,7 @@ export 'schema/my_folders_record.dart';
 export 'schema/my_statistics_record.dart';
 export 'schema/my_quiz_record.dart';
 export 'schema/feedbacks_record.dart';
+export 'schema/my_subscription_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Future<int> queryUsersRecordCount({
@@ -213,6 +215,46 @@ Future<List<FeedbacksRecord>> queryFeedbacksRecordOnce({
     queryCollectionOnce(
       FeedbacksRecord.collection,
       FeedbacksRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query MySubscriptionRecords (as a Stream and as a Future).
+Future<int> queryMySubscriptionRecordCount({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      MySubscriptionRecord.collection(parent),
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<MySubscriptionRecord>> queryMySubscriptionRecord({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      MySubscriptionRecord.collection(parent),
+      MySubscriptionRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<MySubscriptionRecord>> queryMySubscriptionRecordOnce({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      MySubscriptionRecord.collection(parent),
+      MySubscriptionRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

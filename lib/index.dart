@@ -29,6 +29,8 @@ export '/settings_pages/support_contact_page/support_contact_page_widget.dart'
     show SupportContactPageWidget;
 export '/main_pages/loading_quiz_page/loading_quiz_page_widget.dart'
     show LoadingQuizPageWidget;
-export '/landing_page/landing_page_widget.dart' show LandingPageWidget;
 export '/settings_pages/feedback_page/feedback_page_widget.dart'
     show FeedbackPageWidget;
+export '/settings_pages/subscription_page/subscription_page_widget.dart'
+    show SubscriptionPageWidget;
+export '/post_sub_page/post_sub_page_widget.dart' show PostSubPageWidget;

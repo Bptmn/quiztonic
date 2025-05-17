@@ -168,7 +168,7 @@ class _QuizItemWidgetState extends State<QuizItemWidget> {
                       children: [
                         TextSpan(
                           text: FFLocalizations.of(context).getText(
-                            '06maizap' /* Completed on  */,
+                            '06maizap' /* Completed on */,
                           ),
                           style: FlutterFlowTheme.of(context)
                               .bodySmall
@@ -191,6 +191,12 @@ class _QuizItemWidgetState extends State<QuizItemWidget> {
                                     .bodySmall
                                     .fontStyle,
                               ),
+                        ),
+                        TextSpan(
+                          text: FFLocalizations.of(context).getText(
+                            'j005bixy' /*   */,
+                          ),
+                          style: TextStyle(),
                         ),
                         TextSpan(
                           text: valueOrDefault<String>(

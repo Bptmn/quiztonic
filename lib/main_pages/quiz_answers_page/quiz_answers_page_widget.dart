@@ -217,20 +217,13 @@ class _QuizAnswersPageWidgetState extends State<QuizAnswersPageWidget> {
                                       (questionsCardIndex) {
                                     final questionsCardItem =
                                         questionsCard[questionsCardIndex];
-                                    return wrapWithModel(
-                                      model: _model.questionCardModels.getModel(
-                                        questionsCardIndex.toString(),
-                                        questionsCardIndex,
-                                      ),
-                                      updateCallback: () => safeSetState(() {}),
-                                      child: QuestionCardWidget(
-                                        key: Key(
-                                          'Keyrqm_${questionsCardIndex.toString()}',
-                                        ),
-                                        questionCard: questionsCardItem,
-                                        updateScore: (isCorrect,
-                                            userAnswerIndex) async {},
-                                      ),
+                                    return QuestionCardWidget(
+                                      key: Key(
+                                          'Keyrqm_${questionsCardIndex}_of_${questionsCard.length}'),
+                                      questionCard: questionsCardItem,
+                                      questionCardIndex: questionsCardIndex,
+                                      updateScore:
+                                          (isCorrect, userAnswerIndex) async {},
                                     );
                                   }),
                                 );

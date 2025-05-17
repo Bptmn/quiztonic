@@ -14,6 +14,7 @@ import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
 import 'generate_new_quiz_widget.dart' show GenerateNewQuizWidget;
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -67,6 +68,11 @@ class GenerateNewQuizModel extends FlutterFlowModel<GenerateNewQuizWidget> {
       );
     }
 
+    if (!RegExp(kTextValidatorWebsiteRegex).hasMatch(val)) {
+      return FFLocalizations.of(context).getText(
+        'z3dxtdt4' /* Please enter a valid url */,
+      );
+    }
     return null;
   }
 
@@ -76,6 +82,8 @@ class GenerateNewQuizModel extends FlutterFlowModel<GenerateNewQuizWidget> {
   int? countControllerValue;
   // State field(s) for SwitchGenerateFlashcards widget.
   bool? switchGenerateFlashcardsValue;
+  // Stores action output result for [Custom Action - normalizeUrl] action in Button widget.
+  String? normalizedUrl;
 
   @override
   void initState(BuildContext context) {

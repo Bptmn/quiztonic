@@ -76,8 +76,9 @@ class FirebaseAuthManager extends AuthManager
         ScaffoldMessenger.of(context).hideCurrentSnackBar();
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-              content: Text(
-                  'Too long since most recent sign in. Sign in again before deleting your account.')),
+              content: Text(FFLocalizations.of(context).getText(
+            'v1spst1l' /* Too long since most recent sig... */,
+          ))),
         );
       }
     }
@@ -100,8 +101,9 @@ class FirebaseAuthManager extends AuthManager
         ScaffoldMessenger.of(context).hideCurrentSnackBar();
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-              content: Text(
-                  'Too long since most recent sign in. Sign in again before updating your email.')),
+              content: Text(FFLocalizations.of(context).getText(
+            'exn3aoxb' /* Too long since most recent sig... */,
+          ))),
         );
       }
     }
@@ -143,7 +145,10 @@ class FirebaseAuthManager extends AuthManager
       return null;
     }
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Password reset email sent')),
+      SnackBar(
+          content: Text(FFLocalizations.of(context).getText(
+        'cizrl0bj' /* Password reset email sent! */,
+      ))),
     );
   }
 
@@ -315,10 +320,12 @@ class FirebaseAuthManager extends AuthManager
           : QuizTonicFirebaseUser.fromUserCredential(userCredential);
     } on FirebaseAuthException catch (e) {
       final errorMsg = switch (e.code) {
-        'email-already-in-use' =>
-          'Error: The email is already in use by a different account',
-        'INVALID_LOGIN_CREDENTIALS' =>
-          'Error: The supplied auth credential is incorrect, malformed or has expired',
+        'email-already-in-use' => FFLocalizations.of(context).getText(
+            'k0xxijtp' /* Email already in use by anothe... */,
+          ),
+        'INVALID_LOGIN_CREDENTIALS' => FFLocalizations.of(context).getText(
+            '7kow8wc6' /* The supplied auth credential i... */,
+          ),
         _ => 'Error: ${e.message!}',
       };
       ScaffoldMessenger.of(context).hideCurrentSnackBar();

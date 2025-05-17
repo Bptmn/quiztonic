@@ -368,6 +368,8 @@ class _QuizExoWidgetState extends State<QuizExoWidget> {
                                                           ),
                                                           questionCard:
                                                               questionCardItem,
+                                                          questionCardIndex:
+                                                              questionCardIndex,
                                                           updateScore: (isCorrect,
                                                               userAnswerIndex) async {
                                                             _model.userScore =

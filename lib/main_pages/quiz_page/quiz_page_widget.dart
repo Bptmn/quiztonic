@@ -1289,7 +1289,7 @@ class _QuizPageWidgetState extends State<QuizPageWidget> {
                                                         _model
                                                             .reinitializedQuestionCards
                                                             .length;
-                                                    loop1Index += 1) {
+                                                    loop1Index++) {
                                                   final currentLoop1Item = _model
                                                           .reinitializedQuestionCards[
                                                       loop1Index];
@@ -1355,61 +1355,84 @@ class _QuizPageWidgetState extends State<QuizPageWidget> {
                                                   );
                                                 }
                                               },
-                                              child: Container(
-                                                height: 100.0,
-                                                constraints: BoxConstraints(
-                                                  maxWidth: 220.0,
-                                                ),
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .accent1,
+                                              child: Material(
+                                                color: Colors.transparent,
+                                                elevation: 1.0,
+                                                shape: RoundedRectangleBorder(
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           20.0),
-                                                  border: Border.all(
+                                                ),
+                                                child: Container(
+                                                  height: 100.0,
+                                                  constraints: BoxConstraints(
+                                                    maxWidth: 220.0,
+                                                  ),
+                                                  decoration: BoxDecoration(
                                                     color: FlutterFlowTheme.of(
                                                             context)
-                                                        .tonicColor1,
-                                                    width: 2.0,
-                                                  ),
-                                                ),
-                                                child: Padding(
-                                                  padding: EdgeInsets.all(8.0),
-                                                  child: Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Icon(
-                                                        Icons.replay_rounded,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondary,
-                                                        size: 35.0,
-                                                      ),
-                                                      Align(
-                                                        alignment:
-                                                            AlignmentDirectional(
-                                                                0.0, 0.0),
-                                                        child: Text(
-                                                          FFLocalizations.of(
+                                                        .accent1,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            20.0),
+                                                    border: Border.all(
+                                                      color:
+                                                          FlutterFlowTheme.of(
                                                                   context)
-                                                              .getText(
-                                                            '0ed41fsg' /* Restart the quiz */,
-                                                          ),
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                          style: FlutterFlowTheme
+                                                              .tonicColor1,
+                                                      width: 2.0,
+                                                    ),
+                                                  ),
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsets.all(8.0),
+                                                    child: Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        Icon(
+                                                          Icons.replay_rounded,
+                                                          color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .labelLarge
-                                                              .override(
-                                                                font:
-                                                                    GoogleFonts
-                                                                        .roboto(
+                                                              .secondary,
+                                                          size: 32.0,
+                                                        ),
+                                                        Align(
+                                                          alignment:
+                                                              AlignmentDirectional(
+                                                                  0.0, 0.0),
+                                                          child: Text(
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getText(
+                                                              '0ed41fsg' /* Restart the quiz */,
+                                                            ),
+                                                            textAlign: TextAlign
+                                                                .center,
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .labelLarge
+                                                                .override(
+                                                                  font: GoogleFonts
+                                                                      .roboto(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .normal,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelLarge
+                                                                        .fontStyle,
+                                                                  ),
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondary,
+                                                                  fontSize:
+                                                                      18.0,
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .normal,
@@ -1417,25 +1440,14 @@ class _QuizPageWidgetState extends State<QuizPageWidget> {
                                                                           context)
                                                                       .labelLarge
                                                                       .fontStyle,
+                                                                  lineHeight:
+                                                                      1.3,
                                                                 ),
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondary,
-                                                                fontSize: 18.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .normal,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelLarge
-                                                                    .fontStyle,
-                                                              ),
+                                                          ),
                                                         ),
-                                                      ),
-                                                    ].divide(
-                                                        SizedBox(height: 5.0)),
+                                                      ].divide(SizedBox(
+                                                          height: 2.0)),
+                                                    ),
                                                   ),
                                                 ),
                                               ),

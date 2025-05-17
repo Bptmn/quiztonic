@@ -11,6 +11,7 @@ import 'login_page_widget.dart' show LoginPageWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -53,10 +54,14 @@ class LoginPageModel extends FlutterFlowModel<LoginPageWidget> {
     return null;
   }
 
-  // Stores action output result for [Firestore Query - Query a collection] action in SignInWithGoogleButton widget.
+  // Stores action output result for [Firestore Query - Query a collection] action in ButtonSignWithGoogle widget.
   MyStatisticsRecord? userStatDocSignInGoogle;
-  // Stores action output result for [Firestore Query - Query a collection] action in SignInWithAppleButton widget.
+  // Stores action output result for [Firestore Query - Query a collection] action in ButtonSignWithGoogle widget.
+  MySubscriptionRecord? userSubDocSignInGoogle;
+  // Stores action output result for [Firestore Query - Query a collection] action in ButtonSignWithApple widget.
   MyStatisticsRecord? userStatDocSignInApple;
+  // Stores action output result for [Firestore Query - Query a collection] action in ButtonSignWithApple widget.
+  MySubscriptionRecord? userSubDocSignInApple;
 
   @override
   void initState(BuildContext context) {

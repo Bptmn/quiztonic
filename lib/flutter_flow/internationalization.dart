@@ -333,8 +333,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'dmoxzgs4': {
       'en': 'The field is empty',
-      'es': '',
-      'fr': '',
+      'es': 'El campo está vacío',
+      'fr': 'Le champ est vide',
     },
     'z3ehe0az': {
       'en': 'Please choose an option from the dropdown',
@@ -353,13 +353,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'fbla3rzo': {
       'en': 'Choose a file',
-      'es': 'Haga clic para cargar',
-      'fr': 'Cliquez pour télécharger',
+      'es': 'Elija un archivo',
+      'fr': 'Choisissez un fichier',
     },
     '117bg6mq': {
       'en': 'No pdf file has been uploaded',
-      'es': '',
-      'fr': '',
+      'es': 'No se ha cargado ningún archivo pdf',
+      'fr': 'Aucun fichier PDF n\'a été téléchargé',
     },
     '3jfzozzo': {
       'en': 'Enter a website URL',
@@ -373,8 +373,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'pki3pjgi': {
       'en': 'The field is empty',
-      'es': '',
-      'fr': '',
+      'es': 'El campo está vacío',
+      'fr': 'Le champ est vide',
+    },
+    'z3dxtdt4': {
+      'en': 'Please enter a valid url',
+      'es': 'Por favor, introduzca una URL válida',
+      'fr': 'Veuillez entrer une URL valide',
     },
     'xd2oh31c': {
       'en': 'Please choose an option from the dropdown',
@@ -457,7 +462,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'd2lu5q4t': {
       'en': 'Support',
       'es': 'Apoyo',
-      'fr': 'Soutien',
+      'fr': 'Support',
     },
     'y2k1ncq8': {
       'en': 'Legal & Policies',
@@ -481,8 +486,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'hdhwrd1k': {
       'en': 'Share a feedback with us',
-      'es': '',
-      'fr': '',
+      'es': 'Comparte tus comentarios con nosotros',
+      'fr': 'Partagez un commentaire avec nous',
     },
     'a009pzt9': {
       'en': 'Logout',
@@ -610,7 +615,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Completo',
       'fr': 'Complet',
     },
-    'sj67w1bt': {
+    'hfnmv5ow': {
       'en': 'Quiz',
       'es': 'Quiz',
       'fr': 'Quiz',
@@ -727,7 +732,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Se requiere correo electrónico.',
       'fr': 'L\'e-mail est obligatoire.',
     },
-    '57im4axy': {
+    '9oo0jgbd': {
       'en': 'Please choose an option from the dropdown',
       'es': 'Por favor, elija una opción del menú desplegable.',
       'fr': 'Veuillez choisir une option dans la liste déroulante',
@@ -737,7 +742,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Se requiere contraseña.',
       'fr': 'Le mot de passe est requis.',
     },
-    '9oo0jgbd': {
+    '57im4axy': {
       'en': 'Please choose an option from the dropdown',
       'es': 'Por favor, elija una opción del menú desplegable.',
       'fr': 'Veuillez choisir une option dans la liste déroulante',
@@ -752,12 +757,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'O continuar con',
       'fr': 'Ou continuez avec',
     },
-    'a7ipk6yz': {
+    'b2rocz7s': {
       'en': 'Sign in with Google',
       'es': 'Iniciar sesión con Google',
       'fr': 'Connectez-vous avec Google',
     },
-    'f9dyvhpt': {
+    'kficlvjk': {
       'en': 'Sign in with Apple',
       'es': 'Iniciar sesión con Apple',
       'fr': 'Connectez-vous avec Apple',
@@ -835,12 +840,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'O continuar con',
       'fr': 'Ou continuez avec',
     },
-    'wt7wwq3r': {
+    '9qnm868z': {
       'en': 'Sign up with Google',
       'es': 'Regístrate con Google',
       'fr': 'Inscrivez-vous avec Google',
     },
-    'd2qzg44r': {
+    'qp3vxckr': {
       'en': 'Sign up with Apple',
       'es': 'Regístrate con Apple',
       'fr': 'Inscrivez-vous avec Apple',
@@ -881,11 +886,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // TestPage
   {
-    'u2u7puf1': {
-      'en': 'New API call test',
-      'es': 'Nueva prueba de llamada a la API',
-      'fr': 'Nouveau test d\'appel d\'API',
-    },
     'oyst20iq': {
       'en': 'Test Page',
       'es': 'Página de prueba',
@@ -957,7 +957,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Mínimo 6 caracteres',
       'fr': '6 caractères minimum',
     },
-    'yvqvk7dl': {
+    'apdkq9ss': {
       'en': 'Please choose an option from the dropdown',
       'es': 'Por favor, elija una opción del menú desplegable.',
       'fr': 'Veuillez choisir une option dans la liste déroulante',
@@ -972,7 +972,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Mínimo 6 caracteres',
       'fr': '6 caractères minimum',
     },
-    'x2d0m8pu': {
+    'oge4gzt5': {
       'en': 'Please choose an option from the dropdown',
       'es': 'Por favor, elija una opción del menú desplegable.',
       'fr': 'Veuillez choisir une option dans la liste déroulante',
@@ -1074,8 +1074,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'btw60fij': {
       'en': 'Privacy Policy',
-      'es': 'política de privacidad',
-      'fr': 'politique de confidentialité',
+      'es': 'Política de privacidad',
+      'fr': 'Politique de confidentialité',
     },
     '1u6jx7p5': {
       'en': 'Terms of Service',
@@ -1097,8 +1097,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'gze1a01g': {
       'en': 'Contact the support',
-      'es': 'Escribe al soporte',
-      'fr': 'Écrire au support',
+      'es': 'Contacte con el soporte',
+      'fr': 'Contactez le support',
     },
   },
   // LoadingQuizPage
@@ -1122,255 +1122,204 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Maison',
     },
   },
-  // LandingPage
-  {
-    '48ozycpm': {
-      'en': 'QuizTonic',
-      'es': 'QuizTonic',
-      'fr': 'QuizTonic',
-    },
-    'qqz3obcd': {
-      'en': 'Features',
-      'es': 'Características',
-      'fr': 'Caractéristiques',
-    },
-    '3ghm5h17': {
-      'en': 'Pricing',
-      'es': 'Precios',
-      'fr': 'Tarification',
-    },
-    'd7qc9dfz': {
-      'en': 'Download',
-      'es': 'Descargar',
-      'fr': 'Télécharger',
-    },
-    'm3zgm2wk': {
-      'en': 'Turn Any Content Into Interactive Quizzes',
-      'es': 'Convierte cualquier contenido en cuestionarios interactivos',
-      'fr': 'Transformez n\'importe quel contenu en quiz interactifs',
-    },
-    'sj6r3l9a': {
-      'en':
-          'AI-powered learning assistant that transforms PDFs, websites, and documents into quizzes and flashcards in seconds.',
-      'es':
-          'Asistente de aprendizaje impulsado por inteligencia artificial que transforma archivos PDF, sitios web y documentos en cuestionarios y tarjetas didácticas en segundos.',
-      'fr':
-          'Assistant d\'apprentissage basé sur l\'IA qui transforme les PDF, les sites Web et les documents en quiz et en flashcards en quelques secondes.',
-    },
-    '03m3wny5': {
-      'en': 'Download for iOS',
-      'es': 'Descargar para iOS',
-      'fr': 'Télécharger pour iOS',
-    },
-    '07niz1cm': {
-      'en': 'Android Coming Soon',
-      'es': 'Android próximamente',
-      'fr': 'Android bientôt disponible',
-    },
-    '7grwxxr8': {
-      'en': 'Why Students & Teachers Love QuizTonic',
-      'es': 'Por qué a los estudiantes y profesores les encanta QuizTonic',
-      'fr': 'Pourquoi les étudiants et les enseignants aiment QuizTonic',
-    },
-    '39a6qkil': {
-      'en': 'Designed for smarter, faster learning with powerful AI technology',
-      'es':
-          'Diseñado para un aprendizaje más inteligente y rápido con potente tecnología de IA',
-      'fr':
-          'Conçu pour un apprentissage plus intelligent et plus rapide grâce à une puissante technologie d\'IA',
-    },
-    '881svlkw': {
-      'en': 'Instant Quiz Generation',
-      'es': 'Generación instantánea de cuestionarios',
-      'fr': 'Génération instantanée de quiz',
-    },
-    '81de41b1': {
-      'en': 'Upload any content and get interactive quizzes in seconds',
-      'es':
-          'Sube cualquier contenido y obtén cuestionarios interactivos en segundos',
-      'fr':
-          'Téléchargez n\'importe quel contenu et obtenez des quiz interactifs en quelques secondes',
-    },
-    '6f6r6zyt': {
-      'en': 'Multiple Learning Modes',
-      'es': 'Múltiples modos de aprendizaje',
-      'fr': 'Plusieurs modes d\'apprentissage',
-    },
-    'bo6aj8ps': {
-      'en': 'Practice with flashcards or multiple choice questions',
-      'es': 'Practica con flashcards o preguntas de opción múltiple',
-      'fr':
-          'Entraînez-vous avec des flashcards ou des questions à choix multiples',
-    },
-    'ttheu077': {
-      'en': 'Smart Organization',
-      'es': 'Organización inteligente',
-      'fr': 'Organisation intelligente',
-    },
-    'n7w3q88r': {
-      'en': 'Organize your study materials by subject with smart folders',
-      'es':
-          'Organiza tus materiales de estudio por tema con carpetas inteligentes',
-      'fr':
-          'Organisez vos supports d\'étude par sujet avec des dossiers intelligents',
-    },
-    'zufcqi3c': {
-      'en': 'AI-Powered Q&A',
-      'es': 'Preguntas y respuestas impulsadas por IA',
-      'fr': 'Questions-réponses alimentées par l\'IA',
-    },
-    'yd5gxlgv': {
-      'en': 'Ask questions to your documents and get instant answers',
-      'es': 'Haz preguntas a tus documentos y obtén respuestas instantáneas',
-      'fr':
-          'Posez des questions sur vos documents et obtenez des réponses instantanées',
-    },
-    '8ybexjex': {
-      'en': 'How QuizTonic Works',
-      'es': 'Cómo funciona QuizTonic',
-      'fr': 'Comment fonctionne QuizTonic',
-    },
-    '7aag7day': {
-      'en': 'Three simple steps to supercharge your learning',
-      'es': 'Tres sencillos pasos para potenciar tu aprendizaje',
-      'fr': 'Trois étapes simples pour dynamiser votre apprentissage',
-    },
-    'nodecgy1': {
-      'en': '1',
-      'es': '1',
-      'fr': '1',
-    },
-    '6gpi7avn': {
-      'en': 'Upload Content',
-      'es': 'Subir contenido',
-      'fr': 'Télécharger du contenu',
-    },
-    'pk792zlk': {
-      'en': 'Import PDFs, websites, or documents',
-      'es': 'Importar archivos PDF, sitios web o documentos',
-      'fr': 'Importer des PDF, des sites Web ou des documents',
-    },
-    'f6lqpinv': {
-      'en': '2',
-      'es': '2',
-      'fr': '2',
-    },
-    '2bd7yw35': {
-      'en': 'Generate Quiz',
-      'es': 'Generar cuestionario',
-      'fr': 'Générer un quiz',
-    },
-    '5hylfy4l': {
-      'en': 'AI creates questions from your content',
-      'es': 'La IA crea preguntas a partir de tu contenido',
-      'fr': 'L\'IA crée des questions à partir de votre contenu',
-    },
-    'jlb8ppcy': {
-      'en': '3',
-      'es': '3',
-      'fr': '3',
-    },
-    '0m5xkefm': {
-      'en': 'Learn & Master',
-      'es': 'Aprende y domina',
-      'fr': 'Apprendre et maîtriser',
-    },
-    'q2blms4m': {
-      'en': 'Practice with flashcards or MCQs',
-      'es': 'Practica con flashcards o preguntas de opción múltiple',
-      'fr': 'Entraînez-vous avec des flashcards ou des QCM',
-    },
-    'lh51yvom': {
-      'en': 'See QuizTonic in Action',
-      'es': 'Vea QuizTonic en acción',
-      'fr': 'Découvrez QuizTonic en action',
-    },
-    'cdhguiun': {
-      'en': 'Powerful features designed for modern learning',
-      'es': 'Potentes funciones diseñadas para el aprendizaje moderno',
-      'fr':
-          'Des fonctionnalités puissantes conçues pour l\'apprentissage moderne',
-    },
-    'gj007ei0': {
-      'en': 'Interactive Quizzes',
-      'es': 'Cuestionarios interactivos',
-      'fr': 'Quiz interactifs',
-    },
-    'nec5a03m': {
-      'en':
-          'Test your knowledge with multiple choice questions generated from your content. QuizTonic creates challenging questions that help reinforce your learning.',
-      'es':
-          'Pon a prueba tus conocimientos con preguntas de opción múltiple generadas a partir de tu contenido. QuizTonic crea preguntas desafiantes que te ayudan a reforzar tu aprendizaje.',
-      'fr':
-          'Testez vos connaissances avec des questions à choix multiples générées à partir de votre contenu. QuizTonic crée des questions stimulantes qui contribuent à renforcer votre apprentissage.',
-    },
-    'a5rmmpz3': {
-      'en': 'Instant feedback',
-      'es': 'Retroalimentación instantánea',
-      'fr': 'Rétroaction instantanée',
-    },
-    '8ipeqvk1': {
-      'en': 'Progress tracking',
-      'es': 'Seguimiento del progreso',
-      'fr': 'Suivi des progrès',
-    },
-    'nyyrqazl': {
-      'en': 'Difficulty adjustment',
-      'es': 'Ajuste de dificultad',
-      'fr': 'Ajustement de la difficulté',
-    },
-  },
   // FeedbackPage
   {
     'z2044cgw': {
       'en': 'Share your feedback!',
-      'es': 'Editar mi información',
-      'fr': 'Modifier mes informations',
+      'es': '¡Comparte tu opinión!',
+      'fr': 'Partagez votre avis !',
     },
     'honewby0': {
       'en': 'We’d love your feedback!',
-      'es': '',
-      'fr': '',
+      'es': '¡Nos encantaría recibir tus comentarios!',
+      'fr': 'Nous aimerions connaître votre avis !',
     },
     'yropba2h': {
       'en':
           'Help us improve your experience by sharing your thoughts, suggestions, or issues',
-      'es': '',
-      'fr': '',
+      'es':
+          'Ayúdanos a mejorar tu experiencia compartiendo tus ideas, sugerencias o problemas.',
+      'fr':
+          'Aidez-nous à améliorer votre expérience en partageant vos réflexions, suggestions ou problèmes',
     },
     'ct8pf7jo': {
       'en': 'Feedback title',
-      'es': 'Nombre de usuario',
-      'fr': 'Nom d\'utilisateur',
+      'es': 'Título de la retroalimentación',
+      'fr': 'Titre du commentaire',
     },
     'lqkjm1vt': {
       'en': 'Enter a title',
-      'es': 'Introduzca un nombre de usuario',
-      'fr': 'Entrez un nom d\'utilisateur',
+      'es': 'Introduzca un título',
+      'fr': 'Entrez un titre',
     },
     'eya2fl7t': {
       'en': 'For example, you can give feedback on:',
-      'es': '',
-      'fr': '',
+      'es': 'Por ejemplo, puedes dar retroalimentación sobre:',
+      'fr': 'Par exemple, vous pouvez donner votre avis sur :',
     },
     'jjcuk9lb': {
       'en':
           '• Authentication & login\n• Quiz generation time\n• Relevance of generated content\n• Ideas for features or improvements',
-      'es': '',
-      'fr': '',
+      'es':
+          '• Autenticación e inicio de sesión\n• Tiempo de generación del cuestionario\n• Relevancia del contenido generado\n• Ideas para funciones o mejoras',
+      'fr':
+          '• Authentification et connexion\n• Temps de génération du quiz\n• Pertinence du contenu généré\n• Suggestions de fonctionnalités ou d\'améliorations',
     },
     't5jv96o3': {
       'en': 'Share your thoughts',
-      'es': 'Nombre de usuario',
-      'fr': 'Nom d\'utilisateur',
+      'es': 'Comparte tus pensamientos',
+      'fr': 'Partagez vos pensées',
     },
     'xbvwc7f1': {
       'en': 'Share feedback with us',
-      'es': '',
-      'fr': '',
+      'es': 'Comparte tus comentarios con nosotros',
+      'fr': 'Partagez vos commentaires avec nous',
     },
     '71jpjsdl': {
       'en': 'Share your feedback!',
+      'es': '¡Comparte tu opinión!',
+      'fr': 'Partagez votre avis !',
+    },
+    '3zk6fqv9': {
+      'en': 'Home',
+      'es': 'Hogar',
+      'fr': 'Maison',
+    },
+  },
+  // SubscriptionPage
+  {
+    'gv9pel5s': {
+      'en': 'Subscription',
+      'es': '',
+      'fr': '',
+    },
+    'javpwiox': {
+      'en': 'Unlock more power',
+      'es': '',
+      'fr': '',
+    },
+    'fe68mxcd': {
+      'en': 'Choose the plan that fits your learning style',
+      'es': '',
+      'fr': '',
+    },
+    'a8tlqj15': {
+      'en': 'Your Subscription',
+      'es': '',
+      'fr': '',
+    },
+    'ixy5trma': {
+      'en': 'BASIC',
+      'es': '',
+      'fr': '',
+    },
+    'qspv03pt': {
+      'en': 'Free start',
+      'es': '',
+      'fr': '',
+    },
+    'uz1mx625': {
+      'en': 'Credit-based use',
+      'es': '',
+      'fr': '',
+    },
+    '1lgasmhf': {
+      'en': '15 free credits',
+      'es': '',
+      'fr': '',
+    },
+    'ad3sovqa': {
+      'en': 'Credits left',
+      'es': '',
+      'fr': '',
+    },
+    '37ibrz08': {
+      'en': 'Buy more credit',
+      'es': '',
+      'fr': '',
+    },
+    'q6p4b6rm': {
+      'en': 'Other offers',
+      'es': '',
+      'fr': '',
+    },
+    '22m7x3cu': {
+      'en': 'PREMIUM',
+      'es': '',
+      'fr': '',
+    },
+    'l7vit4ch': {
+      'en': 'Unlimited quizzes and flashcards',
+      'es': '',
+      'fr': '',
+    },
+    'x3unp6qz': {
+      'en': '20% discount on yearly plan',
+      'es': '',
+      'fr': '',
+    },
+    'htne6owc': {
+      'en': 'Subscribe to Premium',
+      'es': '',
+      'fr': '',
+    },
+    'aw51b2ie': {
+      'en': 'Pay yearly',
+      'es': '',
+      'fr': '',
+    },
+    'ad3n3akb': {
+      'en': 'Your Subscription',
+      'es': '',
+      'fr': '',
+    },
+    '59er433p': {
+      'en': 'PREMIUM',
+      'es': '',
+      'fr': '',
+    },
+    'srpm1l2i': {
+      'en': '\$5.99/month',
+      'es': '',
+      'fr': '',
+    },
+    'jtje8uo3': {
+      'en': 'Unlimited quizzes and flashcards',
+      'es': '',
+      'fr': '',
+    },
+    '62fbk8c2': {
+      'en': 'No ads',
+      'es': '',
+      'fr': '',
+    },
+    'zz1sv2tk': {
+      'en': '20% discount',
+      'es': '',
+      'fr': '',
+    },
+    'v9t0lszy': {
+      'en': 'Billing Cycle',
+      'es': '',
+      'fr': '',
+    },
+    't4jcj8d7': {
+      'en': 'Annual',
+      'es': '',
+      'fr': '',
+    },
+    'q2af0o86': {
+      'en': 'Next Billing Date',
+      'es': '',
+      'fr': '',
+    },
+    'qu20ur4n': {
+      'en': 'Jan 15, 2025',
+      'es': '',
+      'fr': '',
+    },
+    's7i2t98x': {
+      'en': 'Manage my subscription',
       'es': '',
       'fr': '',
     },
@@ -1378,6 +1327,49 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Home',
       'es': 'Hogar',
       'fr': 'Maison',
+    },
+  },
+  // PostSubPage
+  {
+    'j8exwary': {
+      'en': 'Thank You!',
+      'es': '',
+      'fr': '',
+    },
+    'zquv6sz2': {
+      'en': 'Your premium subscription has been activated successfully.',
+      'es': '',
+      'fr': '',
+    },
+    'za0xrd2l': {
+      'en': 'You now have access to all premium features including:',
+      'es': '',
+      'fr': '',
+    },
+    'l9g3vkcb': {
+      'en': 'Unlimited access to quizzes and flashcards',
+      'es': '',
+      'fr': '',
+    },
+    'nt57rqlv': {
+      'en': 'Ad-free experience',
+      'es': '',
+      'fr': '',
+    },
+    '69vw6fw2': {
+      'en': 'Priority customer support',
+      'es': '',
+      'fr': '',
+    },
+    '4xfi0cg8': {
+      'en': 'Continue my learning journey',
+      'es': '',
+      'fr': '',
+    },
+    'w8zxe9r8': {
+      'en': 'Need help? Contact our support team',
+      'es': '',
+      'fr': '',
     },
   },
   // QuestionCard
@@ -1401,9 +1393,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // QuizItem
   {
     '06maizap': {
-      'en': 'Completed on ',
+      'en': 'Completed on',
       'es': 'Completado el',
       'fr': 'Terminé le',
+    },
+    'j005bixy': {
+      'en': ' ',
+      'es': '',
+      'fr': '',
     },
     'sn785xqx': {
       'en': 'Completed on June 15, 2023',
@@ -1550,9 +1547,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': 'Envoyer le lien de réinitialisation',
     },
     'ju62h8np': {
-      'en': 'Enter your email address is required',
-      'es': '',
-      'fr': '',
+      'en': 'Email address is required',
+      'es': 'Se requiere dirección de correo electrónico',
+      'fr': 'L\'adresse e-mail est requise',
     },
     '285cm1t2': {
       'en': 'Enter a valid email address',
@@ -1585,7 +1582,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '9kvng4b1': {
       'en': 'Light Mode',
       'es': 'Modo claro',
-      'fr': 'Mode lumière',
+      'fr': 'Mode clair',
     },
     'bx3p0m2h': {
       'en': 'Dark Mode',
@@ -1684,14 +1681,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '',
     },
     'cizrl0bj': {
-      'en': '',
-      'es': '',
-      'fr': '',
+      'en': 'Password reset email sent!',
+      'es': '¡Correo electrónico de restablecimiento de contraseña enviado!',
+      'fr': 'E-mail de réinitialisation du mot de passe envoyé !',
     },
     'dykmtnmb': {
-      'en': '',
-      'es': '',
-      'fr': '',
+      'en': 'Email required!',
+      'es': '¡Se requiere correo electrónico!',
+      'fr': 'Email requis!',
     },
     'cdkfl8g6': {
       'en': '',
@@ -1699,59 +1696,68 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'fr': '',
     },
     'uv8zydcl': {
-      'en': '',
-      'es': '',
-      'fr': '',
+      'en': 'Passwords don\'t match',
+      'es': 'Las contraseñas no coinciden',
+      'fr': 'Les mots de passe ne correspondent pas',
     },
     'd69hvlhg': {
-      'en': '',
-      'es': '',
-      'fr': '',
+      'en': 'Enter SMS verification code',
+      'es': 'Introduzca el código de verificación por SMS',
+      'fr': 'Entrez le code de vérification par SMS',
     },
     'v1spst1l': {
-      'en': '',
-      'es': '',
-      'fr': '',
+      'en':
+          'Too long since most recent sign in. Sign in again before deleting your account.',
+      'es':
+          'Ha pasado demasiado tiempo desde el último inicio de sesión. Vuelva a iniciar sesión antes de eliminar su cuenta.',
+      'fr':
+          'Trop longtemps depuis la dernière connexion. Connectez-vous à nouveau avant de supprimer votre compte.',
     },
     'exn3aoxb': {
-      'en': '',
-      'es': '',
-      'fr': '',
+      'en':
+          'Too long since most recent sign in. Sign in again before updating your email.',
+      'es':
+          'Ha pasado demasiado tiempo desde el último inicio de sesión. Vuelva a iniciar sesión antes de actualizar su correo electrónico.',
+      'fr':
+          'Trop longtemps depuis la dernière connexion. Connectez-vous à nouveau avant de mettre à jour votre e-mail.',
     },
     'zt7rr0ar': {
-      'en': '',
-      'es': '',
-      'fr': '',
+      'en': 'Email change confirmation sent!',
+      'es': '¡Confirmación de cambio de correo electrónico enviada!',
+      'fr': 'Confirmation de changement d\'e-mail envoyée !',
     },
     'k0xxijtp': {
-      'en': '',
-      'es': '',
-      'fr': '',
+      'en': 'Email already in use by another account',
+      'es': 'Correo electrónico ya en uso por otra cuenta',
+      'fr': 'E-mail déjà utilisé par un autre compte',
     },
     '7kow8wc6': {
-      'en': '',
-      'es': '',
-      'fr': '',
+      'en':
+          'The supplied auth credential is incorrect, malformed or has expired',
+      'es':
+          'La credencial de autenticación proporcionada es incorrecta, está mal formada o ha expirado',
+      'fr':
+          'Les informations d\'identification fournies sont incorrectes, malformées ou ont expiré',
     },
     'pdpo67n9': {
-      'en': '',
-      'es': '',
-      'fr': '',
+      'en': 'Invalid file format',
+      'es': 'Formato de archivo no válido',
+      'fr': 'Format de fichier invalide',
     },
     '7n2o30hb': {
-      'en': '',
-      'es': '',
-      'fr': '',
+      'en': 'Uploading file...',
+      'es': 'Subiendo archivo...',
+      'fr': 'Téléchargement du fichier...',
     },
     'gq1uyexf': {
-      'en': '',
-      'es': '',
-      'fr': '',
+      'en': 'Success!',
+      'es': '¡Éxito!',
+      'fr': 'Succès!',
     },
     'l59k3zu6': {
-      'en': '',
-      'es': '',
-      'fr': '',
+      'en': 'Failed to upload data',
+      'es': 'No se pudieron cargar los datos',
+      'fr': 'Échec du téléchargement des données',
     },
     'rvk7vshk': {
       'en': '',

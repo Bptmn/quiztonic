@@ -16,18 +16,14 @@ class QuizAnswersPageModel extends FlutterFlowModel<QuizAnswersPageWidget> {
 
   // Model for WebSideBar component.
   late WebSideBarModel webSideBarModel;
-  // Models for QuestionCard dynamic component.
-  late FlutterFlowDynamicModels<QuestionCardModel> questionCardModels;
 
   @override
   void initState(BuildContext context) {
     webSideBarModel = createModel(context, () => WebSideBarModel());
-    questionCardModels = FlutterFlowDynamicModels(() => QuestionCardModel());
   }
 
   @override
   void dispose() {
     webSideBarModel.dispose();
-    questionCardModels.dispose();
   }
 }

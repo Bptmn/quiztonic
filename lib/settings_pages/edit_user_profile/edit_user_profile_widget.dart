@@ -680,7 +680,9 @@ class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
                                           .showSnackBar(
                                         SnackBar(
                                           content: Text(
-                                            'Email required!',
+                                            FFLocalizations.of(context).getText(
+                                              'dykmtnmb' /* Email required! */,
+                                            ),
                                           ),
                                         ),
                                       );
@@ -703,26 +705,18 @@ class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
                                       email: _model
                                           .textFieldEmailTextController.text,
                                     ));
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content: Text(
-                                          'Verification message sent to your new email address',
-                                          style: TextStyle(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                          ),
-                                        ),
-                                        duration: Duration(milliseconds: 4000),
-                                        backgroundColor:
-                                            FlutterFlowTheme.of(context)
-                                                .success,
-                                      ),
-                                    );
                                   } else {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
                                         content: Text(
-                                          'Login action failed',
+                                          FFLocalizations.of(context)
+                                              .getVariableText(
+                                            enText: 'Login action failed',
+                                            frText:
+                                                'L\'action de connexion a échoué',
+                                            esText:
+                                                'La acción de inicio de sesión falló',
+                                          ),
                                           style: TextStyle(
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryText,
@@ -744,7 +738,15 @@ class _EditUserProfileWidgetState extends State<EditUserProfileWidget> {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
                                       content: Text(
-                                        'Your username has been updated',
+                                        FFLocalizations.of(context)
+                                            .getVariableText(
+                                          enText:
+                                              'Your username has been updated',
+                                          frText:
+                                              'Votre nom d\'utilisateur a été mis à jour',
+                                          esText:
+                                              'Tu nombre de usuario ha sido actualizado',
+                                        ),
                                         style: TextStyle(
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,

@@ -13,6 +13,7 @@ import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'generate_new_quiz_model.dart';
@@ -742,7 +743,11 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                                       try {
                                                         showUploadMessage(
                                                           context,
-                                                          'Uploading file...',
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            '7n2o30hb' /* Uploading file... */,
+                                                          ),
                                                           showLoading: true,
                                                         );
                                                         selectedUploadedFiles =
@@ -776,13 +781,21 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                                         });
                                                         showUploadMessage(
                                                           context,
-                                                          'Success!',
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'gq1uyexf' /* Success! */,
+                                                          ),
                                                         );
                                                       } else {
                                                         safeSetState(() {});
                                                         showUploadMessage(
                                                           context,
-                                                          'Failed to upload file',
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'l59k3zu6' /* Failed to upload data */,
+                                                          ),
                                                         );
                                                         return;
                                                       }
@@ -951,6 +964,8 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                                   focusNode: _model
                                                       .textFieldUrlFocusNode,
                                                   autofocus: false,
+                                                  textCapitalization:
+                                                      TextCapitalization.none,
                                                   textInputAction:
                                                       TextInputAction.done,
                                                   obscureText: false,
@@ -1096,9 +1111,27 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                                                 .fontStyle,
                                                       ),
                                                   maxLines: null,
+                                                  keyboardType:
+                                                      TextInputType.url,
                                                   validator: _model
                                                       .textFieldUrlTextControllerValidator
                                                       .asValidator(context),
+                                                  inputFormatters: [
+                                                    if (!isAndroid && !isiOS)
+                                                      TextInputFormatter
+                                                          .withFunction(
+                                                              (oldValue,
+                                                                  newValue) {
+                                                        return TextEditingValue(
+                                                          selection: newValue
+                                                              .selection,
+                                                          text: newValue.text
+                                                              .toCapitalization(
+                                                                  TextCapitalization
+                                                                      .none),
+                                                        );
+                                                      }),
+                                                  ],
                                                 ),
                                               ),
                                             ),
@@ -1446,6 +1479,7 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                             ),
                             FFButtonWidget(
                               onPressed: () async {
+                                var _shouldSetState = false;
                                 if (_model.dropDownInputFormatValue ==
                                     QuizInputFormat.websiteUrl) {
                                   if (_model.formKey2.currentState == null ||
@@ -1453,6 +1487,47 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                           .validate()) {
                                     return;
                                   }
+                                  _model.normalizedUrl =
+                                      await actions.normalizeUrl(
+                                    _model.textFieldUrlTextController.text,
+                                  );
+                                  _shouldSetState = true;
+
+                                  context.goNamed(
+                                    LoadingQuizPageWidget.routeName,
+                                    queryParameters: {
+                                      'numOfQuestions': serializeParam(
+                                        _model.countControllerValue,
+                                        ParamType.int,
+                                      ),
+                                      'numOfChoices': serializeParam(
+                                        4,
+                                        ParamType.int,
+                                      ),
+                                      'generateFlashcards': serializeParam(
+                                        _model.switchGenerateFlashcardsValue,
+                                        ParamType.bool,
+                                      ),
+                                      'url': serializeParam(
+                                        _model.normalizedUrl,
+                                        ParamType.String,
+                                      ),
+                                      'selectedInputFormat': serializeParam(
+                                        _model.dropDownInputFormatValue,
+                                        ParamType.Enum,
+                                      ),
+                                    }.withoutNulls,
+                                    extra: <String, dynamic>{
+                                      kTransitionInfoKey: TransitionInfo(
+                                        hasTransition: true,
+                                        transitionType: PageTransitionType.fade,
+                                        duration: Duration(milliseconds: 0),
+                                      ),
+                                    },
+                                  );
+
+                                  if (_shouldSetState) safeSetState(() {});
+                                  return;
                                 } else if (_model.dropDownInputFormatValue ==
                                     QuizInputFormat.rawText) {
                                   if (_model.formKey1.currentState == null ||
@@ -1468,6 +1543,7 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                           false))) {
                                     _model.pdrErrorToDisplay = true;
                                     safeSetState(() {});
+                                    if (_shouldSetState) safeSetState(() {});
                                     return;
                                   }
                                 } else {
@@ -1510,10 +1586,6 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                           .textFieldRawTextTextController.text,
                                       ParamType.String,
                                     ),
-                                    'url': serializeParam(
-                                      _model.textFieldUrlTextController.text,
-                                      ParamType.String,
-                                    ),
                                     'pdfFile': serializeParam(
                                       _model.uploadedLocalFile,
                                       ParamType.FFUploadedFile,
@@ -1531,6 +1603,8 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                     ),
                                   },
                                 );
+
+                                if (_shouldSetState) safeSetState(() {});
                               },
                               text: FFLocalizations.of(context).getText(
                                 '1l2sr4pm' /* Generate Quiz */,
