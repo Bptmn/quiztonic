@@ -71,24 +71,32 @@ RAQAM-main/
 
 ### Local Development
 
-1. **Clone and install dependencies**:
+1. **Set up the development environment** (uses the same constraints as production):
 ```bash
-cd RAQAM-main
-pip install -r requirements.txt
+cd RAQAM-API
+chmod +x setup_local.sh
+./setup_local.sh
 ```
 
-2. **Set up environment**:
+2. **Activate the virtual environment**:
+```bash
+source venv/bin/activate
+```
+
+3. **Set up environment variables**:
 ```bash
 export OPENAI_API_KEY="your-openai-api-key"
 ```
 
-3. **Run the Flask development server**:
+4. **Run the Flask development server**:
 ```bash
 python api/api.py
 ```
 
-4. **Access the web interface**:
+5. **Access the web interface**:
    - Open `http://localhost:5050/quiz-sandbox` in your browser
+
+**Note:** The `setup_local.sh` script installs dependencies with the exact same constraints as production (`constraints.txt`). This ensures that your local environment matches the deployed environment, preventing "works on my machine" issues.
 
 ### AWS Lambda Deployment
 
