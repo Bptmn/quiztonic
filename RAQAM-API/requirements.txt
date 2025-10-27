@@ -13,3 +13,5 @@ pymupdf4llm
 pydantic-core
 requests
 beautifulsoup4
+numpy>=1.24.0,<2.0.0
+faiss-cpu==1.7.4

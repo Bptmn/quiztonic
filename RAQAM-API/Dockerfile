@@ -17,13 +17,12 @@ COPY src/ src/
 COPY config/ config/
 COPY api/lambda_function.py api/lambda_function.py
 COPY requirements.txt .
+COPY constraints.txt .
 
 # Installer les dépendances dans le bon dossier
-# Installation en deux étapes pour gérer les conflits de versions
+# Utilisation de contraintes pour forcer les versions numpy et faiss
 RUN pip install --upgrade pip \
-    && pip install "numpy>=1.24.0,<2.0.0" faiss-cpu==1.7.4 -t . \
-    && pip install -r requirements.txt -t . --no-deps \
-    && pip install -r requirements.txt -t .
+    && pip install -r requirements.txt -t . --constraint constraints.txt
 
 # Vérifier les dépendances
 RUN pip check
