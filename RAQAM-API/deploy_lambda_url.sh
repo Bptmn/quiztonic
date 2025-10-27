@@ -103,7 +103,7 @@ echo "⚡ Déploiement de la fonction Lambda..."
 aws lambda create-function \
     --profile raqam-deployer \
     --function-name $FUNCTION_NAME \
-    --runtime python3.9 \
+    --runtime python3.11 \
     --role $ROLE_ARN \
     --handler api.lambda_function.lambda_handler \
     --zip-file fileb://raqam-lambda.zip \
