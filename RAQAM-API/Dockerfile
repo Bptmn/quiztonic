@@ -2,8 +2,12 @@ FROM public.ecr.aws/lambda/python:3.11
 
 # Installer les outils de compilation nécessaires
 RUN yum update -y && \
-    yum install -y gcc gcc-c++ make && \
+    yum install -y gcc gcc-c++ make wget && \
     yum clean all
+
+# Installer Rust (nécessaire pour tiktoken)
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+ENV PATH="/root/.cargo/bin:${PATH}"
 
 # Crée le répertoire de travail
 WORKDIR /var/task
