@@ -1,4 +1,13 @@
-FROM public.ecr.aws/lambda/python:3.9
+FROM public.ecr.aws/lambda/python:3.11
+
+# Installer les outils de compilation nécessaires
+RUN yum update -y && \
+    yum install -y gcc gcc-c++ make curl && \
+    yum clean all
+
+# Installer Rust (nécessaire pour tiktoken)
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+ENV PATH="/root/.cargo/bin:${PATH}"
 
 # Crée le répertoire de travail
 WORKDIR /var/task
@@ -11,8 +20,6 @@ COPY requirements.txt .
 
 # Installer les dépendances dans le bon dossier
 RUN pip install --upgrade pip \
-    && pip install "numpy<2.0.0" -t . \
-    && pip install faiss-cpu==1.7.2 -t . \
     && pip install -r requirements.txt -t .
 
 # Vérifier les dépendances

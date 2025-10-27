@@ -1,16 +1,6 @@
 pypdf
-langchain
-langchain-community
-langchain-openai
-langchain-core
-langchain-text-splitters
-openai
-tiktoken
 flask
 pyyaml
 bs4
-pymupdf4llm
-pydantic-core
 requests
 beautifulsoup4
-faiss-cpu
