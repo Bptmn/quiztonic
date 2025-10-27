@@ -9,7 +9,6 @@ tiktoken
 flask
 pyyaml
 bs4
-pymupdf4llm
 pydantic-core
 requests
 beautifulsoup4

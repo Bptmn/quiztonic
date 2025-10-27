@@ -1,5 +1,5 @@
-import pymupdf
-import pymupdf4llm
+from pypdf import PdfReader
+from io import BytesIO
 
 class PDFDocument():
 
@@ -8,13 +8,17 @@ class PDFDocument():
         """
         PDF Document from which to extract text and generate chunks.
 
-        @param path: Path to local .pdf file        
+        @param pdf_file: PDF file bytes        
         """
-        # Opening pdf file
-        self.pdf_file = pymupdf.open(stream=pdf_file, filetype="pdf")
+        # Opening pdf file from bytes
+        self.pdf_file = PdfReader(BytesIO(pdf_file))
     
     def extract_text(self):
         """
         Extracts the text content from the opened pdf file        
         """
-        return pymupdf4llm.to_markdown(doc=self.pdf_file)
+        # Extract text from all pages
+        text_content = []
+        for page in self.pdf_file.pages:
+            text_content.append(page.extract_text())
+        return "\n\n".join(text_content)
