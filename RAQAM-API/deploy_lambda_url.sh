@@ -84,7 +84,7 @@ sleep 10
 
 # 2. Construire et déployer la Lambda
 echo "🐳 Construction de l'image Docker..."
-docker build -f Dockerfile.lambda -t raqam-lambda .
+docker build -t raqam-lambda .
 
 echo "📦 Création du package de déploiement..."
 docker run --rm -v $(pwd):/output raqam-lambda cp -r /var/task /output/lambda-package

@@ -15,6 +15,7 @@ RUN pip install --upgrade pip \
     && pip install faiss-cpu==1.7.2 -t . \
     && pip install -r requirements.txt -t .
 
+# Vérifier les dépendances
 RUN pip check
 
 # Définir le handler
