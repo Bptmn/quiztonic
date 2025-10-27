@@ -19,8 +19,11 @@ fi
 
 # Vérifier la configuration AWS
 echo "🔍 Vérification de la configuration AWS..."
-if ! aws sts get-caller-identity &> /dev/null; then
-    echo "❌ AWS CLI n'est pas configuré. Exécutez 'aws configure' d'abord."
+if ! aws sts get-caller-identity --profile raqam-deployer &> /dev/null; then
+    echo "❌ AWS CLI n'est pas configuré pour le profil 'raqam-deployer'."
+    echo ""
+    echo "📋 Configurez d'abord votre profil:"
+    echo "   aws configure --profile raqam-deployer"
     echo ""
     echo "📋 Informations nécessaires:"
     echo "   - AWS Access Key ID"
@@ -28,14 +31,14 @@ if ! aws sts get-caller-identity &> /dev/null; then
     echo "   - Default region (us-east-1)"
     echo "   - Default output format (json)"
     echo ""
-    echo "🔗 Obtenez ces informations dans AWS Console → IAM → Users → Security credentials"
+    echo "🔗 Obtenez ces informations dans AWS Console → IAM → Users → raqam-deployer → Security credentials"
     exit 1
 fi
 
 # Afficher les informations du compte
 echo "✅ Configuration AWS OK"
-ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
-REGION=$(aws configure get region || echo "us-east-1")
+ACCOUNT_ID=$(aws sts get-caller-identity --profile raqam-deployer --query Account --output text)
+REGION=$(aws configure get region --profile raqam-deployer || echo "us-east-1")
 echo "📊 Compte AWS: $ACCOUNT_ID"
 echo "🌍 Région: $REGION"
 
@@ -53,6 +56,7 @@ fi
 # 1. Créer le rôle IAM
 echo "🔐 Création du rôle IAM..."
 aws iam create-role \
+    --profile raqam-deployer \
     --role-name $ROLE_NAME \
     --assume-role-policy-document '{
         "Version": "2012-10-17",
@@ -70,6 +74,7 @@ aws iam create-role \
 # Attacher la politique
 echo "📋 Attachement de la politique..."
 aws iam attach-role-policy \
+    --profile raqam-deployer \
     --role-name $ROLE_NAME \
     --policy-arn arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
 
@@ -90,12 +95,13 @@ zip -r ../raqam-lambda.zip . -x "*.pyc" "__pycache__/*" "*.git*"
 cd ..
 
 # Obtenir l'ARN du rôle
-ROLE_ARN=$(aws iam get-role --role-name $ROLE_NAME --query 'Role.Arn' --output text)
+ROLE_ARN=$(aws iam get-role --profile raqam-deployer --role-name $ROLE_NAME --query 'Role.Arn' --output text)
 echo "🔗 ARN du rôle: $ROLE_ARN"
 
 # Créer ou mettre à jour la fonction Lambda
 echo "⚡ Déploiement de la fonction Lambda..."
 aws lambda create-function \
+    --profile raqam-deployer \
     --function-name $FUNCTION_NAME \
     --runtime python3.9 \
     --role $ROLE_ARN \
@@ -107,12 +113,14 @@ aws lambda create-function \
     --environment Variables="{OPENAI_API_KEY=$OPENAI_API_KEY}" \
     --region $REGION 2>/dev/null || \
 aws lambda update-function-code \
+    --profile raqam-deployer \
     --function-name $FUNCTION_NAME \
     --zip-file fileb://raqam-lambda.zip \
     --region $REGION
 
 # Mettre à jour la configuration
 aws lambda update-function-configuration \
+    --profile raqam-deployer \
     --function-name $FUNCTION_NAME \
     --environment Variables="{OPENAI_API_KEY=$OPENAI_API_KEY}" \
     --timeout 300 \
@@ -122,6 +130,7 @@ aws lambda update-function-configuration \
 # 3. Créer la Lambda Function URL
 echo "🔗 Création de la Lambda Function URL..."
 FUNCTION_URL=$(aws lambda create-function-url-config \
+    --profile raqam-deployer \
     --function-name $FUNCTION_NAME \
     --auth-type NONE \
     --cors '{
@@ -135,6 +144,7 @@ FUNCTION_URL=$(aws lambda create-function-url-config \
     --query 'FunctionUrl' \
     --output text 2>/dev/null || \
 aws lambda get-function-url-config \
+    --profile raqam-deployer \
     --function-name $FUNCTION_NAME \
     --query 'FunctionUrl' \
     --output text 2>/dev/null)

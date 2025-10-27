@@ -88,21 +88,6 @@ Votre API RAQAM est maintenant prête pour le déploiement sur AWS Lambda avec *
 brew install awscli
 ```
 
-**Sur Linux:**
-```bash
-curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-unzip awscliv2.zip
-sudo ./aws/install
-```
-
-**Sur Windows:**
-Téléchargez et installez depuis [aws.amazon.com/cli](https://aws.amazon.com/cli)
-
-#### **1.4. Configurer AWS CLI**
-```bash
-aws configure
-```
-
 **Informations à renseigner:**
 ```
 AWS Access Key ID: AKIA... (votre clé d'accès)

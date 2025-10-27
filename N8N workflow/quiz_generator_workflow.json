@@ -1,0 +1,385 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "generate-quiz",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "88b85c9b-eeac-449d-b6dc-fec352f16984",
+      "name": "Webhook Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        -816,
+        560
+      ],
+      "webhookId": "835b8ccc-8b32-4ef1-bff1-449eb9e38bad"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$json.body.data}}",
+              "operation": "isNotEmpty"
+            }
+          ]
+        }
+      },
+      "id": "cc6a7033-de1d-4c75-baae-ed1d7b26d32b",
+      "name": "Validate Input",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        -592,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "dataType": "string",
+        "value1": "={{$json.body.data.dataSource}}",
+        "rules": {
+          "rules": [
+            {
+              "value2": "url"
+            },
+            {
+              "value2": "pdf",
+              "output": 1
+            },
+            {
+              "value2": "raw",
+              "output": 2
+            }
+          ]
+        }
+      },
+      "id": "a711a142-a0cb-41da-b472-d3b495babc67",
+      "name": "Data Source Router",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 1,
+      "position": [
+        -368,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "url": "={{$json.body.data.url}}",
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "id": "e3f34340-94be-49d4-ad34-ccd6a3f6a647",
+      "name": "Web Scraper",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        96,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "pdf",
+        "options": {}
+      },
+      "id": "5e4c8ae3-645e-4fb0-b591-8d16e085528c",
+      "name": "PDF Processor",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        16,
+        592
+      ]
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "chatgpt-4o-latest",
+          "mode": "list",
+          "cachedResultName": "CHATGPT-4O-LATEST"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "You are a helpful assistant that generates educational quizzes. Based on the provided content, generate detailed multiple-choice questions that test understanding of the material. Include: - A question - Four choices (one correct and three plausible distractors) - The correct answer - An explanation. Provide a general quiz name about this content.",
+              "role": "system"
+            },
+            {
+              "content": "Content: {{$json.content}}\n\nGenerate {{$json.body.data.num_questions}} multiple-choice questions with {{$json.body.data.num_choices}} choices each."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0e98cf08-94d4-4af9-a64d-3f2bf29c97d7",
+      "name": "Quiz Generator",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1,
+      "position": [
+        512,
+        464
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "8MU2khI8avKO2exG",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "chatgpt-4o-latest",
+          "mode": "list",
+          "cachedResultName": "CHATGPT-4O-LATEST"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "You are a helpful assistant that generates educational flashcards. Based on the provided content, generate flashcards to summarize the main subjects. A flashcard can be either a term with its definition or an important notion with an explanation. You can generate up to 4 flashcards. For each flashcard, include: - The front of the card: the term, the notion or the question - The back of the card: the definition, the explanation or the answer",
+              "role": "system"
+            },
+            {
+              "content": "Content: {{$json.content}}\n\nGenerate flashcards from this content."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c94aefb2-3d55-4795-9bc2-e1e983e2cb51",
+      "name": "Flashcards Generator",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1,
+      "position": [
+        512,
+        656
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "8MU2khI8avKO2exG",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "mergeByFields": {
+          "values": [
+            {}
+          ]
+        },
+        "options": {}
+      },
+      "id": "130ac763-5fbd-4176-961f-68c6106a8123",
+      "name": "Merge Results",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        992,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "270437d1-ea63-45ea-b58e-0310a1203038",
+      "name": "Format Response",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1216,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "0bda1e4e-ae09-4f61-adf6-f8c7e357153a",
+      "name": "Error Handler",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        352,
+        992
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{$json}}",
+        "options": {}
+      },
+      "id": "32dcb483-541d-4936-8642-d7ba9c350132",
+      "name": "Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        1504,
+        672
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook Trigger": {
+      "main": [
+        [
+          {
+            "node": "Validate Input",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate Input": {
+      "main": [
+        [
+          {
+            "node": "Data Source Router",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Error Handler",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Data Source Router": {
+      "main": [
+        [
+          {
+            "node": "Web Scraper",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "PDF Processor",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Web Scraper": {
+      "main": [
+        [
+          {
+            "node": "Quiz Generator",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Quiz Generator": {
+      "main": [
+        [
+          {
+            "node": "Merge Results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Flashcards Generator": {
+      "main": [
+        [
+          {
+            "node": "Merge Results",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge Results": {
+      "main": [
+        [
+          {
+            "node": "Format Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Response": {
+      "main": [
+        [
+          {
+            "node": "Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Error Handler": {
+      "main": [
+        [
+          {
+            "node": "Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {
+    "Webhook Trigger": [
+      {
+        "headers": {
+          "host": "n8n.srv1081134.hstgr.cloud",
+          "user-agent": "PostmanRuntime/7.43.3",
+          "content-length": "191",
+          "accept": "*/*",
+          "accept-encoding": "gzip, deflate, br",
+          "content-type": "application/json",
+          "postman-token": "9e54bad4-776a-4320-b434-058531bda1cd",
+          "x-forwarded-for": "80.214.76.137",
+          "x-forwarded-host": "n8n.srv1081134.hstgr.cloud",
+          "x-forwarded-port": "443",
+          "x-forwarded-proto": "https",
+          "x-forwarded-server": "7c00cb30ccc0",
+          "x-real-ip": "80.214.76.137"
+        },
+        "params": {},
+        "query": {},
+        "body": {
+          "data": {
+            "dataSource": "url",
+            "url": "https://www.bordeaux-tourisme.com/bassins-des-lumieres",
+            "num_questions": 4,
+            "num_choices": 4,
+            "generate_flashcards": true
+          }
+        },
+        "webhookUrl": "https://n8n.srv1081134.hstgr.cloud/webhook-test/generate-quiz",
+        "executionMode": "test"
+      }
+    ]
+  },
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "c038d76cc4b11934444688bcaecf2d3893166c6534f0fbda29d97992777f9b9e"
+  }
+}
