@@ -16,7 +16,7 @@ COPY requirements.txt .
 
 # Installer les dépendances dans le bon dossier
 RUN pip install --upgrade pip \
-    && pip install "numpy<2.0.0" -t . \
+    && pip install "numpy>=1.24.0,<2.0.0" -t . \
     && pip install faiss-cpu==1.7.4 -t . \
     && pip install -r requirements.txt -t .
 

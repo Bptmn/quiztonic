@@ -13,4 +13,3 @@ pymupdf4llm
 pydantic-core
 requests
 beautifulsoup4
-faiss-cpu
