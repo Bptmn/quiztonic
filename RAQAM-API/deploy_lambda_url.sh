@@ -87,7 +87,7 @@ echo "🐳 Construction de l'image Docker..."
 docker build -t raqam-lambda .
 
 echo "📦 Création du package de déploiement..."
-docker run --rm -v $(pwd):/output raqam-lambda cp -r /var/task /output/lambda-package
+docker run --rm --entrypoint /bin/sh -v $(pwd):/output raqam-lambda -c "cp -r /var/task /output/lambda-package"
 
 echo "🗜️  Création du fichier ZIP..."
 cd lambda-package
