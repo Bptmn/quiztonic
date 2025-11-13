@@ -48,3 +48,4 @@ key.properties
 # Optional: logs, coverage, profiling
 *.log
 coverage/
+quiztonic_api/
