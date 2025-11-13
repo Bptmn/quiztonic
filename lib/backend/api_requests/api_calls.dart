@@ -5,6 +5,7 @@ import '../schema/structs/index.dart';
 import 'package:flutter/foundation.dart';
 
 import '/flutter_flow/flutter_flow_util.dart';
+import '/config/api_config.dart';
 import 'api_manager.dart';
 
 export 'api_manager.dart' show ApiCallResponse;
@@ -33,8 +34,7 @@ class AiContentGenerationApiCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'AiContentGenerationApi',
-      apiUrl:
-          'https://2mmjiwjyo27dfsa227qdc67jue0drajz.lambda-url.eu-west-1.on.aws/',
+      apiUrl: ApiConfig.apiUrl,
       callType: ApiCallType.POST,
       headers: {
         'Content-Type': 'application/json',
@@ -63,8 +63,7 @@ class AiContentGenerationApiCopyCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'AiContentGenerationApi Copy',
-      apiUrl:
-          'https://2mmjiwjyo27dfsa227qdc67jue0drajz.lambda-url.eu-west-1.on.aws/',
+      apiUrl: ApiConfig.apiUrl,
       callType: ApiCallType.POST,
       headers: {
         'Content-Type': 'application/json',

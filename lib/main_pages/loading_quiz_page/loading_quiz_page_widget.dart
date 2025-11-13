@@ -11,6 +11,8 @@ import 'dart:math';
 import 'dart:ui';
 import '/backend/schema/structs/index.dart';
 import '/custom_code/actions/index.dart' as actions;
+import '/utils/error_helpers.dart';
+import '/utils/error_messages.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -107,21 +109,12 @@ class _LoadingQuizPageWidgetState extends State<LoadingQuizPageWidget>
                 },
               );
             } else {
-              await showDialog(
-                context: context,
-                builder: (alertDialogContext) {
-                  return AlertDialog(
-                    title: Text('An error occured'),
-                    content: Text(
-                        'Oops! Something went wrong while generating your quiz. You can try again in a few moments, change your input, or contact us if the problem persists: support@quiztonic.app'),
-                    actions: [
-                      TextButton(
-                        onPressed: () => Navigator.pop(alertDialogContext),
-                        child: Text('Ok'),
-                      ),
-                    ],
-                  );
-                },
+              await ErrorDialogs.showGenerationError(
+                context,
+                ErrorMessages.getApiErrorMessage(
+                  _model.apiResultFromText?.statusCode ?? -1,
+                  _model.apiResultFromText?.jsonBody,
+                ),
               );
 
               context.goNamed(
@@ -163,21 +156,12 @@ class _LoadingQuizPageWidgetState extends State<LoadingQuizPageWidget>
                 },
               );
             } else {
-              await showDialog(
-                context: context,
-                builder: (alertDialogContext) {
-                  return AlertDialog(
-                    title: Text('An error occured'),
-                    content: Text(
-                        'Oops! Something went wrong while generating your quiz. You can try again in a few moments, change your input, or contact us if the problem persists: support@quiztonic.app'),
-                    actions: [
-                      TextButton(
-                        onPressed: () => Navigator.pop(alertDialogContext),
-                        child: Text('Ok'),
-                      ),
-                    ],
-                  );
-                },
+              await ErrorDialogs.showGenerationError(
+                context,
+                ErrorMessages.getApiErrorMessage(
+                  _model.apiResultFromUrl?.statusCode ?? -1,
+                  _model.apiResultFromUrl?.jsonBody,
+                ),
               );
 
               context.goNamed(
@@ -221,21 +205,12 @@ class _LoadingQuizPageWidgetState extends State<LoadingQuizPageWidget>
                 },
               );
             } else {
-              await showDialog(
-                context: context,
-                builder: (alertDialogContext) {
-                  return AlertDialog(
-                    title: Text('An error occured'),
-                    content: Text(
-                        'Oops! Something went wrong while generating your quiz. You can try again in a few moments, change your input, or contact us if the problem persists: support@quiztonic.app'),
-                    actions: [
-                      TextButton(
-                        onPressed: () => Navigator.pop(alertDialogContext),
-                        child: Text('Ok'),
-                      ),
-                    ],
-                  );
-                },
+              await ErrorDialogs.showGenerationError(
+                context,
+                ErrorMessages.getApiErrorMessage(
+                  _model.apiResultFromPdf?.statusCode ?? -1,
+                  _model.apiResultFromPdf?.jsonBody,
+                ),
               );
 
               context.goNamed(

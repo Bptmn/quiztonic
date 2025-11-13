@@ -13,6 +13,7 @@ import 'package:http_parser/http_parser.dart';
 import 'package:mime_type/mime_type.dart';
 
 import '/flutter_flow/uploaded_file.dart';
+import '/config/api_config.dart';
 
 import 'get_streamed_response.dart';
 
@@ -507,9 +508,9 @@ class ApiManager {
 
     ApiCallResponse result;
     try {
-      switch (callType) {
-        case ApiCallType.GET:
-          result = await urlRequest(
+      // Wrap API calls with timeout
+      final apiCallFuture = switch (callType) {
+        ApiCallType.GET => urlRequest(
             callType,
             apiUrl,
             headers,
@@ -518,39 +519,36 @@ class ApiManager {
             decodeUtf8,
             isStreamingApi,
             client: client,
-          );
-          break;
-        case ApiCallType.DELETE:
-          result = alwaysAllowBody
-              ? await requestWithBody(
-                  callType,
-                  apiUrl,
-                  headers,
-                  params,
-                  body,
-                  bodyType,
-                  returnBody,
-                  encodeBodyUtf8,
-                  decodeUtf8,
-                  alwaysAllowBody,
-                  isStreamingApi,
-                  client: client,
-                )
-              : await urlRequest(
-                  callType,
-                  apiUrl,
-                  headers,
-                  params,
-                  returnBody,
-                  decodeUtf8,
-                  isStreamingApi,
-                  client: client,
-                );
-          break;
-        case ApiCallType.POST:
-        case ApiCallType.PUT:
-        case ApiCallType.PATCH:
-          result = await requestWithBody(
+          ),
+        ApiCallType.DELETE => alwaysAllowBody
+            ? requestWithBody(
+                callType,
+                apiUrl,
+                headers,
+                params,
+                body,
+                bodyType,
+                returnBody,
+                encodeBodyUtf8,
+                decodeUtf8,
+                alwaysAllowBody,
+                isStreamingApi,
+                client: client,
+              )
+            : urlRequest(
+                callType,
+                apiUrl,
+                headers,
+                params,
+                returnBody,
+                decodeUtf8,
+                isStreamingApi,
+                client: client,
+              ),
+        ApiCallType.POST ||
+        ApiCallType.PUT ||
+        ApiCallType.PATCH =>
+          requestWithBody(
             callType,
             apiUrl,
             headers,
@@ -563,14 +561,35 @@ class ApiManager {
             alwaysAllowBody,
             isStreamingApi,
             client: client,
+          ),
+      };
+
+      // Apply timeout to the API call
+      result = await apiCallFuture.timeout(
+        ApiConfig.timeout,
+        onTimeout: () {
+          return ApiCallResponse(
+            null,
+            {},
+            408, // Request Timeout
+            exception: TimeoutException(
+              'Request timed out after ${ApiConfig.timeout.inSeconds} seconds',
+            ),
           );
-          break;
-      }
+        },
+      );
 
       // If caching is on, cache the result (if present).
       if (cache) {
         _apiCache[callOptions] = result;
       }
+    } on TimeoutException catch (e) {
+      result = ApiCallResponse(
+        null,
+        {},
+        408, // Request Timeout
+        exception: e,
+      );
     } catch (e) {
       result = ApiCallResponse(null, {}, -1, exception: e);
     }
