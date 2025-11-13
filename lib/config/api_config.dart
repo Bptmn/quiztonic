@@ -24,5 +24,11 @@ class ApiConfig {
 
   /// Maximum delay between retries
   static const Duration maxRetryDelay = Duration(seconds: 8);
+
+  /// Number of retry attempts (alias for maxRetries)
+  static const int retryMaxAttempts = maxRetries;
+
+  /// Initial delay for retry (alias for initialRetryDelay)
+  static const Duration retryInitialDelay = initialRetryDelay;
 }
 

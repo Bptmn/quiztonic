@@ -11,6 +11,8 @@ import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
 import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
+import '/utils/quiz_validators.dart';
+import '/utils/error_helpers.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -1480,6 +1482,20 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                             FFButtonWidget(
                               onPressed: () async {
                                 var _shouldSetState = false;
+                                
+                                // Validate question count
+                                final questionError = QuizValidators.validateQuestionCount(
+                                  _model.countControllerValue,
+                                );
+                                if (questionError != null) {
+                                  await ErrorDialogs.showCustomError(
+                                    context,
+                                    title: 'Invalid Input',
+                                    message: questionError,
+                                  );
+                                  return;
+                                }
+                                
                                 if (_model.dropDownInputFormatValue ==
                                     QuizInputFormat.websiteUrl) {
                                   if (_model.formKey2.currentState == null ||
@@ -1487,6 +1503,20 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                           .validate()) {
                                     return;
                                   }
+                                  
+                                  // Validate URL format
+                                  final urlError = QuizValidators.validateUrl(
+                                    _model.textFieldUrlTextController.text,
+                                  );
+                                  if (urlError != null) {
+                                    await ErrorDialogs.showCustomError(
+                                      context,
+                                      title: 'Invalid URL',
+                                      message: urlError,
+                                    );
+                                    return;
+                                  }
+                                  
                                   _model.normalizedUrl =
                                       await actions.normalizeUrl(
                                     _model.textFieldUrlTextController.text,
@@ -1535,8 +1565,34 @@ class _GenerateNewQuizWidgetState extends State<GenerateNewQuizWidget> {
                                           .validate()) {
                                     return;
                                   }
+                                  
+                                  // Validate text content
+                                  final textError = QuizValidators.validateTextContent(
+                                    _model.textFieldRawTextTextController.text,
+                                  );
+                                  if (textError != null) {
+                                    await ErrorDialogs.showCustomError(
+                                      context,
+                                      title: 'Invalid Text Content',
+                                      message: textError,
+                                    );
+                                    return;
+                                  }
                                 } else if (_model.dropDownInputFormatValue ==
                                     QuizInputFormat.pdfFile) {
+                                  // Validate PDF file
+                                  final pdfError = QuizValidators.validatePdfFile(
+                                    _model.uploadedLocalFile,
+                                  );
+                                  if (pdfError != null) {
+                                    await ErrorDialogs.showCustomError(
+                                      context,
+                                      title: 'Invalid PDF File',
+                                      message: pdfError,
+                                    );
+                                    return;
+                                  }
+                                  
                                   if (!(_model.uploadedLocalFile != null &&
                                       (_model.uploadedLocalFile.bytes
                                               ?.isNotEmpty ??

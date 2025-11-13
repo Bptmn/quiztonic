@@ -6,6 +6,7 @@ import 'package:flutter/foundation.dart';
 
 import '/flutter_flow/flutter_flow_util.dart';
 import '/config/api_config.dart';
+import '/utils/retry_helper.dart';
 import 'api_manager.dart';
 
 export 'api_manager.dart' show ApiCallResponse;
@@ -32,22 +33,33 @@ class AiContentGenerationApiCall {
 "pdf_file": "${pdfBinary}"
   }
 }''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'AiContentGenerationApi',
-      apiUrl: ApiConfig.apiUrl,
-      callType: ApiCallType.POST,
-      headers: {
-        'Content-Type': 'application/json',
+    
+    // Wrap API call with retry logic for resilience
+    return RetryHelper.retryWithBackoff(
+      () => ApiManager.instance.makeApiCall(
+        callName: 'AiContentGenerationApi',
+        apiUrl: ApiConfig.apiUrl,
+        callType: ApiCallType.POST,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        params: {},
+        body: ffApiRequestBody,
+        bodyType: BodyType.TEXT,
+        returnBody: true,
+        encodeBodyUtf8: false,
+        decodeUtf8: false,
+        cache: false,
+        isStreamingApi: false,
+        alwaysAllowBody: false,
+      ),
+      maxAttempts: ApiConfig.maxRetries,
+      initialDelay: ApiConfig.initialRetryDelay,
+      maxDelay: ApiConfig.maxRetryDelay,
+      shouldRetry: (error) {
+        // Only retry on network errors and server errors
+        return RetryHelper.shouldRetryError(error);
       },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.TEXT,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
     );
   }
 }
