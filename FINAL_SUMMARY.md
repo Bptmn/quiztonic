@@ -75,18 +75,9 @@ Pour `quiztonic_api`:
 3. Sélectionner le tag `v1.0.0`
 4. Ajouter une description et publier
 
-### 3. (Optionnel) Nettoyer l'Ancien Code
+### 3. ✅ Nettoyage de l'Ancien Code
 
-Une fois que tout fonctionne correctement, vous pouvez supprimer `RAQAM-API/` du projet principal:
-
-```bash
-cd /Users/baptisteveyrard/Local/GitHub/RAQAM
-git rm -r RAQAM-API/
-git commit -m "Remove RAQAM-API: migrated to separate repository quiztonic_api"
-git push origin develop
-```
-
-**⚠️ Important**: Ne faites cela qu'après avoir vérifié que tout fonctionne correctement !
+Le dossier `RAQAM-API/` a été supprimé du projet principal car l'API est maintenant gérée dans le repository séparé `quiztonic_api`.
 
 ## 🔗 Liens Utiles
 
@@ -115,7 +106,7 @@ git push origin develop
 - [x] Version mise à jour
 - [x] Commits prêts
 - [ ] Code poussé sur GitHub (action requise)
-- [ ] Ancien code `RAQAM-API/` supprimé (après vérification)
+- [x] Ancien code `RAQAM-API/` supprimé
 
 ## 🎯 Résumé des Changements
 

@@ -136,21 +136,9 @@ Si vous créez une nouvelle fonction Lambda:
 
 Voir `quiztonic_api/RAQAM_LAMBDA_DEPLOYMENT_GUIDE.md` pour les instructions détaillées.
 
-### Étape 4: Nettoyer l'Ancien Projet (Après vérification)
+### Étape 4: ✅ Nettoyage de l'Ancien Projet
 
-**IMPORTANT**: Ne supprimez pas `RAQAM-API/` tant que:
-- ✅ Le nouveau repository GitHub est créé
-- ✅ L'API est déployée et testée
-- ✅ L'application Flutter fonctionne avec la nouvelle API
-
-Une fois tout vérifié:
-
-```bash
-cd /Users/baptisteveyrard/Local/GitHub/RAQAM
-git rm -r RAQAM-API/
-git commit -m "Remove RAQAM-API: migrated to separate repository quiztonic_api"
-git push
-```
+Le dossier `RAQAM-API/` a été supprimé du projet principal car l'API est maintenant gérée dans le repository séparé `quiztonic_api`.
 
 ### Étape 5: Renommer le Projet Principal
 
@@ -183,7 +171,7 @@ Pour renommer le projet principal `RAQAM` en `quiztonic`:
 - [ ] **Code poussé sur GitHub**
 - [ ] **Tag v1.0.0 créé**
 - [ ] **Application Flutter testée avec nouvelle API**
-- [ ] **Ancien répertoire `RAQAM-API/` supprimé** (après vérification)
+- [x] **Ancien répertoire `RAQAM-API/` supprimé**
 - [ ] **Projet principal renommé en `quiztonic`** (optionnel)
 
 ## 📚 Documentation Référence
