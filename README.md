@@ -2,6 +2,8 @@
 
 **Repository**: [https://github.com/Bptmn/quiztonic](https://github.com/Bptmn/quiztonic)
 
+![Flutter CI](https://github.com/Bptmn/quiztonic/workflows/Flutter%20CI/badge.svg)
+
 QuizTonic is a Flutter mobile and web app (built with FlutterFlow) that turns your content into interactive quizzes powered by an AI API. Users can paste raw text, a website URL, or upload a PDF; the app calls a serverless AI endpoint that returns structured JSON describing questions and optional flashcards. Quizzes are then presented with scoring, timing, and progress tracking. Authentication and data persistence are handled by Firebase.
 
 ### Summary
@@ -14,7 +16,8 @@ QuizTonic is a Flutter mobile and web app (built with FlutterFlow) that turns yo
 - [Running the project](#running-the-project)
 - [Build & test scripts](#build--test-scripts)
 - [Environment & configuration](#environment--configuration)
-- [Testing](#testing)
+- [Automated testing](#automated-testing)
+- [CI/CD pipeline](#cicd-pipeline)
 - [Related repositories](#related-repositories)
 
 ### Overview
@@ -210,20 +213,73 @@ See [scripts/README.md](scripts/README.md) for detailed documentation and troubl
   - Backed by Firestore collections and `MySubscriptionRecord`.
   - RevenueCat is integrated through custom actions provided by FlutterFlow utilities.
 
-### Testing
+### Automated testing
 
-- **Unit tests**  
-  - Focus on mapping AI responses to Firestore structs (e.g., `QuestionCardStruct`, `FlashcardStruct`) and any custom parsing helpers.
-- **Widget tests**  
-  - Cover interactive widgets such as question/answer components and auth forms.
-- **Integration tests**  
-  - Cover the full flow: sign-in → content input → quiz generation → quiz completion → stats update.
+QuizTonic includes comprehensive automated tests to ensure code quality and prevent regressions.
 
-Standard Flutter testing commands apply:
+#### Test structure
+
+```
+test/
+├── unit/              # Unit tests for business logic
+│   ├── api_config_test.dart
+│   ├── error_messages_test.dart
+│   ├── quiz_validators_test.dart
+│   ├── retry_helper_test.dart
+│   └── quiz_generation_service_test.dart
+└── widget/            # Widget tests (future expansion)
+```
+
+#### Current coverage
+
+- **43 unit tests** covering:
+  - Error handling and messages
+  - Input validation (questions, choices, URL, text, PDF)
+  - Retry logic with exponential backoff
+  - API configuration
+  - Quiz generation service layer
+
+#### Running tests
 
 ```bash
+# Run all tests
 flutter test
+
+# Run unit tests only
+flutter test test/unit/
+
+# Run with coverage
+flutter test --coverage
 ```
+
+See [test/README.md](test/README.md) for detailed testing guidelines and best practices.
+
+### CI/CD pipeline
+
+Automated quality checks run on every push and pull request via **GitHub Actions**.
+
+#### Pipeline stages
+
+1. **Analyze**: Static code analysis with `flutter analyze`
+2. **Test**: Run all unit tests
+3. **Build Android**: Build release APK
+4. **Build Web**: Build web release
+
+#### Status
+
+Check the CI/CD badge at the top of this README for current build status.
+
+#### Local pre-commit checks
+
+Before pushing code, run:
+
+```bash
+flutter analyze        # Check for code issues
+flutter test          # Run all tests
+./scripts/build_android.sh  # Verify Android build
+```
+
+See [.github/workflows/flutter_ci.yml](.github/workflows/flutter_ci.yml) for pipeline configuration.
 
 ### Related repositories
 

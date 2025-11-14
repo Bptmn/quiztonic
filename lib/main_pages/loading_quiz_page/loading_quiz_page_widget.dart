@@ -13,6 +13,7 @@ import '/backend/schema/structs/index.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/utils/error_helpers.dart';
 import '/utils/error_messages.dart';
+import '/services/quiz_generation_service.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -82,21 +83,42 @@ class _LoadingQuizPageWidgetState extends State<LoadingQuizPageWidget>
           );
         }),
         Future(() async {
-          if (widget!.selectedInputFormat == QuizInputFormat.rawText) {
-            _model.apiResultFromText = await AiContentGenerationApiCall.call(
-              generateFlashcard: widget!.generateFlashcards,
-              numOfQuestions: widget!.numOfQuestions,
-              numOfChoices: widget!.numOfChoices,
-              textContent: widget!.textContent,
-            );
+          final service = QuizGenerationService();
+          GeneratedQuizzStruct? generatedQuiz;
+          
+          try {
+            // Generate quiz using service layer
+            if (widget!.selectedInputFormat == QuizInputFormat.rawText) {
+              generatedQuiz = await service.generateFromText(
+                textContent: widget!.textContent!,
+                numQuestions: widget!.numOfQuestions!,
+                numChoices: widget!.numOfChoices!,
+                generateFlashcards: widget!.generateFlashcards!,
+              );
+            } else if (widget!.selectedInputFormat == QuizInputFormat.websiteUrl) {
+              generatedQuiz = await service.generateFromUrl(
+                url: widget!.url!,
+                numQuestions: widget!.numOfQuestions!,
+                numChoices: widget!.numOfChoices!,
+                generateFlashcards: widget!.generateFlashcards!,
+              );
+            } else if (widget!.selectedInputFormat == QuizInputFormat.pdfFile) {
+              _model.pdfBinaryText = await actions.pdfToBinary(widget!.pdfFile!);
+              generatedQuiz = await service.generateFromPdf(
+                pdfBinary: _model.pdfBinaryText!,
+                numQuestions: widget!.numOfQuestions!,
+                numChoices: widget!.numOfChoices!,
+                generateFlashcards: widget!.generateFlashcards!,
+              );
+            }
 
-            if ((_model.apiResultFromText?.succeeded ?? true)) {
+            // Navigate to quiz page on success
+            if (generatedQuiz != null) {
               context.goNamed(
                 QuizExoWidget.routeName,
                 queryParameters: {
                   'generatedQuizz': serializeParam(
-                    GeneratedQuizzStruct.maybeFromMap(
-                        (_model.apiResultFromText?.jsonBody ?? '')),
+                    generatedQuiz,
                     ParamType.DataStruct,
                   ),
                 }.withoutNulls,
@@ -108,122 +130,41 @@ class _LoadingQuizPageWidgetState extends State<LoadingQuizPageWidget>
                   ),
                 },
               );
-            } else {
-              await ErrorDialogs.showGenerationError(
-                context,
-                ErrorMessages.getApiErrorMessage(
-                  _model.apiResultFromText?.statusCode ?? -1,
-                  _model.apiResultFromText?.jsonBody,
-                ),
-              );
-
-              context.goNamed(
-                HomePageWidget.routeName,
-                extra: <String, dynamic>{
-                  kTransitionInfoKey: TransitionInfo(
-                    hasTransition: true,
-                    transitionType: PageTransitionType.fade,
-                    duration: Duration(milliseconds: 0),
-                  ),
-                },
-              );
             }
-          } else if (widget!.selectedInputFormat ==
-              QuizInputFormat.websiteUrl) {
-            _model.apiResultFromUrl = await AiContentGenerationApiCall.call(
-              generateFlashcard: widget!.generateFlashcards,
-              numOfQuestions: widget!.numOfQuestions,
-              numOfChoices: widget!.numOfChoices,
-              url: widget!.url,
+          } on QuizGenerationException catch (e) {
+            // Handle service-level exceptions
+            await ErrorDialogs.showGenerationError(
+              context,
+              e.message,
             );
 
-            if ((_model.apiResultFromUrl?.succeeded ?? true)) {
-              context.goNamed(
-                QuizExoWidget.routeName,
-                queryParameters: {
-                  'generatedQuizz': serializeParam(
-                    GeneratedQuizzStruct.maybeFromMap(
-                        (_model.apiResultFromUrl?.jsonBody ?? '')),
-                    ParamType.DataStruct,
-                  ),
-                }.withoutNulls,
-                extra: <String, dynamic>{
-                  kTransitionInfoKey: TransitionInfo(
-                    hasTransition: true,
-                    transitionType: PageTransitionType.fade,
-                    duration: Duration(milliseconds: 0),
-                  ),
-                },
-              );
-            } else {
-              await ErrorDialogs.showGenerationError(
-                context,
-                ErrorMessages.getApiErrorMessage(
-                  _model.apiResultFromUrl?.statusCode ?? -1,
-                  _model.apiResultFromUrl?.jsonBody,
+            context.goNamed(
+              HomePageWidget.routeName,
+              extra: <String, dynamic>{
+                kTransitionInfoKey: TransitionInfo(
+                  hasTransition: true,
+                  transitionType: PageTransitionType.fade,
+                  duration: Duration(milliseconds: 0),
                 ),
-              );
-
-              context.goNamed(
-                HomePageWidget.routeName,
-                extra: <String, dynamic>{
-                  kTransitionInfoKey: TransitionInfo(
-                    hasTransition: true,
-                    transitionType: PageTransitionType.fade,
-                    duration: Duration(milliseconds: 0),
-                  ),
-                },
-              );
-            }
-          } else if (widget!.selectedInputFormat == QuizInputFormat.pdfFile) {
-            _model.pdfBinaryText = await actions.pdfToBinary(
-              widget!.pdfFile!,
+              },
             );
-            _model.apiResultFromPdf = await AiContentGenerationApiCall.call(
-              generateFlashcard: widget!.generateFlashcards,
-              numOfQuestions: widget!.numOfQuestions,
-              numOfChoices: widget!.numOfChoices,
-              pdfBinary: _model.pdfBinaryText,
+          } catch (e) {
+            // Handle unexpected exceptions
+            await ErrorDialogs.showGenerationError(
+              context,
+              ErrorMessages.getQuizGenerationError(),
             );
 
-            if ((_model.apiResultFromPdf?.succeeded ?? true)) {
-              context.goNamed(
-                QuizExoWidget.routeName,
-                queryParameters: {
-                  'generatedQuizz': serializeParam(
-                    GeneratedQuizzStruct.maybeFromMap(
-                        (_model.apiResultFromPdf?.jsonBody ?? '')),
-                    ParamType.DataStruct,
-                  ),
-                }.withoutNulls,
-                extra: <String, dynamic>{
-                  kTransitionInfoKey: TransitionInfo(
-                    hasTransition: true,
-                    transitionType: PageTransitionType.fade,
-                    duration: Duration(milliseconds: 0),
-                  ),
-                },
-              );
-            } else {
-              await ErrorDialogs.showGenerationError(
-                context,
-                ErrorMessages.getApiErrorMessage(
-                  _model.apiResultFromPdf?.statusCode ?? -1,
-                  _model.apiResultFromPdf?.jsonBody,
+            context.goNamed(
+              HomePageWidget.routeName,
+              extra: <String, dynamic>{
+                kTransitionInfoKey: TransitionInfo(
+                  hasTransition: true,
+                  transitionType: PageTransitionType.fade,
+                  duration: Duration(milliseconds: 0),
                 ),
-              );
-
-              context.goNamed(
-                HomePageWidget.routeName,
-                extra: <String, dynamic>{
-                  kTransitionInfoKey: TransitionInfo(
-                    hasTransition: true,
-                    transitionType: PageTransitionType.fade,
-                    duration: Duration(milliseconds: 0),
-                  ),
-                },
-              );
-            }
+              },
+            );
           }
         }),
       ]);
