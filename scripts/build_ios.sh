@@ -98,9 +98,51 @@ flutter clean
 flutter pub get
 echo -e "${GREEN}✓ Clean complete${NC}\n"
 
+# Bump version (marketing and build) before building
+echo -e "${YELLOW}🔢 Bumping iOS version (marketing + build)...${NC}"
+
+# Read current version from pubspec.yaml (format: version: X.Y.Z+N)
+CURRENT_VERSION_LINE=$(grep -E '^version:\s*[0-9]+\.[0-9]+\.[0-9]+\+[0-9]+' pubspec.yaml || true)
+if [[ -z "$CURRENT_VERSION_LINE" ]]; then
+  echo -e "${YELLOW}⚠️  Could not detect current version in pubspec.yaml. Using defaults 1.0.0+1${NC}"
+  CURRENT_VERSION="1.0.0"
+  CURRENT_BUILD="1"
+else
+  CURRENT_VERSION=$(echo "$CURRENT_VERSION_LINE" | sed -E 's/version:\s*([0-9]+\.[0-9]+\.[0-9]+)\+([0-9]+)/\1/')
+  CURRENT_BUILD=$(echo "$CURRENT_VERSION_LINE" | sed -E 's/version:\s*([0-9]+\.[0-9]+\.[0-9]+)\+([0-9]+)/\2/')
+fi
+
+# Allow overrides via env vars
+REQUESTED_BUMP=${BUMP:-patch} # major|minor|patch
+NEW_BUILD=${BUILD_NUMBER:-}
+NEW_VERSION=${BUILD_NAME:-}
+
+IFS='.' read -r MAJOR MINOR PATCH <<< "$CURRENT_VERSION"
+if [[ -z "$NEW_VERSION" ]]; then
+  case "$REQUESTED_BUMP" in
+    major) MAJOR=$((MAJOR+1)); MINOR=0; PATCH=0 ;;
+    minor) MINOR=$((MINOR+1)); PATCH=0 ;;
+    patch|*) PATCH=$((PATCH+1)) ;;
+  esac
+  NEW_VERSION="${MAJOR}.${MINOR}.${PATCH}"
+fi
+
+if [[ -z "$NEW_BUILD" ]]; then
+  # Increment build number or start at 1 if missing
+  if [[ -z "$CURRENT_BUILD" ]]; then
+    NEW_BUILD=1
+  else
+    NEW_BUILD=$((CURRENT_BUILD+1))
+  fi
+fi
+
+# Update pubspec.yaml version line
+echo -e "${BLUE}Setting version to ${NEW_VERSION}+${NEW_BUILD}${NC}"
+sed -i '' -E "s/^version:\s*[0-9]+\.[0-9]+\.[0-9]+\+[0-9]+/version: ${NEW_VERSION}+${NEW_BUILD}/" pubspec.yaml
+
 # Build for iOS
 echo -e "${YELLOW}🔨 Building iOS app (Release mode)...${NC}"
-flutter build ios --release
+flutter build ios --release --build-name="${NEW_VERSION}" --build-number="${NEW_BUILD}"
 if [[ $? -ne 0 ]]; then
     echo -e "${RED}❌ iOS build failed${NC}"
     exit 1

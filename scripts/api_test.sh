@@ -13,7 +13,7 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 # Default API URL (production)
-API_URL=${1:-"https://2mmjiwjyo27dfsa227qdc67jue0drajz.lambda-url.eu-west-1.on.aws/"}
+API_URL=${1:-"https://l6uy5fycohzcps4cqznn5jbdhu0jxsax.lambda-url.eu-west-3.on.aws/"}
 
 echo -e "${BLUE}========================================${NC}"
 echo -e "${BLUE}QuizTonic - API Health Check${NC}"
